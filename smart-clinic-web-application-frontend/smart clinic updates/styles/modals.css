@@ -1,0 +1,1397 @@
+.flex {
+  display: flex;
+}
+
+hr {
+  height: 20px;
+  background-color: rgb(165, 165, 165);
+  border: none;
+}
+
+.btn {
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: seashell;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 5px;
+  margin-top: 30px;
+  margin-left: 30px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: rgb(231, 224, 219);
+}
+
+/*****************************************************************************************************************/
+/* common css for all modals */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0vh;
+  top: 0vh;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-family: inherit !important;
+}
+
+/*****************************************************************************************************************/
+/* css for modal 1 */
+.modalContent1 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.label-modal {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 2 */
+.modalContent2 {
+  background: #b3b4c0;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  width: 322px;
+  height: 154px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.modalBtn2 {
+  width: 80px;
+  height: 41px;
+  border-radius: 10px;
+  border: none;
+  /* background-color: #ffffff; */
+  line-height: 21px;
+  font-weight: normal;
+  margin-right: 10px;
+  font-family: inherit;
+}
+
+.modalBtn2:hover {
+  opacity: 0.7;
+}
+
+.form-div-modal2 {
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.label-modal2 {
+  height: 21px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 16px;
+  color: #424242;
+}
+
+/*****************************************************************************************************************/
+/* css for modal 3 */
+.modalContent3 {
+  background: #b3b4c0;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  width: 322px;
+  height: 154px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.modalBtn3 {
+  width: 80px;
+  height: 41px;
+  border-radius: 10px;
+  border: none;
+  /* background-color: #ffffff; */
+  line-height: 21px;
+  font-weight: normal;
+  margin-right: 10px;
+  font-family: inherit;
+}
+
+.modalBtn3:hover {
+  opacity: 0.7;
+}
+
+.form-div-modal3 {
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.label-modal3 {
+  height: 21px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+/*****************************************************************************************************************/
+/* css for modal 4 */
+
+.modalContent4 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 192px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal4 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.label-modal4 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal4 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.modalBtn4 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn4:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 5 */
+
+.modalContent5 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 384px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal5 {
+  width: 131px;
+  padding-right: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.label-modal5 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal5 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn5 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn5:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 6 */
+
+.modalContent6 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal6 {
+  width: 131px;
+  padding-left: 21px;
+  height: 34px;
+  border: none;
+  border-radius: 0;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.inp-radio {
+  width: 27px;
+  height: 18px;
+  margin-top: 0;
+}
+
+.label-modal6 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal6 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal6 {
+  display: flex;
+  width: 50%;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn6 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+  font-family: inherit;
+}
+
+.modalBtn6:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 7 */
+
+.modalContent7 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 240px;
+  height: 245px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-radio7 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal7 {
+  margin-left: 10px;
+}
+
+.form-div-modal7 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.modalBtn7 {
+  margin-top: 20px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn7:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 8 */
+
+.modalContent8 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 372px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal8 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.inp-radio8 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal8 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 50%;
+}
+
+.form-div-modal8 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.form-div-div-modal8 {
+  display: flex;
+  width: 50%;
+  font-size: 15px;
+}
+
+.modalBtn8 {
+  margin-left: 130px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn8:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 9 */
+
+.modalContent9 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 192px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal9 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.label-modal9 {
+  width: 127px;
+  height: 21px;
+  font-size: 14px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal9 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.modalBtn9 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn9:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 10 */
+.modalContent10 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 281px;
+  height: 200px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal10 {
+  width: 234px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: none;
+}
+
+.form-div-modal10 {
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 8px;
+}
+
+.label-modal10 {
+  height: 21px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+/*****************************************************************************************************************/
+/* css for modal 11 */
+
+.modalContent11 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 372px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal11 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.inp-radio11 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal11 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 50%;
+}
+
+.form-div-modal11 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.form-div-div-modal11 {
+  display: flex;
+  width: 50%;
+  font-size: 15px;
+}
+
+.modalBtn11 {
+  margin-left: 130px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn11:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 12 */
+
+.modalContent12 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal12 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.inp-radio12 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal12 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal12 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal12 {
+  display: flex;
+  width: 50%;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn12 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn12:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 13 */
+.modalContent13 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal13 {
+  width: 131px;
+  padding-left: 14px;
+  height: 34px;
+  border: none;
+  border-radius: 0;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  font-family: inherit;
+}
+
+.label-modal13 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal13 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn13 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+  font-family: inherit;
+}
+
+.modalBtn13:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 14 */
+
+.modalContent14 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 285px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal14 {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio14 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal14 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+.form-div-modal14 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal14 {
+  display: flex;
+  width: 50%;
+}
+
+.far {
+  position: relative;
+  right: 24px;
+}
+
+.modalBtn14 {
+  margin-left: 100px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn14:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 15 */
+
+.modalContent15 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 285px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal15 {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio15 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal15 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+.form-div-modal15 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal15 {
+  display: flex;
+  width: 50%;
+}
+
+.modalBtn15 {
+  margin-left: 100px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn15:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 16 */
+.modalContent16 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal16 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio16 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal16 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal16 {
+  padding: 10px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.form-div-div-modal16 {
+  display: flex;
+  width: 50%;
+}
+
+.modalBtn16 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn16:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 17 */
+.modalContent17 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal17 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio17 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal17 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal17 {
+  padding: 10px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.form-div-div-modal17 {
+  display: flex;
+  width: 50%;
+}
+
+.modalBtn17 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn17:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 18 */
+.modalContent18 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal18 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio18 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal18 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal18 {
+  padding: 10px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.form-div-div-modal18 {
+  display: flex;
+  width: 50%;
+}
+
+.modalBtn18 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn18:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 19 */
+.modalContent19 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: 327px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal19 {
+  width: 131px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio19 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal19 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 45%;
+}
+
+.form-div-modal19 {
+  padding: 10px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.form-div-div-modal19 {
+  display: flex;
+  width: 50%;
+}
+
+.modalBtn19 {
+  margin-left: 120px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn19:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 20 */
+
+.modalContent20 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 315px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal20 {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio20 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal20 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+.form-div-modal20 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal20 {
+  display: flex;
+  width: 50%;
+  margin-right: 10px;
+}
+
+.modalBtn20 {
+  margin-left: 100px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn20:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 21 */
+
+.modalContent21 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 315px;
+  height: 260px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal21 {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio21 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal21 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+.form-div-modal21 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal21 {
+  display: flex;
+  width: 50%;
+  margin-right: 10px;
+}
+
+.modalBtn21 {
+  margin-left: 100px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn21:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}
+
+/*****************************************************************************************************************/
+/* css for modal 22 */
+
+.modalContent22 {
+  background: #b3b4c0;
+  margin: auto;
+
+  padding: 10px;
+  border: none;
+  width: 315px;
+  height: 207px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+
+.inp-modal22 {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  border: none;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-radio22 {
+  width: 27px;
+  height: 18px;
+}
+
+.label-modal22 {
+  width: 127px;
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+.form-div-modal22 {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 15px;
+}
+
+.form-div-div-modal22 {
+  display: flex;
+  width: 50%;
+  margin-right: 10px;
+}
+
+.modalBtn22 {
+  margin-left: 100px;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+}
+
+.modalBtn22:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+}

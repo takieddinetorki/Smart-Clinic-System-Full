@@ -1,0 +1,22 @@
+[33maadac6a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m Diagonstic Report Module Added
+[33m6353083[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Enhanced init.php
+[33mbfd34c1[m defined variables go in here
+[33m79f0a9c[m __ROOT__ is a defined variable in global.php which will return the root directory
+[33m41bfa83[m Added flexible core/init.php functionality
+[33m4087097[m init.php edited online with Bitbucket
+[33m0cd348a[m All files have been restructured
+[33me1835b3[m ALl Files are rearranged
+[33m2c0f34d[m in a middle of purchase order
+[33m8daf10f[m inventory and backup tables module half complete
+[33m97ab612[m Add comments and rewritten my previous sqls into prepared statements
+[33m4857105[m Merged in expense_module_by_yeasin (pull request #1)
+[33m2dcc4b2[m[33m ([m[1;31morigin/expense_module_by_yeasin[m[33m)[m fixed some issues
+[33med9a8df[m search Expense added
+[33m05dbf77[m showAllExpenses validated in update.php
+[33mbda28dc[m delete functionality added
+[33mdc9e674[m add & delete functionalities added
+[33m7070e05[m fixed some issues in Clinic.php file and ClinicDB.php
+[33mb53b75b[m a simple image added in the Images folder to make the folder visible as git tries to remove all the folders without any content
+[33mac51d8f[m deleted unnecessary folders in images folder
+[33mc385bd7[m Project Created along with the recent updated files
+[33mee2ac50[m Initial commit

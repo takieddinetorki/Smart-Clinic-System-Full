@@ -1,0 +1,153 @@
+.footer-div{
+  justify-content: flex-end;
+  margin-right: 11%;
+}
+.pdl{
+  padding-left: 115px;
+}
+.footer{
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.head-div{
+  text-align: center;
+  text-transform: uppercase;
+}
+.head-div h1{
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+.main-container{
+  width: 731px;
+  min-width: 500px;
+  min-height: 408px;
+  max-height: 408px;
+  background-color: rgba(245, 245, 245,0.5);
+  border: none;
+  border-radius: 65px;
+}
+.eyeclass{
+  position: relative;
+  margin-top: 5px;
+  width: 21px;
+  height: 20px;
+  background-color: #B597DC;
+  padding: 4px;
+  padding-top: 7px;
+  padding-left: 6px;
+  margin-left: 10px;
+  border-radius: 15px;
+  font-size: 17px;
+}
+.eyeclass:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+.cl-btn{
+  float: right;
+  position: relative;
+  margin-top: 23px;
+  font-size: 29px;
+  margin-right: 40px;
+}
+.cl-btn:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+.sub-btn{
+  position: relative;
+  width: 101px;
+  height: 34px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+  margin-top: -10px;
+}
+.sub-btn:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+.form{
+  padding-top: 18px;
+  margin-bottom: 0;
+}
+.form-div{
+  display: flex;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+.form-label{
+  width: 120px;
+  font-size: 15px;
+  line-height: 25px;
+}
+.form-inp{
+  padding-left: 20px;
+  width: 160px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  filter: drop-shadow(0px 2px 3px gray);
+
+}
+.w-BIG{
+  width: 66%;
+}
+.far {
+  position: relative;
+  right: 24px;
+} 
+
+@media (max-width:1030px){
+
+  .wrapper-scr{
+    width: calc(100vw - 300px);
+    overflow-x: scroll;
+    min-height: 430px;
+  }
+}
+.width-toggle{
+  width: fit-content;
+}
+@media screen and (max-width:800px){
+  .wrapper{
+    width: calc(100vw - 100px);
+    overflow-x: scroll;
+    min-height: 430px;
+
+  }
+}
+
+
+/*Scrollbar customization*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+.table-wrapper-scroll-y::-webkit-scrollbar {
+  background: rgba(255, 255, 255, 0.6);
+  width: 12px;
+}
+
+.table-wrapper-scroll-y::-webkit-scrollbar-thumb {
+  background: #c9c8c8;
+  border-radius: 10px;
+  width: 12px;
+  height: 100px;
+}
+
+.table-wrapper-scroll-y::-webkit-scrollbar-track {
+  background: rgba(0, 128, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,157 @@
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url("../src/img/main_background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pdl {
+  padding-left: 134px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.head h1 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+.form-container-wrapper {
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-container {
+  width: calc(100vw - 300px);
+  max-width: 600px;
+  min-width: 500px;
+  height: 365px;
+  padding: 20px 10px 20px 10px;
+  background: rgba(255, 255, 255, 0.37);
+  border-radius: 40px;
+  position: relative;
+}
+
+.expenses-form>div {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.expenses-form>input,
+.expenses-form>textarea {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 5px 10px;
+  background-color: white;
+  font-size: 16px;
+  margin-top: 18px;
+  margin-left: 250px;
+  background-color: #707070;
+  font-weight: 550;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+  font-family: inherit;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.expenses-form>div>input,
+.expenses-form>div>textarea,
+.expenses-form>div>select {
+  position: absolute;
+  left: 150px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 6px 10px;
+  background-color: white;
+  font-size: 16px;
+  font-family: inherit;
+  margin-bottom: 2px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.date input {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 6px 10px;
+  background-color: white;
+  font-size: 14px;
+  width: 120px;
+  margin-left: 92px;
+  font-family: inherit;
+  margin-top: -8px;
+  margin-bottom: -8px;
+}
+
+.attachment input {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 6px 10px;
+  background-color: white;
+  font-size: 14px;
+  width: 200px;
+  margin-left: 40px;
+  font-family: inherit;
+}
+
+#datepickers-container {
+  left: -100px;
+}
+
+.cl-icon {
+  position: absolute;
+  top: 22px;
+  right: 32px;
+  font-size: 30px;
+  color: rgb(66, 65, 65);
+}
+
+.cl-icon:hover {
+  opacity: 0.7;
+}
+
+.footer {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+.foot-wrap{
+  max-width: 1000px;
+}
+@media(max-width:1050px){
+  .form-container-wrapper{
+    max-width: calc(100vw - 300px);
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .widthChange{
+    max-width: 650px;
+  }
+}
+@media (max-width: 850px) {
+  .inp-wid {
+    width: 340px !important;
+  }
+}

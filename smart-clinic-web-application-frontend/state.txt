@@ -1,0 +1,8 @@
+Compeleted (Along with all suggestions from Nivashinee)
+1)-All Billing Pages
+	Billing form
+	Billing Page
+1)-All Diagnostic Pages
+	Diagnostic form
+	Diagnostic report
+	Diagnostic Page

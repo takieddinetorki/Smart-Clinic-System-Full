@@ -1,0 +1,69 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 200px repeat(4, 50px);
+  font-family: "Poppins", sans-serif;
+  background-color: rgba(184, 68, 68, 0.2);
+  padding: 5px;
+}
+
+/* .wrapper div {
+  border: 1px solid black;
+  border-radius: 20px;
+} */
+
+.box1 {
+  display: grid;
+  grid-template-columns: 900px 150px;
+}
+
+.nested-box1 {
+  display: grid;
+}
+
+.row {
+  display: flex;
+}
+.photo {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  margin: 10px 10px 10px 0px;
+}
+
+label {
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+input {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+input[type="radio"] {
+  box-shadow: none;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+select {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 5px 10px;
+  background-color: white;
+  font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}

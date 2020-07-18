@@ -1,0 +1,116 @@
+.footer {
+    margin-top: 5px;
+    width: 97%;
+    margin-bottom: 10px;
+}
+
+.box-div {
+    width: 300px;
+    border: 1px solid rgb(112, 112, 112);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.list-box{
+    margin-top: 11px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    width: 280px !important;
+}
+.list-box i{
+    float: right;
+    margin-top: 4px;
+    margin-right: -15px;
+}
+.list-box i:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+.box-div-head {
+    background-color: rgba(112, 112, 112, 0.4);
+    padding-left: 10px;
+}
+.plus-icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border:none;
+    background-color: #AAAAAE;
+    float: right;
+    margin-right: 5px;
+    text-align: center;
+}
+.plus-icon i{
+    margin-top: 9px;
+}
+.plus-icon:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+.diag-form-inp {
+    background-color: transparent;
+    border: none;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.drug-div{
+    display: flex;
+    margin-top: 10px;
+}
+.drug-label{
+    width: 32%;
+}
+
+.inp-select{
+    background-color: white;
+    -webkit-filter: drop-shadow(2px 2px 2px gray);
+    filter: drop-shadow(2px 2px 2px gray);
+    border: none;
+    border-radius: 50px;
+    padding: 4px;
+    padding-left: 18px;
+    padding-right: 18px;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.inp-select i{
+    font-size: 12px;
+    top: -3px;
+    position: relative;
+    left: 4px;
+}
+.inp-select i:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+  /*Scrollbar customization*/
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar {
+    background: rgba(255, 255, 255, 0.6);
+    width: 12px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-thumb {
+    background: #c9c8c8;
+    border-radius: 10px;
+    width: 12px;
+    height: 100px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-track {
+    background: rgba(0, 128, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+  }

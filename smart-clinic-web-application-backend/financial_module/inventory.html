@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <style>
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color:white;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="print">
+        <h3 class="text-center" style="padding-top: 30px;">COMPANY ABC SDN BHD</h3>
+        <canvas id="myChart"></canvas>
+        <div id="editor"></div>
+    </div>
+    <br>
+    <p class="text-center">
+        <button type="button" onclick="saveAspdf()" class="btn btn-light">Generate PDF</button>
+    </p>
+</body>
+
+</html>
+<script>
+    // values from DB goes here 
+    let days = [];
+    for (let i = 1; i <= 30; i++) days.push(`Day ${i}`);
+
+    let item1 = [];
+    for (let i = 1; i <= 30; i++) item1.push(`${Math.floor((Math.random() * 10) + 1)}`);
+
+    let item2 = [];
+    for (let i = 1; i <= 30; i++) item2.push(`${Math.floor((Math.random() * 10) + 1)}`);
+
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let barChart = new Chart(myChart, {
+        type: 'line',
+        data: {
+            labels: days,
+            datasets: [{
+                label: 'Total Stock Item A',
+                data: item1,
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                pointBackgroundColor: '#000000',
+                // if want the line curve 0 put 0
+                lineTension: 0.4,
+                borderColor: '#000000'
+            }, 
+            {
+                label: 'Total Stock Item B',
+                data: item2,
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                pointBackgroundColor: '#000000',
+                // if want the line curve 0 put 0
+                lineTension: 0.4,
+                borderColor: '#000000'
+            },
+            ],
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'January 2020',
+                fontSize: 25,
+                fontColor: '#000000'
+            }
+        }
+    });
+
+    function saveAspdf() {
+        var pdf = new jsPDF('landscape');
+        var element = document.getElementById('print');
+        pdf.addHTML(element, function () {
+            pdf.save('web.pdf');
+        });
+    }
+</script>

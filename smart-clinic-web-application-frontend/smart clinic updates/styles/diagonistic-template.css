@@ -1,0 +1,138 @@
+.head{
+    text-align: center;
+    font-family: inherit;
+    font-weight: 700;
+}
+.pdl{
+    padding-left: 114px;
+}
+.head h1{
+    margin-top: 2px;
+    margin-bottom: -3px;
+}
+.main-body{
+    margin-left: 30px;
+    max-width:1200px;
+    height: 450px;
+}
+.cl-btn{
+    float: right;
+    margin-top: -60px;
+    font-size: 29px;
+    margin-right: 40px;
+}
+.cl-btn:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+#code{
+    width: 80px;
+    height: 30px;
+    background-color: #A4A4A4;
+    margin-left: 14px;
+    margin-top: -34px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 27px;
+    text-align: center;
+    padding: 2px;
+}
+.inDiv{
+    min-width:320px;
+    height:490px;
+    margin-right: 10px;
+}
+.flex{
+    display: flex;
+}
+.input_diag {
+    font-family: inherit;
+    width: 132px;
+    padding-left: 10px;
+    height: 31px;
+    border: none;
+    margin-left: 20px;
+    -webkit-filter: drop-shadow(2px 2px 2px gray);
+    filter: drop-shadow(2px 2px 2px gray);
+}
+.label_col{
+    margin-top: 4px;
+}
+.p_col{
+    margin-top: 5px;
+    margin-left: 17px;
+}
+#sliderdiv{
+    overflow-y: hidden;
+}
+.eyeclass{
+    width: 21px;
+    height: 20px;
+    background-color: #B597DC;
+    padding: 4px;
+    padding-top: 7px;
+    padding-left: 6px;
+    margin-left: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+}
+.eyeclass:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.box{
+    background-color: rgb(255, 255, 255,0.18);
+    margin-right: 20px;
+}
+.box-title{
+    width: 130px;
+    height: 25px;
+    background-color: #B38FDC;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 5px -5px;
+    box-shadow: 0 5px 5px -5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px;
+    line-height: 23px;
+    margin-left: 95px;
+    margin-top: 12px;
+}
+select{
+    padding-left: 25px;
+}
+@media(max-width: 1350px){
+    .main-body{
+        width:calc(100vw - 320px) !important;
+    }
+    .widthAdjust{
+        width:fit-content !important;
+    }
+}
+
+@media (max-width:1110px){
+    .widthAdjust{
+        width:calc(100vw - 55px) !important;
+    }
+}
+
+@media (max-width:950px){
+    #code{
+        margin-top: -15px;
+    }
+    .cl-btn {
+        margin-top: -95px;
+    }
+    .head{
+        margin-bottom: 23px;
+    }
+}
+@media screen and (max-width:800px){
+    #ad-width{
+        width:calc(100vw - 55px) !important;
+    }
+}

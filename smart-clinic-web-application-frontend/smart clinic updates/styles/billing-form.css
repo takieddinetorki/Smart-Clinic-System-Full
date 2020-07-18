@@ -1,0 +1,268 @@
+.head h1 {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+.footer-div{
+    float:  right;
+}
+.pdl{
+    padding-left: 134px;
+}
+/* Remove every outline */
+
+hr:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.cl-btn {
+    float: right;
+    margin-top: -35px;
+    font-size: 29px;
+    margin-right: -50px;
+}
+
+.cl-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.all-content {
+    width: 100%;
+    max-width: 1050px;
+}
+
+.bill-forms {
+    display: flex;
+    max-width: 1150px;
+    min-width: 850px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.form1 {
+    background: rgba(255, 255, 255, 0.37);
+    width: 30%;
+    padding-top: 12px;
+    border-radius: 25px;
+    margin-right: 20px;
+    font-family: inherit;
+}
+.top-rows select option{
+    border: none;
+}
+
+.form2 {
+    background: rgba(255, 255, 255, 0.37);
+    border-radius: 25px;
+    margin-left: 10px;
+    width: 65%;
+    font-family: inherit;
+}
+
+
+/*Code for Form 1*/
+
+.form1 div {
+    display: flex;
+    flex: wrap;
+}
+
+.form1 div {
+    line-height: 20%;
+}
+
+.form1 div label {
+    width: 30%;
+    padding-left: 30px;
+    line-height: 23px;
+    font-family: "Poppins";
+    font-size: 14px;
+    color: #424242;
+    /*padding-top: 20px;*/
+}
+
+.form1 div input {
+    width: 50%;
+    height: 45px;
+    margin-left: 10px;
+    border: solid 1px #707070;
+    background: none;
+    padding-left: 6px;
+    font-family: inherit;
+}
+
+.form1 div select {
+    width: 50%;
+    height: 45px;
+    margin-left: 10px;
+    border: solid 1px #707070;
+    background: none;
+    padding-left: 6px;
+    font-family: inherit;
+}
+
+.top-rows {
+    margin-bottom: 20px;
+}
+
+.top-rows label {
+    padding-top: 10px;
+}
+
+.top-rows i:hover {
+    opacity: 0.7;
+}
+
+.form1-rowlast {
+    margin-bottom: 15px;
+    color: gray;
+    right: 20px;
+}
+
+
+/*Code for Form 2*/
+
+.form2-heading {
+    display: flex;
+    padding-top: 20px;
+}
+
+.head-col1 {
+    width: 30%;
+    padding-left: 10%;
+}
+
+.head-col2 {
+    margin-left: 28%;
+}
+
+hr {
+    background: #707070;
+    border: solid 1px #707070;
+    height: 0.1px;
+    width: 90%;
+}
+
+.form2-rows {
+    display: flex;
+    margin-top: 11px;
+}
+
+.form2-rows label {
+    width: 55%;
+    padding-left: 10%;
+    padding-top: 5px;
+    font-family: "Poppins";
+    font-size: 15px;
+    color: #424242;
+}
+
+.form2-rows input {
+    width: 107px;
+    height: 45px;
+    margin-left: 12px;
+    border: solid 1px #707070;
+    background: none;
+    padding-left: 6px;
+    font-family: inherit;
+}
+
+.form2-rows input:hover {
+    border: solid 1px red;
+}
+
+.total-label {
+    font-weight: bold;
+}
+
+
+/*Button*/
+
+.button-display {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-pay {
+    line-height: 35px;
+    width: 148px;
+    background: #B9B1E7;
+    border: solid 1px rgba(255, 0, 0, 0);
+    font-weight: 800;
+    color: #464646;
+    font-family: inherit;
+}
+
+.btn-pay:hover {
+    opacity: 0.7;
+}
+
+.footer {
+    margin-top: 0px;
+    border: none;
+    /*min-width: 1050px;*/
+}
+
+@media (max-width:1420px) {
+    .scroll-form {
+        overflow-x: auto;
+    }
+
+    .cl-btn {
+        margin-right: -10px;
+    }
+}
+
+@media (max-width:1300px) {
+    .form1 {
+        width: 34%;
+    }
+
+    .form1 div label {
+        padding-left: 20px;
+        margin-right: 18px;
+        width: 27%;
+    }
+
+    .form2-rows label {
+        width: 50%;
+    }
+    .head-col2 {
+        margin-left: 24%;
+    }
+}
+
+/*Scrollbar customization*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar {
+    background: rgba(255, 255, 255, 0.6);
+    width: 12px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-thumb {
+    background: #c9c8c8;
+    border-radius: 10px;
+    width: 12px;
+    height: 100px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-track {
+    background: rgba(0, 128, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  
+  

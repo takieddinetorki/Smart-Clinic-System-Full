@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="text-center" style="padding-top: 30px; color: #000000;">COMPANY ABC SDN BHD</h3>
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    let days = ['JAN', 'FEB', 'MAR'];
+
+    let values = ['200', '2233', '323'];
+
+    let barChart = new Chart(myChart, {
+        type: 'bar',
+        data: {
+            labels: days,
+            datasets: [{
+                label: 'Total Sales',
+                data: values,
+                backgroundColor: '#5e6472'
+            }, ],
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Jan - Mar 2020',
+                fontSize: 25,
+                fontColor: '#000000'
+            }
+        }
+    });
+</script>

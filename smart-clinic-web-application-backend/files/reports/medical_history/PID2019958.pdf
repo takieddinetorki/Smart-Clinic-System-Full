@@ -1,0 +1,3 @@
+<br />
+<b>Notice</b>:  Trying to get property 'clinicID' of non-object in <b>C:\xampp\htdocs\smart-clinic-web-application\classes\Staff.php</b> on line <b>11</b><br />
+    <p>You can <a href="login.php">login</a> or <a href="register.php">register</a></p>

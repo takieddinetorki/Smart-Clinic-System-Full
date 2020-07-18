@@ -1,0 +1,44 @@
+/* Insert a patient */
+    /* public function insertPatient($fields = array())
+    {
+        if (count($fields)) {
+            $keys = array_keys($fields);
+            $values = '';
+            $x = 1;
+            foreach ($fields as $field) {
+                $values .= '?';
+                if ($x < count($fields)) {
+                    $values .= ', ';
+                }
+                $x++;
+            }
+            $sql = "INSERT INTO patients (`firstName`, `lastName`, `email`, `phoneNumber`, `appointmentID`, `dateAdded`,`comments`) VALUES ({$values})";
+            if(!$this->query($sql, $fields)->error()) {
+                return true;
+            }
+
+            return false;
+        }
+}*/
+
+    /*
+    public function updatePatient($id, $fields) {
+        $set = '';
+        $x = 1;
+
+
+        foreach ($fields as $name => $value) {
+            $set .= "{$name} = ?";
+            if ($x < count($fields)) {
+                $set .= ', ';
+            }
+            $x++;
+        }
+
+    $sql = "UPDATE patients SET {$set} WHERE patientID = {$id}";
+        if (!$this->query($sql, $fields)->error()) {
+            return true;
+        }
+        return false;
+    }*/
+    

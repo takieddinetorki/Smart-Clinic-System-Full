@@ -1,0 +1,265 @@
+.footer{
+    margin-top: 30px;
+}
+.pdl{
+    padding-left: 134px;
+}
+.cl-btn {
+    float: right;
+    font-size: 29px;
+    margin-top: -35px;
+}
+
+.cl-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.head {
+    line-height: 20%;
+}
+
+.main-body {
+    min-width: 100%;
+    height: 550px;
+}
+
+.scroll-class {
+    width: 100%;
+    height: 72%;
+    margin: auto;
+    margin-top: 34px;
+}
+
+.personal-form {
+    width: 95%;
+    max-height: 390px;
+    min-height: 390px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.233);
+}
+
+.box1 {
+    width: 100%;
+    height: 49%;
+    display: flex;
+}
+
+.form-part1 {
+    width: 80%;
+}
+
+.photo-part {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-input {
+    height: 180px;
+    width: 130px;
+    background: white;
+    margin-top: 1px;
+    border: solid 1px rgb(14, 13, 13);
+}
+
+.box2 {
+    width: 100%;
+    height: 50%;
+    padding-top: 6px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    height: 33px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+/*Top Part of the form*/
+
+.form-row>label {
+    font-size: 13px;
+    width: 80px;
+    padding-top: 7px;
+    margin-right: 5px;
+    padding-left: 12px;
+}
+
+.form-row>input {
+    border-radius: 20px;
+    border: solid 1px rgba(255, 255, 255, 0);
+    filter: drop-shadow(0px 2px 3px gray);
+    padding-left: 16px;
+    color: black;
+}
+
+.form-row>select {
+    border-radius: 20px;
+    border: solid 1px rgba(255, 255, 255, 0);
+    filter: drop-shadow(0px 2px 3px gray);
+    border-right: solid 8px rgba(128, 128, 128, 0);
+}
+
+.patient-id,
+.passport-no {
+    /*width: 16%;*/
+    width: 150px;
+}
+
+.dob {
+    /*width: 13%;*/
+    width: 120px;
+}
+
+.age {
+    width: 70px;
+}
+
+.patient-name,
+.address {
+    width: 770px;
+}
+
+
+/*Bottom Part of the Form*/
+
+.race,
+.nationality {
+    width: 70px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+.mobile-no,
+.emergency-name,
+.doctor-id {
+    width: 230px;
+}
+
+.spouse-name {
+    width: 520px;
+}
+
+.cell-bottom1 {
+    width: 520px;
+    display: flex;
+}
+
+.cell-bottom1>label {
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.cell-bottom1>input {
+    height: 100%;
+    border-radius: 20px;
+    border: solid 1px rgba(255, 255, 255, 0);
+    filter: drop-shadow(0px 2px 3px gray);
+    padding-left: 16px;
+    color: black;
+}
+
+.cell-bottom1>select {
+    height: 100%;
+    border-radius: 20px;
+    border: solid 1px rgba(255, 255, 255, 0);
+    filter: drop-shadow(0px 2px 3px gray);
+    border-right: solid 8px rgba(128, 128, 128, 0);
+}
+
+.emergency-no {
+    width: 30%;
+}
+
+.relationship {
+    width: 40%;
+    padding-left: 40px;
+}
+
+.doctor {
+    width: 20%;
+}
+
+@media (min-width:1540px) {
+    .main {
+        padding-top: 2px;
+    }
+    .main-body {
+        max-width: 1200px;
+        min-width: 1200px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width:1420px) {
+    .patient-id,
+    .passport-no {
+        width: 135px;
+    }
+    .dob {
+        width: 100px;
+    }
+    .age {
+        width: 70px;
+    }
+}
+
+@media (max-width:1350px) {
+    .main-body {
+        width: 98%;
+    }
+    .scroll-class {
+        width: 100%;
+        min-height: 420px;
+        overflow: auto;
+        overflow-y: hidden;
+    }
+    .personal-form {
+        max-width: 970px;
+        min-width: 970px;
+    }
+    .box2 {
+        padding-top: 2px;
+    }
+}
+
+/*Scrollbar customization*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar {
+    background: rgba(255, 255, 255, 0.6);
+    width: 12px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-thumb {
+    background: #c9c8c8;
+    border-radius: 10px;
+    width: 12px;
+    height: 100px;
+  }
+  
+  .table-wrapper-scroll-y::-webkit-scrollbar-track {
+    background: rgba(0, 128, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  
+  

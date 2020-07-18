@@ -1,0 +1,7 @@
+General corrections for all pages:
+- Standardize all the fonts used for pages including input field fonts.		
+- Reduce the main title font size for all pages.				
+- Reduce the contents font by one size.						
+- Standardize all the placement of titles, popups and bottom icons.	DONE	
+- Move the popups slightly down to center of the pages to avoid it clashing with the main title.	DONE
+- Remove the drop down shadow for all elements.

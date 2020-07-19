@@ -5,10 +5,10 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  color:#444242;
+  color: #444242;
   font-size: 14px !important;
 }
-h1{
+h1 {
   font-size: 27px;
 }
 .container {
@@ -135,13 +135,13 @@ h1{
   margin-right: 10px;
   filter: none;
   border: none;
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .search-bar .dropdown-box:hover .searchbar-dropdown {
   display: block;
 }
-select{
+select {
   font-family: inherit !important;
 }
 .search-bar {
@@ -217,7 +217,6 @@ button:focus {
   display: inline-block;
 }
 
-
 .dropdown-content2 {
   display: none;
   position: absolute;
@@ -249,7 +248,6 @@ button:focus {
 .dropdown-user1 {
   display: inline-block;
 }
-
 
 .dropdown-content3 {
   display: none;
@@ -309,8 +307,8 @@ button:focus {
   grid-template-columns: 80px auto;
   grid-template-rows: 70px auto;
   grid-template-areas:
-      "header header"
-      "sidebar main";
+    "header header"
+    "sidebar main";
   height: 100%;
 }
 
@@ -341,13 +339,13 @@ button:focus {
 .nav-active {
   background: rgba(117, 115, 115, 0.37);
 }
-.hidden_sidebar{
+.hidden_sidebar {
   display: none;
 }
-.small_width{
-  width:80px;
+.small_width {
+  width: 80px;
 }
-.toggle-btn a img{
+.toggle-btn a img {
   width: 25px;
 }
 
@@ -366,9 +364,8 @@ button:focus {
   opacity: 0.7;
   transition: left 500ms;
 }
-.toggle-icon-placement{
-  left:34px !important;
-
+.toggle-icon-placement {
+  left: 34px !important;
 }
 .sidebar .toggle-btn a {
   display: block;
@@ -381,14 +378,14 @@ button:focus {
   font-family: inherit;
   font-weight: 700;
 }
-.pdl-hide{
+.pdl-hide {
   padding-left: 42px;
 }
-.update-profile{
-  display: flex; 
+.update-profile {
+  display: flex;
   padding-left: 50px;
 }
-.update-profile img{
+.update-profile img {
   padding-top: 13px;
   background: whitesmoke;
   border: none;
@@ -411,4 +408,13 @@ button:focus {
   .sidebar .toggle-btn {
     display: none;
   }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  background-position-y: 5px;
 }

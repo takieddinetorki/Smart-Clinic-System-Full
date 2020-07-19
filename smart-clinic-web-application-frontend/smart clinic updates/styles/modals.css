@@ -21,6 +21,7 @@ hr {
   margin-top: 30px;
   margin-left: 30px;
   border: none;
+  font-family: inherit;
 }
 
 .btn:hover {
@@ -58,14 +59,14 @@ hr {
 }
 
 .inp-modal {
+  font-family: inherit;
   width: 131px;
-  padding-left: 10px;
+  padding-left: 14px;
   height: 34px;
   border: none;
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
-  text-align: center;
-  text-align-last: center;
+  
 }
 
 .label-modal {
@@ -97,6 +98,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn:hover {
@@ -242,6 +244,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn4:hover {
@@ -303,6 +306,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn5:hover {
@@ -332,6 +336,7 @@ hr {
   border-radius: 0;
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
+  font-family: inherit;
 }
 
 .inp-radio {
@@ -422,6 +427,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn7:hover {
@@ -489,6 +495,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn8:hover {
@@ -545,6 +552,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn9:hover {
@@ -649,6 +657,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn11:hover {
@@ -721,6 +730,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn12:hover {
@@ -855,6 +865,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn14:hover {
@@ -923,6 +934,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn15:hover {
@@ -988,6 +1000,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn16:hover {
@@ -1053,6 +1066,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn17:hover {
@@ -1118,6 +1132,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn18:hover {
@@ -1183,6 +1198,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn19:hover {
@@ -1252,6 +1268,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn20:hover {
@@ -1321,6 +1338,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn21:hover {
@@ -1390,6 +1408,7 @@ hr {
   line-height: 21px;
   font-weight: bold;
   color: white;
+  font-family: inherit;
 }
 
 .modalBtn22:hover {

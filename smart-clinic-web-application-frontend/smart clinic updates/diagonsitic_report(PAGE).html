@@ -42,7 +42,13 @@
       </div>
 
       <div class="nav-images">
-        <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+        <div class="dropdown-user1">
+          <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+          <div class="dropdown-content3">
+            <a href="settings(PAGE).html">Settings</a>
+            <a href="report_bug.html">Report Bug</a>
+          </div>
+        </div>
 
         <div class="dropdown-notification">
           <a href="#" class="nav-logos"><img src="src/img/notification.png" alt="" /></a>
@@ -55,7 +61,7 @@
         <div class="dropdown-user">
           <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
           <div class="dropdown-content2">
-            <a href="#">My Profile</a>
+            <a href="my-profile(PAGE).html">My Profile</a>
             <a href="#">Logout</a>
           </div>
         </div>
@@ -64,41 +70,41 @@
 
     <div class="sidebar" id="sidebar">
       <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-          <a href="" onclick=" return false">
-              <img src="src/img/resize.svg" alt="">
-          </a>
+        <a href="" onclick=" return false">
+          <img src="src/img/resize.svg" alt="">
+        </a>
       </div>
-      <a href="#home"><img src="src/img/home.png" />
-          <div class="small_sidebar">Dashboard</div>
+      <a href="dashboard(PAGE).html"><img src="src/img/home.png" />
+        <div class="small_sidebar">Dashboard</div>
       </a>
-      <a href="#home" ><img src="src/img/patient.svg" />
-          <div class="small_sidebar">Patients</div>
+      <a href="patients(PAGE).html"><img src="src/img/patient.svg" />
+        <div class="small_sidebar">Patients</div>
       </a>
-      <a href=""><img src="src/img/appointment-icon.svg" alt="" />
-          <div class="small_sidebar">Appointments</div>
+      <a href="appointment.html"><img src="src/img/appointment-icon.svg" alt="" />
+        <div class="small_sidebar">Appointments</div>
       </a>
-      <a href="" class="nav-active"><img src="src/img/diagnostic.svg" alt="" />
-          <div class="small_sidebar"> Diagnostic Report</div>
+      <a href="diagnostic(PAGE).html" class="nav-active"><img src="src/img/diagnostic.svg" alt="" />
+        <div class="small_sidebar"> Diagnostic Report</div>
       </a>
-      <a href=""><img src="src/img/finance.svg" alt="" />
-          <div class="small_sidebar">Billing</div>
+      <a href="billing(PAGE).html"><img src="src/img/finance.svg" alt="" />
+        <div class="small_sidebar">Billing</div>
       </a>
-      <a href=""><img src="src/img/prescription.svg" alt="" />
-          <div class="small_sidebar">Expenses</div>
+      <a href="expenses(PAGE).html"><img src="src/img/prescription.svg" alt="" />
+        <div class="small_sidebar">Expenses</div>
       </a>
-      <a href=""><img src="src/img/inventory.svg" alt="" />
-          <div class="small_sidebar">Inventory</div>
+      <a href="inventory (PAGE).html"><img src="src/img/inventory.svg" alt="" />
+        <div class="small_sidebar">Inventory</div>
       </a>
-      <a href="#service"><img src="src/img/mc.svg" alt="" />
-          <div class="small_sidebar">Medical Certificate</div>
+      <a href="medical-cert(PAGE).html"><img src="src/img/mc.svg" alt="" />
+        <div class="small_sidebar">Medical Certificate</div>
       </a>
-      <a href="#clients"><img src="src/img/cash.svg" alt="" />
-          <div class="small_sidebar">Finance Reports</div>
+      <a href="financial-report(PAGE).html"><img src="src/img/cash.svg" alt="" />
+        <div class="small_sidebar">Finance Reports</div>
       </a>
       <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />
-          <div class="small_sidebar">Backup & Table Setup</div>
+        <div class="small_sidebar">Backup & Table Setup</div>
       </a>
-  </div>
+    </div>
     <div class="main">
       <div class="head">
         <h1>DIAGNOSTIC REPORT</h1>
@@ -317,8 +323,8 @@
         <div class="footer">
           <div class="footer-div">
             <div class="dots-div">
-              <span class="dot"></span>
-              <span class="dot" style="background-color: black;"></span>
+              <a href="diagonsitic_report(PAGE).html"> <span class="dot" style="background-color: black;"></span></a>
+              <a href="diagonsitic-form(PAGE).html"> <span class="dot"></span></a>
             </div>
             <div class="icons-div">
               <div class="icons">
@@ -347,6 +353,7 @@
       var ele = document.getElementsByClassName('modal');
       for (i = 0; i < ele.length; i++) {
         ele[i].classList.toggle("pdl");
+        ele[i].classList.toggle("pdl-hide");
       }
     }
   </script>
@@ -393,18 +400,18 @@
   <!-- delete modal here -->
   <div id="modal2" class="modal pdl">
     <div class="modalContent2">
-        <form style="margin-top: 7px;">
-            <div style="text-align: center;margin-top: 25px;">
-                <p class="label-modal2">Are you sure to delete?</label>
-                <div class="form-div-modal2">
-                    <button class="modalBtn2" type="submit">Yes</button>
-                    <button class="modalBtn2" type="submit">No</button>
-                </div>
-            </div>
-        </form>
+      <form style="margin-top: 7px;">
+        <div style="text-align: center;margin-top: 25px;">
+          <p class="label-modal2">Are you sure to delete?</label>
+          <div class="form-div-modal2">
+            <button class="modalBtn2" type="submit">Yes</button>
+            <button class="modalBtn2" type="submit">No</button>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
-<!-- delete modal till here -->
+  </div>
+  <!-- delete modal till here -->
   <!-- save modal here -->
   <div id="modal3" class="modal pdl">
     <div class="modalContent3">

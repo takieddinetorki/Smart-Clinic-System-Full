@@ -8,6 +8,7 @@
   padding-left: 0;
   width: 90px;
   text-overflow: ellipsis;
+  -webkit-appearance: button;
 }
 
 .status {

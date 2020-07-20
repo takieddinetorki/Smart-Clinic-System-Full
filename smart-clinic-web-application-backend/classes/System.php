@@ -12,7 +12,9 @@ class System
 {
     private $_db,
             $_sessionName,
-            $_sessionValue;
+            $_sessionValue,
+            $_ID,
+            $_ClinicID;
     
 
     public function __construct($user = null) {
@@ -20,6 +22,9 @@ class System
         $this->_sessionName = Config::get('session/session_name');
         if (Session::exists($this->_sessionName)) {
             $this->_sessionValue = Session::get($this->_sessionName);
+            $user = new User;
+            $this->_ID = $user->data()->staffID;
+            $this->_ClinicID = escape($user->data()->clinicID);
         }
     }
     public static function get_client_ip() {
@@ -45,6 +50,9 @@ class System
     {
         $date = date('d-m-Y H:i:s');
         $PublicIP = System::get_client_ip();
+        $URL = $_SERVER['REQUEST_URI'];
+        $query = ($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING']: "N/A";
+        $log = "[" . $date ."]" . " IP: " . $PublicIP . "; Activity: " . $activity. " ID: UNKNOWN" . ". URL: " . $URL . " Query:" . $query ."\n";
         if ($PublicIP != '127.0.0.1') {
             $json     = file_get_contents("http://ipinfo.io/202.190.66.244/geo");
             $json     = json_decode($json, true);
@@ -52,27 +60,43 @@ class System
             $region   = $json['region'];
             $city     = $json['city'];
         }
-
-        $user = new User;
-        $ID = $user->data()->staffID;
         switch ($type) {
             case 'a':
                 switch ($level) {
                     case 1:
-                        $path = __ROOT__ . "/logs/" . escape($user->data()->clinicID) . "/level-1.lg";
-                        $log = $_;
-                        logFile($path, $log);
+                        
+                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-1.lg";
+                        System::logFile($path, $log);
                         break;
                     case 2:
-                        $path = __ROOT__ . "/logs/" . escape($user->data()->clinicID) . "/level-1.lg";
+                        
+                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-2.lg";
                         break;
                     case 3:
-                        $path = __ROOT__ . "/logs/" . escape($user->data()->clinicID) . "/level-1.lg";
+                        
+                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-3.lg";
+                        // level3LogWarning($adminEmail);
                         break;
                 }
+            break;
+            case 'u':
+                switch ($level) {
+                    case 1:
+                        $path = __ROOT__ . "/logs/V2HJ2PtfFbXX6wCrxSAn04KFDZjhtX5y/level-1.lg";
+                        System::logFile($path, $log);
+                        break;
+                    case 2:
+                        $path = __ROOT__ . "/logs/V2HJ2PtfFbXX6wCrxSAn04KFDZjhtX5y/level-2.lg";
+                        System::logFile($path, $log);
+                        break;
+                    case 3:
+                        $path = __ROOT__ . "/logs/V2HJ2PtfFbXX6wCrxSAn04KFDZjhtX5y/level-3.lg";
+                        // level3LogWarning($adminEmail);
+                        break;
+                }
+            break;
             case 'g':
-                $path = __ROOT__ . "/logs/" . escape($user->data()->clinicID) . "/g.lg";
-                $log = "[" . $date ."]" . " IP: " . $PublicIP . "; Activity: " . $activity. " ID: " . $ID . "\n";
+                $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/g.lg";
                 System::logFile($path, $log);
                 break;
         }

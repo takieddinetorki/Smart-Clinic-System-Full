@@ -16,11 +16,11 @@ if (Input::exists()) {
                 $clinic->createClinic('_pdo','clinics', array(
                     'clinicID' => $clinicID,
                     'clinicName' => escape( Input::get('clinicName')),
-                    'abbr' => escape(strtoupper($abbr)),
-                    'salesTaxR' => escape(Input::get('salesTaxR')),
-                    'GSTRegister' => escape(Input::get('GSTRegister')),
-                    'BankAccount' => escape(Input::get('BankAccount')),
-                    'Address' => escape(Input::get('Address')) 
+                    'abbr' => strtoupper($abbr),
+                    'salesTaxR' => Input::get('salesTaxR'),
+                    'GSTRegister' => Input::get('GSTRegister'),
+                    'BankAccount' => Input::get('BankAccount'),
+                    'Address' => Input::get('Address') 
                 ));
                 // dynamic database creation upon clinic registration
                 //please check the statement I am not sure whether it will be work or not

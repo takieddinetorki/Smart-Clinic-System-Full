@@ -6,13 +6,16 @@ if ($user->loggedIn()) {
 }
 if (Input::exists()) {
     $user = new User;
-    $login = $user->login(escape(Input::get('username')), Input::get('password'));
+    $login = $user->login(Input::get('username'), Input::get('password'));
     if ($login) {
+        System::logActivity('g', 1, 'Login Successful');
         echo "You are supposed to be logged in";
     }else {
-        echo 'OOPS';
+        System::logActivity('u', 2, 'Login Attempt Failed');
+        echo "Wrong username/ID or password";
     }
 }
+
 ?>
 
 <form action="" method="post">

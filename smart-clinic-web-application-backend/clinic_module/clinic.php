@@ -82,11 +82,11 @@ if (Input::exists()) {
     </div>
     <div class="field">
         <label for="mobileNumber">Phone number</label>
-        <input type="text" name="mobileNumber" value="<?php echo escape(Input::get('mobileNumber')) ?>" id="mobileNumber" autocomplete="off">
+        <input type="text" name="mobileNumber" value="<?php echo (Input::get('mobileNumber')) ?>" id="mobileNumber" autocomplete="off">
     </div>
     <div class="field">
         <label for="email">Email</label>
-        <input type="text" name="email" value="<?php echo escape(Input::get('email')) ?>" id="email" autocomplete="off">
+        <input type="text" name="email" value="<?php echo (Input::get('email')) ?>" id="email" autocomplete="off">
     </div>
     <input type="submit" value="Register Doctor" name="submit" />
     <input type="hidden" nanme="token" value="<?php echo Token::generate(); ?>">

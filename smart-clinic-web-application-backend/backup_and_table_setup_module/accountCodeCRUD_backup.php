@@ -18,7 +18,7 @@ if (Input::exists()) {
             // please make comment these lines to check other functionality
             $staff->addAccountCode(array(
                 'accountCode' => Input::get('accountCode'),
-                'name' => escape(Input::get('name'))
+                'name' => (Input::get('name'))
             ));
 
             // deleting account code ##please uncomment these lines while checking the functionality

@@ -16,7 +16,7 @@ if (Input::exists()) {
                     'appointmentID' => $aid,
                     'date' => Input::get('date'),
                     'time' => Input::get('time'),
-                    'status' => escape(Input::get('status')),
+                    'status' => (Input::get('status')),
                     'patientID' => Input::get('patientID'),
                     'doctorID' => Input::get('doctorID')
                 ));
@@ -49,13 +49,13 @@ if (Input::exists()) {
     </select>
     <br>
     <label for="patientName">Patient Name</label>
-    <input type="text" name="patientName" id="patientName" value="<?php echo Input::get('patientName') ?>"> <br>
+    <input type="text" name="patientName" id="patientName" value="<?php echo deescape(Input::get('patientName')) ?>"> <br>
 
     <label for="date">Date</label>
-    <input type="date" name="date" id="" value="<?php echo Input::get('date') ?>"> <br>
+    <input type="date" name="date" id="" value="<?php echo deescape(Input::get('date')) ?>"> <br>
 
     <label for="time">Time</label>
-    <input type="time" name="time" id="" value="<?php echo Input::get('time') ?>"> <br>
+    <input type="time" name="time" id="" value="<?php echo deescape(Input::get('time')) ?>"> <br>
 
     <label for="doctorID">Doctor ID</label>
     <select name="doctorID" id="doctorID" required>

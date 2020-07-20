@@ -5,15 +5,9 @@ require_once 'core/init.php';
 $user = new User;
 $clinic = new ClinicDB;
 $doc = new Staff;
-
-
 if ($user->LoggedIn()) {
     echo 'Logged in<br>';
-    System::logActivity('g', 0, 'Login Activity');
-    System::logActivity('g', 0, 'Login Activity 2');
-    System::logActivity('g', 0, 'Login Activity 3');
-    System::logActivity('g', 0, 'Login Activity 4');
-    System::logActivity('g', 0, 'Login Activity 5');
+
 ?>
     <p>Hello <?php echo hex2bin($user->data()->username); ?></p>
     <ul>

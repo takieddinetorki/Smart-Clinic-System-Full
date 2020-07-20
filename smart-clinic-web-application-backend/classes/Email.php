@@ -21,7 +21,7 @@
 
     public function passwordChangeRequest($sendTo)
     {
-      $this->mail->setFrom('smartclinic10001@gmail.com','Smart Clinic');
+      $this->mail->sentFrom('smartclinic10001@gmail.com','Smart Clinic');
       $this->mail->addAddress($sendTo);
       $this->mail->addReplyTo('smartclinic10001@gmail.com');
       $this->mail->Subject = 'Pasword Change';
@@ -31,7 +31,15 @@
       if($this->mail->send()) echo 'Message sent please check at'. Input::get('email');
       else echo 'Message not sent to'. Input::get('email');
     }
-
+    public function level3LogWarning($admins) {
+      $this->mail->sentFrom('smartclinic10001@gmail.com','Smart Clinic');
+      $this->mail->addAddress($sendTo);
+      $this->mail->addReplyTo('smartclinic10001@gmail.com');
+      $this->mail->Subject = 'Dangerous Level 3 Activity';
+      $this->mail->Body = 'Create the body later';
+      if($this->mail->send()) echo 'Message sent please check at'. Input::get('email');
+      else echo 'Message not sent to'. Input::get('email');
+    }
  }
 
 ?>

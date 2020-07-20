@@ -12,15 +12,15 @@ if (Input::exists()) {
                 $user->create('staff', array(
                     //changes
                     'staffID' => $clinicID->generateID('staff'),
-                    'title' => escape(Input::get('title')),
-                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',escape(Input::get('clinic'))),
-                    'firstName' => escape(Input::get('firstName')),
-                    'lastName' => escape(Input::get('lastName')),
-                    'mobileNumber' => escape(Input::get('mobileNumber')),
-                    'email' => escape(Input::get('email')),
-                    'gender' => escape(Input::get('gender')),
-                    'birthdate' => escape(Input::get('birthdate')),
-                    'username' => escape(Input::get('username')),
+                    'title' => (Input::get('title')),
+                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',(Input::get('clinic'))),
+                    'firstName' => (Input::get('firstName')),
+                    'lastName' => (Input::get('lastName')),
+                    'mobileNumber' => (Input::get('mobileNumber')),
+                    'email' => (Input::get('email')),
+                    'gender' => (Input::get('gender')),
+                    'birthdate' => (Input::get('birthdate')),
+                    'username' => (Input::get('username')),
                     'password' => Hash::generate(Input::get('password'), $encryption_key,128),
                     'encryptionKey' => $encryption_key
                 ));

@@ -49,8 +49,6 @@ class User
             if ($this->data()->password === Hash::generate($password, $this->data()->encryptionKey, 128)) {
                 Session::put($this->_sessionName, $this->data()->username);
                 return true;
-            }else {
-                echo "Wrong username/ID or password";
             }
         }
         return false;

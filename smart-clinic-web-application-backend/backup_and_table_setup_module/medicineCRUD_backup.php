@@ -19,8 +19,8 @@ if (Input::exists()) {
         // adding a vendor ##validated
         $staff->addMedicine(array(
             'itemCode' => Input::get('itemCode'),
-            'name' => escape(Input::get('name')),
-            'barcode' => escape(Input::get('barcode')),
+            'name' => Input::get('name'),
+            'barcode' => Input::get('barcode'),
             'price' => Input::get('price')
         ));
 

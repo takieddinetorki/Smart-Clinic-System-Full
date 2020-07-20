@@ -39,20 +39,20 @@ if (Input::exists()) {
                 // testing creating patients
                 $staff->createPatient(array(
                     'patientID' => Input::get('patientID'),
-                    'NRIC' => escape( Input::get('NRIC')),
+                    'NRIC' =>  Input::get('NRIC'),
                     'dob' => Input::get('dob'),
-                    'age' => escape(Input::get('age')),
-                    'name' => escape(Input::get('name')),
-                    'address' => escape(Input::get('address').Input::get('address_l2')),
-                    'gender' => escape(Input::get('gender')),
-                    'race' => escape(Input::get('race')),
-                    'nationality' => escape(Input::get('nationality')),
-                    'maritalStatus' => escape(Input::get('maritalStatus')),
-                    'mobileNo' => escape(Input::get('mobileNo')),
-                    'spouseName' => escape(Input::get('spouseName')),
-                    'emergencyContact' => escape(Input::get('emergencyContact')),
-                    'relationship' => escape(Input::get('relationship')),
-                    'picture' => escape($fileDest),
+                    'age' => Input::get('age'),
+                    'name' => Input::get('name'),
+                    'address' => Input::get('address').Input::get('address_l2'),
+                    'gender' => Input::get('gender'),
+                    'race' => Input::get('race'),
+                    'nationality' => Input::get('nationality'),
+                    'maritalStatus' => Input::get('maritalStatus'),
+                    'mobileNo' => Input::get('mobileNo'),
+                    'spouseName' => Input::get('spouseName'),
+                    'emergencyContact' => Input::get('emergencyContact'),
+                    'relationship' => Input::get('relationship'),
+                    'picture' => $fileDest,
                 ));
 
 
@@ -79,14 +79,14 @@ if (Input::exists()) {
                
                 $staff->creatMedicalHistory(array(
                     'patientID' => Input::get('patientID'),
-                    'illness' => escape(Input::get('ill')),
-                    'smoking' => escape(Input::get('smoking')),
-                    'drinking' => escape(Input::get('drinking')),
-                    'tobacco' => escape(Input::get('tobacco')),
-                    'foodAllergies' => escape(Input::get('foodAllergies')),
-                    'drugAllergies' => escape(Input::get('drugAllergies')),
-                    'otherAllergies' => escape(Input::get('otherAllergies')),
-                    'report' => escape($reportDest),
+                    'illness' => (Input::get('ill')),
+                    'smoking' => (Input::get('smoking')),
+                    'drinking' => (Input::get('drinking')),
+                    'tobacco' => (Input::get('tobacco')),
+                    'foodAllergies' => (Input::get('foodAllergies')),
+                    'drugAllergies' => (Input::get('drugAllergies')),
+                    'otherAllergies' => (Input::get('otherAllergies')),
+                    'report' => $reportDest,
                     'doctorID' => Input::get('doctorID'),
                 ));
 

@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="styles/layout.css" />
   <link rel="stylesheet" href="styles/modals.css">
   <link rel="stylesheet" href="styles/financial-report.css">
+  <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
+
 </head>
 
 <body>
@@ -36,45 +38,69 @@
       </div>
 
       <div class="nav-images">
-        <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+        <div class="dropdown-user1">
+            <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+            <div class="dropdown-content3">
+                <a href="settings(PAGE).html">Settings</a>
+                <a href="report_bug.html">Report Bug</a>
+            </div>
+        </div>
 
         <div class="dropdown-notification">
-          <a href="#" class="nav-logos"><img src="src/img/notification.png" alt="" /></a>
-          <div class="dropdown-content">
-            <a href="#">You have missed an appointment</a>
-            <a href="#">Clear all notification</a>
-          </div>
+            <a href="#" class="nav-logos"><img src="src/img/notification.png" alt="" /></a>
+            <div class="dropdown-content">
+                <a href="#">You have missed an appointment</a>
+                <a href="#">Clear all notification</a>
+            </div>
         </div>
 
         <div class="dropdown-user">
-          <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
-          <div class="dropdown-content2">
-            <a href="#">My Profile</a>
-            <a href="#">Logout</a>
-          </div>
+            <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
+            <div class="dropdown-content2">
+                <a href="my-profile(PAGE).html">My Profile</a>
+                <a href="#">Logout</a>
+            </div>
         </div>
-      </div>
+    </div>
     </div>
 
     <div class="sidebar" id="sidebar">
       <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-        <a href="" onclick=" return false">
-          <img src="src/img/resize.svg" alt="">
-        </a>
+          <a href="" onclick=" return false">
+              <img src="src/img/resize.svg" alt="">
+          </a>
       </div>
-      <a href="#home"><img src="src/img/home.png" /><div class="small_sidebar">Dashboard</div></a>
-      <a href="#home" class="nav-active"><img src="src/img/patient.svg" /> <div class="small_sidebar">Patients</div></a>
-      <a href=""><img src="src/img/appointment-icon.svg" alt="" /> <div class="small_sidebar">Appointments</div></a>
-      <a href=""><img src="src/img/diagnostic.svg" alt="" /> <div class="small_sidebar"> Diagnostic Report</div></a>
-      <a href=""><img src="src/img/finance.svg" alt="" /><div class="small_sidebar">Billing</div></a>
-      <a href=""><img src="src/img/prescription.svg" alt="" /><div class="small_sidebar">Expenses</div></a>
-      <a href=""><img src="src/img/inventory.svg" alt="" /><div class="small_sidebar">Inventory</div></a>
-      <a href="#service"><img src="src/img/mc.svg" alt="" /><div class="small_sidebar">Medical Certificate</div></a>
-      <a href="#clients"><img src="src/img/cash.svg" alt="" /><div class="small_sidebar">Finance Reports</div>
+      <a href="dashboard(PAGE).html"><img src="src/img/home.png" />
+          <div class="small_sidebar">Dashboard</div>
       </a>
-      <a href="#contact"><img src="src/img/settings-tools.svg" alt="" /><div class="small_sidebar">Backup & Table Setup</div>
+      <a href="patients(PAGE).html"><img src="src/img/patient.svg" />
+          <div class="small_sidebar">Patients</div>
       </a>
-    </div>
+      <a href="appointment.html"><img src="src/img/appointment-icon.svg" alt="" />
+          <div class="small_sidebar">Appointments</div>
+      </a>
+      <a href="diagnostic(PAGE).html"><img src="src/img/diagnostic.svg" alt="" />
+          <div class="small_sidebar"> Diagnostic Report</div>
+      </a>
+      <a href="billing(PAGE).html"><img src="src/img/finance.svg" alt="" />
+          <div class="small_sidebar">Billing</div>
+      </a>
+      <a href="expenses(PAGE).html"><img src="src/img/prescription.svg" alt="" />
+          <div class="small_sidebar">Expenses</div>
+      </a>
+      <a href="inventory (PAGE).html"><img src="src/img/inventory.svg" alt="" />
+          <div class="small_sidebar">Inventory</div>
+      </a>
+      <a href="medical-cert(PAGE).html"><img src="src/img/mc.svg" alt="" />
+          <div class="small_sidebar">Medical Certificate</div>
+      </a>
+      <a href="financial-report(PAGE).html" class="nav-active"><img src="src/img/cash.svg" alt="" />
+          <div class="small_sidebar">Finance Reports</div>
+      </a>
+      <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />
+          <div class="small_sidebar">Backup & Table Setup</div>
+      </a>
+  </div>
 
     <div class="main">
       <div class="head-div">
@@ -83,7 +109,7 @@
       <div class="main-body">
         <div>
           <button class="div-btn" id="sales" onclick="openModal('sales','modal14')">Sales</button>
-          <button class="div-btn" id="expense" onclick="openModal('expense','modal16')">Expense</button>
+          <button class="div-btn" id="expense" onclick="openModal('expense','modal16')">Expenses</button>
         </div>
         <div id="div2">
           <button class="div-btn" id="inventory" onclick="openModal('inventory','modal18')">Inventory</button>
@@ -102,6 +128,17 @@
                 <label for="from" class="label-modal14">Month</label>
                 <select name="eid" id="eid" class="inp-modal14">
                   <option value="">January</option>
+                  <option value="">February</option>
+                  <option value="">March</option>
+                  <option value="">April</option>
+                  <option value="">May</option>
+                  <option value="">June</option>
+                  <option value="">July</option>
+                  <option value="">August</option>
+                  <option value="">September</option>
+                  <option value="">October</option>
+                  <option value="">November</option>
+                  <option value="">December</option>
                 </select>
               </div>
               <div class="form-div-modal14 category_2">
@@ -113,7 +150,7 @@
               <div class="form-div-modal14">
                 <label for="to" class="label-modal14">Year</label>
                 <select name="eid" id="eid" class="inp-modal14">
-                  <option value=""></option>
+                  <option value="">2020</option>
                 </select>
               </div>
               <div class="form-div-modal14" style="margin-left: -26px;">
@@ -157,6 +194,17 @@
                 <label for="from" class="label-modal16">Month</label>
                 <select name="sid" id="sid" class="inp-modal16">
                   <option value="">January</option>
+                  <option value="">February</option>
+                  <option value="">March</option>
+                  <option value="">April</option>
+                  <option value="">May</option>
+                  <option value="">June</option>
+                  <option value="">July</option>
+                  <option value="">August</option>
+                  <option value="">September</option>
+                  <option value="">October</option>
+                  <option value="">November</option>
+                  <option value="">December</option>
                 </select>
               </div>
               <div class="form-div-modal16 category_2">
@@ -168,7 +216,7 @@
               <div class="form-div-modal16">
                 <label for="to" class="label-modal16">Year</label>
                 <select name="sid" id="sid" class="inp-modal16">
-                  <option value=""></option>
+                  <option value="">2020</option>
                 </select>
               </div>
               <div class="form-div-modal16" style="margin-left: -26px;">
@@ -212,6 +260,17 @@
                 <label for="from" class="label-modal18">Month</label>
                 <select name="sid" id="sid" class="inp-modal18">
                   <option value="">January</option>
+                  <option value="">February</option>
+                  <option value="">March</option>
+                  <option value="">April</option>
+                  <option value="">May</option>
+                  <option value="">June</option>
+                  <option value="">July</option>
+                  <option value="">August</option>
+                  <option value="">September</option>
+                  <option value="">October</option>
+                  <option value="">November</option>
+                  <option value="">December</option>
                 </select>
               </div>
               <div class="form-div-modal18 category_2">
@@ -223,7 +282,7 @@
               <div class="form-div-modal18">
                 <label for="to" class="label-modal18">Year</label>
                 <select name="sid" id="sid" class="inp-modal18">
-                  <option value=""></option>
+                  <option value="">2020</option>
                 </select>
               </div>
               <div class="form-div-modal18" style="margin-left: -26px;">
@@ -254,6 +313,17 @@
                 <label for="from" class="label-modal20">Month</label>
                 <select name="eid" id="eid" class="inp-modal20">
                   <option value="">January</option>
+                  <option value="">February</option>
+                  <option value="">March</option>
+                  <option value="">April</option>
+                  <option value="">May</option>
+                  <option value="">June</option>
+                  <option value="">July</option>
+                  <option value="">August</option>
+                  <option value="">September</option>
+                  <option value="">October</option>
+                  <option value="">November</option>
+                  <option value="">December</option>
                 </select>
               </div>
               <div class="form-div-modal20 category_2">
@@ -265,7 +335,7 @@
               <div class="form-div-modal20 category_3">
                 <label for="to" class="label-modal20">Year</label>
                 <select name="eid" id="eid" class="inp-modal20">
-                  <option value=""></option>
+                  <option value="">2020</option>
                 </select>
               </div>
               <div class="form-div-modal20">

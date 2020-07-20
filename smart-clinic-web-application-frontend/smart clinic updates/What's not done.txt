@@ -1,0 +1,14 @@
+1)- select dropdown padding is not done
+2)- links of all the modals is not mentioned yet
+3)- link of close-btn is not done yet (is some pages it's done)
+4)- Diagnostic pages and dashboard is still not fit in one page for nivashinee screen (1366 * 625)
+
+
+19 july-----------------------to be done corrections for done
+notifications
+purchase pages(all 3)
+
+20 July-----------------------to be done corrections for
+personal-info
+paients page
+medical history pages (all 3)

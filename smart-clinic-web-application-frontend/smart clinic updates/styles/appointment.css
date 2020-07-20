@@ -4,9 +4,10 @@
 }
 /*for search bar*/
 .status_dpdwn {
+  -webkit-appearance: button;
   background: unset;
   padding-left: 0;
-  width: 90px;
+  width: 94px;
   text-overflow: ellipsis;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .status_dpdwn2 {
-  width: 85px;
+  width: 94px;
 }
 
 /********************************************************/

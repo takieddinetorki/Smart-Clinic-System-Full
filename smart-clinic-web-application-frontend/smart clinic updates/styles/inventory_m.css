@@ -11,6 +11,19 @@
   margin-top: 0;
   margin-bottom: 8px;
 }
+.cl-btn {
+  float: right;
+  position: relative;
+  margin-top: -45px;
+  font-size: 29px;
+  margin-right: 28px;
+}
+
+.cl-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 /* Remove every outline */
 input:focus,
 select:focus,

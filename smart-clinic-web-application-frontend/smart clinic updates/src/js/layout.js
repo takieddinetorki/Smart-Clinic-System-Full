@@ -38,3 +38,4 @@ if(minutes.length==1){
 
 document.getElementById("date").innerHTML=str;
 document.getElementById("time").innerHTML=str2;
+

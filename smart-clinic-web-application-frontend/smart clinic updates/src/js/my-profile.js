@@ -1,3 +1,6 @@
+function hideNotifIcon(){
+    document.getElementById("notif").style.display="none";
+}
 function changedinput() {
     var t = document.getElementById("mobile-number");
     if (isNaN(t.value)) {

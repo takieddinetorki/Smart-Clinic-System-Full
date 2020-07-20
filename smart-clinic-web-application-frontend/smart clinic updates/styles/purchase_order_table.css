@@ -12,7 +12,16 @@
     margin-top: 5px;
     margin-bottom: 8px;
 }
-
+.cl-btn {
+    font-size: 29px;
+    margin-right: 20px;
+    margin-top: -46px;
+    padding-bottom: 53px;
+  }
+  .cl-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
 /* Remove every outline */
 
@@ -153,6 +162,7 @@ tbody tr td {
     border-radius: 20px;
     filter: drop-shadow(2px 2px 2px gray);
     background-color: white;
+    font-family: inherit;
 }
 
 .far {

@@ -13,18 +13,14 @@ class System
     private $_db,
             $_sessionName,
             $_sessionValue,
-            $_ID,
-            $_ClinicID;
-    
+            $_ID;    
 
     public function __construct($user = null) {
         $this->_db = DB::getInstance();
         $this->_sessionName = Config::get('session/session_name');
         if (Session::exists($this->_sessionName)) {
             $this->_sessionValue = Session::get($this->_sessionName);
-            $user = new User;
             $this->_ID = $user->data()->staffID;
-            $this->_ClinicID = escape($user->data()->clinicID);
         }
     }
     public static function get_client_ip() {
@@ -65,16 +61,16 @@ class System
                 switch ($level) {
                     case 1:
                         
-                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-1.lg";
+                        $path = __ROOT__ . "/logs/" . $clinicID . "/level-1.lg";
                         System::logFile($path, $log);
                         break;
                     case 2:
                         
-                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-2.lg";
+                        $path = __ROOT__ . "/logs/" . $clinicID . "/level-2.lg";
                         break;
                     case 3:
                         
-                        $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/level-3.lg";
+                        $path = __ROOT__ . "/logs/" . $clinicID . "/level-3.lg";
                         // level3LogWarning($adminEmail);
                         break;
                 }
@@ -96,7 +92,9 @@ class System
                 }
             break;
             case 'g':
-                $path = __ROOT__ . "/logs/" . $this->_ClinicID . "/g.lg";
+                $user = new User;
+                $clinicID = $user->date()->clinicID;
+                $path = __ROOT__ . "/logs/" . $clinicID . "/g.lg";
                 System::logFile($path, $log);
                 break;
         }

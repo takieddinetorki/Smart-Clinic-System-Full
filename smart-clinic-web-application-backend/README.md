@@ -1,6 +1,33 @@
 # Latest Updates
 
-##
+:warning: **SUBMISSION CHANGE** Please read the following
+
+## Login submission:
+
+I have seperated the form from the logic. The logic is in login.php and the form is in login_form.php (we can change names later). Here's the code:
+
+```
+<?php
+if (isset($_POST)) {
+?>
+  <script>
+      let form = document.getElementById("login");
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.action = "<?php echo '/smartClinicSystem/smart-clinic-web-application-backend/login_module/login.php' ?>";
+        form.submit();
+      });
+  </script>
+<?php
+}
+?>
+```
+
+What I did was check if the form is submitted. If it is then the script will get fired. What the script does is basically prevent the form being submitted adds an action attribute then submits it with the action attribute specified which will let us hide the directories of our backend. This is a test version.
+
+## Why?
+
+Since we have this method now we can seperate the front end from the backend. The backend right now can have encrypted names and should be put inside a folder whose name is encrypted (unguessable by tools like gobuster).
 
 :warning: **SECURITY FLAWS** Please look out for security flaws and report them when necessary
 

@@ -1,5 +1,6 @@
 # Latest Updates
 
+<<<<<<< HEAD
 :warning: **SUBMISSION CHANGE** Please read the following
 
 ## Login submission:
@@ -28,6 +29,12 @@ What I did was check if the form is submitted. If it is then the script will get
 ## Why?
 
 Since we have this method now we can seperate the front end from the backend. The backend right now can have encrypted names and should be put inside a folder whose name is encrypted (unguessable by tools like gobuster).
+=======
+## Data sanitizing
+escape function is now merged into the Input::get() method
+## Fixed the log issue now it should be complete
+
+>>>>>>> d7302a8f3b953244bbc59a5ea9263a90d5537cd2
 
 :warning: **SECURITY FLAWS** Please look out for security flaws and report them when necessary
 

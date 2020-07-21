@@ -1,6 +1,9 @@
 # Latest Updates
 
-##
+## Data sanitizing
+escape function is now merged into the Input::get() method
+## Fixed the log issue now it should be complete
+
 
 :warning: **SECURITY FLAWS** Please look out for security flaws and report them when necessary
 

@@ -1,0 +1,110 @@
+.modalN {
+  position: relative;
+  z-index: 0;
+  background-color: transparent;
+  padding-top: 0;
+  overflow: unset;
+  margin-top: 20px;
+}
+.pdl{
+  padding-left: 134px;
+}
+.text-center {
+  text-align: center;
+}
+
+/* modal css for backup-table */
+/************************************************************************************************************/
+/* for backup tab */
+
+.modalContentBT {
+  background: #b3b4c0;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  width: 320px;
+  height: fit-content;
+  padding-bottom: 20px;
+  border-radius: 55px;
+  padding-top: 15px;
+}
+.inp-modalBT {
+  border: none;
+  border-radius: 0;
+  margin-top: 5px;
+  font-family: inherit;
+  text-align: center;
+  text-align-last: center;
+}
+
+.inp-modalBTLock {
+  width: 154px;
+  padding-left: 10px;
+  height: 34px;
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+  filter: drop-shadow(2px 2px 2px gray);
+}
+
+.inp-radioBT {
+  width: 27px;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.label-modalBT {
+  height: 21px;
+  font-size: 15px;
+  margin-right: 10px;
+}
+.label-lock{
+  width: 66px;
+  margin-top: 8px;
+}
+.label-backup{
+  width: 80px;
+  margin-top: 8px;
+}
+.form-div-modalBT {
+  padding: 10px;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+.form-div-div-modalBT {
+  display: flex;
+  width: 50%;
+}
+
+.modalContentHeadBT {
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.modalBtnBT {
+  width: auto;
+  height: 34px;
+  padding:2px 15px 2px 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  color: white;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.modalBtnBT:hover {
+  background-color: rgba(68, 66, 66, 0.7);
+  cursor: pointer;
+}
+
+/* keep this line in the end of file */
+.category_2 {
+  display: none;
+}

@@ -231,3 +231,13 @@ tr td:first-child {
 .bg-info {
   background-color: #9297d473 !important;
 }
+#widthAdjust{
+  overflow-x: hidden;
+}
+@media (max-width:1200px){
+  #widthAdjust{
+    max-width: calc(100vw - 350px);
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+}

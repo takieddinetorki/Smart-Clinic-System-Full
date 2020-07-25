@@ -1,0 +1,251 @@
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+.grid-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#reg {
+  width: 80%;
+  height: 550px;
+  top: 17%;
+  left: 10%;
+  background: rgba(255, 255, 255, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+
+}
+
+#regist {
+  min-width: 1000px;
+  min-height: 500px;
+  max-width: 1000px;
+  top: 0px;
+  margin: 50px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 80px;
+  max-height: 500px;
+
+}
+
+#regist h1 {
+  height: 47px;
+  text-align: center;
+  margin-top: 14px;
+  font-family: Poppins;
+  font-size: 24px;
+}
+
+#inreg {
+  background-color: #444242;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  width: 110px;
+  height: 40px;
+  border-radius: 70px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: 550;
+  margin-left: 45%;
+  margin-top: -5px;
+}
+
+.form-grid {
+  position: relative;
+  top: 24px;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-grid .form-type {
+  width: 60%;
+}
+
+.form-grid .col1 {
+  height: 100%;
+}
+
+.form-grid .col2 {
+  height: 100%;
+}
+
+.flex-outer {
+  list-style: none;
+  padding: 0;
+}
+
+.flex-outer li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 2.5%;
+  height: 56px;
+}
+
+.flex-outer li .col1-label {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 20px;
+  flex: 1 0 20px;
+  max-width: 163.92px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: right;
+  padding-right: 0.5vw;
+}
+
+.flex-outer li .col2-label {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 20px;
+  flex: 1 0 20px;
+  max-width: 122.94px;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: right;
+  padding-right: 6.83px;
+}
+
+.flex-outer li input {
+  height: 40.02px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 20.01px;
+  -webkit-filter: drop-shadow(0px 2px 2px gray);
+  filter: drop-shadow(0px 2px 2px gray);
+  padding-left: 13.66px;
+  font-size: 13.34px;
+  margin-left: 20.49px;
+  font-family: Poppins;
+}
+
+.flex-outer li select {
+  height: 40.02px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 20.01px;
+  -webkit-filter: drop-shadow(0px 2px 2px gray);
+  filter: drop-shadow(0px 2px 2px gray);
+  padding-left: 13.66px;
+  padding-right: 13.66px;
+  font-size: 13.34px;
+  margin-left: 20.49px;
+}
+
+#title-name,
+#gender {
+  width: 20%;
+  font-family: Poppins;
+}
+
+#mobile {
+  width: 40%;
+}
+
+#first-name,
+#last-name,
+#user-name {
+  width: 65%;
+}
+
+#email-address {
+  width: 45%;
+}
+
+#birth-date {
+  width: 35%;
+}
+
+
+
+#pass-word,
+#confirm-pass-word {
+  width: 45%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url('../src/img/calendar-interface-symbol-tool.png') no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+
+
+@media (max-width:1400px) {
+  .scroll-class {
+    width: 90%;
+  }
+
+}
+
+@media (max-width:1150px) {
+  .scroll-class {
+    width: 95%;
+    overflow: scroll;
+    overflow-y: hidden;
+    min-height: 490px;
+  }
+
+}
+
+
+@media (max-width: 1200px) {
+  #inreg {
+    width: 136.6px;
+  }
+}
+
+@media (max-width: 1090px) and (min-width: 400px) {
+  #inreg {
+    width: 191.24px;
+  }
+
+
+
+
+  #reg {
+    width: 90%;
+    left: 4%;
+  }
+
+  #title-name,
+  #gender {
+    width: 30%;
+  }
+
+  #birth-date {
+    width: 45%;
+  }
+
+  #dateicon {
+    margin: -6.67px -40.98px;
+  }
+
+
+}
+
+
+
+
+
+/*# sourceMappingURL=register.css.map */

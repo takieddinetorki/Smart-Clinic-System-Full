@@ -1,0 +1,116 @@
+a {
+  text-decoration: none;
+}
+
+.login {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 358.39px;
+  /* White box width*/
+  height: auto;
+  /* White box height */
+  margin-top: 50px;
+  border-radius: 20%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  pointer-events: none;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  font-size: 14px;
+  /* adjusted this from 18 to 14 */
+}
+
+.login h1 {
+  color: #444242;
+  font-size: 29px;
+  /* adjusted this too */
+  font-weight: 900;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.login form {
+  margin-top: 20px;
+}
+
+.login-control input {
+  margin: 10px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.login-control input[type="checkbox"] {
+  background: transparent;
+  border: 2px solid #3d3d3d;
+}
+
+.login-control input[type="text"] {
+  width: 266.23px;
+  /* Username field width*/
+  height: 46.72px;
+  /* Username field height */
+  border: 1px solid #707070;
+  border-radius: 30px;
+  font-size: 20px;
+  position: relative;
+}
+
+.login-control input[type="password"] {
+  width: 266.23px;
+  /* Password field width*/
+  height: 46.72px;
+  /* Password field width*/
+  border: 1px solid #707070;
+  border-radius: 30px;
+  font-size: 20px;
+  position: relative;
+}
+
+input[type="submit"] {
+  background-color: #444242;
+  border: 1px solid #444242;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  width: 266.23px;
+  /* Login button width*/
+  height: 45.44px;
+  /* Login button height*/
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.footer {
+  margin: 10px;
+  text-transform: none;
+}
+
+/* Working on icons */
+.icons {
+  position: absolute;
+  padding: 23px;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  z-index: 999;
+}
+
+.passwordIcon {
+  position: absolute;
+  margin: 27px -45px;
+  z-index: 9999;
+  color: #707070;
+  font-size: 15px;
+}
+
+.passwordIcon:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=login.css.map */

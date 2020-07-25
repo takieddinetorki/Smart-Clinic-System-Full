@@ -1,14 +1,8 @@
-1)- select dropdown padding is not done
-2)- links of all the modals is not mentioned yet
-3)- link of close-btn is not done yet (is some pages it's done)
+1)- Modal Corrections
+2)- links of all the modals and the eye icon is not mentioned yet
+3)- link of close-btn is not done yet (in some pages it's done)
 4)- Diagnostic pages and dashboard is still not fit in one page for nivashinee screen (1366 * 625)
 
 
-19 july-----------------------to be done corrections for done
-notifications
-purchase pages(all 3)
-
-20 July-----------------------to be done corrections for
-personal-info
-paients page
-medical history pages (all 3)
+5)- Scrolling in the appointment page not done yet (kuben)
+6)- Reza, hasn't done yet replacing vw and vh with px in Main Pages

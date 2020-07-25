@@ -9,7 +9,7 @@ if (Input::exists()) {
     $login = $user->login(Input::get('username'), Input::get('password'));
     if ($login) {
         System::logActivity('g', 1, 'Login Successful');
-        echo "You are supposed to be logged in";
+        Redirect::to('../index.php');
     }else {
         System::logActivity('u', 2, 'Login Attempt Failed');
         echo "Wrong username/ID or password";

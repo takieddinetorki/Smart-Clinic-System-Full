@@ -199,7 +199,13 @@ class Clinic
             array('type','varchar(15)','NOT NULL'),
             array('location','varchar(200)','NOT NULL')
         );
-
+        /** Created by Taki */
+        $notifications = array(
+            array('notifID','varchar(12)','PRIMARY KEY'),
+            array('title','varchar(60)','NOT NULL'),
+            array('ownerID','varchar(15)','NOT NULL'),
+            array('description','varchar(500)','NOT NULL'),
+        );
         //creating tables from DB methods
         //I could use a for lopp for that but I will ended up a 3d array which will be messy
         if(!$this->_db->createTable('_pdo2','patients',$patients)) echo "<br>unable to create Patient Table<br>";
@@ -222,6 +228,7 @@ class Clinic
         if(!$this->_db->createTable('_pdo2','orderedItem',$orderedItem)) echo "unable to create Ordered Item Table<br>";
         if(!$this->_db->createTable('_pdo2','backups',$backups)) echo "unable to create Backups Table<br>";
         if(!$this->_db->createTable('_pdo2','monthlyReports',$monthlyReports)) echo "unable to create Monthly Report Table<br>";
+        if(!$this->_db->createTable('_pdo2','notifications',$notifications)) echo "unable to create the notifications Table<br>";
     }
 }
 

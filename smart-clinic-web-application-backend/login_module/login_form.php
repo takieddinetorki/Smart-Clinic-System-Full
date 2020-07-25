@@ -14,7 +14,7 @@ require_once '../core/init.php';
   <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
   <input type="submit" value="login" />
 </form>
-<a href="index.php">Home</a>
+<a href="../index.php">Home</a>
 <?php
 if (isset($_POST)) {
 ?>
@@ -22,7 +22,7 @@ if (isset($_POST)) {
       let form = document.getElementById("login");
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        form.action = "<?php echo '/smartClinicSystem/smart-clinic-web-application-backend/login_module/login.php' ?>";
+        form.action = "<?php echo 'login.php' ?>";
         form.submit();
       });
   </script>

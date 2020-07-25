@@ -17,12 +17,12 @@ if ($user->LoggedIn()) {
         <li>Encrypted password: <?php echo $user->data()->password ?></li>
         <li>Your clinic name is: <?php echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)) ?></li>
         <li>Your clinic name is: <?php $doc->getAllStocksCurrentWeek();?></li>
-        <li><a href="logout.php">logout</a></li>
+        <li><a href="login_module/logout.php">logout</a></li>
     </ul>
 <?php
 } else {
 ?>
-    <p>You can <a href="login_module/login.php">login</a> or <a href="registration_module/register.php">register</a></p>
+    <p>You can <a href="login_module/login_form.php">login</a> or <a href="registration_module/register.php">register</a></p>
 <?php
 }
 ?>

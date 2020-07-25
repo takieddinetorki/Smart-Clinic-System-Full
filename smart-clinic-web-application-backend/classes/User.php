@@ -12,8 +12,8 @@ class User
 
         if (!$user) {
             if (Session::exists($this->_sessionName)) {
-                $user = Session::get($this->_sessionName);
-                if ($this->find($user)) {
+                $staffID = Session::get($this->_sessionName);
+                if ($this->find($staffID, null)) {
                     $this->_isLoggedIn = true;
                 }
             }
@@ -29,25 +29,30 @@ class User
         }
     }
 
-    public function find($user = null) {
+    public function find($staffID = null, $user = null) {
         if ($user) {
-            // $field = (preg_match('~[0-9]~', $user)) ? 'staffID' : 'username';
-            $data = $this->_db->get('_pdo', 'staff', array('username', '=', $user)); 
+            $data = $this->_db->get('_pdo', 'staff', array('username', '=', $user));
+            if ($data->count()) {
+                $this->_data= $data->first();
+                return true;
+            }
+        }
+        if ($staffID) {
+            $data = $this->_db->get('_pdo', 'staff', array('staffID', '=', $staffID));
             if ($data->count()) {
                 $this->_data= $data->first();
                 return true;
             }
         }
         return false;
-
     }
 
     public function login($username = null, $password = null) {
-        $user = $this->find($username);
-        
+        $user = $this->find(null, $username);
         if ($user) {
             if ($this->data()->password === Hash::generate($password, $this->data()->encryptionKey, 128)) {
-                Session::put($this->_sessionName, $this->data()->username);
+                print_r($this->data()->staffID);
+                Session::put($this->_sessionName, $this->data()->staffID);
                 return true;
             }
         }
@@ -65,7 +70,7 @@ class User
     {
         if (Session::exists($this->_sessionName)) {
             Session::delete($this->_sessionName);
-            Redirect::to('index.php');
+            Redirect::to('../index.php');
         }
     }
 }

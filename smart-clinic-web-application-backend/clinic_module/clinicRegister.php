@@ -11,7 +11,8 @@ if (Input::exists()) {
             $clinicDB = new ClinicDB;
             try {
                 $abbr = str_replace(' ', '', Input::get('abbr'));
-                $clinicID = new ID(Input::get('abbr'));
+
+                $clinicID = new ID(deescape(Input::get('abbr')));
                 $clinicID = $clinicID->generateID('clinic');
                 $clinic->createClinic('_pdo','clinics', array(
                     'clinicID' => $clinicID,

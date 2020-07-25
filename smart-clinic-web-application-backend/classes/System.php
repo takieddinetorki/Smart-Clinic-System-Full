@@ -12,16 +12,16 @@ class System
 {
     private $_db,
             $_sessionName,
-            $_sessionValue,
-            $_ID;    
-
-    public function __construct($user = null) {
+            $_sessionValue;
+    private static $logged = false;
+    public static function logged() {
         $this->_db = DB::getInstance();
         $this->_sessionName = Config::get('session/session_name');
         if (Session::exists($this->_sessionName)) {
             $this->_sessionValue = Session::get($this->_sessionName);
-            $this->_ID = $user->data()->staffID;
+            self::$logged = true;
         }
+
     }
     public static function get_client_ip() {
         $ipaddress = '';
@@ -44,21 +44,24 @@ class System
     /** This function will log the activity specified to the file */
     public static function logActivity($type, $level = 0, $activity)
     {
+        $user = new User;
         $date = date('d-m-Y H:i:s');
         $PublicIP = System::get_client_ip();
         $URL = $_SERVER['REQUEST_URI'];
         $query = ($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING']: "N/A";
-        $log = "[" . $date ."]" . " IP: " . $PublicIP . "; Activity: " . $activity. " ID: UNKNOWN" . ". URL: " . $URL . " Query:" . $query ."\n";
-        if ($PublicIP != '127.0.0.1') {
-            $json     = file_get_contents("http://ipinfo.io/202.190.66.244/geo");
-            $json     = json_decode($json, true);
-            $country  = $json['country'];
-            $region   = $json['region'];
-            $city     = $json['city'];
-        }
+        $json = file_get_contents("http://ipinfo.io/202.190.66.244/geo");
+        $json = json_decode($json, true);
+        $json["Date"] = $date;
+        $json["Activity"] = $activity;
+        $json["ID"] = ($user->loggedIn()) ? $user->data()->staffID: "UNKOWN";
+        $json = json_encode($json, true);
+        $log = $json ."\n";
         switch ($type) {
             case 'a':
+                $clinicID = $user->data()->clinicID;
+                $ID = $user->data()->staffID; 
                 switch ($level) {
+
                     case 1:
                         
                         $path = __ROOT__ . "/logs/" . $clinicID . "/level-1.lg";
@@ -93,7 +96,8 @@ class System
             break;
             case 'g':
                 $user = new User;
-                $clinicID = $user->date()->clinicID;
+                $clinicID = $user->data()->clinicID;
+                $ID = $user->data()->staffID; 
                 $path = __ROOT__ . "/logs/" . $clinicID . "/g.lg";
                 System::logFile($path, $log);
                 break;

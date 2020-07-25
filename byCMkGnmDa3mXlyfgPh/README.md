@@ -28,8 +28,6 @@ What I did was check if the form is submitted. If it is then the script will get
 ## Why?
 
 Since we have this method now we can seperate the front end from the backend. The backend right now can have encrypted names and should be put inside a folder whose name is encrypted (unguessable by tools like gobuster).
-<<<<<<< HEAD:byCMkGnmDa3mXlyfgPh/README.md
-=======
 
 
 ## Data sanitizing

@@ -28,6 +28,13 @@ What I did was check if the form is submitted. If it is then the script will get
 ## Why?
 
 Since we have this method now we can seperate the front end from the backend. The backend right now can have encrypted names and should be put inside a folder whose name is encrypted (unguessable by tools like gobuster).
+<<<<<<< HEAD
+=======
+
+## Data sanitizing
+escape function is now merged into the Input::get() method
+## Fixed the log issue now it should be complete
+>>>>>>> 28d3c1c93d1fba8bbdb676fa97be88c3b68c8507
 
 # Major change to the directory structure
 

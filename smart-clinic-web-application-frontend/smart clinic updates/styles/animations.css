@@ -1,0 +1,177 @@
+.loggedIn-animation {
+  -webkit-animation: header-loggedIn-animation 1s ease-in-out forwards;
+          animation: header-loggedIn-animation 1s ease-in-out forwards;
+}
+
+.show {
+  -webkit-animation: show-form 1s ease-in-out forwards;
+          animation: show-form 1s ease-in-out forwards;
+}
+
+.hide {
+  -webkit-animation: hide-form 1s ease-in-out forwards;
+          animation: hide-form 1s ease-in-out forwards;
+}
+
+.header-animate {
+  -webkit-animation: header-animation 1s ease-in-out forwards;
+          animation: header-animation 1s ease-in-out forwards;
+}
+
+.header-register-animate {
+  -webkit-animation: header-register-animate 1s ease-in-out forwards;
+          animation: header-register-animate 1s ease-in-out forwards;
+}
+
+.header-register-animate img {
+  -webkit-animation: header-img-animate 1s ease-in-out forwards;
+          animation: header-img-animate 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes header-img-animate {
+  0% {
+    width: 600px;
+  }
+  100% {
+    width: 30vw;
+  }
+}
+
+@keyframes header-img-animate {
+  0% {
+    width: 600px;
+  }
+  100% {
+    width: 30vw;
+  }
+}
+
+@-webkit-keyframes header-animation {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 17%;
+  }
+}
+
+@keyframes header-animation {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 17%;
+  }
+}
+
+@-webkit-keyframes header-loggedIn-animation {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 7%;
+    left: 15%;
+  }
+}
+
+@keyframes header-loggedIn-animation {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 7%;
+    left: 15%;
+  }
+}
+
+@-webkit-keyframes show-form {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+@keyframes show-form {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+@-webkit-keyframes hide-form {
+  from {
+    opacity: 1;
+    pointer-events: all;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes hide-form {
+  from {
+    opacity: 1;
+    pointer-events: all;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@-webkit-keyframes header-register-animate {
+  0% {
+    top: 17%;
+  }
+  100% {
+    top: 2%;
+    left: -1%;
+    margin-top: 6vh;
+    margin-left: 3%;
+    -webkit-transform: translateY(-9vh);
+            transform: translateY(-9vh);
+  }
+}
+
+@keyframes header-register-animate {
+  0% {
+    top: 17%;
+  }
+  100% {
+    top: 2%;
+    left: -1%;
+    margin-top: 6vh;
+    margin-left: 3%;
+    -webkit-transform: translateY(-9vh);
+            transform: translateY(-9vh);
+  }
+}
+
+@media (max-width: 1090px) and (min-width: 400px) {
+  @-webkit-keyframes header-img-animate {
+    0% {
+      width: 600px;
+    }
+    100% {
+      width: 45vw;
+    }
+  }
+  @keyframes header-img-animate {
+    0% {
+      width: 600px;
+    }
+    100% {
+      width: 45vw;
+    }
+  }
+}
+/*# sourceMappingURL=animations.css.map */

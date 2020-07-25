@@ -46,7 +46,13 @@
             </div>
 
             <div class="nav-images">
-                <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+                <div class="dropdown-user1">
+                    <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
+                    <div class="dropdown-content3">
+                        <a href="settings(PAGE).html">Settings</a>
+                        <a href="report_bug.html">Report Bug</a>
+                    </div>
+                </div>
 
                 <div class="dropdown-notification">
                     <a href="#" class="nav-logos"><img src="src/img/notification.png" alt="" /></a>
@@ -59,7 +65,7 @@
                 <div class="dropdown-user">
                     <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
                     <div class="dropdown-content2">
-                        <a href="#">My Profile</a>
+                        <a href="my-profile(PAGE).html">My Profile</a>
                         <a href="#">Logout</a>
                     </div>
                 </div>
@@ -72,34 +78,34 @@
                     <img src="src/img/resize.svg" alt="">
                 </a>
             </div>
-            <a href="#home"><img src="src/img/home.png" />
+            <a href="dashboard(PAGE).html"><img src="src/img/home.png" />
                 <div class="small_sidebar">Dashboard</div>
             </a>
-            <a href="#home" class="nav-active"><img src="src/img/patient.svg" />
+            <a href="patients(PAGE).html"  class="nav-active"><img src="src/img/patient.svg" />
                 <div class="small_sidebar">Patients</div>
             </a>
-            <a href=""><img src="src/img/appointment-icon.svg" alt="" />
+            <a href="appointment.html"><img src="src/img/appointment-icon.svg" alt="" />
                 <div class="small_sidebar">Appointments</div>
             </a>
-            <a href=""><img src="src/img/diagnostic.svg" alt="" />
+            <a href="diagnostic(PAGE).html"><img src="src/img/diagnostic.svg" alt="" />
                 <div class="small_sidebar"> Diagnostic Report</div>
             </a>
-            <a href=""><img src="src/img/finance.svg" alt="" />
+            <a href="billing(PAGE).html"><img src="src/img/finance.svg" alt="" />
                 <div class="small_sidebar">Billing</div>
             </a>
-            <a href=""><img src="src/img/prescription.svg" alt="" />
+            <a href="expenses(PAGE).html"><img src="src/img/prescription.svg" alt="" />
                 <div class="small_sidebar">Expenses</div>
             </a>
-            <a href=""><img src="src/img/inventory.svg" alt="" />
+            <a href="inventory (PAGE).html"><img src="src/img/inventory.svg" alt="" />
                 <div class="small_sidebar">Inventory</div>
             </a>
-            <a href="#service"><img src="src/img/mc.svg" alt="" />
+            <a href="medical-cert(PAGE).html"  ><img src="src/img/mc.svg" alt="" />
                 <div class="small_sidebar">Medical Certificate</div>
             </a>
-            <a href="#clients"><img src="src/img/cash.svg" alt="" />
+            <a href="financial-report(PAGE).html"><img src="src/img/cash.svg" alt="" />
                 <div class="small_sidebar">Finance Reports</div>
             </a>
-            <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />
+            <a href="backup.html"><img src="src/img/settings-tools.svg" alt="" />
                 <div class="small_sidebar">Backup & Table Setup</div>
             </a>
         </div>
@@ -258,6 +264,7 @@
             var ele = document.getElementsByClassName('modal');
             for (i = 0; i < ele.length; i++) {
                 ele[i].classList.toggle("pdl");
+                ele[i].classList.toggle("pdl-hide");
             }
         }
     </script>

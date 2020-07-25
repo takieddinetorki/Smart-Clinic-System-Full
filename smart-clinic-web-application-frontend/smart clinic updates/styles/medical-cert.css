@@ -186,6 +186,7 @@ select {
     filter: drop-shadow(2px 2px 2px gray);
     -webkit-filter: drop-shadow(2px 2px 2px gray);
     background-color: white;
+    font-family: inherit;
 }
 
 .far {

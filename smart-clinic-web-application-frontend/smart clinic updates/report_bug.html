@@ -106,7 +106,7 @@
             <a href="financial-report(PAGE).html"><img src="src/img/cash.svg" alt="" />
                 <div class="small_sidebar">Finance Reports</div>
             </a>
-            <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />
+            <a href="backup2.html"><img src="src/img/settings-tools.svg" alt="" />
                 <div class="small_sidebar">Backup & Table Setup</div>
             </a>
         </div>
@@ -114,7 +114,7 @@
         <div class="main">
 
             <div>
-                <div class="form-container-wrapper">
+                <div class="form-container-wrapper table-wrapper-scroll-y">
 
                     <div class="form-container" style="height: 450px; margin-top: 40px; min-width: 600px;">
                         <div class="head">
@@ -199,6 +199,7 @@
         var ele = document.getElementsByClassName('modal');
         for (i = 0; i < ele.length; i++) {
             ele[i].classList.toggle("pdl");
+            ele[i].classList.toggle("pdl-hide");
         }
     }
 

@@ -17,7 +17,7 @@ if (Input::exists()) {
             $staff->editBilling(Input::get('billingID'),array(
                 'date' => Input::get('iDate'),
                 'time' => Input::get('iTime'),
-                'status' => escape(Input::get('pStatus')),
+                'status' => (Input::get('pStatus')),
                 'consultation' => Input::get('consultation'),
                 'treatment' => Input::get('treatment'),
                 'medication' => Input::get('medication'),

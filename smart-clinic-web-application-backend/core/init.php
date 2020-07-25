@@ -1,5 +1,5 @@
 <?php
-$host = "/opt/lampp/htdocs/SmartClinicSystem/";
+$host = "/opt/lampp/htdocs/smartClinicSystem/";
 $projectName = "smart-clinic-web-application-backend";
 
 if (getcwd() == $host . $projectName)

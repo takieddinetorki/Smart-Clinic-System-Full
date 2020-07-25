@@ -1,28 +1,42 @@
-# README
+# Latest Updates
 
-# Changes **_Tech_** have made today
+<<<<<<< HEAD
+:warning: **SUBMISSION CHANGE** Please read the following
 
-## IDs
+## Login submission:
 
-I have changed how every ID is generated
-1- I have removed generateClinicID() method and I have added clinic option inside the generateID switch
-2- I have fixed some errors inside the ID class. Read the comments to learn more.
-
-## New classes:
-
-- Adding a new class to the classes folder called System.php. Read the description in the file to learn more
-
-## Additional information:
-
-- If you check the clinicRegistration.php file you will see that there is a newly added directory. Read the comments for more information
-
-Changed the following:
+I have seperated the form from the logic. The logic is in login.php and the form is in login_form.php (we can change names later). Here's the code:
 
 ```
- if ($values == 0)
-                return $values;
-            else echo "Empty medecines <br />";
+<?php
+if (isset($_POST)) {
+?>
+  <script>
+      let form = document.getElementById("login");
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.action = "<?php echo '/smartClinicSystem/smart-clinic-web-application-backend/login_module/login.php' ?>";
+        form.submit();
+      });
+  </script>
+<?php
+}
+?>
 ```
+
+What I did was check if the form is submitted. If it is then the script will get fired. What the script does is basically prevent the form being submitted adds an action attribute then submits it with the action attribute specified which will let us hide the directories of our backend. This is a test version.
+
+## Why?
+
+Since we have this method now we can seperate the front end from the backend. The backend right now can have encrypted names and should be put inside a folder whose name is encrypted (unguessable by tools like gobuster).
+
+## Data sanitizing
+escape function is now merged into the Input::get() method
+## Fixed the log issue now it should be complete
+
+>>>>>>> d7302a8f3b953244bbc59a5ea9263a90d5537cd2
+
+:warning: **SECURITY FLAWS** Please look out for security flaws and report them when necessary
 
 :warning: **PLEASE LOOK OUT FOR THIS**: The globel file contains the \_\_DIR\_\_which is defined as \_\_ROOT\_\_ it returns the root directory. Please do change the host and the project name in the core/init.php file for this project to work.
 

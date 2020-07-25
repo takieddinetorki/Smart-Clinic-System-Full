@@ -19,22 +19,22 @@ if (Input::exists()) {
 
         // adding symptoms 
         $staff->addSymptoms(array(
-            'name' => escape(Input::get('sname')),
+            'name' => nput::get('sname'),
         ));
 
         // adding diagnosis
         $staff->addDiagnosis(array(
-            'name' => escape(Input::get('dname')),
+            'name' => Input::get('dname'),
         ));
 
         // adding treatment
         $staff->addTreatments(array(
-            'name' => escape(Input::get('tname')),
+            'name' => Input::get('tname'),
         ));
 
         // adding allergy
         $staff->addAllergies(array(
-            'name' => escape(Input::get('aname')),
+            'name' => Input::get('aname'),
         ));
 
         // deleting symptoms 

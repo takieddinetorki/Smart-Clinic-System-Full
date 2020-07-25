@@ -30,12 +30,12 @@ if (Input::exists()) {
         // adding a doctor ##validated
         $staff->addDoctor(array(
             'doctorID' => Input::get('doctorID'),
-            'name' => escape(Input::get('name')),
-            'nric' => escape(Input::get('nric')),
-            'gender' => escape(Input::get('gender')),
-            'MMCregNo' => escape(Input::get('MMCregNo')),
-            'contactNo' => escape(Input::get('contactNo')),
-            'picture' => escape($fileDest),
+            'name' => Input::get('name'),
+            'nric' => Input::get('nric'),
+            'gender' => Input::get('gender'),
+            'MMCregNo' => Input::get('MMCregNo'),
+            'contactNo' => Input::get('contactNo'),
+            'picture' => $fileDest,
         ));
 
         // deleting a doctor ##Validated

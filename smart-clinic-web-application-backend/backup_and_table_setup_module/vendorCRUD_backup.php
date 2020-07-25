@@ -19,10 +19,10 @@ if (Input::exists()) {
         // adding a vendor ##validated
         $staff->addVendor(array(
             'vendorCode' => Input::get('vendorCode'),
-            'name' => escape(Input::get('name')),
-            'address' => escape(Input::get('address')).escape(Input::get('addressl2')),
-            'contactedPerson' => escape(Input::get('contactedPerson')),
-            'contactNo' => escape(Input::get('contactNo'))
+            'name' => Input::get('name'),
+            'address' => Input::get('address').Input::get('addressl2'),
+            'contactedPerson' => Input::get('contactedPerson'),
+            'contactNo' => Input::get('contactNo')
         ));
 
         // deleting a doctor ##Validated

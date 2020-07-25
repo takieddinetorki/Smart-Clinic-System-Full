@@ -19,7 +19,7 @@ if (Input::exists()) {
         // adding an inventory item ##validated
         $staff->addInventory(array(
             'inventoryID' => Input::get('inventoryID'),
-            'quantity' => escape(Input::get('quantity')),
+            'quantity' => Input::get('quantity'),
             'expiry' => Input::get('expiry'),
             'itemCode' => Input::get('itemCode'),
         ));

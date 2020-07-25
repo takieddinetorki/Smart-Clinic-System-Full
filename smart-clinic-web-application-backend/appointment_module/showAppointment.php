@@ -32,7 +32,7 @@ if (Input::exists()) {
 
 
 <form action="" method="POST">
-    <input type="date" name="search" id="" value="<?php echo Input::get('search') ?>"> <br>
+    <input type="date" name="search" id="" value="<?php echo deescape(Input::get('search')) ?>"> <br>
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
     <input type="submit" class="registerbtn" value="search">
     </div>

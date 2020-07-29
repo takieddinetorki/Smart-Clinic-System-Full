@@ -34,6 +34,7 @@ Since we have this method now we can seperate the front end from the backend. Th
 escape function is now merged into the Input::get() method
 ## Fixed the log issue now it should be complete
 >>>>>>> 28d3c1c93d1fba8bbdb676fa97be88c3b68c8507
+>>>>>>> e0d36f0090e39e713f365324b10d10d802dc2b7d:smart-clinic-web-application-backend/README.md
 
 # Major change to the directory structure
 

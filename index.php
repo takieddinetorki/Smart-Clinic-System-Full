@@ -1,3 +1,14 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+
+$user = new User;
+$clinic = new ClinicDB;
+$doc = new Staff;
+if($user->loggedIn())
+{
+    Redirect::to('dashboard.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +33,8 @@
     <link rel="stylesheet" href="styles/index.css" />
     <link href="styles/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="src/js/datepicker.min.js"></script>
-
     <script src="src/js/i18n/datepicker.en.js"></script>
-    <title>Smart Clinic *Clinic Name*</title>
+    <title>Smart Clinic <?php if($user->loggedIn()) $clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID); else echo "Log in to show clinic"   ?></title>
 </head>
 
 <body>
@@ -46,7 +56,7 @@
     <div>
         <!-- Member Login part -->
         <section class="login">
-            <form action="" method="POST">
+            <form id="login-form" action="" method="POST">
                 <h1>Member login</h1>
                 <div class="login-control">
                     <img class="icons" src="src/img/USERNAME.svg" alt="" /><input class="username" type="text"
@@ -63,8 +73,9 @@
                         <i style="display:none;" id="emp" class="far fa-square"></i>
                         Remember me</label>
                 </p>
-                <input name="submit" type="submit" value="Login" />
+                <input name="loginForm" type="submit" value="Login" />
                 <div class="footer">
+                <div id="error" style="color: red;"></div>
                     <p>
                         Forgot password?
                         <a href="# " id="forgotPassword">Click here!</a>
@@ -74,14 +85,50 @@
                         <a href="#" id="register">Click here!</a>
                     </p>
                 </div>
+                <input type="hidden" nanme="token" value="<?php echo Token::generate(); ?>">
             </form>
         </section>
-    
-
-    
+        <script>
+            const form = document.getElementById("login-form");
+            const username = document.getElementsByName("username")[0];
+            const password = document.getElementById("password_cus");
+            form.addEventListener('submit', (e) => {
+                <?php
+                if (isset($_POST)) {
+                ?>
+                e.preventDefault();
+                form.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
+                if (username.value != "" && password.value != "")
+                {
+                   form.submit();
+                }else {
+                    error.innerHTML = 'Please fill in all blanks';
+                }
+            })
+        </script>
+        <?php
+        }
+            if ($_GET) {
+                $error = $_GET['e'];
+                switch ($error) {
+                    case 'lf':
+                        ?>
+                        <script>
+                            const heading = document.querySelector('.heading');
+                            const login = document.querySelector('.login'); 
+                            const error = document.getElementById('error');
+                            heading.classList.add("header-animate");
+                            login.classList.add('show');
+                            error.innerHTML = 'Wrong username or password';
+                        </script>
+                    <?php
+                    break;
+                }
+            }
+            ?>
         <!-- Forgot Password part -->
         <section class="fpcontainer">
-            <form action="" method="POST">
+            <form method="POST">
                 <img src="src/img/lock2.png" width="100" height="100" style="margin-top: 0px;" />
                 <a href="#" style="margin-right: 66px;float:right"><i class="fas fa-times-circle cancel"
                         style="color: #444242;"></i></a>
@@ -98,12 +145,11 @@
                 <button class="reset" type="submit">RESET</button>
             </form>
         </section>
-    
+
     <!-- Registration part -->
     
         <section class="rgform">
-
-            <form class="grid-container" action="" method="post">
+            <form id="registerForm" class="grid-container" action="" method="post">
                 <div id="reg">
                     <div id="regist">
                         <!--<div id="cl-button">
@@ -185,12 +231,9 @@
                         </div>
                         <input id="inreg" name="register" type="submit" value="SUBMIT" />
                     </div>
-                   
                 </div>
-               
             </form>
-
-
+            
         </section>
     </div>
     <script src="src/js/animation.js"></script>

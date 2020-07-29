@@ -1,10 +1,7 @@
 <?php
-$host = "/opt/lampp/htdocs/smartClinicSystem/";
-$projectName = "smart-clinic-web-application-backend";
-
-if (getcwd() == $host . $projectName)
+if(getcwd() == 'C:\xampp\htdocs\smartClinicSystem')
 {
-    require_once 'global.php';
+    require_once 'byCMkGnmDa3mXlyfgPh/global.php';
 }else {
     require_once '../global.php';
 }

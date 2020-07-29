@@ -2,14 +2,28 @@
 
 class Input
 {
-    public static function exists($type = 'post')
+    public static function exists($type = 'post', $name = null)
     {
         switch ($type) {
-            case 'post':
-                return (!empty($_POST)) ? true : false;
+
+            case 'post' OR 'POST':
+                if ($name)
+                {
+                    echo "Passed POST";
+                    return (!empty($_POST["{$name}"])) ? true : false;
+                }else 
+                {
+                    return (!empty($_POST)) ? true : false;
+                }
                 break;
-            case 'get':
-                return (!empty($_GET)) ? true : false;
+            case 'get' OR 'GET':
+                if ($name)
+                {
+                    return (!empty($_GET["{$name}"])) ? true : false;
+                }else 
+                {
+                    return (!empty($_GET)) ? true : false;
+                }
                 break;
             
             default:

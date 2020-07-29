@@ -211,11 +211,11 @@ hr {
 
 .inp-modal4 {
   width: 131px;
-  padding-left: 10px;
+  padding-left: 13px;
   height: 34px;
   border: none;
-  text-align: center;
-  text-align-last: center;
+  /* text-align: center; */
+  /* text-align-last: center; */
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
 }

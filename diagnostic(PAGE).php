@@ -52,8 +52,8 @@
                 <div class="dropdown-user1">
                     <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
                     <div class="dropdown-content3">
-                        <a href="settings(PAGE).html">Settings</a>
-                        <a href="report_bug.html">Report Bug</a>
+                        <a href="settings(PAGE).php">Settings</a>
+                        <a href="report_bug.php">Report Bug</a>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                 <div class="dropdown-user">
                     <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
                     <div class="dropdown-content2">
-                        <a href="my-profile(PAGE).html">My Profile</a>
+                        <a href="my-profile(PAGE).php">My Profile</a>
                         <a href="#">Logout</a>
                     </div>
                 </div>
@@ -81,34 +81,34 @@
                     <img src="src/img/resize.svg" alt="">
                 </a>
             </div>
-            <a href="dashboard(PAGE).html"><img src="src/img/home.png" />
+            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
                 <div class="small_sidebar">Dashboard</div>
             </a>
-            <a href="patients(PAGE).html"><img src="src/img/patient.svg" />
+            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
                 <div class="small_sidebar">Patients</div>
             </a>
-            <a href="appointment.html"><img src="src/img/appointment-icon.svg" alt="" />
+            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
                 <div class="small_sidebar">Appointments</div>
             </a>
-            <a href="diagnostic(PAGE).html" class="nav-active"><img src="src/img/diagnostic.svg" alt="" />
+            <a href="diagnostic(PAGE).php" class="nav-active"><img src="src/img/diagnostic.svg" alt="" />
                 <div class="small_sidebar"> Diagnostic Report</div>
             </a>
-            <a href="billing(PAGE).html"><img src="src/img/finance.svg" alt="" />
+            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
                 <div class="small_sidebar">Billing</div>
             </a>
-            <a href="expenses(PAGE).html"><img src="src/img/prescription.svg" alt="" />
+            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
                 <div class="small_sidebar">Expenses</div>
             </a>
-            <a href="inventory (PAGE).html"><img src="src/img/inventory.svg" alt="" />
+            <a href="inventory (PAGE).php"><img src="src/img/inventory.svg" alt="" />
                 <div class="small_sidebar">Inventory</div>
             </a>
-            <a href="medical-cert(PAGE).html"><img src="src/img/mc.svg" alt="" />
+            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
                 <div class="small_sidebar">Medical Certificate</div>
             </a>
-            <a href="financial-report(PAGE).html"><img src="src/img/cash.svg" alt="" />
+            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
                 <div class="small_sidebar">Finance Reports</div>
             </a>
-            <a href="backup.html"><img src="src/img/settings-tools.svg" alt="" />
+            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
                 <div class="small_sidebar">Backup & Table Setup</div>
             </a>
         </div>
@@ -281,7 +281,7 @@
                     <div class="footer-div">
                         <div class="icons-div">
                             <div class="icons">
-                                <a href="diagonsitic-form(PAGE).html"><i class="fas fa-plus"></i></a>
+                                <a href="diagonsitic-form(PAGE).php"><i style="color:#444242" class="fas fa-plus"></i></a>
                                 
                             </div>
                             <div class="icons" onclick="show('modal13')">

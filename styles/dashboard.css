@@ -230,7 +230,6 @@
 .triangle-down-fill {
   border-top: 12px solid #536b9e;
 }
-
 .d-grid {
   display: -ms-grid;
   display: grid;
@@ -244,6 +243,8 @@
   padding: 5px;
   font-size: 16px;
   outline: none;
+  width: 120px;
+  color: #444242;
 }
 
 .dashboard-cards {
@@ -252,7 +253,7 @@
 }
 
 .box-gray {
-  width: 220px;
+  width: 225px;
   display: flex;
   padding: 5px;
   margin: 5px;

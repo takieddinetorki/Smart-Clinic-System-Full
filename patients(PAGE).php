@@ -243,9 +243,10 @@
                 <div class="footer">
                     <div class="footer-div">
                         <div class="icons-div">
-                            <div class="icons">
-                                <i class="fas fa-plus"></i>
-                            </div>
+                            <a href="personal-info(PAGE).php"><div class="icons">
+                                <i class="fas fa-plus" style="color:#444242"></i>
+                            </div></a>
+                            
                             <div class="icons" onclick="show('modal4')">
                                 <img src="src/img/printer.png" alt="printer">
                             </div>

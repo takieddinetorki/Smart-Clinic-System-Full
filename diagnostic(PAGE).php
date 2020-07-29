@@ -281,7 +281,7 @@
                     <div class="footer-div">
                         <div class="icons-div">
                             <div class="icons">
-                                <a href="diagonsitic-form(PAGE).php"><i class="fas fa-plus"></i></a>
+                                <a href="diagonsitic-form(PAGE).php"><i style="color:#444242" class="fas fa-plus"></i></a>
                                 
                             </div>
                             <div class="icons" onclick="show('modal13')">

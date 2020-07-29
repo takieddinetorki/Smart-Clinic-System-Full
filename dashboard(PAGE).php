@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/dashboard_page.css">
+    <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -41,8 +42,8 @@
                 <div class="dropdown-user1">
                     <a href="#" class="nav-logos"><img src="src/img/settings.png" alt="" /></a>
                     <div class="dropdown-content3">
-                        <a href="settings(PAGE).html">Settings</a>
-                        <a href="report_bug.html">Report Bug</a>
+                        <a href="settings(PAGE).php">Settings</a>
+                        <a href="report_bug.php">Report Bug</a>
                     </div>
                 </div>
 
@@ -57,7 +58,7 @@
                 <div class="dropdown-user">
                     <a href="# " class="nav-logos"><img src="src/img/user.png " alt=" " /></a>
                     <div class="dropdown-content2">
-                        <a href="my-profile(PAGE).html">My Profile</a>
+                        <a href="my-profile(PAGE).php">My Profile</a>
                         <a href="#">Logout</a>
                     </div>
                 </div>
@@ -70,34 +71,34 @@
                     <img src="src/img/resize.svg" alt="">
                 </a>
             </div>
-            <a href="dashboard(PAGE).html" class="nav-active"><img src="src/img/home.png" />
+            <a href="dashboard(PAGE).php" class="nav-active"><img src="src/img/home.png" />
                 <div class="small_sidebar">Dashboard</div>
             </a>
-            <a href="patients(PAGE).html"><img src="src/img/patient.svg" />
+            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
                 <div class="small_sidebar">Patients</div>
             </a>
-            <a href="appointment.html"><img src="src/img/appointment-icon.svg" alt="" />
+            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
                 <div class="small_sidebar">Appointments</div>
             </a>
-            <a href="diagnostic(PAGE).html" ><img src="src/img/diagnostic.svg" alt="" />
+            <a href="diagnostic(PAGE).php" ><img src="src/img/diagnostic.svg" alt="" />
                 <div class="small_sidebar"> Diagnostic Report</div>
             </a>
-            <a href="billing(PAGE).html"><img src="src/img/finance.svg" alt="" />
+            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
                 <div class="small_sidebar">Billing</div>
             </a>
-            <a href="expenses(PAGE).html"><img src="src/img/prescription.svg" alt="" />
+            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
                 <div class="small_sidebar">Expenses</div>
             </a>
-            <a href="inventory (PAGE).html"><img src="src/img/inventory.svg" alt="" />
+            <a href="inventory (PAGE).php"><img src="src/img/inventory.svg" alt="" />
                 <div class="small_sidebar">Inventory</div>
             </a>
-            <a href="medical-cert(PAGE).html"><img src="src/img/mc.svg" alt="" />
+            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
                 <div class="small_sidebar">Medical Certificate</div>
             </a>
-            <a href="financial-report(PAGE).html"><img src="src/img/cash.svg" alt="" />
+            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
                 <div class="small_sidebar">Finance Reports</div>
             </a>
-            <a href="backup.html"><img src="src/img/settings-tools.svg" alt="" />
+            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
                 <div class="small_sidebar">Backup & Table Setup</div>
             </a>
         </div>
@@ -154,7 +155,7 @@
 
                     <div class="dashboard-row">
                         <div class="dashboard-item">
-                            <div class="css_graph_1">
+                            <div class="css_graph_1" style="margin-top: 20px;">
                                 <p>Total Pateints</p>
                                 <div style="display: flex;">
                                     <div id="y-axis">
@@ -168,30 +169,30 @@
                             <div style="margin-left: auto;">
                                 Days
                             </div>
-                            <p style="font-size: 18px;margin-top: 0;margin-bottom: 5px;">Patients</p>
+                            <p style="font-size: 18px;margin-top: 0;margin-bottom: 5px;margin-top:-11px">Patients</p>
                         </div>
                         <div class="dashboard-item">
                             <div>
-                                <div style="position: relative;">
+                                <div style="position: relative;min-width: 160px;">
                                     <div class="piesite circle-purple" id="pie_0" data-pie="80">
                                     </div>
                                     <span class="label-circle">RM 5,350.00</span>
                                     <p><i style="background-color: #a635ce;"></i> Drugs & Medications</p>
                                 </div>
-                                <div style="position: relative;">
+                                <div style="position: relative;min-width: 160px;">
                                     <div class="piesite circle-pink" id="pie_2" data-pie="75">
                                     </div>
                                     <span class="label-circle">RM 5,350.00</span>
                                     <p><i style="background-color: #f88e6f;"></i> Medical Tools</p>
                                 </div>
-                                <div style="position: relative;">
+                                <div style="position: relative;min-width: 160px;">
                                     <div class="piesite circle-blue" id="pie_1" data-pie="50">
                                     </div>
                                     <span class="label-circle">RM 2,350.00</span>
                                     <p><i style="background-color: #58769c;"></i> Salaries & Wages</p>
                                 </div>
                             </div>
-                            <p style="font-size: 18px; margin:0px">Expenses</p>
+                            <p style="font-size: 18px; margin:0px;margin-bottom: -50px;">Expenses</p>
                         </div>
                     </div>
 
@@ -228,7 +229,7 @@
                         </div>
 
                         <div class="dashboard-item">
-                            <div class="css_graph_2">
+                            <div class="css_graph_2" style="margin-top: 20px;">
                                 <p>Total Sales (MYR)</p>
                                 <div style="display: flex;">
                                     <div id="y-axis2">
@@ -242,7 +243,7 @@
                             <div style="margin-left: auto;">
                                 Days
                             </div>
-                            <p style="font-size: 18px; margin:0px">Expenses</p>
+                            <p style="font-size: 18px; margin:0px;margin-top:-10px">Expenses</p>
                         </div>
                     </div>
                 </div>

@@ -44,9 +44,9 @@ if (Input::exists()) {
     <!-- <select name="accountCode" id="accountCode" required>
     <option value="">--</option>
     <?php
-            $staff = new Staff();
-            $staff->getAllAccountCode();
-            ?>
+    $staff = new Staff();
+    $staff->getAllAccountCode();
+    ?>
         </select> -->
 
     <label for="name">Account Name</label>
@@ -65,14 +65,15 @@ if (Input::exists()) {
 
         //generating doctor ID automatically
         //make comment this 2 line while checking the edititng functionality
-        var accountCode = "<?php $id = new ID(''); echo $id->generateID('accountCode'); ?>";
+        var accountCode = "<?php $id = new ID('');
+                            echo $id->generateID('accountCode'); ?>";
         $('#accountCode').val(accountCode);
 
         //uncomment this line to check edit ##please uncomment these lines while checking the edititng functionality
         // $('#accountCode').change(function() {
         //     var value = $(this).val();
         //     if (value){
-                // $.post('../api/expenseScript.php', {
+        // $.post('../api/expenseScript.php', {
         //             value
         //         }, function(data) {
         //             if (data != null) {

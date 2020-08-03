@@ -25,7 +25,7 @@ if (Input::exists()) {
                     'voucherNo' => Input::get('voucherNo'),
                     'date' => Input::get('date'),
                     'ammount' => Input::get('amount'),
-                    'particulation' => (Input::get('particulation'),
+                    'particulation' => Input::get('particulation'),
                     'accountCode' => Input::get('accountCode'),
                 ));
 

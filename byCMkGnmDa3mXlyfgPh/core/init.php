@@ -1,8 +1,10 @@
 <?php
-if(getcwd() == 'C:\xampp\htdocs\smartClinicSystem')
-{
+if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem') {
     require_once 'byCMkGnmDa3mXlyfgPh/global.php';
-}else {
+    //* will delete this extra if else in production
+} else if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem\byCMkGnmDa3mXlyfgPh') {
+    require_once 'global.php';
+} else {
     require_once '../global.php';
 }
 session_start();
@@ -24,13 +26,12 @@ $GLOBALS['config'] = array(
     )
 );
 
-spl_autoload_register(function($class){
-    if(strpos($class, "Dompdf") === false)
-        require_once __ROOT__.'/classes/' . $class . '.php';
+spl_autoload_register(function ($class) {
+    if (strpos($class, "Dompdf") === false)
+        require_once __ROOT__ . '/classes/' . $class . '.php';
 });
 
 $config = $GLOBALS['config'];
 require_once __ROOT__ . '/functions/sanitize.php';
 require_once __ROOT__ . '/libraries/dompdf/autoload.inc.php';
 require_once __ROOT__ . '/libraries/phpMailer/PHPMailerAutoload.php';
-?>

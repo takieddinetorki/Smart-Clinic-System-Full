@@ -3,7 +3,7 @@ require_once '../core/init.php';
 
 $user = new User;
 if ($user->loggedIn()) {
-    Riderect::to('../dashboard');
+    Redirect::to('../dashboard');
     die();
 }
 

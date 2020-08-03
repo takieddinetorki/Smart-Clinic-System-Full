@@ -1,9 +1,15 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+
+$user = new User;
+$clinic = new ClinicDB;
+?>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinic Name</title>
+    <title>Smart Clinic <?php if($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)); else echo " Log in to show clinic"?></title>
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/dashboard.css">
     <script src="https://d3js.org/d3.v4.js"></script>

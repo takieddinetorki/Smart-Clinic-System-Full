@@ -156,6 +156,7 @@ if($user->loggedIn())
                         <a href="#"><i class="fas fa-times-circle" style="font-size:30px;color:rgb(66, 65, 65);"></i></a>
                     </div>-->
                         <h1>REGISTRATION</h1>
+                        <!-- Yash please update the clinic name here -->
                         <div class="form-grid">
                             <div class="form-type col1">
                                 <ul class="flex-outer">

@@ -10,15 +10,18 @@
 date_default_timezone_set("Asia/Kuala_Lumpur");
 class System
 {
-    private $_db,
+    //* changes have been made here, please remove the comments while allow the branch to merge into master
+    private static $_db,
             $_sessionName,
             $_sessionValue;
     private static $logged = false;
+    
+    //* We have to make the variables static too inorder to use them inside a static method brother, right?
     public static function logged() {
-        $this->_db = DB::getInstance();
-        $this->_sessionName = Config::get('session/session_name');
-        if (Session::exists($this->_sessionName)) {
-            $this->_sessionValue = Session::get($this->_sessionName);
+        self::$_db = DB::getInstance();
+        self::$_sessionName = Config::get('session/session_name');
+        if (Session::exists(self::$_sessionName)) {
+            self::$_sessionValue = Session::get(self::$_sessionName);
             self::$logged = true;
         }
 

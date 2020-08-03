@@ -34,7 +34,7 @@ if($user->loggedIn())
     <link href="styles/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="src/js/datepicker.min.js"></script>
     <script src="src/js/i18n/datepicker.en.js"></script>
-    <title>Smart Clinic <?php if($user->loggedIn()) $clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID); else echo "Log in to show clinic"   ?></title>
+    <title>Smart Clinic <?php if($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)); else echo " Log in to show clinic"?></title>
 </head>
 
 <body>
@@ -85,7 +85,7 @@ if($user->loggedIn())
                         <a href="#" id="register">Click here!</a>
                     </p>
                 </div>
-                <input type="hidden" nanme="token" value="<?php echo Token::generate(); ?>">
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
             </form>
         </section>
         <script>

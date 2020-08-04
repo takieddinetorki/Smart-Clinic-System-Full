@@ -1,8 +1,12 @@
-.flex{
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: nowrap;
-}
-select,input{
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  
+  select, input {
     width: 110px;
     padding-left: 10px;
     height: 24px;
@@ -10,14 +14,16 @@ select,input{
     border-radius: 20px;
     -webkit-filter: drop-shadow(2px 2px 2px gray);
     filter: drop-shadow(2px 2px 2px gray);
-}
-label{
-    width:100px;
+  }
+  
+  label {
+    width: 100px;
     height: 17px;
     font-size: 13px;
     margin-right: 10px;
-}
-.far{
+  }
+  
+  .far {
     position: relative;
     right: 24px;
-}
+  }

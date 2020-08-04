@@ -1,7 +1,11 @@
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
+
 /*for search bar*/
 .status_dpdwn {
   background: unset;
@@ -12,8 +16,13 @@
 }
 
 .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: -16px;
 }
 
@@ -26,7 +35,6 @@
 }
 
 /********************************************************/
-
 /* Remove every outline */
 input:focus,
 select:focus,
@@ -81,8 +89,12 @@ button:focus {
 }
 
 .table-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-transform: none;
   margin-left: 10px;
   font-size: 15px;
@@ -132,20 +144,33 @@ select {
 
 .appointment-icons {
   margin-top: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: 5px;
 }
+
 .appointment-icons > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 150px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .appointment-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 15px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgba(255, 255, 255, 0.6);
   padding: 5px;
 }
@@ -160,15 +185,19 @@ select {
   height: 40px;
   border: none;
   border-radius: 0;
-  filter: none;
-  background-color: rgb(228, 227, 227);
+  -webkit-filter: none;
+          filter: none;
+  background-color: #e4e3e3;
 }
 
 .cl-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 29px;
   margin-top: -35px;
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .cl-btn:hover {

@@ -1,17 +1,22 @@
 .css_graph_1 {
   padding: 10px;
 }
+
 .css_graph_1 p {
   margin-top: -18px;
   font-size: 13px;
   width: 16px;
 }
+
 #y-axis p {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 10%;
 }
+
 #graph-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 400px;
   margin-left: 5px;
@@ -20,7 +25,9 @@
   padding-left: 5px;
   padding-right: 10px;
 }
+
 .divG1 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#e67bc0), to(#a22b6d));
   background: linear-gradient(#e67bc0, #a22b6d);
   border-radius: 10px;
   margin: 1px;
@@ -29,17 +36,22 @@
 .css_graph_2 {
   padding: 10px;
 }
+
 .css_graph_2 p {
   margin-top: -18px;
   font-size: 13px;
   width: 16px;
 }
+
 #y-axis2 p {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 10%;
 }
+
 #graph-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 400px;
   margin-left: 5px;
@@ -48,7 +60,9 @@
   padding-left: 5px;
   padding-right: 10px;
 }
+
 .divG2 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#b4b3b3), to(#7e7e7e));
   background: linear-gradient(#b4b3b3, #7e7e7e);
   border-radius: 10px;
   margin: 1px;

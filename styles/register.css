@@ -23,7 +23,6 @@
   -ms-flex-pack: center;
   justify-content: center;
   position: absolute;
-
 }
 
 #regist {
@@ -36,7 +35,6 @@
   background: rgba(255, 255, 255, 0.3);
   border-radius: 80px;
   max-height: 500px;
-
 }
 
 #regist h1 {
@@ -172,8 +170,6 @@
   width: 35%;
 }
 
-
-
 #pass-word,
 #confirm-pass-word {
   width: 45%;
@@ -183,31 +179,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: rgba(0, 0, 0, 0);
   opacity: 1;
   display: block;
-  background: url('../src/img/calendar-interface-symbol-tool.png') no-repeat;
+  background: url("../src/img/calendar-interface-symbol-tool.png") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;
 }
 
-
-
-@media (max-width:1400px) {
+@media (max-width: 1400px) {
   .scroll-class {
     width: 90%;
   }
-
 }
 
-@media (max-width:1150px) {
+@media (max-width: 1150px) {
   .scroll-class {
     width: 95%;
     overflow: scroll;
     overflow-y: hidden;
     min-height: 490px;
   }
-
 }
-
 
 @media (max-width: 1200px) {
   #inreg {
@@ -219,33 +210,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   #inreg {
     width: 191.24px;
   }
-
-
-
-
   #reg {
     width: 90%;
     left: 4%;
   }
-
   #title-name,
   #gender {
     width: 30%;
   }
-
   #birth-date {
     width: 45%;
   }
-
   #dateicon {
     margin: -6.67px -40.98px;
   }
-
-
 }
-
-
-
-
-
-/*# sourceMappingURL=register.css.map */
+/*# sourceMappingURL=test.css.map */

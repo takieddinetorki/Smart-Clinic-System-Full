@@ -6,9 +6,11 @@
   overflow: unset;
   margin-top: 20px;
 }
-.pdl{
+
+.pdl {
   padding-left: 134px;
 }
+
 .text-center {
   text-align: center;
 }
@@ -16,18 +18,20 @@
 /* modal css for backup-table */
 /************************************************************************************************************/
 /* for backup tab */
-
 .modalContentBT {
   background: #b3b4c0;
   margin: auto;
   padding: 10px;
   border: none;
   width: 320px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   padding-bottom: 20px;
   border-radius: 55px;
   padding-top: 15px;
 }
+
 .inp-modalBT {
   border: none;
   border-radius: 0;
@@ -56,23 +60,32 @@
   font-size: 15px;
   margin-right: 10px;
 }
-.label-lock{
+
+.label-lock {
   width: 66px;
   margin-top: 8px;
 }
-.label-backup{
+
+.label-backup {
   width: 80px;
   margin-top: 8px;
 }
+
 .form-div-modalBT {
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-bottom: 0;
 }
 
 .form-div-div-modalBT {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -88,7 +101,7 @@
 .modalBtnBT {
   width: auto;
   height: 34px;
-  padding:2px 15px 2px 15px;
+  padding: 2px 15px 2px 15px;
   border-radius: 30px;
   border: none;
   background-color: #444242;

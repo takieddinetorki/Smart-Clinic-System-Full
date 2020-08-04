@@ -1,180 +1,191 @@
 hr:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
-.pdl{
-    padding-left: 134px;
+
+.pdl {
+  padding-left: 134px;
 }
+
 .cl-btn {
-    float: right;
-    position: relative;
-    margin-top: 23px;
-    font-size: 29px;
-    margin-right: 40px;
+  float: right;
+  position: relative;
+  margin-top: 23px;
+  font-size: 29px;
+  margin-right: 40px;
 }
 
 .cl-btn:hover {
-    opacity: 0.7;
-    cursor: pointer;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .profile-form {
-    background: rgba(255, 255, 255, 0.267);
-    margin-top: 10px;
-    height: 444px;
-    border-radius: 100px;
-    max-width: 1050px;
-    min-width: 1050px;
-    padding-top: 20px;
-    margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.267);
+  margin-top: 10px;
+  height: 444px;
+  border-radius: 100px;
+  max-width: 1050px;
+  min-width: 1050px;
+  padding-top: 20px;
+  margin-bottom: 5px;
 }
 
-.profile-form>.head {
-    width: 40%;
-    margin: auto;
+.profile-form > .head {
+  width: 40%;
+  margin: auto;
 }
 
-.profile-form>.head>h1 {
-    position: relative;
-    margin-top: 2px;
+.profile-form > .head > h1 {
+  position: relative;
+  margin-top: 2px;
 }
 
 .form-content {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    margin-top: -15px;
+  width: 100%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: -15px;
 }
 
 .half1 {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .half2 {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .form-section {
-    width: 100%;
-    display: flex;
-    height: 14%;
-    margin-bottom: 22px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 14%;
+  margin-bottom: 22px;
 }
 
-.form-section>label {
-    width: 25%;
-    font-family: "Poppins";
-    font-size: 14px;
-    padding-top: 14px;
-    padding-right: 7px;
-    text-align: right;
-    margin-right: 15px;
+.form-section > label {
+  width: 25%;
+  font-family: "Poppins";
+  font-size: 14px;
+  padding-top: 14px;
+  padding-right: 7px;
+  text-align: right;
+  margin-right: 15px;
 }
 
-.form-section>input {
-    border-radius: 30px;
-    height: 90%;
-    padding-left: 10px;
-    font-size: 15px;
-    border: solid 1px rgba(255, 255, 255, 0.267);
-    filter: drop-shadow(0px 2px 3px gray);
-    font-family: inherit;
+.form-section > input {
+  border-radius: 30px;
+  height: 90%;
+  padding-left: 10px;
+  font-size: 15px;
+  border: solid 1px rgba(255, 255, 255, 0.267);
+  -webkit-filter: drop-shadow(0px 2px 3px gray);
+          filter: drop-shadow(0px 2px 3px gray);
+  font-family: inherit;
 }
 
-.form-section>select {
-    border-radius: 30px;
-    height: 90%;
-    padding-left: 10px;
-    font-size: 15px;
-    border: solid 6px rgba(255, 255, 255, 0.267);
-    border-right: solid 10px rgba(0, 0, 0, 0);
-    filter: drop-shadow(0px 2px 3px gray);
+.form-section > select {
+  border-radius: 30px;
+  height: 90%;
+  padding-left: 10px;
+  font-size: 15px;
+  border: solid 6px rgba(255, 255, 255, 0.267);
+  border-right: solid 10px rgba(0, 0, 0, 0);
+  -webkit-filter: drop-shadow(0px 2px 3px gray);
+          filter: drop-shadow(0px 2px 3px gray);
 }
 
 #title,
 #gender {
-    width: 25%;
+  width: 25%;
 }
 
 #password,
 #confirm-password,
 #email {
-    width: 45%;
+  width: 45%;
 }
 
 #birthday,
 #mobile-number {
-    width: 35%;
+  width: 35%;
 }
 
 #first-name,
 #last-name,
 #username {
-    width: 65%;
+  width: 65%;
 }
 
 .sub-btn {
-    position: relative;
-    width: 110px;
-    height: 40px;
-    border-radius: 30px;
-    border: none;
-    background-color: #444242;
-    line-height: 21px;
-    font-weight: bold;
-    font-size: 15px;
-    color: white;
-    margin-top: 10px;
-    font-family: inherit;
-}
-.sub-btn:hover{
-    opacity: 0.7;
-    cursor: pointer;
+  position: relative;
+  width: 110px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: #444242;
+  line-height: 21px;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  margin-top: 10px;
+  font-family: inherit;
 }
 
-#pasword-ins{
-    background-color: rgba(236, 236, 236,0.5);
-    color: black;
-    font-size: 12px;
-    font-family: inherit;
+.sub-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+#pasword-ins {
+  background-color: rgba(236, 236, 236, 0.5);
+  color: black;
+  font-size: 12px;
+  font-family: inherit;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  min-height: 127px;
+  z-index: 1;
+  margin-left: -125px;
+  width: 150px;
+}
+
+.pass-ml {
+  margin-left: -46px;
+}
+
+@media (max-width: 1400px) {
+  .scroll-class {
+    width: 90%;
+  }
+  .profile-form {
+    min-width: 100%;
+  }
+  #pasword-ins {
+    margin-left: -150px;
+  }
+  .pass-ml {
+    margin-left: -21px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .scroll-class {
+    width: 95%;
+    overflow: scroll;
+    overflow-y: hidden;
+    min-height: 490px;
+  }
+  .profile-form {
+    min-width: 750px;
     padding: 10px;
-    border: none;
-    border-radius: 15px;
-    min-height: 127px;
-    z-index: 1;
-    margin-left: -125px;
-    width: 150px;
-}
-.pass-ml{
-    margin-left: -46px;
-}
-@media (max-width:1400px) {
-    .scroll-class {
-        width: 90%;
-    }
-    .profile-form {
-        min-width: 100%;
-    }
-    #pasword-ins{
-        margin-left: -150px;
-    }
-    .pass-ml{
-        margin-left: -21px;
-    }
-}
-
-@media (max-width:1150px) {
-    .scroll-class {
-        width: 95%;
-        overflow: scroll;
-        overflow-y: hidden;
-        min-height: 490px;
-    }
-    .profile-form {
-        min-width: 750px;
-        padding: 10px;
-    }
+  }
 }

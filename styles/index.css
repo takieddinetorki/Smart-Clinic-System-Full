@@ -27,11 +27,9 @@ nav div {
 /* nav div:hover {
   border-color: #a0a0a0;
 } */
-
 /* nav div:hover i {
   color: #bdbdbd;
 } */
-
 .fb {
   width: 3vw;
   height: 3vh;
@@ -48,8 +46,9 @@ nav div {
   border: 0.3vh solid #504f4f;
   border-radius: 50%;
 }
-.fb a i:hover{
-  color:#3b5998;
+
+.fb a i:hover {
+  color: #3b5998;
 }
 
 .fb a i {
@@ -73,10 +72,12 @@ nav div {
   border: 0.3vh solid #504f4f;
   border-radius: 50%;
 }
-.inst a i:hover{
-  color:#2C6A93;
+
+.inst a i:hover {
+  color: #2C6A93;
 }
-.inst>a>i {
+
+.inst > a > i {
   font-size: 3.5vh;
   color: #504f4f;
 }
@@ -96,10 +97,12 @@ nav div {
   border: 0.3vh solid #504f4f;
   border-radius: 50%;
 }
-.twit a i:hover{
-  color:#00B6F1;
+
+.twit a i:hover {
+  color: #00B6F1;
 }
-.twit>a>i {
+
+.twit > a > i {
   font-size: 3.5vh;
   color: #504f4f;
 }
@@ -123,5 +126,3 @@ header {
     margin-top: 80px;
   }
 }
-
-/*# sourceMappingURL=index.css.map */

@@ -38,19 +38,24 @@ button:focus {
   position: relative;
 }
 
-.expenses-form>div {
+.expenses-form > div {
   padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
 
-.expenses-form>input,
-.expenses-form>textarea {
+.expenses-form > input,
+.expenses-form > textarea {
   border: none;
   border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 5px 10px;
   background-color: white;
   font-size: 16px;
@@ -69,14 +74,15 @@ textarea {
   height: 100px;
 }
 
-.expenses-form>div>input,
-.expenses-form>div>textarea,
-.expenses-form>div>select {
+.expenses-form > div > input,
+.expenses-form > div > textarea,
+.expenses-form > div > select {
   position: absolute;
   left: 150px;
   border: none;
   border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 6px 10px;
   background-color: white;
   font-size: 16px;
@@ -93,7 +99,8 @@ input::-webkit-inner-spin-button {
 .date input {
   border: none;
   border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 6px 10px;
   background-color: white;
   font-size: 14px;
@@ -107,7 +114,8 @@ input::-webkit-inner-spin-button {
 .attachment input {
   border: none;
   border-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 6px 10px;
   background-color: white;
   font-size: 14px;
@@ -125,7 +133,7 @@ input::-webkit-inner-spin-button {
   top: 22px;
   right: 32px;
   font-size: 30px;
-  color: rgb(66, 65, 65);
+  color: #424141;
 }
 
 .cl-icon:hover {
@@ -135,33 +143,41 @@ input::-webkit-inner-spin-button {
 
 .footer {
   margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
-.foot-wrap{
+
+.foot-wrap {
   max-width: 1000px;
 }
-@media(max-width:1050px){
-  .form-container-wrapper{
+
+@media (max-width: 1050px) {
+  .form-container-wrapper {
     max-width: calc(100vw - 300px);
     overflow-x: auto;
     overflow-y: hidden;
   }
-  .widthChange{
+  .widthChange {
     max-width: 650px;
   }
 }
-@media (min-width:1050px){
+
+@media (min-width: 1050px) {
   .foot-wrap {
     min-width: 750px;
   }
-  .head h1{
+  .head h1 {
     margin-left: -120px;
   }
   .pdl {
     padding-left: 75px;
   }
 }
+
 @media (max-width: 850px) {
   .inp-wid {
     width: 340px !important;

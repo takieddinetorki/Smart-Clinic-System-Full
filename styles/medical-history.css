@@ -1,147 +1,151 @@
 .footer {
     margin-top: 12px;
-}
-.pdl{
+  }
+  
+  .pdl {
     padding-left: 134px;
-}
-.cl-btn {
+  }
+  
+  .cl-btn {
     float: right;
     font-size: 29px;
     margin-top: -30px;
     margin-bottom: 10px;
-}
-
-.cl-btn:hover {
+  }
+  
+  .cl-btn:hover {
     opacity: 0.7;
     cursor: pointer;
-}
-
-.head {
+  }
+  
+  .head {
     line-height: 20%;
-}
-
-.main-body {
+  }
+  
+  .main-body {
     min-width: 100%;
     height: 550px;
-}
-
-.scroll-class {
+  }
+  
+  .scroll-class {
     width: 100%;
     background: rgba(255, 255, 255, 0.233);
     margin-top: 40px;
-}
-
-.hist-form {
+  }
+  
+  .hist-form {
     max-width: 650px;
     min-width: 650px;
     margin: auto;
     padding-top: 5px;
     padding-bottom: 5px;
-}
-
-.form-row {
+  }
+  
+  .form-row {
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-}
-
-.form-row>label {
+  }
+  
+  .form-row > label {
     font-size: 14px;
-}
-
-.form-row>input {
+  }
+  
+  .form-row > input {
     border-radius: 20px;
     border: solid 1px rgba(255, 255, 255, 0);
-    filter: drop-shadow(0px 2px 3px gray);
+    -webkit-filter: drop-shadow(0px 2px 3px gray);
+            filter: drop-shadow(0px 2px 3px gray);
     padding-left: 16px;
     color: black;
     font-family: inherit;
-}
-
-.issues-col {
+  }
+  
+  .issues-col {
     width: 70px;
     padding-left: 15px;
     padding-top: 5px;
-}
-
-.diseases,
-.allergies {
+  }
+  
+  .diseases,
+  .allergies {
     width: 70px;
     padding-left: 10px;
     padding-top: 5px;
-}
-
-.disease-option,
-.allergy-option {
+  }
+  
+  .disease-option,
+  .allergy-option {
     margin-top: 8px;
-}
-
-.detail1 {
+  }
+  
+  .detail1 {
     width: 220px;
     height: 90%;
-}
-
-.detail2 {
+  }
+  
+  .detail2 {
     width: 455px;
     height: 90%;
-}
-
-@media (min-width:1540px) {
+  }
+  
+  @media (min-width: 1540px) {
     .main {
-        padding-top: 2px;
+      padding-top: 2px;
     }
     .main-body {
-        max-width: 1200px;
-        min-width: 1200px;
-        margin-top: 20px;
+      max-width: 1200px;
+      min-width: 1200px;
+      margin-top: 20px;
     }
-}
-
-@media (max-height:670px) {
+  }
+  
+  @media (max-height: 670px) {
     .form-row {
-        height: 33px;
+      height: 33px;
     }
     .scroll-class {
-        margin-top: 35px;
+      margin-top: 35px;
     }
-
-}
-
-@media (max-width:970px) {
+  }
+  
+  @media (max-width: 970px) {
     .main-body {
-        width: 95%;
+      width: 95%;
     }
     .scroll-class {
-        overflow: scroll;
-        overflow-y: hidden;
+      overflow: scroll;
+      overflow-y: hidden;
     }
-}
-
-/*Scrollbar customization*/
-::-webkit-scrollbar-track {
+  }
+  
+  /*Scrollbar customization*/
+  ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 5px grey;
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background: red;
     border-radius: 10px;
   }
-
+  
   .table-wrapper-scroll-y::-webkit-scrollbar {
     background: rgba(255, 255, 255, 0.6);
     width: 12px;
   }
-
+  
   .table-wrapper-scroll-y::-webkit-scrollbar-thumb {
     background: #c9c8c8;
     border-radius: 10px;
     width: 12px;
     height: 100px;
   }
-
+  
   .table-wrapper-scroll-y::-webkit-scrollbar-track {
     background: rgba(0, 128, 0, 0);
     border: 1px solid rgba(0, 0, 0, 0);

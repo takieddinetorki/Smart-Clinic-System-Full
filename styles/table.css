@@ -32,9 +32,11 @@ body {
   margin-top: 120px;
   text-transform: uppercase;
 }
-.toggle-tab-width{
-  width:98%;
+
+.toggle-tab-width {
+  width: 98%;
 }
+
 table.table tbody,
 table.table thead tr {
   display: block;
@@ -66,7 +68,7 @@ th {
 }
 
 tbody {
-  background-color: rgb(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 thead {
@@ -85,7 +87,8 @@ tbody tr td {
   text-align: center;
   vertical-align: middle;
 }
-.fas{
+
+.fas {
   float: right;
   padding-right: 10px;
   margin-top: 5px;
@@ -119,4 +122,3 @@ tbody tr td {
   background: rgba(0, 128, 0, 0);
   border: 1px solid rgba(0, 0, 0, 0);
 }
-

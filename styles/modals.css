@@ -1,10 +1,12 @@
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 hr {
   height: 20px;
-  background-color: rgb(165, 165, 165);
+  background-color: #a5a5a5;
   border: none;
 }
 
@@ -25,7 +27,7 @@ hr {
 }
 
 .btn:hover {
-  background-color: rgb(231, 224, 219);
+  background-color: #e7e0db;
 }
 
 /*****************************************************************************************************************/
@@ -49,7 +51,6 @@ hr {
 .modalContent1 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -66,7 +67,6 @@ hr {
   border: none;
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
-  
 }
 
 .label-modal {
@@ -80,6 +80,8 @@ hr {
 .form-div-modal {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -196,11 +198,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 4 */
-
 .modalContent4 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -231,6 +231,8 @@ hr {
 .form-div-modal4 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -253,11 +255,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 5 */
-
 .modalContent5 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -288,6 +288,8 @@ hr {
 .form-div-modal5 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -315,11 +317,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 6 */
-
 .modalContent6 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -356,11 +356,15 @@ hr {
 .form-div-modal6 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal6 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -389,11 +393,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 7 */
-
 .modalContent7 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 240px;
@@ -414,6 +416,8 @@ hr {
 .form-div-modal7 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -436,11 +440,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 8 */
-
 .modalContent8 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 372px;
@@ -476,10 +478,14 @@ hr {
 .form-div-modal8 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal8 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
   font-size: 15px;
@@ -504,11 +510,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 9 */
-
 .modalContent9 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -539,6 +543,8 @@ hr {
 .form-div-modal9 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -564,7 +570,6 @@ hr {
 .modalContent10 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 281px;
@@ -598,11 +603,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 11 */
-
 .modalContent11 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 372px;
@@ -638,10 +641,14 @@ hr {
 .form-div-modal11 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal11 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
   font-size: 15px;
@@ -666,11 +673,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 12 */
-
 .modalContent12 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -706,11 +711,15 @@ hr {
 .form-div-modal12 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal12 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -742,7 +751,6 @@ hr {
 .modalContent13 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -773,6 +781,8 @@ hr {
 .form-div-modal13 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -800,11 +810,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 14 */
-
 .modalContent14 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 285px;
@@ -841,11 +849,15 @@ hr {
 .form-div-modal14 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal14 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -874,11 +886,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 15 */
-
 .modalContent15 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 285px;
@@ -915,11 +925,15 @@ hr {
 .form-div-modal15 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal15 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -946,7 +960,6 @@ hr {
 .modalContent16 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -982,10 +995,14 @@ hr {
 .form-div-modal16 {
   padding: 10px;
   margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal16 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -1012,7 +1029,6 @@ hr {
 .modalContent17 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -1048,10 +1064,14 @@ hr {
 .form-div-modal17 {
   padding: 10px;
   margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal17 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -1078,7 +1098,6 @@ hr {
 .modalContent18 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -1114,10 +1133,14 @@ hr {
 .form-div-modal18 {
   padding: 10px;
   margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal18 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -1144,7 +1167,6 @@ hr {
 .modalContent19 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 320px;
@@ -1180,10 +1202,14 @@ hr {
 .form-div-modal19 {
   padding: 10px;
   margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .form-div-div-modal19 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
 }
@@ -1207,11 +1233,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 20 */
-
 .modalContent20 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 315px;
@@ -1248,11 +1272,15 @@ hr {
 .form-div-modal20 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal20 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
   margin-right: 10px;
@@ -1277,11 +1305,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 21 */
-
 .modalContent21 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 315px;
@@ -1318,11 +1344,15 @@ hr {
 .form-div-modal21 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal21 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
   margin-right: 10px;
@@ -1347,11 +1377,9 @@ hr {
 
 /*****************************************************************************************************************/
 /* css for modal 22 */
-
 .modalContent22 {
   background: #b3b4c0;
   margin: auto;
-
   padding: 10px;
   border: none;
   width: 315px;
@@ -1388,11 +1416,15 @@ hr {
 .form-div-modal22 {
   padding: 10px;
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 15px;
 }
 
 .form-div-div-modal22 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 50%;
   margin-right: 10px;

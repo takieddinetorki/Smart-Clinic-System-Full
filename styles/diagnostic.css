@@ -1,20 +1,28 @@
 .footer {
   margin-top: 0px;
 }
+
 .pdl {
   padding-left: 134px;
 }
+
 .footer-div {
   float: right;
 }
+
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
+
 .head h1 {
   margin-top: 5px;
   margin-bottom: 8px;
 }
+
 /*for search bar*/
 .status_dpdwn {
   background: unset;
@@ -29,8 +37,13 @@
 }
 
 .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: -16px;
 }
 
@@ -39,7 +52,6 @@
 }
 
 /********************************************************/
-
 /* Remove every outline */
 input:focus,
 select:focus,
@@ -65,9 +77,11 @@ table.table tbody {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 tbody tr:hover {
-  background-color: rgba(148, 148, 299, 0.5);
+  background-color: rgba(148, 148, 255, 0.5);
 }
+
 table,
 thead,
 tr,
@@ -88,7 +102,7 @@ th {
 }
 
 tbody {
-  background-color: rgb(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 thead {
@@ -146,14 +160,20 @@ tbody tr td {
 #total {
   background-color: #b9b0e5;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   float: right;
   padding: 10px 15px;
 }
 
 .table-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   max-width: 1085px;
   min-width: 850px;
   text-transform: none;
@@ -184,7 +204,8 @@ select {
   background-color: white;
   font-family: inherit;
 }
-select{
+
+select {
   background-position-y: 0;
 }
 
@@ -203,23 +224,21 @@ select{
     min-width: 0;
     width: 100%;
   }
-
   .table-nav .flex div {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
-
   #big-div-tnav {
     width: 300px;
   }
-
   .flex-end {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
-
   #bdt-div {
     margin-top: 10px;
   }
-
   #bdt-div select {
     margin-left: 6px;
   }
@@ -232,7 +251,6 @@ select{
   .ml-inp {
     margin-left: 16px;
   }
-
   #big-div-tnav {
     min-width: 270px;
   }

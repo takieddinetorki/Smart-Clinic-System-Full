@@ -1,7 +1,11 @@
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
+
 /*for search bar*/
 .status_dpdwn {
   -webkit-appearance: button;
@@ -12,8 +16,13 @@
 }
 
 .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: -16px;
 }
 
@@ -26,7 +35,6 @@
 }
 
 /********************************************************/
-
 /* Remove every outline */
 input:focus,
 select:focus,
@@ -44,7 +52,7 @@ button:focus {
 }
 
 .tabl {
-  background-color: rgb(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.5);
   padding: 10px;
 }
 
@@ -84,8 +92,12 @@ button:focus {
 }
 
 .table-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-transform: none;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -153,7 +165,7 @@ select {
 }
 
 .appointment-status {
-  background-color: rgb(167, 235, 183);
+  background-color: #a7ebb7;
   border-radius: 20px;
   width: 100px;
   height: 25px;
@@ -163,21 +175,30 @@ select {
 }
 
 /**CALENDER******************************************************/
-
 .calender-wrapper {
   background: rgba(255, 255, 255, 0.6);
   border-radius: 40px;
   border: solid 1px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
   min-width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   margin-right: 40px;
 }
 
 .calender-wrapper .chead {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .calender-wrapper .chead button {
@@ -225,17 +246,21 @@ tr td:first-child {
 }
 
 .d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .bg-info {
   background-color: #9297d473 !important;
 }
-#widthAdjust{
+
+#widthAdjust {
   overflow-x: hidden;
 }
-@media (max-width:1200px){
-  #widthAdjust{
+
+@media (max-width: 1200px) {
+  #widthAdjust {
     max-width: calc(100vw - 350px);
     overflow-y: hidden;
     overflow-x: auto;

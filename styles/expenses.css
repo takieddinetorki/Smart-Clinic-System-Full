@@ -1,16 +1,20 @@
-.footer{
+.footer {
   margin-top: 65px;
 }
-.footer-div{
+
+.footer-div {
   float: right;
 }
-.pdl{
+
+.pdl {
   padding-left: 134px;
 }
-.head h1{
+
+.head h1 {
   margin-top: 5px;
   margin-bottom: 8px;
 }
+
 /* Remove every outline */
 input:focus,
 select:focus,
@@ -26,13 +30,16 @@ button:focus {
 .toggle-tab-width {
   width: 98%;
 }
+
 table.table tbody,
 table.table thead tr {
   display: block;
 }
-tbody tr:hover{
-  background-color: rgba(148,148,299,0.5);
+
+tbody tr:hover {
+  background-color: rgba(148, 148, 255, 0.5);
 }
+
 table.table tbody {
   overflow-y: auto;
   overflow-x: hidden;
@@ -58,7 +65,7 @@ th {
 }
 
 tbody {
-  background-color: rgb(245, 245, 245, 0.5);
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 thead {
@@ -77,11 +84,13 @@ tbody tr td {
   text-align: center;
   vertical-align: middle;
 }
+
 .fas {
   float: right;
   padding-right: 10px;
   margin-top: 5px;
 }
+
 /*Scrollbar customization*/
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 5px grey;
@@ -114,6 +123,8 @@ tbody tr td {
 #total {
   background-color: #b9b0e5;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   float: right;
   padding: 10px 15px;
@@ -121,8 +132,12 @@ tbody tr td {
 }
 
 .table-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   max-width: 1030px;
   min-width: 850px;
   text-transform: none;
@@ -141,7 +156,8 @@ tbody tr td {
   height: 24px;
   border: none;
   border-radius: 20px;
-  filter: drop-shadow(2px 2px 2px gray);
+  -webkit-filter: drop-shadow(2px 2px 2px gray);
+          filter: drop-shadow(2px 2px 2px gray);
   background-color: white;
   font-family: inherit;
 }
@@ -155,32 +171,34 @@ tbody tr td {
   left: -120px;
 }
 
-
-@media (max-width:1150px){
-  .table-nav{
+@media (max-width: 1150px) {
+  .table-nav {
     max-width: 100%;
     min-width: 0;
     width: 100%;
   }
-  .table-nav div{
-    flex-wrap: wrap;
+  .table-nav div {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
-  #tn-div2{
-  justify-content: flex-end;
+  #tn-div2 {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
-  .tablenav-indiv{
+  .tablenav-indiv {
     margin-bottom: 11px;
   }
-  .table-nav label, #sid{
+  .table-nav label, #sid {
     margin-right: 8px;
   }
-  #esid{
+  #esid {
     margin-left: 8px;
   }
-  .ml-0{
+  .ml-0 {
     margin-left: 0 !important;
   }
-  #to-span{
+  #to-span {
     margin-left: 20px;
   }
 }

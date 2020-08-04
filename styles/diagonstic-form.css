@@ -1,34 +1,36 @@
 .footer {
     margin-top: 0;
     margin-bottom: 10px;
-}
-.dots-div{
+  }
+  
+  .dots-div {
     margin-top: 7px;
-}
-.box-div {
+  }
+  
+  .box-div {
     width: 300px;
     height: 154px;
-    border: 1px solid rgb(112, 112, 112);
+    border: 1px solid #707070;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-}
-
-.box-div-head {
+  }
+  
+  .box-div-head {
     background-color: rgba(112, 112, 112, 0.4);
     padding-left: 10px;
-}
-
-.diag-form-inp {
+  }
+  
+  .diag-form-inp {
     font-family: inherit;
     background-color: transparent;
     border: none;
     padding-left: 10px;
     font-size: 15px;
     margin-top: 5px;
-}
-
-.diag-form-inp2 {
+  }
+  
+  .diag-form-inp2 {
     font-family: inherit;
     border: none;
     padding-left: 10px;
@@ -38,8 +40,9 @@
     height: 34px;
     -webkit-filter: drop-shadow(2px 2px 2px gray);
     filter: drop-shadow(2px 2px 2px gray);
-}
-.inp-select{
+  }
+  
+  .inp-select {
     background-color: white;
     -webkit-filter: drop-shadow(2px 2px 2px gray);
     filter: drop-shadow(2px 2px 2px gray);
@@ -52,14 +55,16 @@
     margin-bottom: 5px;
     margin-right: 5px;
     margin-left: 5px;
-}
-.inp-select i{
+  }
+  
+  .inp-select i {
     font-size: 12px;
     top: -3px;
     position: relative;
     left: 4px;
-}
-.inp-select i:hover{
+  }
+  
+  .inp-select i:hover {
     cursor: pointer;
     opacity: 0.7;
-}
+  }

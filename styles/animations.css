@@ -1,31 +1,31 @@
 .loggedIn-animation {
   -webkit-animation: header-loggedIn-animation 1s ease-in-out forwards;
-          animation: header-loggedIn-animation 1s ease-in-out forwards;
+  animation: header-loggedIn-animation 1s ease-in-out forwards;
 }
 
 .show {
   -webkit-animation: show-form 1s ease-in-out forwards;
-          animation: show-form 1s ease-in-out forwards;
+  animation: show-form 1s ease-in-out forwards;
 }
 
 .hide {
   -webkit-animation: hide-form 1s ease-in-out forwards;
-          animation: hide-form 1s ease-in-out forwards;
+  animation: hide-form 1s ease-in-out forwards;
 }
 
 .header-animate {
   -webkit-animation: header-animation 1s ease-in-out forwards;
-          animation: header-animation 1s ease-in-out forwards;
+  animation: header-animation 1s ease-in-out forwards;
 }
 
 .header-register-animate {
   -webkit-animation: header-register-animate 1s ease-in-out forwards;
-          animation: header-register-animate 1s ease-in-out forwards;
+  animation: header-register-animate 1s ease-in-out forwards;
 }
 
 .header-register-animate img {
   -webkit-animation: header-img-animate 1s ease-in-out forwards;
-          animation: header-img-animate 1s ease-in-out forwards;
+  animation: header-img-animate 1s ease-in-out forwards;
 }
 
 @-webkit-keyframes header-img-animate {
@@ -138,7 +138,7 @@
     margin-top: 6vh;
     margin-left: 3%;
     -webkit-transform: translateY(-9vh);
-            transform: translateY(-9vh);
+    transform: translateY(-9vh);
   }
 }
 
@@ -152,7 +152,7 @@
     margin-top: 6vh;
     margin-left: 3%;
     -webkit-transform: translateY(-9vh);
-            transform: translateY(-9vh);
+    transform: translateY(-9vh);
   }
 }
 
@@ -174,4 +174,3 @@
     }
   }
 }
-/*# sourceMappingURL=animations.css.map */

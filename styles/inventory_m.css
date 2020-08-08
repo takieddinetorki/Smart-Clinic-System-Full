@@ -255,7 +255,11 @@ tbody tr:hover {
   padding: 5px 20px;
   white-space: nowrap;
 }
-
+@media(min-width:900px){
+  .footer-scan{
+    margin-left: 100px;
+  }
+}
 @media (max-width: 900px) {
   .purchase-button {
     margin-top: 0;

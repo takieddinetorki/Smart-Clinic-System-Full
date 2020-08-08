@@ -2,7 +2,9 @@
     margin-top: -12px;
     margin-bottom: 0;
   }
-  
+  .footer-div{
+    float: right;
+  }
   .pdl {
     padding-left: 134px;
   }
@@ -26,6 +28,8 @@
     padding-left: 0;
     width: 90px;
     text-overflow: ellipsis;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
   }
   
   .status_dpdwn2 {
@@ -199,6 +203,7 @@
     -webkit-filter: drop-shadow(2px 2px 2px gray);
     background-color: white;
     font-family: inherit;
+    background-position-y: 0;
   }
   
   .far {

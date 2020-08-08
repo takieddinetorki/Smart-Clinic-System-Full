@@ -120,7 +120,7 @@
                     <div class="table-nav">
                         <div class="flex" style="margin-top: 20px;width: 100%;">
                             <div class="status" id="dpdwn1">
-                                <label for="status">Status</label>
+                                <label for="status" style="margin-left: 5px;">Status</label>
                                 <select name="status" class="status_dpdwn" id="status">
                                     <option value="Today">Today</option>
                                     <option value="This week">This week</option>
@@ -275,14 +275,11 @@
                 </div>
                 <div class="footer">
                     <div class="footer-div">
-                        <div class="dots-div">
-                            <span class="dot"></span>
-                            <span class="dot" style="background-color: black;"></span>
-                        </div>
                         <div class="icons-div">
-                            <div class="icons">
-                                <i class="fas fa-plus"></i>
-                            </div>
+                            <a href="medical-form(PAGE).php" style="text-decoration: none;"><div class="icons">
+                                <i class="fas fa-plus" style="color: #444242;"></i>
+                            </div></a>
+                            
                             <div class="icons" onclick="show('modal13')">
                                 <img src="src/img/printer.png" alt="printer">
                             </div>

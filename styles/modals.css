@@ -975,8 +975,6 @@ hr {
   border: none;
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
-  text-align: center;
-  text-align-last: center;
 }
 
 .inp-radio16 {
@@ -1113,8 +1111,6 @@ hr {
   border: none;
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   filter: drop-shadow(2px 2px 2px gray);
-  text-align: center;
-  text-align-last: center;
 }
 
 .inp-radio18 {
@@ -1287,7 +1283,6 @@ hr {
 }
 
 .modalBtn20 {
-  margin-left: 100px;
   width: 101px;
   height: 34px;
   border-radius: 30px;

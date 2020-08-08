@@ -4,8 +4,7 @@ require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
 $user = new User;
 $clinic = new ClinicDB;
 $doc = new Staff;
-if($user->loggedIn())
-{
+if ($user->loggedIn()) {
     Redirect::to('dashboard.php');
 }
 ?>
@@ -34,7 +33,8 @@ if($user->loggedIn())
     <link href="styles/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="src/js/datepicker.min.js"></script>
     <script src="src/js/i18n/datepicker.en.js"></script>
-    <title>Smart Clinic <?php if($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)); else echo " Log in to show clinic"?></title>
+    <title>Smart Clinic <?php if ($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName', 'clinicID', $user->data()->clinicID));
+                        else echo " Log in to show clinic" ?></title>
 </head>
 
 <body>
@@ -59,13 +59,11 @@ if($user->loggedIn())
             <form id="login-form" action="" method="POST">
                 <h1>Member login</h1>
                 <div class="login-control">
-                    <img class="icons" src="src/img/USERNAME.svg" alt="" /><input class="username" type="text"
-                        name="username" placeholder="username" maxlength="20" />
+                    <img class="icons" src="src/img/USERNAME.svg" alt="" /><input class="username" type="text" name="username" placeholder="username" maxlength="20" />
                 </div>
                 <div class="login-control">
                     <img class="icons" src="src/img/lock.svg" alt="" />
-                    <input id="password_cus" class="password" type="password" name="password" placeholder="password"
-                        maxlength="20" /><i id="passwordIc" class="fas fa-eye-slash passwordIcon"></i>
+                    <input id="password_cus" class="password" type="password" name="password" placeholder="password" maxlength="20" /><i id="passwordIc" class="fas fa-eye-slash passwordIcon"></i>
                 </div>
 
                 <p style="text-transform: none; margin: 20px;">
@@ -75,7 +73,7 @@ if($user->loggedIn())
                 </p>
                 <input name="loginForm" type="submit" value="Login" />
                 <div class="footer">
-                <div id="error" style="color: red;"></div>
+                    <div id="error" style="color: red;"></div>
                     <p>
                         Forgot password?
                         <a href="# " id="forgotPassword">Click here!</a>
@@ -96,68 +94,73 @@ if($user->loggedIn())
                 <?php
                 if (isset($_POST)) {
                 ?>
-                e.preventDefault();
-                form.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
-                if (username.value != "" && password.value != "")
-                {
-                   form.submit();
-                }else {
-                    error.innerHTML = 'Please fill in all blanks';
-                }
+                    e.preventDefault();
+                    form.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
+                    if (username.value != "" && password.value != "") {
+                        form.submit();
+                    } else {
+                        error.innerHTML = 'Please fill in all blanks';
+                    }
             })
         </script>
         <?php
-        }
-            if ($_GET) {
-                $error = $_GET['e'];
-                switch ($error) {
-                    case 'lf':
-                        ?>
-                        <script>
-                            const heading = document.querySelector('.heading');
-                            const login = document.querySelector('.login'); 
-                            const error = document.getElementById('error');
-                            heading.classList.add("header-animate");
-                            login.classList.add('show');
-                            error.innerHTML = 'Wrong username or password';
-                        </script>
-                    <?php
-                    break;
                 }
-            }
-            ?>
-        <!-- Forgot Password part -->
-        <section class="fpcontainer">
-            <form method="POST">
-                <img src="src/img/lock2.png" width="100" height="100" style="margin-top: 0px;" />
-                <a href="#" style="margin-right: 66px;float:right"><i class="fas fa-times-circle cancel"
-                        style="color: #444242;"></i></a>
-                <h2 style="margin-top: -25px;">FORGOT PASSWORD?</h2>
-                <p style="font-size: 13px;">
-                    Please enter your registered email address to recover your password.
-                    <br />You will receive an email with instructions.
-                </p>
-                <div>
-                    <!-- <img class="email-icon" src="src/img/email.svg" alt="" /> -->
-                    <i class="fa fa-envelope email-icon" aria-hidden="true"></i>
-                    <input class="email" type="text" name="email" placeholder="" />
-                </div>
-                <button class="reset" type="submit">RESET</button>
-            </form>
-        </section>
+                if ($_GET) {
+                    $error = $_GET['e'];
+                    switch ($error) {
+                        case 'lf':
+        ?>
+                <script>
+                    const heading = document.querySelector('.heading');
+                    const login = document.querySelector('.login');
+                    const error = document.getElementById('error');
+                    heading.classList.add("header-animate");
+                    login.classList.add('show');
+                    error.innerHTML = 'Wrong username or password';
+                </script>
+    <?php
+                            break;
+                    }
+                }
+    ?>
+    <!-- Forgot Password part -->
+    <section class="fpcontainer">
+        <form method="POST">
+            <img src="src/img/lock2.png" width="100" height="100" style="margin-top: 0px;" />
+            <a href="#" style="margin-right: 66px;float:right"><i class="fas fa-times-circle cancel" style="color: #444242;"></i></a>
+            <h2 style="margin-top: -25px;">FORGOT PASSWORD?</h2>
+            <p style="font-size: 13px;">
+                Please enter your registered email address to recover your password.
+                <br />You will receive an email with instructions.
+            </p>
+            <div>
+                <!-- <img class="email-icon" src="src/img/email.svg" alt="" /> -->
+                <i class="fa fa-envelope email-icon" aria-hidden="true"></i>
+                <input class="email" type="text" name="email" placeholder="" />
+            </div>
+            <button class="reset" type="submit">RESET</button>
+        </form>
+    </section>
 
     <!-- Registration part -->
-    
-        <section class="rgform">
-            <form id="registerForm" class="grid-container" action="" method="post">
-                <div id="reg">
-                    <div id="regist">
-                        <!--<div id="cl-button">
+
+    <section class="rgform">
+        <form id="registerForm" class="grid-container" action="" method="post">
+            <div id="reg">
+                <div id="regist">
+                    <!--<div id="cl-button">
                         <a href="#"><i class="fas fa-times-circle" style="font-size:30px;color:rgb(66, 65, 65);"></i></a>
                     </div>-->
-                        <h1>REGISTRATION</h1>
-                        <!-- Yash please update the clinic name here -->
-                        <div class="form-grid">
+                    <h1>REGISTRATION</h1>
+                    <!-- Yash please update the clinic name here -->
+                    <div class="form-grid" style="display: block;">
+                        <div style="text-align: center;margin-top: -16px;">
+                            <label for="clinic-name" class="col-label-cname">
+                                Clinic Name
+                            </label>
+                            <input type="text" class="col-inp-cname" id="clinic-name">
+                        </div>
+                        <div style="display: flex;">
                             <div class="form-type col1">
                                 <ul class="flex-outer">
                                     <li>
@@ -230,12 +233,15 @@ if($user->loggedIn())
 
                             </div>
                         </div>
-                        <input id="inreg" name="register" type="submit" value="SUBMIT" />
+
+
                     </div>
+                    <input id="inreg" name="register" type="submit" value="SUBMIT" />
                 </div>
-            </form>
-            
-        </section>
+            </div>
+        </form>
+
+    </section>
     </div>
     <script src="src/js/animation.js"></script>
     <script>

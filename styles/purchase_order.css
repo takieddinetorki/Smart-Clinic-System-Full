@@ -82,8 +82,9 @@
   height: 400px;
   margin: 20px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   padding-top: 10px;
+  margin-bottom: 10px;
 }
 
 .box-title {
@@ -110,7 +111,7 @@
 .box-content {
   border: 1px solid #707070;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .box-content-head {

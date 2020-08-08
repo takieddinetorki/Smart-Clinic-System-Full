@@ -219,16 +219,13 @@
                                     </div>
                                     <div>
                                         <label>Contact Person</label>
-                                        <select type="text" class="input_diag" style="width: 200px;">
+                                        <input type="text" class="input_diag" style="width: 200px;">
 
-                                        </select>
                                     </div>
 
                                     <div>
                                         <label>Contact No.</label>
-                                        <select type="text" class="input_diag" style="width: 200px;">
-
-                                        </select>
+                                        <input type="text" class="input_diag" style="width: 200px;">
                                     </div>
                                     <div>
                                         <label>Delivery Charges</label>

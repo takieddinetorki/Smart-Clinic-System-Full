@@ -356,7 +356,7 @@
                 </div>
               </div>
             </form>
-            <div class="text-center">
+            <div style="text-align: center;">
               <button class="modalBtn20" type="submit">PRINT</button>
             </div>
           </div>

@@ -151,8 +151,8 @@
                                 </div>
                                 <div>
                                     <label for="amount">Amount (RM)</label>
-                                    <input style="width: 140px;" step="0.01" type="number" name="amount"
-                                        id="amount-pricing" onchange="amountPricing()" placeholder="0.00">
+                                    <input style="width: 140px;" step="0.01" type="text" name="amount"
+                                        id="amount-pricing" onchange="amountPricing('amount-pricing')" placeholder="0.00">
                                 </div>
                                 <div>
                                     <label for="Particulars">Particulars</label>
@@ -243,6 +243,18 @@
             ele[i].classList.toggle("pdl");
             ele[i].classList.toggle("pdl-hide");
         }
+    }
+    function amountPricing(id){   
+        var num =document.getElementById(id);
+        if(isNaN(num.value)){
+            num.value="";
+            alert("Only numbers")
+        }else{
+            var n = Number(num.value).toFixed(2);
+            console.log(n)
+            document.getElementById(id).value=n;
+        }
+        
     }
 </script>
 <script>

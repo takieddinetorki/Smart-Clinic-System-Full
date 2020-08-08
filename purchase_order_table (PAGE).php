@@ -333,27 +333,29 @@
                                 <div class="form-div-modal6 category_1">
                                     <label for="from" class="label-modal6">Starting Date</label>
                                     <span>
-                                        <input type="text" id="from" class="inp-modal6 datepicker-here"><i
+                                        <input type="text" id="from" class="inp-modal6 datepicker-here" data-language="en"><i
                                             class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
                                 <div class="form-div-modal6 category_2">
                                     <label for="from" class="label-modal6">Starting Vendor Code</label>
                                     <span>
-                                        <input type="text" id="from" class="inp-modal6 ">
+                                        <select type="text" id="from" class="inp-modal6 " style="background-position-y: 5px;">
+                                        </select>
                                     </span>
                                 </div>
                                 <div class="form-div-modal6 category_1">
                                     <label for="to" class="label-modal6">Ending Date</label>
                                     <span>
-                                        <input type="text" id="to" class="inp-modal6 datepicker-here"><i
+                                        <input type="text" id="to" class="inp-modal6 datepicker-here"  data-language="en"><i
                                             class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
                                 <div class="form-div-modal6 category_2">
                                     <label for="from" class="label-modal6">Ending Vendor Code</label>
                                     <span>
-                                        <input type="text" id="from" class="inp-modal6 ">
+                                        <select type="text" id="from" class="inp-modal6" style="background-position-y: 5px;">
+                                        </select>
                                     </span>
                                 </div>
                                 <div class="form-div-modal6" style="margin-left: -26px;">

@@ -170,6 +170,12 @@ if($user->loggedIn())
                                         </select>
                                     </li>
                                     <li>
+                                        <label for="clinic-name" class="col1-label">
+                                            Clinic Name
+                                        </label>
+                                        <input type="text" id="clinic-name">
+                                    </li>
+                                    <li>
                                         <label for="first-name" class="col1-label">
                                             First Name
                                         </label>

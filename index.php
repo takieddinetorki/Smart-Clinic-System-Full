@@ -27,7 +27,6 @@ if ($user->loggedIn()) {
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/login.css" />
     <link rel="stylesheet" href="styles/forgotpassword.css" />
-    <link rel="stylesheet" href="styles/animations.css" />
     <link rel="stylesheet" href="styles/register.css" />
     <link rel="stylesheet" href="styles/index.css" />
     <link href="styles/datepicker.min.css" rel="stylesheet" type="text/css">
@@ -38,22 +37,24 @@ if ($user->loggedIn()) {
 </head>
 
 <body>
-    <nav>
-        <div class="fb">
+
+    <div class="header"  style=" display: flex; margin: 10px; justify-content: center; align-items: center;">
+
+        <img width="400"  src="src/img/heading.png" alt="" />
+    
+        <div class="icon-container">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="inst">
             <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="twit">
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-    </nav>
+        
+    </div>
 
-    <header class="heading">
-        <img width="600" src="src/img/heading.png" alt="" />
-    </header>
-    <div>
+
+
+
+
+    <div style="display: flex; justify-content: center; align-items: center; height:100%">
         <!-- Member Login part -->
         <section class="login">
             <form id="login-form" action="" method="POST">
@@ -76,11 +77,11 @@ if ($user->loggedIn()) {
                     <div id="error" style="color: red;"></div>
                     <p>
                         Forgot password?
-                        <a href="# " id="forgotPassword">Click here!</a>
+                        <a href="# " id="forgotPassword" onclick="toggleView('.login','.fpcontainer')">Click here!</a>
                     </p>
                     <p>
                         Don't have an account?
-                        <a href="#" id="register">Click here!</a>
+                        <a href="#" id="register" onclick="toggleView('.login','.register-container')">Click here!</a>
                     </p>
                 </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
@@ -123,18 +124,20 @@ if ($user->loggedIn()) {
                     }
                 }
     ?>
+
+
+
     <!-- Forgot Password part -->
-    <section class="fpcontainer">
+    <section class="fpcontainer" >
         <form method="POST">
-            <img src="src/img/lock2.png" width="100" height="100" style="margin-top: 0px;" />
-            <a href="#" style="margin-right: 66px;float:right"><i class="fas fa-times-circle cancel" style="color: #444242;"></i></a>
-            <h2 style="margin-top: -25px;">FORGOT PASSWORD?</h2>
-            <p style="font-size: 13px;">
+            <a href="#" onclick="toggleView('.fpcontainer','.login','flex')"><i class="fas fa-times-circle" style="color: #444242; font-size: 30px;"></i></a>
+            <img src="src/img/lock2.png" width="100" height="100"  />
+            <h2 >FORGOT PASSWORD?</h2>
+            <p style="font-size: 14px;" >
                 Please enter your registered email address to recover your password.
                 <br />You will receive an email with instructions.
             </p>
             <div>
-                <!-- <img class="email-icon" src="src/img/email.svg" alt="" /> -->
                 <i class="fa fa-envelope email-icon" aria-hidden="true"></i>
                 <input class="email" type="text" name="email" placeholder="" />
             </div>
@@ -143,117 +146,121 @@ if ($user->loggedIn()) {
     </section>
 
     <!-- Registration part -->
+    <div class="register-container">
+        <a href="#" onclick="toggleView('.register-container','.login','flex')">
+            <i class="fas fa-times-circle" style="color: #444242; font-size: 30px; position: absolute; right:20px"></i>
+        </a>
 
-    <section class="rgform">
-        <form id="registerForm" class="grid-container" action="" method="post">
-            <div id="reg">
-                <div id="regist">
-                    <!--<div id="cl-button">
-                        <a href="#"><i class="fas fa-times-circle" style="font-size:30px;color:rgb(66, 65, 65);"></i></a>
-                    </div>-->
-                    <h1>REGISTRATION</h1>
-                    <!-- Yash please update the clinic name here -->
-                    <div class="form-grid" style="display: block;">
-                        <div style="text-align: center;margin-top: -16px;">
-                            <label for="clinic-name" class="col-label-cname">
-                                Clinic Name
-                            </label>
-                            <input type="text" class="col-inp-cname" id="clinic-name">
-                        </div>
-                        <div style="display: flex;">
-                            <div class="form-type col1">
-                                <ul class="flex-outer">
-                                    <li>
-                                        <label for="title" class="col1-label">
-                                            Title
-                                        </label>
-                                        <select id="title-name">
-                                            <option value="mr">Mr</option>
-                                            <option value="mrs">Mrs</option>
-                                        </select>
-                                    </li>
-                                    <li>
-                                        <label for="clinic-name" class="col1-label">
-                                            Clinic Name
-                                        </label>
-                                        <input type="text" id="clinic-name">
-                                    </li>
-                                    <li>
-                                        <label for="first-name" class="col1-label">
-                                            First Name
-                                        </label>
-                                        <input type="text" id="first-name">
-                                    </li>
-                                    <li>
-                                        <label for="last-name" class="col1-label">
-                                            Last Name
-                                        </label>
-                                        <input type="text" id="last-name">
-                                    </li>
-                                    <li>
-                                        <label for="mobile" class="col1-label">Mobile Number</label>
-                                        <input type="tel" id="mobile">
-                                    </li>
-                                    <li>
-                                        <label for="email-address" class="col1-label">Email</label>
-                                        <input type="email" id="email-address">
-                                    </li>
+        <div class="title">
+               <h1>REGISTRATION</h1> 
 
-                                </ul>
+        </div>
 
-                            </div>
-                            <div class="form-type col2">
-                                <ul class="flex-outer">
-                                    <li>
-                                        <label for="gender" class="col2-label">
-                                            Gender
-                                        </label>
-                                        <select id="gender">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-                                    </li>
-                                    <li>
-                                        <label for="birth-date" class="col2-label">
-                                            Birth Date
-                                        </label>
-                                        <input type="date" id="birth-date">
-                                        <!-- <a onclick="focusfunction()"><i id="dateicon" style="color: #716E6D;"
-                                            class="far fa-calendar-alt" aria-hidden="true"></i></a> -->
-                                    </li>
-                                    <li>
-                                        <label for="user-name" class="col2-label">
-                                            User Name
-                                        </label>
-                                        <input type="text" id="user-name">
-                                    </li>
-                                    <li>
-                                        <label for="pass-word" class="col2-label">Password</label>
-                                        <input type="password" id="pass-word">
-                                    </li>
-                                    <li>
-                                        <label for="confirn-pass-word" class="col2-label">Confirm<br>Password</label>
-                                        <input type="password" id="confirm-pass-word">
-                                    </li>
-                                </ul>
+        <form id="registerForm" action="" method="post">
 
-                            </div>
-                        </div>
+            <div class="form-inputs" >
 
-
+                    <div>
+                        <label for="clinic-name" >Clinic Name</label>
+                        <input type="text" id="clinic-name">
                     </div>
-                    <input id="inreg" name="register" type="submit" value="SUBMIT" />
-                </div>
+
+                    <div>
+                        <label for="title">Title</label>
+                        <select id="title-name">
+                            <option value="mr">Mr</option>
+                            <option value="mrs">Mrs</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="first-name" class="col1-label">
+                            First Name
+                        </label>
+                        <input type="text" id="first-name">
+                    </div>
+
+                    <div>
+                        <label for="last-name" class="col1-label">
+                            Last Name
+                        </label>
+                        <input type="text" id="last-name">
+                    </div>
+
+                    <div>
+                        <label for="mobile" class="col1-label">Mobile Number</label>
+                        <input  style="width: 150px;" type="tel" id="mobile">
+                    </div>
+
+                    <div>
+                        <label for="email-address" class="col1-label">Email</label>
+                        <input type="email" id="email-address">
+                    </div>
+                    
             </div>
+
+
+            <div  class="form-inputs">
+                    
+                <div>
+                    <label for="gender" >Gender</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="birth-date">Birth Date</label>
+                    <input  style="width: 150px;"  type="text" id="birth-date" class="datepicker-here" data-language='en'>
+                </div>
+
+                <div>
+                    <label for="user-name">User Name</label>
+                    <input type="text" id="user-name">
+                </div>
+
+                <div>
+                    <label for="pass-word" >Password</label>
+                    <input type="password" id="pass-word">
+                </div>
+                
+                <div>
+                    <label for="confirn-pass-word" >Confirm Password</label>
+                    <input type="password" id="confirm-pass-word">
+                </div>
+
+            </div>
+
+            <div class="submit-btn">
+                <input name="register" type="submit" value="SUBMIT" />
+            </div>
+
         </form>
 
-    </section>
     </div>
-    <script src="src/js/animation.js"></script>
+
+
+
+    
+    </div>
+
+
+    
     <script>
         function focusfunction() {
             document.getElementById("birth-date").focus();
         }
+
+        function toggleView(hide,show,display='block'){
+
+
+            document.querySelector(hide).style.display = 'none'
+            document.querySelector(show).style.display = display
+
+
+        }
+
     </script>
 </body>
 

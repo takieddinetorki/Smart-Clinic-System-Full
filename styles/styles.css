@@ -31,11 +31,13 @@ button:focus {
 }
 
 html {
-  background: url("../src/img/MAIN_BACKGROUND.png") no-repeat center center fixed;
+  background: url("../src/img/main_background.png") no-repeat center center
+    fixed;
   background-size: cover;
 }
 
 body {
-  background: url("../src/img/MAIN_BACKGROUND.png") no-repeat center center fixed;
+  background: url("../src/img/main_background.png") no-repeat center center
+    fixed;
   background-size: cover;
 }

@@ -129,8 +129,8 @@ class Staff
 
     public function makeAppointment($fields, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'appointment', $fields))
-            echo "A problem occur while making an appointment";
+        if ($this->_db->insert($db, 'appointment', $fields)) return true;
+        else return false;
     }
 
     public function listAllAppointment($db = '_pdo2')

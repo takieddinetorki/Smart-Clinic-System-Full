@@ -143,10 +143,20 @@ class Staff
         else echo "There is no appointment to show";
     }
 
-    public function listCustomeAppointment($date, $db = '_pdo2')
+    public function listCustomeAppointment($from, $to, $db = '_pdo2')
     {
-        if ($values = $this->_db->get($db, 'appointment', array('date', '=', $date))->results()) return $values;
-        else "There are no appointments of {$date} to show";
+        $sql = "SELECT * FROM appointment WHERE date BETWEEN ? AND ?";
+
+        if ($values = $this->_db->query($db, $sql, array($from, $to))->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->status = deescape($val->status);
+                    $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                    $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+                }
+                echo json_encode($values);
+            }
+        } else "something went wrong listing custom Appointments";
     }
 
     public function listTodaysAppointment($status)

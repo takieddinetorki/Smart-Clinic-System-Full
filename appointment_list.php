@@ -160,13 +160,13 @@ if (!$user->loggedIn()) {
                                     <div>
                                         <label for="from">From</label>
                                         <span>
-                                            <input type="text" id="datefrom" class="datepicker-here" data-language='en'>
+                                            <input style="width: 130px;" type="date" id="datefrom">
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                     <div style="margin-top: 10px;">
                                         <label for="to">To</label>
-                                        <span>
-                                            <input type="text" id="dateto" class="datepicker-here ml-inp" data-language='en'>
+                                        <span style="margin-left: 17px;">
+                                            <input style="width: 130px;" type="date" id="dateto">
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@ if (!$user->loggedIn()) {
                 $('#appointmentListID').html(appointments);
             }
 
-            function getRawData(status,day) {
+            function getRawData(status, day) {
                 if (status == 'Awaiting' && day == 'Today') return <?php $staff->listTodaysAppointment('Awaiting'); ?>;
                 else if (status == 'Awaiting' && day == 'This week') return <?php $staff->listThisWeekAppointments('Awaiting'); ?>;
                 else if (status == 'Awaiting' && day == 'This month') return <?php $staff->listThisMonthAppointments('Awaiting'); ?>;
@@ -259,13 +259,44 @@ if (!$user->loggedIn()) {
                     let status = ($('#show').val());
                     let day = ($('#status').val());
 
-                    rawData = getRawData(status,day);
+                    rawData = getRawData(status, day);
 
                     if (rawData) {
+                        // console.log(rawData);
                         populateAppointemnts(rawData);
                     } else {
-                        // front end team will add the page segment here 
+                        $('#appointmentListID').html('');
+                        alert('No Record Found');
+                        // front end please add the page segment no record found here 
                     }
+
+                });
+
+                // Date based
+                $('#datefrom, #dateto').change(function() {
+                    let from = ($('#datefrom').val());
+                    let to = ($('#dateto').val());
+
+                    if (from === "" || to === "") {} else {
+                        $.post('byCMkGnmDa3mXlyfgPh/api/getCustomAppointment.php', {
+                            from: from,
+                            to: to
+                        }, function(data) {
+                            if (data != null) {
+                                rawData = jQuery.parseJSON(data);
+                                // console.log(rawData);
+                                populateAppointemnts(rawData);
+                            }
+                        });
+                    }
+
+                    // rawData = getRawData(status,day);
+
+                    // if (rawData) {
+                    //     populateAppointemnts(rawData);
+                    // } else {
+                    //     // front end team will add the page segment here 
+                    // }
 
                 });
 

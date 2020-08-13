@@ -17,7 +17,7 @@ if ($user->LoggedIn()) {
         <li>Encrypted password: <?php echo $user->data()->password ?></li>
         <li>Encrypted password: <?php print_r($user->data());?></li>
         <li>Your clinic name is: <?php echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)) ?></li>
-        <li>Your clinic name is: <?php $doc->getAllStocksCurrentWeek();?></li>
+        <li>Your clinic name is: <?php $doc->listThisMonthAppointments('Awaiting');?></li>
         <li><a href="login_module/logout.php">logout</a></li>
     </ul>
 <?php

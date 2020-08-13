@@ -127,6 +127,9 @@ class Staff
         else echo "Patient Records not found, please register.";
     }
 
+
+    // * Appointment Functionality Begins here 
+
     public function makeAppointment($fields, $db = '_pdo2')
     {
         if ($this->_db->insert($db, 'appointment', $fields)) return true;
@@ -144,6 +147,48 @@ class Staff
     {
         if ($values = $this->_db->get($db, 'appointment', array('date', '=', $date))->results()) return $values;
         else "There are no appointments of {$date} to show";
+    }
+
+    public function listTodaysAppointment($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date) = MONTH(NOW()) AND DAY(date) = DAY(NOW()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
+    }
+
+    public function listThisWeekAppointments($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE WEEKOFYEAR(date) = WEEKOFYEAR(NOW()) AND YEAR(date) = YEAR(now()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
+    }
+
+    public function listThisMonthAppointments($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date)=MONTH(NOW()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
     }
 
     public function listUpcomingAppointments($status = 'Awaiting', $db = '_pdo2')

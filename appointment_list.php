@@ -233,28 +233,34 @@ if (!$user->loggedIn()) {
                 $('#appointmentListID').html(appointments);
             }
 
+            function getRawData(status,day) {
+                if (status == 'Awaiting' && day == 'Today') return <?php $staff->listTodaysAppointment('Awaiting'); ?>;
+                else if (status == 'Awaiting' && day == 'This week') return <?php $staff->listThisWeekAppointments('Awaiting'); ?>;
+                else if (status == 'Awaiting' && day == 'This month') return <?php $staff->listThisMonthAppointments('Awaiting'); ?>;
+                else if (status == 'Completed' && day == 'Today') return <?php $staff->listTodaysAppointment('Completed'); ?>;
+                else if (status == 'Completed' && day == 'This week') return <?php $staff->listThisWeekAppointments('Completed'); ?>;
+                else if (status == 'Completed' && day == 'This month') return <?php $staff->listThisMonthAppointments('Completed'); ?>;
+                else if (status == 'Cancelled' && day == 'Today') return <?php $staff->listTodaysAppointment('Cancelled'); ?>;
+                else if (status == 'Cancelled' && day == 'This week') return <?php $staff->listThisWeekAppointments('Cancelled'); ?>;
+                else if (status == 'Cancelled' && day == 'This month') return <?php $staff->listThisMonthAppointments('Cancelled'); ?>;
+            }
 
             $(document).ready(function() {
                 let rawData;
-                rawData = <?php $staff->listUpcomingAppointments(); ?>;
+                rawData = <?php $staff->listTodaysAppointment('Awaiting'); ?>;
                 if (rawData) {
                     populateAppointemnts(rawData);
                 } else {
                     // front end team will add the page segment here 
                 }
-                $('#show').change(function() {
-                    let stat = ($(this).val());
-                    switch (stat) {
-                        case 'Awaiting':
-                            rawData = <?php $staff->listUpcomingAppointments(); ?>;
-                            break;
-                        case 'Completed':
-                            rawData = <?php $staff->listUpcomingAppointments('Completed'); ?>;
-                            break;
-                        case 'Cancelled':
-                            rawData = <?php $staff->listUpcomingAppointments('Cancelled'); ?>;
-                            break;
-                    }
+
+                // status based
+                $('#show, #status').change(function() {
+                    let status = ($('#show').val());
+                    let day = ($('#status').val());
+
+                    rawData = getRawData(status,day);
+
                     if (rawData) {
                         populateAppointemnts(rawData);
                     } else {

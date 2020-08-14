@@ -284,20 +284,10 @@ if (!$user->loggedIn()) {
                         }, function(data) {
                             if (data != null) {
                                 rawData = jQuery.parseJSON(data);
-                                // console.log(rawData);
                                 populateAppointemnts(rawData);
                             }
                         });
                     }
-
-                    // rawData = getRawData(status,day);
-
-                    // if (rawData) {
-                    //     populateAppointemnts(rawData);
-                    // } else {
-                    //     // front end team will add the page segment here 
-                    // }
-
                 });
 
             });

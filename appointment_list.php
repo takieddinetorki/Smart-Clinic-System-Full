@@ -248,7 +248,7 @@ if (!$user->loggedIn()) {
             $(document).ready(function() {
                 let rawData;
                 rawData = <?php $staff->listTodaysAppointment('Awaiting'); ?>;
-                if (rawData) {
+                if (rawData.status != 'error') {
                     populateAppointemnts(rawData);
                 } else {
                     // front end team will add the page segment here 

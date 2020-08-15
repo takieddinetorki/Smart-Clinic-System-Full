@@ -170,7 +170,7 @@ class Staff
                 $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
             }
             echo json_encode($values);
-        } else "There is no pending Appointment";
+        } else echo json_encode(array('status' => "error"));
     }
 
     public function listThisWeekAppointments($status)

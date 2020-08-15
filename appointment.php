@@ -285,8 +285,7 @@ if (!$user->loggedIn()) {
                 $(document).ready(function() {
                     let rawData;
                     rawData = <?php $staff->listTodaysAppointment('Awaiting') ?>;
-                    console.log(rawData);
-                    if (rawData) {
+                    if (rawData.status != 'error') {
                         populateAppointemnts(rawData);
                     } else {
                         // front end team will add the page segment here 
@@ -298,6 +297,7 @@ if (!$user->loggedIn()) {
                         let day = ($('#status').val());
 
                         rawData = getRawData(status, day);
+                        console.log(rawData);
 
                         if (rawData) {
                             // console.log(rawData);

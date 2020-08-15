@@ -201,7 +201,7 @@ if (!$user->loggedIn()) {
                 <div class="footer-div">
                     <div class="icons-div">
                         <div class="icons">
-                            <i class="fas fa-plus"></i>
+                        <a style="color: rgb(68,66,66);" href="./appointment_form.php"><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="icons">
                             <i class="fas fa-file-alt"></i>

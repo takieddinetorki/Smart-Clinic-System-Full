@@ -1,9 +1,20 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+$staff = new Staff;
+$user = new User;
+$clinic = new ClinicDB;
+if (!$user->loggedIn()) {
+    Redirect::to('index.php');
+}
+?>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinic Name</title>
+    <title>Smart Clinic <?php if ($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName', 'clinicID', $user->data()->clinicID));
+                        else echo " Log in to show clinic" ?></title>
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/expenses_form.css">
     <link rel="stylesheet" href="styles/modals.css">
@@ -32,8 +43,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -85,10 +95,10 @@
             <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
                 <div class="small_sidebar">Patients</div>
             </a>
-            <a href="appointment.php"  class="nav-active"><img src="src/img/appointment-icon.svg" alt="" />
+            <a href="appointment.php" class="nav-active"><img src="src/img/appointment-icon.svg" alt="" />
                 <div class="small_sidebar">Appointments</div>
             </a>
-            <a href="diagnostic(PAGE).php" ><img src="src/img/diagnostic.svg" alt="" />
+            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
                 <div class="small_sidebar"> Diagnostic Report</div>
             </a>
             <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
@@ -122,47 +132,56 @@
                         <a>
                             <i class="cl-icon fas fa-times-circle" aria-hidden="true" onclick="show('modal3')"></i>
                         </a>
-                        <form class="expenses-form">
+                        <form class="expenses-form" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/appointment_module/appointment_create.php" method="POST">
                             <div>
                                 <label for="account">Patient ID</label>
-                                <select style="width: 136px;" type="text" name="patientId">
-                                    <option value="1"></option>
+                                <select style="width: 150px;" type="text" name="patientID" id="patientID" required>
+                                    <?php $staff->getAllPatientID(); ?>
                                 </select>
                             </div>
+
                             <div>
                                 <label for="accountName">Patient Name</label>
-                                <input style="width: 380px;" class="inp-wid" type="text" name="patientName">
+                                <input style="width: 380px;" class="inp-wid" type="text" name="patientName" id="patientName" required>
                             </div>
 
                             <div class="date">
                                 <label for="Date">Date</label>
                                 <span>
-                                    <input type="text" class="datepicker-here" data-language="en">
-                                    <i style="position: relative; right: 32px;" class="far fa-calendar-alt"
-                                        aria-hidden="true"></i>
+                                    <input style="width: 160px;" type="text" id="mydate" name="date" class="datepicker-here" data-language="en" required>
+                                    <i style="position: relative; right: 32px;" class="far fa-calendar-alt" aria-hidden="true"></i>
                                 </span>
-
                             </div>
+
                             <div>
                                 <label for="amount">Time</label>
-                                <input style="width: 120px;" step="0.01" type="number" name="time" placeholder="00.00">
+                                <input style="width: 160px;" id="mytime" type="time" name="time" required>
                             </div>
 
+                            <div>
+                                <label for="status">Status</label>
+                                <select style="width: 160px;" type="text" name="status" id="" required>
+                                    <option value="Awaiting">Awaiting</option>
+                                    <option value="Awaiting">Cancelled</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
 
                             <div>
                                 <label for="account">Doctor ID</label>
-                                <select style="width: 136px;" type="text" name="doctorId">
-                                    <option value="1"></option>
+                                <select style="width: 160px;" type="text" name="doctorID" id="doctorID" required>
+                                    <?php $staff->getAllDoctorID(); ?>
                                 </select>
                             </div>
+
                             <div>
                                 <label for="accountName">Doctor Name</label>
-                                <input style="width: 380px;" class="inp-wid" type="text" name="doctorName">
+                                <input style="width: 380px;" class="inp-wid" type="text" id="doctorName" name="doctorName">
                             </div>
 
+                            <input style="margin-top: 20px;" id="inreg-submit" name="register" type="submit" value="SUBMIT" />
+                            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 
-                            <input style="margin-top: 50px;" id="inreg-submit" name="register" type="submit"
-                                value="SUBMIT" />
                         </form>
                     </div>
 
@@ -173,6 +192,50 @@
         </div>
 
     </div>
+
+
+    <!-- Backend Scripts goes here by Yeasin -->
+
+    <script>
+        $(document).ready(function() {
+
+            let date = new Date();
+
+            $('#mydate').val(date.toLocaleDateString('en-CA'));
+            $('#mytime').val((date.getHours() < 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes());
+
+            // getting the doctor name from doctor ID
+            $('#doctorID').change(function() {
+                var value = $(this).val();
+                if (value) {
+                    $.post('byCMkGnmDa3mXlyfgPh/api/createAppointment.php', {
+                        value
+                    }, function(data) {
+                        if (data != null) {
+                            var results = jQuery.parseJSON(data);
+                            $('#doctorName').val(results);
+                        }
+                    });
+                }
+            });
+
+            // getting the patients name from patient ID
+            $('#patientID').change(function() {
+                var value = $(this).val();
+                if (value) {
+                    $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
+                        value
+                    }, function(data) {
+                        if (data != null) {
+                            var results = jQuery.parseJSON(data);
+                            $('#patientName').val(results.name);
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
     <!-- save modal here -->
     <div id="modal3" class="modal pdl">
         <div class="modalContent3">
@@ -218,7 +281,7 @@
     function show(x) {
         document.getElementById(x).style.display = "flex";
     }
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         var ele = document.getElementsByClassName("modal");
         for (var i = 0; i < ele.length; i++) {
             if (event.target == ele[i]) {
@@ -226,5 +289,4 @@
             }
         }
     }
-
 </script>

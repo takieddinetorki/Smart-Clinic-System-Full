@@ -160,13 +160,13 @@ if (!$user->loggedIn()) {
                                     <div>
                                         <label for="from">From</label>
                                         <span>
-                                            <input style="width: 130px;" type="date" id="datefrom">
+                                            <input type="text" id="tacky" class="datepicker-here" data-language='en'>
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                     <div style="margin-top: 10px;">
                                         <label for="to">To</label>
-                                        <span style="margin-left: 17px;">
-                                            <input style="width: 130px;" type="date" id="dateto">
+                                        <span>
+                                            <input type="text" id="tacky" class="datepicker-here ml-inp" data-language='en'>
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                 </div>
@@ -181,115 +181,43 @@ if (!$user->loggedIn()) {
                             </div>
                         </div>
                     </div>
-                    <div class="table" style="min-width: fit-content" id="appointmentListID"></div>
+                    <div class="table" style="min-width: fit-content" id="appointmentListID">
+
+                    </div>
                 </div>
+
+
             </div>
+
+
+
         </div>
 
         <!-- Backend Scripts goes here by Yeasin -->
-
         <script>
-            // this function will populate the screen with appointments and the rawData simply means the json data from backend
-            function populateAppointemnts(rawData) {
-                let appointments = `<div  style="max-height: calc(100vh - 300px);min-height: 300px; padding-right: 10px;" class="table-wrapper-scroll-y">`;
-                let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-                function tConv24(time24) {
-                    var ts = time24;
-                    var H = +ts.substr(0, 2);
-                    var h = (H % 12) || 12;
-                    h = (h < 10) ? ("0" + h) : h; // leading 0 at the left for 1 digit hours
-                    var ampm = H < 12 ? " AM" : " PM";
-                    ts = h + ts.substr(2, 3) + ampm;
-                    return ts;
-                };
-
-                rawData.forEach((e) => {
-                    appointments += `
-                            <div class="appointment-row">
-                                <div style="display: flex; width: 370px; margin-left:10px; ">
-                                    <a href=""><i class="fas fa-eye"></i></a>
-                                    <span style="margin-right:20px; font-weight: 600;" id="ID">${e.patientID}</span>
-                                    <span id="name">${e.patientName}</span>
-                                </div>
-
-                                <div style="width: 150px;" id="date">
-                                    <span id="date1">${e.date}</span>
-                                    <br>
-                                    <span id="dayName">${days[new Date(e.date).getDay()]}</span>
-                                </div>
-                                <div style="width: 150px;" id="time">${tConv24(e.time)}</div>
-                                <div style="width: 150px;" id="docName">${e.doctorName}</div>
-                                <div style="width: 150px; display:inline;">
-                                <a style="color: rgb(85,26,139);" href="./changeAppointmentStatus.php?id=${e.appointmentID}&status=Completed"><i class="fa fa-check-square" aria-hidden="true"></i></a>
-                                &nbsp;&nbsp;&nbsp;
-                                <a style="color: rgb(85,26,139);" href="./changeAppointmentStatus.php?id=${e.appointmentID}&status=Cancelled"><i class="fa fa-window-close" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                    `;
-                });
-                appointments += `</div>`;
-
-                $('#appointmentListID').html(appointments);
-            }
-
-            function getRawData(status, day) {
-                if (status == 'Awaiting' && day == 'Today') return <?php $staff->listTodaysAppointment('Awaiting'); ?>;
-                else if (status == 'Awaiting' && day == 'This week') return <?php $staff->listThisWeekAppointments('Awaiting'); ?>;
-                else if (status == 'Awaiting' && day == 'This month') return <?php $staff->listThisMonthAppointments('Awaiting'); ?>;
-                else if (status == 'Completed' && day == 'Today') return <?php $staff->listTodaysAppointment('Completed'); ?>;
-                else if (status == 'Completed' && day == 'This week') return <?php $staff->listThisWeekAppointments('Completed'); ?>;
-                else if (status == 'Completed' && day == 'This month') return <?php $staff->listThisMonthAppointments('Completed'); ?>;
-                else if (status == 'Cancelled' && day == 'Today') return <?php $staff->listTodaysAppointment('Cancelled'); ?>;
-                else if (status == 'Cancelled' && day == 'This week') return <?php $staff->listThisWeekAppointments('Cancelled'); ?>;
-                else if (status == 'Cancelled' && day == 'This month') return <?php $staff->listThisMonthAppointments('Cancelled'); ?>;
-            }
-
             $(document).ready(function() {
-                let rawData;
-                rawData = <?php $staff->listTodaysAppointment('Awaiting'); ?>;
-                if (rawData.status != 'error') {
-                    populateAppointemnts(rawData);
-                } else {
-                    // front end team will add the page segment here 
+                function getUrlVars() {
+                    var vars = [],
+                        hash;
+                    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                    for (var i = 0; i < hashes.length; i++) {
+                        hash = hashes[i].split('=');
+                        vars.push(hash[0]);
+                        vars[hash[0]] = hash[1];
+                    }
+                    return vars;
                 }
-
-                // status based
-                $('#show, #status').change(function() {
-                    let status = ($('#show').val());
-                    let day = ($('#status').val());
-
-                    rawData = getRawData(status, day);
-
-                    if (rawData) {
-                        // console.log(rawData);
-                        populateAppointemnts(rawData);
-                    } else {
-                        $('#appointmentListID').html('');
-                        alert('No Record Found');
-                        // front end please add the page segment no record found here 
-                    }
-
-                });
-
-                // Date based
-                $('#datefrom, #dateto').change(function() {
-                    let from = ($('#datefrom').val());
-                    let to = ($('#dateto').val());
-
-                    if (from === "" || to === "") {} else {
-                        $.post('byCMkGnmDa3mXlyfgPh/api/getCustomAppointment.php', {
-                            from: from,
-                            to: to
-                        }, function(data) {
-                            if (data != null) {
-                                rawData = jQuery.parseJSON(data);
-                                populateAppointemnts(rawData);
-                            }
-                        });
+                
+                $.post('byCMkGnmDa3mXlyfgPh/api/changeStatus.php', {
+                    id: getUrlVars()["id"],
+                    status: getUrlVars()["status"]
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        if (results.status == 'passed') window.location.href = 'http://localhost/smartClinicSystem/appointment_list.php';
+                        else alert('A Problem Occur while changing the stsus');
                     }
                 });
-
             });
         </script>
 

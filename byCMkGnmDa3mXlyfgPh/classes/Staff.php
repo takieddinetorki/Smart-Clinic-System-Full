@@ -127,10 +127,13 @@ class Staff
         else echo "Patient Records not found, please register.";
     }
 
+
+    // * Appointment Functionality Begins here 
+
     public function makeAppointment($fields, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'appointment', $fields))
-            echo "A problem occur while making an appointment";
+        if ($this->_db->insert($db, 'appointment', $fields)) return true;
+        else return false;
     }
 
     public function listAllAppointment($db = '_pdo2')
@@ -140,22 +143,80 @@ class Staff
         else echo "There is no appointment to show";
     }
 
-    public function listCustomeAppointment($date, $db = '_pdo2')
+    public function listCustomeAppointment($from, $to, $db = '_pdo2')
     {
-        if ($values = $this->_db->get($db, 'appointment', array('date', '=', $date))->results()) return $values;
-        else "There are no appointments of {$date} to show";
+        $sql = "SELECT * FROM appointment WHERE date BETWEEN ? AND ?";
+
+        if ($values = $this->_db->query($db, $sql, array($from, $to))->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->status = deescape($val->status);
+                    $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                    $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+                }
+                echo json_encode($values);
+            }
+        } else "something went wrong listing custom Appointments";
     }
 
-    public function listUpcomingAppointments($db = '_pdo2')
+    public function listTodaysAppointment($status)
     {
-        if ($values = $this->_db->get($db, 'appointment', array('status', '=', 'Awaiting'))->results()) return $values;
-        else "There is no pending Appointment";
+        $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date) = MONTH(NOW()) AND DAY(date) = DAY(NOW()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "error"));
+    }
+
+    public function listThisWeekAppointments($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE WEEKOFYEAR(date) = WEEKOFYEAR(NOW()) AND YEAR(date) = YEAR(now()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
+    }
+
+    public function listThisMonthAppointments($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date)=MONTH(NOW()) AND status = ?";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
+    }
+
+    public function listUpcomingAppointments($status = 'Awaiting', $db = '_pdo2')
+    {
+        if ($values = $this->_db->get($db, 'appointment', array('status', '=', escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->status = deescape($val->status);
+                $val->patientName = deescape($this->getPatientById($val->patientID)->name);
+                $val->doctorName = deescape($this->getDoctorByID($val->doctorID)->name);
+            }
+            echo json_encode($values);
+        } else "There is no pending Appointment";
     }
 
     public function changeAppointmentStatus($condition_Value, $fields, $db = '_pdo2')
     {
-        if (!$this->_db->update('appointment', 'appointmentID', $condition_Value, $fields, $db))
-            echo 'A problem occur during changing the status';
+        if ($this->_db->update('appointment', 'appointmentID', $condition_Value, $fields, $db)) return true;
+        else return false;
     }
     public function deleteAppointment($condition_Value, $db = '_pdo2')
     {
@@ -876,7 +937,7 @@ class Staff
     }
 
     // this function will get all the billings by cond
-    public function getBillingByCondition($startID=null, $endID =null, $startDate =null, $endDate =null, $db = '_pdo2')
+    public function getBillingByCondition($startID = null, $endID = null, $startDate = null, $endDate = null, $db = '_pdo2')
     {
         $condition = " WHERE 1=1 ";
         $conditional_array = array();
@@ -906,114 +967,129 @@ class Staff
 
     // **Dashboard Functionalitites 
     // appointment Functionality all functions are validated
-    
+
     // this function will get all the appoinment in the current week 
-    public function getAllAppointmentNumberCurrentWeek(){
+    public function getAllAppointmentNumberCurrentWeek()
+    {
         $sql = "SELECT count(*)FROM appointment WHERE YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // this function will get all the appoinment in the current week 
-    public function getAllAppointmentNumberCurrentMonth(){
+    public function getAllAppointmentNumberCurrentMonth()
+    {
         $sql = "select count(*) from appointment where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // this function will get all the appoinment in the current week 
-    public function getAllAppointmentNumberCurrentYear(){
+    public function getAllAppointmentNumberCurrentYear()
+    {
         $sql = "select count(*) from appointment where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // patient functionality for dashbaord
     // patient table need to be modified before use
     // this function will get all the appoinment in the current week 
-    public function getAllPatientNumberCurrentWeek(){
+    public function getAllPatientNumberCurrentWeek()
+    {
         $sql = "SELECT count(*)FROM patients WHERE YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // this function will get all the appoinment in the current week 
-    public function getAllPatientNumberCurrentMonth(){
+    public function getAllPatientNumberCurrentMonth()
+    {
         $sql = "select count(*) from patients where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // this function will get all the appoinment in the current week 
-    public function getAllPatientNumberCurrentYear(){
+    public function getAllPatientNumberCurrentYear()
+    {
         $sql = "select count(*) from patients where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments."; 
+        else echo "Something went wrong while showing the Appointments.";
     }
 
     // Expense functinality 
 
     // this function will get all the sales in the current week 
-    public function getAllExpensesCurrentWeek(){
+    public function getAllExpensesCurrentWeek()
+    {
         $sql = "SELECT SUM(ammount) FROM expenses WHERE YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
     // this function will get all the sales in the current week 
-    public function getAllExpensesCurrentMonth(){
+    public function getAllExpensesCurrentMonth()
+    {
         $sql = "select SUM(ammount) from expenses where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
     // this function will get all the sales in the current week 
-    public function getAllExpensesCurrentYear(){
+    public function getAllExpensesCurrentYear()
+    {
         $sql = "select SUM(ammount) from expenses where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
 
     // Sales functinality 
 
     // this function will get all the sales in the current week 
-    public function getAllSalesCurrentWeek(){
+    public function getAllSalesCurrentWeek()
+    {
         $sql = "SELECT SUM(totalAmount) FROM billing WHERE YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
     // this function will get all the sales in the current week 
-    public function getAllSalesCurrentMonth(){
+    public function getAllSalesCurrentMonth()
+    {
         $sql = "select SUM(totalAmount) from billing where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
     // this function will get all the sales in the current week 
-    public function getAllSalesCurrentYear(){
+    public function getAllSalesCurrentYear()
+    {
         $sql = "select SUM(totalAmount) from billing where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses."; 
+        else echo "Something went wrong while showing the expenses.";
     }
 
 
     // This function will get the number of expenses based on individual accountCode
     // which later on will be needed in the Dashboard functionality to calcualte Expense percentages
-    public function getNumberOfExpensesWeekly($accountCode){
+    public function getNumberOfExpensesWeekly($accountCode)
+    {
         $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
         else echo 'Something went wrong while showing the expenses';
     }
     // Monthly
-    public function getNumberOfExpensesMonthly($accountCode){
+    public function getNumberOfExpensesMonthly($accountCode)
+    {
         $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
         else echo 'Something went wrong while showing the expenses';
     }
     // Yearly
-    public function getNumberOfExpensesYearly($accountCode){
+    public function getNumberOfExpensesYearly($accountCode)
+    {
         $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
         if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
         else echo 'Something went wrong while showing the expenses';
@@ -1024,41 +1100,46 @@ class Staff
     // 1. Get the totoal number of inventory and 2. then get the total number of expiry inventory
 
     // this function will get the totoal number of inventory  
-    public function getAllStocksCurrentWeek(){
+    public function getAllStocksCurrentWeek()
+    {
         $sql = "SELECT count(*) FROM inventory";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) 
-            if ($values == 0)    
+        if ($values = $this->_db->query('_pdo2', $sql)->results())
+            if ($values == 0)
                 return $values;
             else echo "Empty medecines <br />";
-        else echo "Something went wrong while showing the inventory."; 
+        else echo "Something went wrong while showing the inventory.";
     }
     // this function will get the totoal number of expiry inventory  
-    public function getAllExpiredStocksCurrentWeek(){
+    public function getAllExpiredStocksCurrentWeek()
+    {
         $sql = "SELECT count(*) FROM inventory WHERE expiry between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the inventory."; 
+        else echo "Something went wrong while showing the inventory.";
     }
 
     // Stock shortge functionality 
 
     // this function will get the items that will less than 10
-    public function getAllStocksLessThanTen(){
+    public function getAllStocksLessThanTen()
+    {
         // 10 hex value is 3130
         $sql = "SELECT * FROM inventory where quantity < 3130";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the inventory."; 
+        else echo "Something went wrong while showing the inventory.";
     }
 
     // delivery functionality 
-    
+
     // this function will lists the current weeks delevery
-    public function getCurrentWeekDelivery(){
+    public function getCurrentWeekDelivery()
+    {
         $sql = "SELECT * FROM orders YEARWEEK(deliveryDate) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
         else echo 'Something went wrong while showing the weekly deliveries';
     }
     // this function will lists the current months delevery
-    public function getCurrentMonthDelivery(){
+    public function getCurrentMonthDelivery()
+    {
         $sql = "SELECT * FROM orders WHERE deliveryDate between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
         else echo 'Something went wrong while showing the monthly deliveries';

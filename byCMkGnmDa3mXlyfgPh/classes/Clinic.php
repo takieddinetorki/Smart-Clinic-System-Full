@@ -61,8 +61,8 @@ class Clinic
         $appointment = array(
             array('appointmentID','varchar(12)','PRIMARY KEY'), 
             array('date','date','NOT NULL'), 
-            array('time','time','NOT NULL'), 
-            array('status','varchar(10)','NOT NULL'), 
+            array('time','varchar(10)','NOT NULL'), 
+            array('status','varchar(50)','NOT NULL'),  
             array('patientID','varchar(12)','NOT NULL'), 
             array('doctorID','varchar(12)','NOT NULL'),
             array('FOREIGN KEY (patientID) REFERENCES patients(patientID)'),

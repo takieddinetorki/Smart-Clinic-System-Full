@@ -1,9 +1,19 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+$staff = new Staff;
+$user = new User;
+$clinic = new ClinicDB;
+if (!$user->loggedIn()) {
+    Redirect::to('index.php');
+}
+?>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinic Name</title>
+    <title>Smart Clinic <?php if ($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName', 'clinicID', $user->data()->clinicID));
+                        else echo " Log in to show clinic" ?></title>
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/appointment.css">
     <link rel="stylesheet" href="styles/footer.css">
@@ -36,8 +46,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -89,10 +98,10 @@
             <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
                 <div class="small_sidebar">Patients</div>
             </a>
-            <a href="appointment.php"  class="nav-active"><img src="src/img/appointment-icon.svg" alt="" />
+            <a href="appointment.php" class="nav-active"><img src="src/img/appointment-icon.svg" alt="" />
                 <div class="small_sidebar">Appointments</div>
             </a>
-            <a href="diagnostic(PAGE).php" ><img src="src/img/diagnostic.svg" alt="" />
+            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
                 <div class="small_sidebar"> Diagnostic Report</div>
             </a>
             <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
@@ -125,8 +134,7 @@
                     <div class="card calender-wrapper d-grid">
                         <div class="form-inline chead">
                             <button id="previous" onclick="previous()">&#60;</button>
-                            <h2 style="white-space: nowrap;" class="card-header" id="monthAndYear" data-language='en'
-                                data-min-view="months" data-view="months" data-date-format="MM yyyy"></h2>
+                            <h2 style="white-space: nowrap;" class="card-header" id="monthAndYear" data-language='en' data-min-view="months" data-view="months" data-date-format="MM yyyy"></h2>
                             <button id="next" onclick="next()">&#62;</button>
                         </div>
                         <table class=" table table-bordered ">
@@ -171,106 +179,19 @@
                                     <div>
                                         <label for="from">From</label>
                                         <span>
-                                            <input type="text" id="tacky" class="datepicker-here" data-language='en'>
+                                            <input style="width: 130px;" type="date" id="datefrom">
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                     <div style="margin-top: 10px;">
                                         <label for="to">To</label>
-                                        <span>
-                                            <input type="text" id="tacky" class="datepicker-here ml-inp"
-                                                data-language='en'>
+                                        <span style="margin-left: 17px;">
+                                            <input style="width: 130px;" type="date" id="dateto">
                                             <i class="far fa-calendar-alt"></i> </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-                            <div class="table" style="min-width: 390px;">
-                                <div style="height: 350px;" class="table-wrapper-scroll-y">
-                                    <div class="appointment-card">
-                                        <div class="appointment-time">
-                                            <span>9.00 - 10.00 AM</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Patient ID</span>
-                                            <span>JA191100001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Patient Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Doctor ID</span>
-                                            <span>JA0001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Doctor Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <span style="margin-right: 50px;">Status</span>
-                                            <div class="appointment-status">
-                                                <span>Completed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="appointment-card">
-                                        <div class="appointment-time">
-                                            <span>9.00 - 10.00 AM</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Patient ID</span>
-                                            <span>JA191100001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Patient Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Doctor ID</span>
-                                            <span>JA0001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Doctor Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <span style="margin-right: 50px;">Status</span>
-                                            <div class="appointment-status">
-                                                <span>Completed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="appointment-card">
-                                        <div class="appointment-time">
-                                            <span>9.00 - 10.00 AM</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Patient ID</span>
-                                            <span>JA191100001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Patient Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 40px;">Doctor ID</span>
-                                            <span>JA0001</span>
-                                        </div>
-                                        <div>
-                                            <span style="margin-right: 10px;">Doctor Name</span>
-                                            <span>Jane Doe</span>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <span style="margin-right: 50px;">Status</span>
-                                            <div class="appointment-status">
-                                                <span>Completed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="table-wrapper-scroll-y" id="listAllAppointment" style="overflow-y: hidden;"></div>
                     </div>
 
                 </div>
@@ -280,7 +201,7 @@
                 <div class="footer-div">
                     <div class="icons-div">
                         <div class="icons">
-                            <i class="fas fa-plus"></i>
+                        <a style="color: rgb(68,66,66);" href="./appointment_form.php"><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="icons">
                             <i class="fas fa-file-alt"></i>
@@ -293,6 +214,122 @@
                 </div>
             </div>
 
+
+            <!-- Backend Scripts goes here by Yeasin -->
+
+            <script>
+                // this function will populate the screen with appointments and the rawData simply means the json data from backend
+                function populateAppointemnts(rawData) {
+                    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    let appointments = `<div class="table" style="min-width: 390px;">
+                                <div style="height: 350px;" class="table-wrapper-scroll-y">`;
+
+                    function tConv24(time24) {
+                        var ts = time24;
+                        var H = +ts.substr(0, 2);
+                        var h = (H % 12) || 12;
+                        h = (h < 10) ? ("0" + h) : h; // leading 0 at the left for 1 digit hours
+                        var ampm = H < 12 ? " AM" : " PM";
+                        ts = h + ts.substr(2, 3) + ampm;
+                        return ts;
+                    };
+
+                    rawData.forEach((e) => {
+                        appointments += `
+                        <div class="appointment-card">
+                                <div class="appointment-time">
+                                    <span>${tConv24(e.time)}</span>
+                                </div>
+                                <div>
+                                    <span style="margin-right: 40px;">Patient ID</span>
+                                    <span>${e.patientID}</span>
+                                </div>
+                                <div>
+                                    <span style="margin-right: 10px;">Patient Name</span>
+                                    <span>${e.patientName}</span>
+                                </div>
+                                <div>
+                                    <span style="margin-right: 40px;">Doctor ID</span>
+                                    <span>${e.doctorID}</span>
+                                </div>
+                                <div>
+                                    <span style="margin-right: 10px;">Doctor Name</span>
+                                    <span>${e.doctorName}</span>
+                                </div>
+                                <div style="display: flex;">
+                                    <span style="margin-right: 50px;">Status</span>
+                                    <div class="appointment-status">
+                                        <span>${e.status}</span>
+                                    </div>
+                                </div>
+                            </div>
+                    `;
+                    });
+                    appointments += `</div></div>`;
+
+                    $('#listAllAppointment').html(appointments);
+                }
+
+                function getRawData(status, day) {
+                    if (status == 'Awaiting' && day == 'Today') return <?php $staff->listTodaysAppointment('Awaiting'); ?>;
+                    else if (status == 'Awaiting' && day == 'This week') return <?php $staff->listThisWeekAppointments('Awaiting'); ?>;
+                    else if (status == 'Awaiting' && day == 'This month') return <?php $staff->listThisMonthAppointments('Awaiting'); ?>;
+                    else if (status == 'Completed' && day == 'Today') return <?php $staff->listTodaysAppointment('Completed'); ?>;
+                    else if (status == 'Completed' && day == 'This week') return <?php $staff->listThisWeekAppointments('Completed'); ?>;
+                    else if (status == 'Completed' && day == 'This month') return <?php $staff->listThisMonthAppointments('Completed'); ?>;
+                    else if (status == 'Cancelled' && day == 'Today') return <?php $staff->listTodaysAppointment('Cancelled'); ?>;
+                    else if (status == 'Cancelled' && day == 'This week') return <?php $staff->listThisWeekAppointments('Cancelled'); ?>;
+                    else if (status == 'Cancelled' && day == 'This month') return <?php $staff->listThisMonthAppointments('Cancelled'); ?>;
+                }
+
+                $(document).ready(function() {
+                    let rawData;
+                    rawData = <?php $staff->listTodaysAppointment('Awaiting') ?>;
+                    if (rawData.status != 'error') {
+                        populateAppointemnts(rawData);
+                    } else {
+                        // front end team will add the page segment here 
+                    }
+
+                    // status based
+                    $('#show, #status').change(function() {
+                        let status = ($('#show').val());
+                        let day = ($('#status').val());
+
+                        rawData = getRawData(status, day);
+                        console.log(rawData);
+
+                        if (rawData) {
+                            // console.log(rawData);
+                            populateAppointemnts(rawData);
+                        } else {
+                            $('#appointmentListID').html('');
+                            alert('No Record Found');
+                            // front end please add the page segment no record found here 
+                        }
+
+                    });
+
+                    // Date based
+                    $('#datefrom, #dateto').change(function() {
+                        let from = ($('#datefrom').val());
+                        let to = ($('#dateto').val());
+
+                        if (from === "" || to === "") {} else {
+                            $.post('byCMkGnmDa3mXlyfgPh/api/getCustomAppointment.php', {
+                                from: from,
+                                to: to
+                            }, function(data) {
+                                if (data != null) {
+                                    rawData = jQuery.parseJSON(data);
+                                    populateAppointemnts(rawData);
+                                }
+                            });
+                        }
+                    });
+
+                });
+            </script>
 
             <!-- print modal 3 here  0/1 -->
             <div id="modal5" class="modal">
@@ -313,15 +350,13 @@
                         <div class="form-div-modal5">
                             <label for="from" class="label-modal5">Starting Date</label>
                             <span>
-                                <input type="text" id="from" class="inp-modal5 datepicker-here"><i
-                                    class="far fa-calendar-alt"></i>
+                                <input type="text" id="from" class="inp-modal5 datepicker-here"><i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
                         <div class="form-div-modal5">
                             <label for="to" class="label-modal5">Ending Date</label>
                             <span>
-                                <input type="text" id="to" class="inp-modal5 datepicker-here"><i
-                                    class="far fa-calendar-alt"></i>
+                                <input type="text" id="to" class="inp-modal5 datepicker-here"><i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
                         <div class="form-div-modal5">
@@ -366,7 +401,7 @@
         function show(x) {
             document.getElementById(x).style.display = "flex";
         }
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             var ele = document.getElementsByClassName("modal");
             for (var i = 0; i < ele.length; i++) {
                 if (event.target == ele[i]) {
@@ -374,7 +409,6 @@
                 }
             }
         }
-
     </script>
 
 

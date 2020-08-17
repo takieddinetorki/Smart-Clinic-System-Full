@@ -8,7 +8,7 @@ if ($user->loggedIn()) {
 }
 
 $user = new User;
-$login = $user->login(Input::get('username'), Input::get('password'));
+$login = $user->login(Input::get('username',true), Input::get('password',true));
 if ($login) {
     System::logActivity('g', 1, 'Login Successful');
     Redirect::to('../../dashboard.php');

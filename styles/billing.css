@@ -30,6 +30,8 @@
   width: 90px;
   text-overflow: ellipsis;
   font-family: inherit;
+  -webkit-appearance: auto;
+    -moz-appearance: auto;
 }
 
 .status {
@@ -42,6 +44,7 @@
           flex-direction: column;
   margin-top: -16px;
   font-family: inherit;
+  
 }
 
 #dpdwn1::after {
@@ -209,6 +212,8 @@ select {
   -webkit-filter: drop-shadow(2px 2px 2px gray);
   background-color: white;
   font-family: inherit;
+  background-position-y: 0;
+  
 }
 
 .far {

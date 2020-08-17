@@ -108,6 +108,8 @@
     background: none;
     padding-left: 6px;
     font-family: inherit;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
   }
   
   .top-rows {

@@ -325,8 +325,8 @@
 .label-circle {
   position: absolute;
   color: white;
-  bottom: 65px;
-  right: 42px;
+  bottom: 73px;
+    right: 51px;
   font-size: 10px;
 }
 
@@ -361,5 +361,8 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  #expense-graph-div-p{
+    margin-bottom: 0;
   }
 }

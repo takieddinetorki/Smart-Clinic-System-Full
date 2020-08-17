@@ -107,6 +107,7 @@
         <div class="main">
             <!-- save modal here -->
             <div id="modal3" class="modal pdl">
+            <div class="modal-wrap">
                 <div class="modalContent3">
                     <form style="margin-top: 7px;">
                         <div style="text-align: center;margin-top: 25px;">
@@ -119,19 +120,22 @@
                     </form>
                 </div>
             </div>
+            </div>
             <!-- save modal till here -->
             <!-- delete modal here -->
             <div id="modal2" class="modal pdl">
-                <div class="modalContent2">
-                    <form style="margin-top: 7px;">
-                        <div style="text-align: center;margin-top: 25px;">
-                            <p class="label-modal2">Are you sure to delete?</label>
-                                <div class="form-div-modal2">
-                                    <button class="modalBtn2" type="submit">Yes</button>
-                                    <button class="modalBtn2" type="submit">No</button>
-                                </div>
-                        </div>
-                    </form>
+                <div class="modal-wrap">
+                    <div class="modalContent2">
+                        <form style="margin-top: 7px;">
+                            <div style="text-align: center;margin-top: 25px;">
+                                <p class="label-modal2">Are you sure to delete?</label>
+                                    <div class="form-div-modal2">
+                                        <button class="modalBtn2" type="submit">Yes</button>
+                                        <button class="modalBtn2" type="submit">No</button>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <!-- delete modal till here -->
@@ -179,7 +183,6 @@
                                     <input type="file" style="width:100%;height:100%;transform: translateY(-180px);background:rgba(0, 0, 255, 0.397);opacity:0" name="fileToUpload" onchange="readURL(this);" id="file-inputs" />
 
                                     <!--<input type="file" style="width:100%;height:100%;opacity:1;" name="fileToUpload" onchange="readURL(this);" id="jqdate" />-->
-
                                 </div>
                             </div>
                         </div>

@@ -175,6 +175,7 @@
     </div>
     <!-- save modal here -->
     <div id="modal3" class="modal pdl">
+    <div class="modal-wrap">
         <div class="modalContent3">
             <form style="margin-top: 7px;">
                 <div style="text-align: center;margin-top: 25px;">
@@ -186,6 +187,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
     <!-- save modal till here -->
 

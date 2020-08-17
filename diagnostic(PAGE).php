@@ -302,6 +302,7 @@
     <!-- ______________________________________________________________________________________________________________________ -->
     <!-- delete modal here -->
     <div id="modal2" class="modal pdl">
+    <div class="modal-wrap">
         <div class="modalContent2">
             <form style="margin-top: 7px;">
                 <div style="text-align: center;margin-top: 25px;">
@@ -314,9 +315,11 @@
             </form>
         </div>
     </div>
+    </div>
     <!-- delete modal till here -->
     <!-- print modal 9 here  0/1 -->
     <div id="modal13" class="modal pdl">
+    <div class="modal-wrap">
         <div class="modalContent13">
             <form style="margin-top: 7px;">
                 <div class="form-div-modal13">
@@ -350,6 +353,7 @@
                 <button class="modalBtn13" type="submit">PRINT</button>
             </div>
         </div>
+    </div>
     </div>
     <!-- print modal 9 till here 1/1 -->
 

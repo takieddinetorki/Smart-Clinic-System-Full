@@ -166,17 +166,8 @@
                         </div>
 
                     </div>
-
-
-
-
-
                     <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-
-
-
-
-                        <table class="table" style="max-width: 1050; min-width: 1050px;">
+                      <table class="table" style="max-width: 1050; min-width: 1050px;">
                             <thead>
                                 <tr>
                                     <th style="width:70px;border-left: none;">No</th>
@@ -335,6 +326,7 @@
     </div>
     <!-- delete modal here -->
     <div id="modal2" class="modal pdl">
+    <div class="modal-wrap">
         <div class="modalContent2">
             <form style="margin-top: 7px;">
                 <div style="text-align: center;margin-top: 25px;">
@@ -347,9 +339,11 @@
             </form>
         </div>
     </div>
+    </div>
     <!-- delete modal till here -->
     <!-- print modal 1 here  0/1 -->
     <div id="modal1" class="modal pdl">
+    <div class="modal-wrap">
         <div class="modalContent1">
             <form style="margin-top: 7px;">
                 <div class="form-div-modal">
@@ -383,6 +377,7 @@
                 <button class="modalBtn" type="submit">PRINT</button>
             </div>
         </div>
+    </div>
     </div>
     <!-- print modal 1 till here 1/1 -->
 </body>

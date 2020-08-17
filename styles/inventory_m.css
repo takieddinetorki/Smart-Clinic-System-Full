@@ -168,6 +168,7 @@ tbody tr:hover {
 
 .table-nav select,
 .table-nav input {
+  background-position-y: 0;
   width: 110px;
   padding-left: 10px;
   height: 24px;

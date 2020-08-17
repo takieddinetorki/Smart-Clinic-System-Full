@@ -493,3 +493,13 @@ select {
   background-position-x: 96%;
   background-position-y: 5px;
 }
+
+.modal-wrap{
+  margin: auto;
+  margin-top: 250px;
+}
+@media(max-width:800px){
+  .pdl {
+    padding-left: 0 !important;
+}
+}

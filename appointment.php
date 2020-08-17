@@ -296,6 +296,7 @@
 
             <!-- print modal 3 here  0/1 -->
             <div id="modal5" class="modal">
+            <div class="modal-wrap">
                 <div class="modalContent5">
                     <form style="margin-top: 7px;">
                         <div class="form-div-modal5">
@@ -337,6 +338,7 @@
                         <button class="modalBtn5" type="submit">PRINT</button>
                     </div>
                 </div>
+            </div>
             </div>
             <!-- print modal 3 till here 1/1 -->
 

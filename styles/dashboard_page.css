@@ -13,7 +13,9 @@
   margin-bottom: 5px;
   width: 10%;
 }
-
+#expense-graph-div-p{
+  margin-bottom: -50px;
+}
 #graph-1 {
   display: -webkit-box;
   display: -ms-flexbox;

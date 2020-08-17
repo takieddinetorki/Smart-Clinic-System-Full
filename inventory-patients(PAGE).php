@@ -138,14 +138,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-
-
-
-
                         <table class="table" style="max-width: 1020px; min-width: 1020px;">
                             <thead>
                                 <tr>
@@ -274,6 +267,7 @@
                 </div>
                 <!-- delete modal here -->
                 <div id="modal2" class="modal pdl">
+                <div class="modal-wrap">
                     <div class="modalContent2">
                         <form style="margin-top: 7px;">
                             <div style="text-align: center;margin-top: 25px;">
@@ -286,9 +280,11 @@
                         </form>
                     </div>
                 </div>
+                </div>
                 <!-- delete modal till here -->
                 <!-- print modal 6 here  0/1 -->
                 <div id="modal9" class="modal pdl">
+                <div class="modal-wrap">
                     <div class="modalContent9">
                         <form style="margin-top: 7px;">
                             <div class="form-div-modal9">
@@ -309,9 +305,11 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <!-- print modal 6 till here 1/1 -->
                 <!-- barcode modal here -->
                 <div id="modal10" class="modal pdl">
+                <div class="modal-wrap">
                     <div class="modalContent10">
                         <form style="margin-top: 7px;">
                             <div style="text-align: center;margin-top: 25px;">
@@ -323,8 +321,8 @@
                         </form>
                     </div>
                 </div>
+                </div>
                 <!-- barcode modal till here -->
-
 
                 <div class="footer" style="display: block;">
                     <div class="footer-div" style="float: right;">

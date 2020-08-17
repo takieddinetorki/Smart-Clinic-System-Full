@@ -32,8 +32,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -186,8 +185,7 @@
 
                                 </tr>
                             </thead>
-                            <tbody style="max-height: calc(100vh - 380px);min-height: 200px;"
-                                class="table-wrapper-scroll-y">
+                            <tbody style="max-height: calc(100vh - 380px);min-height: 200px;" class="table-wrapper-scroll-y">
                                 <tr>
                                     <td style="width:50px;border-left: none;">1</td>
                                     <td style="width:100px">1/3/2020</td>
@@ -328,8 +326,8 @@
                     <div class="footer-div">
                         <div class="icons-div">
                             <div class="icons">
-                                <a href="billing-form(PAGE).php"> <i class="fas fa-plus"></i></a>
-                               
+                                <a href="billing-form(PAGE).php" style="text-decoration: none;"> <i style="color:#444242" class="fas fa-plus"></i></a>
+
                             </div>
                             <div class="icons" onclick="show('modal6')">
                                 <img src="src/img/printer.png" alt="printer">
@@ -349,66 +347,70 @@
     <!-- ______________________________________________________________________________________________________________________ -->
     <!-- delete modal here -->
     <div id="modal2" class="modal pdl">
-        <div class="modalContent2">
-            <form style="margin-top: 7px;">
-                <div style="text-align: center;margin-top: 25px;">
-                    <p class="label-modal2">Are you sure to delete?</label>
-                    <div class="form-div-modal2">
-                        <button class="modalBtn2" type="submit">Yes</button>
-                        <button class="modalBtn2" type="submit">No</button>
+    <div class="modal-wrap">
+            <div class="modalContent2">
+                <form style="margin-top: 7px;">
+                    <div style="text-align: center;margin-top: 25px;">
+                        <p class="label-modal2">Are you sure to delete?</label>
+                            <div class="form-div-modal2">
+                                <button class="modalBtn2" type="submit">Yes</button>
+                                <button class="modalBtn2" type="submit">No</button>
+                            </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
     <!-- delete modal till here -->
 
     <!-- print modal 4 here  0/1 -->
     <div id="modal6" class="modal pdl">
-        <div class="modalContent6">
-            <form style="margin-top: 15px;">
-                <div class="form-div-modal6 category_1">
-                    <label for="from" class="label-modal6">Starting Date</label>
-                    <span>
-                        <input type="text" id="from" class="inp-modal6 datepicker-here" data-language='en'><i class="far fa-calendar-alt"></i>
-                    </span>
-                </div>
-                <div class="form-div-modal6 category_1">
-                    <label for="to" class="label-modal6">Ending Date</label>
-                    <span>
-                        <input type="text" id="to" class="inp-modal6  datepicker-here" data-language='en'><i class="far fa-calendar-alt"></i>
-                    </span>
-                </div>
-
-
-                <div class="form-div-modal6 category_2">
-                    <label for="from" class="label-modal6">Starting Patient ID</label>
-                    <select type="text" id="from" class="inp-modal6"></select>
-                </div>
-                <div class="form-div-modal6 category_2">
-                    <label for="from" class="label-modal6">Ending Patient ID</label>
-                    <select type="text" id="from" class="inp-modal6"></select>
-                </div>
-
-
-                <div class="form-div-modal6" style="margin-left: -26px;">
-                    <div class="form-div-div-modal6" style="justify-content: flex-end;margin-right: 10px;">
-                        <input type="radio" name="date" id="date" class="inp-radio"
-                            oninput="toggleDiv('category_1','category_2')">
-                        <label for="date" style="width: fit-content;">Date</label>
+        <div class="modal-wrap">
+            <div class="modalContent6">
+                <form style="margin-top: 15px;">
+                    <div class="form-div-modal6 category_1">
+                        <label for="from" class="label-modal6">Starting Date</label>
+                        <span>
+                            <input type="text" id="from" class="inp-modal6 datepicker-here" data-language='en'><i class="far fa-calendar-alt"></i>
+                        </span>
                     </div>
-                    <div class="form-div-div-modal6">
-                        <input type="radio" name="date" id="date" class="inp-radio"
-                            oninput="toggleDiv('category_2','category_1')">
-                        <label for="date">Patient</label>
+                    <div class="form-div-modal6 category_1">
+                        <label for="to" class="label-modal6">Ending Date</label>
+                        <span>
+                            <input type="text" id="to" class="inp-modal6  datepicker-here" data-language='en'><i class="far fa-calendar-alt"></i>
+                        </span>
                     </div>
+
+
+                    <div class="form-div-modal6 category_2">
+                        <label for="from" class="label-modal6">Starting Patient ID</label>
+                        <select type="text" id="from" class="inp-modal6"></select>
+                    </div>
+                    <div class="form-div-modal6 category_2">
+                        <label for="from" class="label-modal6">Ending Patient ID</label>
+                        <select type="text" id="from" class="inp-modal6"></select>
+                    </div>
+
+
+                    <div class="form-div-modal6" style="margin-left: -26px;">
+                        <div class="form-div-div-modal6" style="justify-content: flex-end;margin-right: 10px;">
+                            <input type="radio" name="date" id="date" class="inp-radio" oninput="toggleDiv('category_1','category_2')">
+                            <label for="date" style="width: fit-content;">Date</label>
+                        </div>
+                        <div class="form-div-div-modal6">
+                            <input type="radio" name="date" id="date" class="inp-radio" oninput="toggleDiv('category_2','category_1')">
+                            <label for="date">Patient</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <button class="modalBtn6" type="submit">PRINT</button>
                 </div>
-            </form>
-            <div class="text-center">
-                <button class="modalBtn6" type="submit">PRINT</button>
             </div>
         </div>
     </div>
+
     <!-- print modal 4 till here 1/1 -->
 
 </body>
@@ -426,10 +428,11 @@
             ele2[i].style.display = "none";
         }
     }
+
     function toggleSidebar() {
         document
-                .getElementById("container")
-                .classList.toggle("container-no-sidebar");
+            .getElementById("container")
+            .classList.toggle("container-no-sidebar");
         document.getElementById("toggler").classList.toggle("toggle-icon-placement");
         document.getElementById("sidebar").classList.toggle("small_width");
         var hiddiv = document.getElementsByClassName("small_sidebar");
@@ -447,7 +450,7 @@
     function show(x) {
         document.getElementById(x).style.display = "flex";
     }
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         var ele = document.getElementsByClassName("modal");
         for (var i = 0; i < ele.length; i++) {
             if (event.target == ele[i]) {
@@ -455,7 +458,6 @@
             }
         }
     }
-
 </script>
 
 <script src="src/js/layout.js"></script>

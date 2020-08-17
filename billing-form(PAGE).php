@@ -129,6 +129,7 @@
 
                 <!-- delete modal here -->
                 <div id="modal2" class="modal pdl">
+                <div class="modal-wrap">
                     <div class="modalContent2">
                         <form style="margin-top: 7px;">
                             <div style="text-align: center;margin-top: 25px;">
@@ -141,9 +142,11 @@
                         </form>
                     </div>
                 </div>
+                </div>
                 <!-- delete modal till here -->
                 <!-- save modal here -->
                 <div id="modal3" class="modal pdl">
+                <div class="modal-wrap">
                     <div class="modalContent3">
                         <form style="margin-top: 7px;">
                             <div style="text-align: center;margin-top: 25px;">
@@ -155,6 +158,7 @@
                             </div>
                         </form>
                     </div>
+                </div>
                 </div>
                 <!-- save modal till here -->
                 <div class="scroll-form table-wrapper-scroll-y">
@@ -297,6 +301,7 @@
 
           <!-- billing modal here  0/1 -->
           <div id="modal7" class="modal pdl">
+          <div class="modal-wrap">
             <div class="modalContent7">
                 <form style="margin-top: 7px;">
                     <div class="form-div-modal7">
@@ -316,6 +321,7 @@
                     <button class="modalBtn7" type="submit">Submit</button>
                 </div>
             </div>
+          </div>
         </div>
         <!-- billing modal till here 1/1 -->
 </body>

@@ -234,8 +234,7 @@
   display: flex;
   padding: 5px;
   margin: 5px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#b4b3b3), color-stop(#a3a2a2), to(#848484));
-  background-image: linear-gradient(to right, #b4b3b3, #a3a2a2, #848484);
+  background-color: rgba(255,255,255,0.3);
   text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;

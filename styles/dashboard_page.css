@@ -12,6 +12,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   width: 10%;
+  font-family: inherit;
 }
 #expense-graph-div-p{
   margin-bottom: -50px;
@@ -21,6 +22,7 @@
   display: -ms-flexbox;
   display: flex;
   width: 400px;
+  height: 200px;
   margin-left: 5px;
   border-left: 1px solid #707070;
   border-bottom: 1px solid #707070;
@@ -49,6 +51,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   width: 10%;
+  font-family: inherit;
 }
 
 #graph-2 {
@@ -56,6 +59,7 @@
   display: -ms-flexbox;
   display: flex;
   width: 400px;
+  height: 150px;
   margin-left: 5px;
   border-left: 1px solid #707070;
   border-bottom: 1px solid #707070;

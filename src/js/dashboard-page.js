@@ -1,5 +1,6 @@
 var total_days = 30;
 var container_width = 350;
+// var container_height = 200;
 var MAX_COUNT = 0;
 
 function label_y_axis(data, div, label_gap) {
@@ -20,6 +21,7 @@ function label_y_axis(data, div, label_gap) {
     para.appendChild(node);
     div.appendChild(para);
   }
+  div.style.fontFamily = "'Poppins',sans-serif";
   return maxvalue;
 }
 function createDiv() {}
@@ -70,5 +72,6 @@ function plot_graph2() {
   plot_graph(graph, data, MAX_COUNT, "divG2");
 }
 
-plot_graph1();
-plot_graph2();
+
+  plot_graph1();
+  plot_graph2();

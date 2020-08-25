@@ -142,6 +142,7 @@ td, th{
   padding-right: 40px;
   font-size: 20px;
   color: #333;
+  font-family:inherit;
 }
 
 .dropdown-box {

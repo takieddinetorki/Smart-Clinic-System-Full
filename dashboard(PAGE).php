@@ -256,7 +256,6 @@ $clinic = new ClinicDB;
             </div>
         </div>
     </div>
-
     <script src="src/js/dashboard.js"></script>
     <script src="src/js/dashboard-page.js"></script>
     <script type="text/javascript" src="src/js/layout.js"></script>

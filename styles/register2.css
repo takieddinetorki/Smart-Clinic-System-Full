@@ -1,0 +1,69 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin:auto;
+    width:90%;
+    min-width: 1050px;
+  }
+  
+ #registerForm .title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    width: fit-content;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+  
+  .register-container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+  }
+  #registerForm div{
+      display: flex;
+      width: 100%;
+      margin:15px;
+  }
+    
+  #registerForm div input{
+      width: 70%;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgb(255, 255, 255);
+    filter: drop-shadow(2px 2px 2px rgb(170, 170, 170));
+    -webkit-filter: drop-shadow(2px 2px 2px rgb(170, 170, 170));
+  }
+  #registerForm div label{
+    text-align:left;
+    width: 25%;
+    padding-right: 50px;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+}
+
+#registerForm .submit-btn {
+    display: block;
+    margin-top: 10px;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+#registerForm .submit-btn input {
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    background-color: #444242;
+    color: white;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase;
+    padding: 5px;
+    width: 100px;
+    border-radius: 15px;
+    cursor: pointer;
+}

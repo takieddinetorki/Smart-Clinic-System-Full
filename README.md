@@ -8,8 +8,8 @@
 
 ## First---------------------------------->
 
-Created a new file "sidebar.php" which contacins the code for the sidebar.
-This file is nowincluded in every page just after the navbar.
+Created a new file "sidebar.php" which contains the code for the sidebar.
+This file is now included in every page just after the navbar.
 Every page is calling a function "sidebarActivelink" which is defined in layout.js file.
 The function takes id of the page as the parameter to add the "nav-active" class for that page in sidebar
 
@@ -21,7 +21,7 @@ function sidebarActivelink(id){
 ```
 ## Why?
 
-Making the SideBar Global makes the HTML code a little cleaner
+Making the SideBar Global makes the HTML code a little cleaner. Also sidebar can be easily modified now
 
 ## Second------------------------------------>
 

@@ -16,7 +16,7 @@ $clinic = new ClinicDB;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body >
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -64,43 +64,7 @@ $clinic = new ClinicDB;
             </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <img src="src/img/resize.svg" alt="">
-                </a>
-            </div>
-            <a href="#home"><img src="src/img/home.png" />
-                <div class="small_sidebar">Dashboard</div>
-            </a>
-            <a href="#home" class="nav-active"><img src="src/img/patient.svg" />
-                <div class="small_sidebar">Patients</div>
-            </a>
-            <a href=""><img src="src/img/appointment-icon.svg" alt="" />
-                <div class="small_sidebar">Appointments</div>
-            </a>
-            <a href=""><img src="src/img/diagnostic.svg" alt="" />
-                <div class="small_sidebar"> Diagnostic Report</div>
-            </a>
-            <a href=""><img src="src/img/finance.svg" alt="" />
-                <div class="small_sidebar">Billing</div>
-            </a>
-            <a href=""><img src="src/img/prescription.svg" alt="" />
-                <div class="small_sidebar">Expenses</div>
-            </a>
-            <a href=""><img src="src/img/inventory.svg" alt="" />
-                <div class="small_sidebar">Inventory</div>
-            </a>
-            <a href="#service"><img src="src/img/mc.svg" alt="" />
-                <div class="small_sidebar">Medical Certificate</div>
-            </a>
-            <a href="#clients"><img src="src/img/cash.svg" alt="" />
-                <div class="small_sidebar">Finance Reports</div>
-            </a>
-            <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />
-                <div class="small_sidebar">Backup & Table Setup</div>
-            </a>
-        </div>
+        <?php include 'sidebar.php';?>
 
         <div class="main">
             <div style="width:100%; max-width: fit-content ">

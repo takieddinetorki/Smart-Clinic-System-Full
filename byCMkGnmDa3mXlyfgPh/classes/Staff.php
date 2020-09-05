@@ -41,10 +41,10 @@ class Staff
         $user = new User();
         $clinicID =  $user->data()->clinicID;
 
-        $sql = "SELECT A.appointmentID, A.date, A.time, A.status, P.patientID, P.name AS patientName, P.NRIC, D.doctorID, D.name AS doctorName
-               FROM {$clinicID}.appointment A 
-               JOIN {$clinicID}.patients P ON A.patientID = P.patientID
-               JOIN smart_clinic.doctor D ON A.doctorID = D.doctorID 
+        $sql = "SELECT A.appointmentID, A.date, A.time, A.status, P.patientID, P.name AS patientName, D.doctorID, D.name AS doctorName
+               FROM appointment A 
+               JOIN patients P ON A.patientID = P.patientID
+               JOIN doctors D ON A.doctorID = D.doctorID 
                WHERE A.appointmentID = ?";
 
         if ($values = $this->_db->query($db, $sql, array($val))->first()) return $values;
@@ -220,8 +220,8 @@ class Staff
     }
     public function deleteAppointment($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'appointment', array('appointmentID', '=', $condition_Value)))
-            echo "A problem occur while deleting the appointment";
+        if ($this->_db->delete($db, 'appointment', array('appointmentID', '=', $condition_Value))) return true;
+        else return false;
     }
 
     public function getDoctorName($id, $db = '_pdo2')

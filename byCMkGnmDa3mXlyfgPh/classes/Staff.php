@@ -837,8 +837,6 @@ class Staff
     // inventory module functions goes here 
 
 
-
-
     // Yeasin => This function will insert a diagnosis_report 
     public function addDiagnosisReport($field, $db = '_pdo2')
     {
@@ -1145,6 +1143,42 @@ class Staff
         else echo 'Something went wrong while showing the monthly deliveries';
     }
 
+
+
+    //inventory functionality
+    //YY => this function list all inventory
+    public function listAllInventory($db = '_pdo2')
+    {
+        $sql = 'select * from inventory';
+        if ($values = $this->_db->query($db, $sql)->results()) echo json_encode($values);
+        else echo "There is no inventory to show";
+    }
+
+    //YY => this function list all item codes to put in dropdown list
+    public function getAllItemCodes($db = '_pdo2')
+    {
+        $sql = 'select distinct itemCode from inventory';
+        if ($values = $this->_db->query($db, $sql)->results()) echo json_encode($values);
+        else echo "";
+    }
+
+    //YY => this function get inventory by start and end item codes
+    public function getCustomInventoryByItemCode($start, $end, $db = '_pdo2')
+    {
+        if($start == '') $start = null;
+        if($end == '') $end = null;
+
+        $sql = 'select * from inventory where 
+                (? is null and itemCode <= ?) or
+                (itemCode >= ? and ? is null) or
+                (itemCode between ? and ?)
+                ';
+        if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end))->results()) {
+            echo json_encode($values);
+        }else {
+            echo "Something went wrong while showing the Inventory.";
+        } 
+    }
 
     // **** End of Dashbaord functionality
 }

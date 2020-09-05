@@ -1,3 +1,12 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+$staff = new Staff;
+$user = new User;
+$clinic = new ClinicDB;
+if (!$user->loggedIn()) {
+    Redirect::to('index.php');
+}
+?>
 <html lang="en">
 
 <head>
@@ -21,7 +30,7 @@
     <script src="src/js/i18n/datepicker.en.js"></script>
 </head>
 
-<body onload="sidebarActivelink('inventory(PAGE)')">
+<body>
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -84,21 +93,17 @@
 
             <div style="width: 100%; max-width: 1020px;">
                 <div class="tabl">
-
-
                     <div class="table-nav">
                         <div style="display: flex;">
                             <div class="tablenav-indiv">
                                 <label for="sid">Starting Item Code</label>
                                 <select name="sid" id="sid">
-                                    <option value="">Test</option>
                                 </select>
                             </div>
                             <div>
                                 <label style="margin-left:20px;" class="ml-0" for="eid">Ending Item
                                     Code</label>
                                 <select name="eid" id="esid">
-                                    <option value="">Test</option>
                                 </select>
                             </div>
                         </div>
@@ -110,139 +115,163 @@
                         </div>
                     </div>
 
-
-
                     <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-
-
-
-
-                        <table class="table" style="max-width: 1020px; min-width: 1020px;">
+                        <table class="table" style="max-width: 1020px; min-width: 1020px;"  id="listAllInventory">
                             <thead>
                                 <tr>
                                     <th style="width:50px;border-left: none;">No</th>
-                                    <th style="width:130px">ITEM CODE <i class="fas fa-sort"></i></th>
+                                    <th style="width:130px" id='itemCodeTh'>ITEM CODE <i class="fas fa-sort"></i></th>
                                     <th style="width:470px">ITEM NAME <i class="fas fa-sort"></i></th>
                                     <th style="width:180px">EXPIRY DATE <i class="fas fa-sort"></i></th>
                                     <th style="width: 150px; padding-left: 20px; border-right: none;">STOCK (UNIT)<i
                                             class="fas fa-sort"></i></th>
-
                                 </tr>
                             </thead>
                             <tbody style="max-height: calc(100vh - 310px);min-height: 200px;"
                                 class="table-wrapper-scroll-y">
-                                <tr>
-                                    <td style="width:50px;border-left: none;">1</td>
-                                    <td style="width:130px">Cell</td>
-                                    <td style="width:470px">Cell</td>
-                                    <td style="width:180px">1/3/2020</td>
-                                    <td style=" width:164px;border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
-                                    <td>1/3/2020</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-
                             </tbody>
                         </table>
-
                     </div>
-
                 </div>
+
+                <script>
+                    function getDate(_date) {
+                        let newDate = new Date(_date);
+                        const date = newDate.getDate();
+                        const month = newDate.getMonth() + 1;
+                        const year = newDate.getFullYear();
+                        return date + "-" + month + "-" + year;
+                    }
+
+                    function populateInventory(rawData) {
+                        let inventories = '';
+                        let index = 1;
+                        rawData.forEach((e) => {
+                            inventories += `
+                            <tr onclick="inventoryOnClick('${e.inventoryID}');">
+                                <td style="width:50px;border-left: none;">${index++}</td>
+                                <td style="width:130px">${e.itemCode}</td>
+                                <td style="width:470px">${e.itemName}</td>
+                                <td style="width:180px">${getDate(e.expiry)}</td>
+                                <td style=" width:164px;border-right:none">${e.quantity}</td>
+                            </tr>
+                            `;
+                        });
+                        $('#listAllInventory tbody').html(inventories);
+                    }
+
+                    function populateItemCodeList(rawData, elementId, startValue=null) {
+                        var x = document.getElementById(elementId);
+                        let option = new Option("","");
+                        x.add(option);
+                        rawData.forEach((e) => {
+                            if((startValue && e.itemCode >= startValue) || startValue == null) {
+                                var x = document.getElementById(elementId);
+                                let option = new Option(e.itemCode,e.itemCode);
+                                x.add(option);
+                            }
+                        });
+                    }
+
+                    function inventoryOnClick(id) {
+                        //go to inventory details
+                    }
+
+                    function sortByAttribute(prop) {
+                        return function(a, b) {
+                            if(a[prop] > b[prop]) return 1;
+                            else if(a[prop] < b[prop]) return -1;
+                            else return 0;
+                        }
+                    }
+
+                    $(document).ready(function() {
+                        let inventoryData = <?php $staff->listAllInventory(); ?>;
+                        inventoryData.sort(sortByAttribute("itemCode"));
+                        populateInventory(inventoryData);
+
+                        let itemCodeData = <?php $staff->getAllItemCodes(); ?>;
+                        populateItemCodeList(itemCodeData, "sid");
+                        populateItemCodeList(itemCodeData, "esid");
+
+                        //Table sorter
+                        $('th').click(function(){
+                            var table = $(this).parents('table').eq(0)
+                            var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+                            this.asc = !this.asc;
+                            if (!this.asc) {
+                                rows = rows.reverse()
+                            }
+                            for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+                        });
+
+                        function comparer(index) {
+                            return function(a, b) {
+                                var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                                return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+                            }
+                        }
+
+                        function getCellValue(row, index){ 
+                            return $(row).children('td').eq(index).text() 
+                        }
+
+                        //Drop down on change
+                        $('#sid').change(function() {
+                            let start = ($('#sid').val());    
+                            let end = ($('#esid').val());
+
+                            if(start !== '') {
+                                $('#esid').empty();
+                                let itemCodeData = <?php $staff->getAllItemCodes(); ?>;
+                                populateItemCodeList(itemCodeData, "esid", start);
+                                if(end < start) {
+                                    document.getElementById("esid").value = '';
+                                }
+                            }
+
+                            if(start == '' && end == '') {
+                                let inventoryData = <?php $staff->listAllInventory(); ?>;
+                                inventoryData.sort(sortByAttribute("itemCode"));
+                                populateInventory(inventoryData);
+                            }else {
+                                end = ($('#esid').val());
+                                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getCustomInventory.php', {
+                                    start: start,
+                                    end: end
+                                }, function(data) {
+                                    if (data != null) {
+                                        let inventoryData = jQuery.parseJSON(data);
+                                        populateInventory(inventoryData);
+                                    }
+                                });
+                            }
+                        });
+
+                        $('#esid').change(function() {
+                            let start = ($('#sid').val());    
+                            let end = ($('#esid').val());
+                            if(start == '' && end == '') {
+                                let inventoryData = <?php $staff->listAllInventory(); ?>;
+                                inventoryData.sort(sortByAttribute("itemCode"));
+                                populateInventory(inventoryData);
+                            }else {
+                                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getCustomInventory.php', {
+                                    start: start,
+                                    end: end
+                                }, function(data) {
+                                    if (data != null) {
+                                        let inventoryData = jQuery.parseJSON(data);
+                                        inventoryData.sort(sortByAttribute("itemCode"));
+                                        populateInventory(inventoryData);
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
+
+
                 <!-- delete modal here -->
                 <div id="modal2" class="modal pdl">
                 <div class="modal-wrap">

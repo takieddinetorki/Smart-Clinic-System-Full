@@ -11,7 +11,7 @@ if (Input::exists()) {
             $staff = new Staff();
             try {
                 // print_r($staff->listAllAppointment());
-                print_r($staff->listCustomeAppointment(Input::get('search')));
+                // print_r($staff->listCustomeAppointment(Input::get('search')));
                 // print_r($staff->listUpcomingAppointments());
                 // $staff->changeAppointmentStatus(Input::get('search'),array(
                 //     'status' => 'Completed'

@@ -31,7 +31,9 @@ if (!$user->loggedIn()) {
     <script src="src/js/i18n/datepicker.en.js"></script>
 </head>
 
-<body onload="sidebarActivelink('appointment')">
+
+
+<body>
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -83,7 +85,45 @@ if (!$user->loggedIn()) {
                 </div>
             </div>
         </div>
-        <?php include 'sidebar.php';?>
+
+        <div class="sidebar" id="sidebar">
+            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
+                <a href="" onclick=" return false">
+                    <img src="src/img/resize.svg" alt="">
+                </a>
+            </div>
+            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
+                <div class="small_sidebar">Dashboard</div>
+            </a>
+            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
+                <div class="small_sidebar">Patients</div>
+            </a>
+            <a href="appointment.php" class="nav-active"><img src="src/img/appointment-icon.svg" alt="" />
+                <div class="small_sidebar">Appointments</div>
+            </a>
+            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
+                <div class="small_sidebar"> Diagnostic Report</div>
+            </a>
+            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
+                <div class="small_sidebar">Billing</div>
+            </a>
+            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
+                <div class="small_sidebar">Expenses</div>
+            </a>
+            <a href="inventory (PAGE).php"><img src="src/img/inventory.svg" alt="" />
+                <div class="small_sidebar">Inventory</div>
+            </a>
+            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
+                <div class="small_sidebar">Medical Certificate</div>
+            </a>
+            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
+                <div class="small_sidebar">Finance Reports</div>
+            </a>
+            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
+                <div class="small_sidebar">Backup & Table Setup</div>
+            </a>
+        </div>
+
         <div class="main">
             <div class="head">
                 <h1 style="text-transform: uppercase;">Appointments</h1>
@@ -196,7 +236,7 @@ if (!$user->loggedIn()) {
 
                     rawData.forEach((e) => {
                         appointments += `
-                        <div class="appointment-card">
+                        <div class="appointment-card" style="margin-top: 50px;">
                                 <div class="appointment-time">
                                     <span>${tConv24(e.time)}</span>
                                 </div>
@@ -222,6 +262,15 @@ if (!$user->loggedIn()) {
                                         <span>${e.status}</span>
                                     </div>
                                 </div>
+                                <div style="display: flex;">
+                                    <span style="margin-right: 50px;">Action</span>
+                                    <div style="width: 150px; display:inline;">
+                                <a style="color: rgb(85,26,139);" href="./editAppointment.php?id=${e.appointmentID}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a style="color: rgb(85,26,139);" href="./deleteAppointment.php?id=${e.appointmentID}&status=Cancelled"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </div>
+                                </div>
+                                
                             </div>
                     `;
                     });
@@ -257,9 +306,9 @@ if (!$user->loggedIn()) {
                         let day = ($('#status').val());
 
                         rawData = getRawData(status, day);
-                        console.log(rawData);
+                        // console.log(rawData);
 
-                        if (rawData) {
+                        if (rawData.status != 'error') {
                             // console.log(rawData);
                             populateAppointemnts(rawData);
                         } else {
@@ -293,7 +342,6 @@ if (!$user->loggedIn()) {
 
             <!-- print modal 3 here  0/1 -->
             <div id="modal5" class="modal">
-            <div class="modal-wrap">
                 <div class="modalContent5">
                     <form style="margin-top: 7px;">
                         <div class="form-div-modal5">
@@ -333,7 +381,6 @@ if (!$user->loggedIn()) {
                         <button class="modalBtn5" type="submit">PRINT</button>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- print modal 3 till here 1/1 -->
 

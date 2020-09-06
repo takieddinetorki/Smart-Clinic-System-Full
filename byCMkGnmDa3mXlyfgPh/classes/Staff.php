@@ -721,7 +721,7 @@ class Staff
     {
         $sql = "SELECT itemCode FROM medicine";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) {
-            echo "<option value=''></option>";
+            echo "<option selected disabled hidden></option>";
             foreach ($values as $value) {
                 foreach ($value as $data) {
                     echo "<option value={$data}>{$data}</option>";
@@ -762,6 +762,7 @@ class Staff
     {
         if (!$this->_db->insert($db, 'inventory', $field))
             echo "A problem occur while creating the inventory.";
+        return true;
     }
 
     //Yeasin => This function will delete inventory in the DB
@@ -769,19 +770,21 @@ class Staff
     {
         if (!$this->_db->delete($db, 'inventory', array('inventoryID', '=', $condition_Value)))
             echo "A Problem occur during deleting the inventory.";
+        return true;
     }
 
     //Yeasin => This function will Edit inventory in the DB
-    public function editInventroy($condition_Value, $fields, $db = '_pdo2')
+    public function editInventory($condition_Value, $fields, $db = '_pdo2')
     {
         if (!$this->_db->update('inventory', 'inventoryID', $condition_Value, $fields, $db))
             echo "A Problem occur during editing the inventory.";
+        return true;
     }
 
     // Yeasin => This function will get the inventory information 
     public function getInventoryByID($val, $db = '_pdo2')
     {
-        $sql = "SELECT * FROM inventory WHERE inventoryID = ?";
+        $sql = "SELECT E.*, A.name FROM inventory E join medicine A on E.itemCode = A.itemCode WHERE inventoryID = ?";
         if ($value = $this->_db->query($db, $sql, array($val))->first()) return $value;
         else echo 'Inventory ID not found';
     }
@@ -1149,8 +1152,15 @@ class Staff
     //YY => this function list all inventory
     public function listAllInventory($db = '_pdo2')
     {
-        $sql = 'select * from inventory';
-        if ($values = $this->_db->query($db, $sql)->results()) echo json_encode($values);
+        $sql = 'select E.*, A.name from inventory E join medicine A on E.itemCode = A.itemCode';
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
         else echo "There is no inventory to show";
     }
 
@@ -1168,13 +1178,19 @@ class Staff
         if($start == '') $start = null;
         if($end == '') $end = null;
 
-        $sql = 'select * from inventory where 
-                (? is null and itemCode <= ?) or
-                (itemCode >= ? and ? is null) or
-                (itemCode between ? and ?)
+        $sql = 'select E.*, A.name from inventory E
+                join medicine A on E.itemCode = A.itemCode where 
+                (? is null and E.itemCode <= ?) or
+                (E.itemCode >= ? and ? is null) or
+                (E.itemCode between ? and ?)
                 ';
         if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end))->results()) {
-            echo json_encode($values);
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
         }else {
             echo "Something went wrong while showing the Inventory.";
         } 

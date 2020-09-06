@@ -1,11 +1,11 @@
 <?php
-require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
-$staff = new Staff;
-$user = new User;
-$clinic = new ClinicDB;
-if (!$user->loggedIn()) {
-    Redirect::to('index.php');
-}
+    require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+    $staff = new Staff;
+    $user = new User;
+    $clinic = new ClinicDB;
+    if (!$user->loggedIn()) {
+        Redirect::to('index.php');
+    }
 ?>
 <html lang="en">
 
@@ -148,10 +148,10 @@ if (!$user->loggedIn()) {
                         let index = 1;
                         rawData.forEach((e) => {
                             inventories += `
-                            <tr onclick="inventoryOnClick('${e.inventoryID}');">
+                            <tr onclick="window.location='inventory_form (PAGE).php?id=${e.inventoryID}';">
                                 <td style="width:50px;border-left: none;">${index++}</td>
                                 <td style="width:130px">${e.itemCode}</td>
-                                <td style="width:470px">${e.itemName}</td>
+                                <td style="width:470px">${e.name}</td>
                                 <td style="width:180px">${getDate(e.expiry)}</td>
                                 <td style=" width:164px;border-right:none">${e.quantity}</td>
                             </tr>
@@ -171,10 +171,6 @@ if (!$user->loggedIn()) {
                                 x.add(option);
                             }
                         });
-                    }
-
-                    function inventoryOnClick(id) {
-                        //go to inventory details
                     }
 
                     function sortByAttribute(prop) {

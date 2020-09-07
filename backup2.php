@@ -77,6 +77,9 @@
         </div>
 
         <?php include 'sidebar.php';?>
+
+
+
         <div class="main">
             <div class="head">
                 <h1>BACKUP & TABLE SETUP</h1>
@@ -241,35 +244,32 @@
             </div>
 
             <div id="doctors-tab" class="tab-content" style="width: 100%; max-width: 600px;">
-
-
-
                 <div class="tabl">
 
                     <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-                        <table class="table" style="max-width: 600px; min-width: 600px;">
+                        <table class="table doctor-table" style="max-width: 600px; min-width: 600px;">
                             <thead>
                                 <tr>
-                                    <th style="width:150px">Patient ID <i class="fas fa-sort"></i></th>
+                                    <th style="width:150px">Doctor ID <i class="fas fa-sort"></i></th>
                                     <th style="width:451px">Name <i class="fas fa-sort"></i></th>
                                 </tr>
                             </thead>
                             <tbody style="max-height: calc(100vh - 300px);min-height: 200px;"
                                 class="table-wrapper-scroll-y">
                                 <tr>
-                                    <td style="width:150px">JA000906000</td>
+                                    <td style="width:150px">JA0009060001</td>
                                     <td style="width:450px">JOHN DOE</td>
                                 </tr>
                                 <tr>
-                                    <td style="width:150px">JA000906000</td>
+                                    <td style="width:150px">JA0009060002</td>
                                     <td style="width:450px">JOHN DOE</td>
                                 </tr>
                                 <tr>
-                                    <td style="width:150px">JA000906000</td>
+                                    <td style="width:150px">JA0009060003</td>
                                     <td style="width:450px">JOHN DOE</td>
                                 </tr>
                                 <tr>
-                                    <td style="width:150px">JA000906000</td>
+                                    <td style="width:150px">JA0009060004</td>
                                     <td style="width:450px">JOHN DOE</td>
                                 </tr>
                                 <tr>
@@ -311,13 +311,13 @@
                 <div class="footer">
                     <div class="footer-div">
                         <div class="icons-div">
-                            <div class="icons">
+                            <div class="icons" onclick="show('add-doctor')">
                                 <i class="fas fa-plus"></i></a>
                             </div>
-                            <div class="icons">
-                                <img src="src/img/printer.png" alt="printer">
+                            <div class="icons" onclick="show('print-doctor')">
+                                    <img src="src/img/printer.png" alt="printer">
                             </div>
-                            <div class="icons">
+                            <div class="icons" onclick="show('modal2')">
                                 <img src="src/img/rubbish-bin.png" alt="delete">
                             </div>
                         </div>
@@ -328,140 +328,50 @@
             </div>
 
             <div id="report-tab" class="tab-content">
-
                 <div id="report-page1" class="report-box-container">
 
-                    <div class="report-box">
-
+                    <div class="report-box symptoms">
                         <div class="report-box-title">Symptoms</div>
-                        <div class="report-box-content  table-wrapper-scroll-y">
-
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        <div class="report-box-content  table-wrapper-scroll-y"></div>
                         <div class="report-box-footer">
-                            <div class="icon-container">
+                            <div class="icon-container add-content">
                                 <i class="fas fa-plus plusIcon" aria-hidden="true"></i>
                             </div>
                         </div>
-
-
                     </div>
 
-                    <div class="report-box">
+                    <div class="report-box diagnosis">
                         <div class="report-box-title">Diagnosis</div>
                         <div class="report-box-content table-wrapper-scroll-y"></div>
                         <div class="report-box-footer">
-                            <div class="icon-container">
+                            <div class="icon-container add-content">
                                 <i class="fas fa-plus plusIcon" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div id="report-page2" style="display: none;" class="report-box-container">
 
-                    <div class="report-box">
-
+                    <div class="report-box treatment">
                         <div class="report-box-title">Treatment</div>
-                        <div class="report-box-content  table-wrapper-scroll-y">
-
-                            <div class="report-content">
-                                <p>Fever</p>
-                                <div>
-                                    <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                    <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                </div>
-                            </div>
-
-
-                        </div>
-
+                        <div class="report-box-content  table-wrapper-scroll-y"></div>
                         <div class="report-box-footer">
-                            <div class="icon-container">
+                            <div class="icon-container add-content">
                                 <i class="fas fa-plus plusIcon" aria-hidden="true"></i>
                             </div>
                         </div>
-
-
                     </div>
 
-                    <div class="report-box">
+                    <div class="report-box allergy">
                         <div class="report-box-title">Allergy</div>
                         <div class="report-box-content table-wrapper-scroll-y"></div>
                         <div class="report-box-footer">
-                            <div class="icon-container">
+                            <div class="icon-container add-content">
                                 <i class="fas fa-plus plusIcon" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="dots-div">
@@ -469,57 +379,27 @@
                         style="background-color: black;"></span>
                     <span class="dot" onclick="toggleFooterDot(this,'report-page2','report-page1')"></span>
                 </div>
-
             </div>
 
 
             <div id="expenses-tab" class="tab-content">
-
-
-
                 <div class="expenses-box-container">
-
                     <div class="expenses-box">
-
                         <div class="expenses-box-title">
-
                             <div style="min-width: 200px; border-right: 1px solid #707070;">Account Code</div>
                             <div style="width: 500px">Account Name</div>
-
                         </div>
                         <div class="expenses-box-content  table-wrapper-scroll-y">
-
                             <div class="expenses-table-line"></div>
-
-                            <div class="expenses-content">
-                                <div style="min-width: 200px; text-align: center; ">1000</div>
-                                <div class="account-name">
-                                    Utility Bills
-                                    <div>
-                                        <button><i class="fas fa-pen" aria-hidden="true"></i></button>
-                                        <button><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
                         </div>
 
                         <div>
-                            <div class="icon-container">
+                            <div class="icon-container add-content">
                                 <i class="fas fa-plus plusIcon" aria-hidden="true"></i>
                             </div>
                         </div>
-
-
                     </div>
-
-
-
                 </div>
-
-
             </div>
 
             <div id="inventory-tab">
@@ -857,9 +737,13 @@
         </div>
     </div>
 
-
-
 </body>
+
+
+
+
+
+
 <script src="src/js/backup2.js"></script>
 <script type="text/javascript" src="src/js/layout.js"></script>
 <script type="text/javascript">
@@ -899,6 +783,230 @@
         }
     }
 </script>
+
+
+<!-- Kuben 7/9/20 line 788 to 1003-->
+<script>
+    $(document).ready(function() {
+
+        // Doctor  tab
+        let selected_doctor_id;
+        let selected_doctor_name;
+        
+        // when table row is clicked, get doctor id and name, saved in variable for backend use
+        $('table.doctor-table tbody tr').click(function() {
+            $("table.doctor-table tbody tr").each(function() {
+                $(this).css('background-color','')
+            });
+            $(this).css('background-color','rgba(148, 148, 255, 0.5)')
+
+            let table_row = $(this).children().toArray()
+            selected_doctor_id = table_row[0].innerHTML
+            selected_doctor_name = table_row[1].innerHTML
+        });
+
+        // when table row is double clicked, open edit gui
+        $('table.doctor-table tbody tr').dblclick(function() {
+            $('#edit-doctor input[name=doctor-id]').val(selected_doctor_id)
+            $('#edit-doctor input[name=doctor-name]').val(selected_doctor_name)
+            $('#edit-doctor').css('display','flex')             
+        });
+
+        // Diagnosis report tab
+        // Add new row when plus button clicked
+        $("#report-tab .add-content").click(function() {
+            $(this).closest('.report-box').find('.report-box-content').prepend(`
+                <div class="report-content">
+                    <input type="text" class="diagnosis-report-input">
+                    <div>
+                        <button style="display:none;"><i class="fas fa-pen edit" aria-hidden="true"></i></button>
+                        <button><i class="fas fa-save save" aria-hidden="true"></i></button>
+                        <button><i class="fas fa-trash-alt delete" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            `)
+        });
+
+        // for each row
+        // when delete button clicked
+        $('#report-tab').on('click', '.report-content .delete', function(){
+            $(this).parentsUntil(".report-box-content").detach()
+        });
+
+        // when save button clicked
+        $('#report-tab').on('click', '.report-content .save', function(){
+            var input_value = $(this).closest('.report-content').find('input').val()
+            $(this).closest('.report-content').find('input').detach()
+            $(this).parent().hide()
+            $(this).parents().eq(1).find('.edit').parent().show()
+
+            $(this).parents().eq(2).prepend(`
+                <p>${input_value}</p>
+            `)
+        });
+
+        // when edit button clicked
+        $('#report-tab').on('click', '.report-content .edit', function(){
+            var current_value = $(this).closest('.report-content').find('p').text()
+            $(this).closest('.report-content').find('p').detach()
+            $(this).parent().hide()
+            $(this).parents().eq(1).find('.save').parent().show()
+            $(this).parents().eq(2).prepend(`
+            <input type="text" value="${current_value}" class="diagnosis-report-input">
+            `)
+        });
+
+
+        // Expenses tab
+        // Add new row when plus button clicked
+        $("#expenses-tab .add-content").click(function() {
+            $(this).closest('.expenses-box').find('.expenses-box-content .expenses-table-line').after(`
+                <div class="expenses-content">
+                    <div class="acc-code-container" style="min-width:200px; text-align:center;"><input name="acc-code" type="text" class="diagnosis-report-input"></div>
+                    <div class="account-name">
+                        <input name="acc-name" type="text" class="diagnosis-report-input">
+                        <div>
+                            <button style="display:none;"><i class="fas fa-pen edit" aria-hidden="true"></i></button>
+                            <button><i class="fas fa-save save" aria-hidden="true"></i></button>
+                            <button><i class="fas fa-trash-alt delete" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `)
+        });
+
+        // for each row
+        // when delete button clicked
+        $('#expenses-tab').on('click', '.expenses-content .delete', function(){
+            $(this).parentsUntil(".expenses-box-content").detach()
+        });
+
+        // when save button clicked
+        $('#expenses-tab').on('click', '.expenses-content .save', function(){
+            var account_code = $(this).closest('.expenses-content').find('input[name="acc-code"]').val()
+            var account_name = $(this).closest('.expenses-content').find('input[name="acc-name"]').val()
+
+            $(this).closest('.expenses-content').find('input[name="acc-code"]').detach()
+            $(this).closest('.expenses-content').find('input[name="acc-name"]').detach()
+
+            $(this).parent().hide()
+            $(this).parents().eq(1).find('.edit').parent().show()
+
+            $(this).closest('.expenses-content').find('.acc-code-container').append(`
+                ${account_code}
+            `)
+
+            $(this).closest('.account-name').prepend(`
+                <span>${account_name}</span>
+            `)
+        });
+
+        // when edit button clicked
+        $('#expenses-tab').on('click', '.expenses-content .edit', function(){
+            var account_code_val = $(this).closest('.expenses-content').find('.acc-code-container').text().trim()
+            var account_name_val = $(this).closest('.account-name').text().trim()
+
+            $(this).closest('.expenses-content').find('.acc-code-container').empty()
+            $(this).closest('.account-name').children('span').detach()
+
+            $(this).parent().hide()
+            $(this).parents().eq(1).find('.save').parent().show()
+
+            $(this).closest('.expenses-content').find('.acc-code-container').prepend(`
+                <input name="acc-code" type="text" value="${account_code_val}" class="diagnosis-report-input">
+            `)
+
+            $(this).closest('.account-name').prepend(`
+                <input name="acc-name" type="text" value="${account_name_val}" class="diagnosis-report-input">
+            `)
+        });
+    });
+
+</script>
+
+<style>
+    .diagnosis-report-input{
+        background:rgba(255,255,255,0.2);
+        padding:5px;
+        border:none;
+        border-bottom:1px solid black
+    }
+</style>
+
+
+<!-- Add doctor popup -->
+<div id="add-doctor" class="modal pdl">
+    <div class="modalContent9">
+        <div class="text-center">
+            <div style="font-weight: bold;">DOCTORS</div>
+        </div>
+        <form style="margin-top: 7px;">  
+            <div class="form-div-modal9">
+                <label for="sid" class="label-modal9" style="width: 51%;">Doctor ID</label>
+                <input name="doctor-id" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9" >
+                <label for="eid" class="label-modal9" style="width: 51%;">Doctor Name</label>
+                <input name="doctor-name" type="text" class="inp-modal9"  style="width: 180px;font-size: 18px;">
+            </div>
+        </form>
+        <div class="text-center">
+            <button class="modalBtn9" type="submit" style="margin-left: 0px;">ADD</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- print Doctor popup -->
+<div id="print-doctor" class="modal pdl">
+    <div class="modalContent9">
+        <form style="margin-top: 7px;">
+            <div class="form-div-modal9">
+                <label for="sid" class="label-modal9" style="width: 51%;">Starting Doctor ID</label>
+                <select name="sid" id="sid" class="inp-modal9">
+                    <option value="">00906000</option>
+                </select>
+            </div>
+            <div class="form-div-modal9">
+                <label for="eid" class="label-modal9" style="width: 51%;">Ending Doctor ID</label>
+                <select name="eid" id="eid" class="inp-modal9">
+                    <option value="">00906000</option>
+                </select>
+            </div>
+        </form>
+        <div class="text-center">
+            <button class="modalBtn9" type="submit" style="margin-left: 0px;">PRINT</button>
+        </div>
+    </div>
+</div>
+
+<!-- edit doctor popup -->
+<div id="edit-doctor" class="modal pdl">
+    <div class="modalContent9">
+        <div class="text-center">
+            <div style="font-weight: bold;">DOCTORS</div>
+        </div>
+        <form style="margin-top: 7px;">  
+            <div class="form-div-modal9">
+                <label for="sid" class="label-modal9" style="width: 51%;">Doctor ID</label>
+                <input name="doctor-id" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9" >
+                <label for="eid" class="label-modal9" style="width: 51%;">Doctor Name</label>
+                <input name="doctor-name" type="text" class="inp-modal9"  style="width: 180px;font-size: 18px;">
+            </div>
+        </form>
+        <div class="text-center">
+            <button class="modalBtn9" type="submit" style="margin-left: 0px;">SAVE</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <!-- save modal here -->
 <div id="modal3" class="modal pdl">
@@ -976,5 +1084,15 @@
     </div>
 </div>
 <!-- print modal 6 till here 1/1 -->
+
+
+
+
+
+
+
+
+
+
 
 </html>

@@ -546,6 +546,7 @@ hr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  align-items:center
 }
 
 .modalBtn9 {
@@ -559,6 +560,7 @@ hr {
   font-weight: bold;
   color: white;
   font-family: inherit;
+  cursor: pointer;
 }
 
 .modalBtn9:hover {

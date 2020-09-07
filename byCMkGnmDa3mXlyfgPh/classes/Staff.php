@@ -806,9 +806,17 @@ class Staff
     // Yeasin => This function will search an inventory item
     public function searchInventory($value, $searchKey, $db = '_pdo2')
     {
-        $sql = "select E.itemCode, A.name, E.expiry, E.quantity from inventory E join medicine A on E.itemCode = A.itemCode where {$searchKey} LIKE '%{$value}%'";
-        if ($values = $this->_db->query($db, $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Inventory.";
+        $sql = "select E.inventoryID, E.itemCode, A.name, E.expiry, E.quantity from inventory E join medicine A on E.itemCode = A.itemCode where A.{$searchKey} LIKE '%{$value}%'";
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }else {
+            echo json_encode("No inventory found.");
+        }
     }
 
     // Yeasin => This function will search an inventory item by barcode
@@ -1194,6 +1202,57 @@ class Staff
         }else {
             echo "Something went wrong while showing the Inventory.";
         } 
+    }
+
+
+    //YY => this function get purchase order list
+    public function listAllPurchaseOrder($db = '_pdo2')
+    {
+        $sql = 'select o.*, v.name from orders o join vendors v on o.vendorCode = v.vendorCode';
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
+        else echo "There is no purchase order to show";
+    }
+    
+    //YY => this function get purchase order by condition
+    public function getCustomPurchaseOrder($start, $end, $from, $to, $db = '_pdo2')
+    {
+        if($start == '') $start = null;
+        if($end == '') $end = null;
+        if($from == '') $from = null;
+        if($to == '') $to = null;
+
+        if(($start==null && $end==null) || ($from==null && $to==null)) $condition = ' or ';
+        else $condition = 'and';
+
+            $sql = 'select O.*, V.name from orders O join vendors V on O.vendorCode = V.vendorCode where
+            (
+                (? is null and  O.vendorCode <= ?) or
+                (O.vendorCode >= ? and ? is null) or
+                (O.vendorCode between ? and ?)
+            ) ' . $condition . '
+            (
+                (? is null and  O.deliveryDate <= ?) or
+                (O.deliveryDate >= ? and ? is null) or
+                (O.deliveryDate between ? and ?)
+            )
+            ';
+        
+        if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end, $from, $to, $from, $to, $from, $to))->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
+        else echo json_encode("There is no purchase order to show.");
     }
 
     // **** End of Dashbaord functionality

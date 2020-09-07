@@ -41,20 +41,22 @@
             </div>
 
             <div class="search-bar">
-                <div class="dropdown-box">
-                    <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                <form id="searchForm">
+                    <div class="dropdown-box">
+                        <input type="text" name="search" id="searchValue" autocomplete="off" />
+                        <a href="#" id="searchButton" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
+                                alt="" /></a>
 
-                    <div class="searchbar-dropdown">
-                        <input type="radio" id="search-by-id" name="src" />
-                        <label for="search-by-id">Search by ID</label>
-                        <br />
-                        <br />
-                        <input type="radio" id="search-by-name" name="src" />
-                        <label for="search-by-name">Search by Name</label>
+                        <div class="searchbar-dropdown">
+                            <input type="radio" id="search-by-code" name="src" value="itemCode"/>
+                            <label for="search-by-id">Search by Code</label>
+                            <br />
+                            <br />
+                            <input type="radio" id="search-by-name" name="src" value="name"/>
+                            <label for="search-by-name">Search by Name</label>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div class="nav-images">
@@ -98,12 +100,14 @@
                             <div class="tablenav-indiv">
                                 <label for="sid">Starting Item Code</label>
                                 <select name="sid" id="sid">
+                                    <option value=""></option>
                                 </select>
                             </div>
                             <div>
                                 <label style="margin-left:20px;" class="ml-0" for="eid">Ending Item
                                     Code</label>
                                 <select name="eid" id="esid">
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -146,24 +150,26 @@
                     function populateInventory(rawData) {
                         let inventories = '';
                         let index = 1;
-                        rawData.forEach((e) => {
-                            inventories += `
-                            <tr onclick="window.location='inventory_form (PAGE).php?id=${e.inventoryID}';">
-                                <td style="width:50px;border-left: none;">${index++}</td>
-                                <td style="width:130px">${e.itemCode}</td>
-                                <td style="width:470px">${e.name}</td>
-                                <td style="width:180px">${getDate(e.expiry)}</td>
-                                <td style=" width:164px;border-right:none">${e.quantity}</td>
-                            </tr>
-                            `;
-                        });
+                        if(Array.isArray(rawData)) {
+                            rawData.forEach((e) => {
+                                inventories += `
+                                <tr ondblclick="window.location='inventory_form (PAGE).php?id=${e.inventoryID}';">
+                                    <td style="display:none;">${e.inventoryID}</td>
+                                    <td style="width:50px;border-left: none;">${index++}</td>
+                                    <td style="width:130px">${e.itemCode}</td>
+                                    <td style="width:470px">${e.name}</td>
+                                    <td style="width:180px">${getDate(e.expiry)}</td>
+                                    <td style=" width:164px;border-right:none">${e.quantity}</td>
+                                </tr>
+                                `;
+                            });
+                        }else {
+                            inventories = rawData;
+                        }
                         $('#listAllInventory tbody').html(inventories);
                     }
 
                     function populateItemCodeList(rawData, elementId, startValue=null) {
-                        var x = document.getElementById(elementId);
-                        let option = new Option("","");
-                        x.add(option);
                         rawData.forEach((e) => {
                             if((startValue && e.itemCode >= startValue) || startValue == null) {
                                 var x = document.getElementById(elementId);
@@ -173,22 +179,36 @@
                         });
                     }
 
-                    function sortByAttribute(prop) {
-                        return function(a, b) {
-                            if(a[prop] > b[prop]) return 1;
-                            else if(a[prop] < b[prop]) return -1;
-                            else return 0;
-                        }
+                    function deleteInventory() {
+                        var selected = [];
+                        $("#listAllInventory tr.selected").each(function(){
+                            selected.push($('td:first', this).html());
+                        });
+                        selected.forEach((id) => {
+                            console.log('selected id:', id);
+                            $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
+                                id: id,
+                                action: 'delete'
+                            }, function(data) {
+                                if (data != null) {
+                                    var results = jQuery.parseJSON(data);
+                                    if (results.status == 'passed') ;
+                                    else alert('A Problem Occur while deleting the inventory');
+                                }
+                            });
+                        })
+                        window.location.reload(true);
                     }
 
                     $(document).ready(function() {
                         let inventoryData = <?php $staff->listAllInventory(); ?>;
-                        inventoryData.sort(sortByAttribute("itemCode"));
                         populateInventory(inventoryData);
 
                         let itemCodeData = <?php $staff->getAllItemCodes(); ?>;
                         populateItemCodeList(itemCodeData, "sid");
                         populateItemCodeList(itemCodeData, "esid");
+                        populateItemCodeList(itemCodeData, "modalSid");
+                        populateItemCodeList(itemCodeData, "modalEsid");
 
                         //Table sorter
                         $('th').click(function(){
@@ -213,6 +233,16 @@
                         }
 
                         //Drop down on change
+                        $('#modalSid').change(function() {
+                            let modalStart = ($('#modalSid').val()); 
+                            if(modalStart !== '') {
+                                $('#modalEsid').empty();
+                                let itemCodeData = <?php $staff->getAllItemCodes(); ?>;
+                                populateItemCodeList(itemCodeData, "modalEsid", modalStart);
+                                document.getElementById("modalEsid").value = '';
+                            }
+                        });
+
                         $('#sid').change(function() {
                             let start = ($('#sid').val());    
                             let end = ($('#esid').val());
@@ -228,7 +258,6 @@
 
                             if(start == '' && end == '') {
                                 let inventoryData = <?php $staff->listAllInventory(); ?>;
-                                inventoryData.sort(sortByAttribute("itemCode"));
                                 populateInventory(inventoryData);
                             }else {
                                 end = ($('#esid').val());
@@ -249,7 +278,6 @@
                             let end = ($('#esid').val());
                             if(start == '' && end == '') {
                                 let inventoryData = <?php $staff->listAllInventory(); ?>;
-                                inventoryData.sort(sortByAttribute("itemCode"));
                                 populateInventory(inventoryData);
                             }else {
                                 $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getCustomInventory.php', {
@@ -258,12 +286,39 @@
                                 }, function(data) {
                                     if (data != null) {
                                         let inventoryData = jQuery.parseJSON(data);
-                                        inventoryData.sort(sortByAttribute("itemCode"));
                                         populateInventory(inventoryData);
                                     }
                                 });
                             }
                         });
+
+                        //search
+                        $('#searchButton').click(function(){ 
+                            let value = ($('#searchValue').val()); 
+                            let searchKey = $('input[name=src]:checked', '#searchForm').val();
+                            if(searchKey) {
+                                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/searchInventory.php', {
+                                    searchKey: searchKey,
+                                    value: value
+                                }, function(data) {
+                                    if (data != null) {
+                                        let inventoryData = jQuery.parseJSON(data);
+                                        populateInventory(inventoryData);
+                                    }
+                                });
+                            }
+                            return false; 
+                        });
+
+                        //select row on table 
+                        $("#listAllInventory tr").click(function(e){
+                            if(e.ctrlKey) {
+                                $(this).toggleClass('selected');
+                                console.log('ctrl key');
+                            }
+                        });
+
+
                     });
                 </script>
 
@@ -276,8 +331,8 @@
                             <div style="text-align: center;margin-top: 25px;">
                                 <p class="label-modal2">Are you sure to delete?</label>
                                 <div class="form-div-modal2">
-                                    <button class="modalBtn2" type="submit">Yes</button>
-                                    <button class="modalBtn2" type="submit">No</button>
+                                    <button class="modalBtn2" type="submit" onclick="deleteInventory(); return false;">Yes</button>
+                                    <button class="modalBtn2" type="button" onclick="closeModal('modal2'); return false;">No</button>
                                 </div>
                             </div>
                         </form>
@@ -291,15 +346,15 @@
                     <div class="modalContent9">
                         <form style="margin-top: 7px;">
                             <div class="form-div-modal9">
-                                <label for="sid" class="label-modal9">Starting Item Code</label>
-                                <select name="sid" id="sid" class="inp-modal9">
-                                    <option value="">00906000</option>
+                                <label for="modalSid" class="label-modal9">Starting Item Code</label>
+                                <select name="sid" id="modalSid" class="inp-modal9">
+                                    <option selected disabled hidden></option>
                                 </select>
                             </div>
                             <div class="form-div-modal9">
-                                <label for="eid" class="label-modal9">Ending Item Code</label>
-                                <select name="eid" id="eid" class="inp-modal9">
-                                    <option value="">00906000</option>
+                                <label for="modalEsid" class="label-modal9">Ending Item Code</label>
+                                <select name="eid" id="modalEsid" class="inp-modal9">
+                                    <option selected disabled hidden></option>
                                 </select>
                             </div>
                         </form>
@@ -380,6 +435,9 @@
 <script>
     function show(x) {
         document.getElementById(x).style.display = "flex";
+    }
+    function closeModal(x) {
+        document.getElementById(x).style.display = "none";
     }
     window.onclick = function (event) {
         var ele = document.getElementsByClassName("modal");

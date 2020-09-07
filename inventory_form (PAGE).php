@@ -240,8 +240,9 @@
 
         function deleteInventory() {
             if(getUrlVars()["id"]) {
-                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/deleteInventory.php', {
+                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
                     id: getUrlVars()["id"],
+                    action: 'delete'
                 }, function(data) {
                     if (data != null) {
                         var results = jQuery.parseJSON(data);
@@ -294,11 +295,12 @@
                 event.preventDefault();
                 if(getUrlVars()["id"]) {
                     //edit  
-                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/editInventory.php', {
+                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
                         id: getUrlVars()["id"],
                         itemCode: $('#itemCode').val(),
                         expiryDate: $('#expiryDate').val(),
-                        quantity: $('#stock').val()
+                        quantity: $('#stock').val(),
+                        action: 'edit'
                     }, function(data) {
                         if (data != null) {
                             var results = jQuery.parseJSON(data);
@@ -308,10 +310,11 @@
                     });
                 }else {
                     //add new inventory
-                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/addInventory.php', {
+                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
                         itemCode: $('#itemCode').val(),
                         expiryDate: $('#expiryDate').val(),
-                        quantity: $('#stock').val()
+                        quantity: $('#stock').val(),
+                        action: 'add'
                     }, function(data) {
                         if (data != null) {
                             var results = jQuery.parseJSON(data);

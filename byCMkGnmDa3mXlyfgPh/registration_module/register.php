@@ -34,7 +34,6 @@ if (Input::exists()) {
 ?>
 <!-- Yash commented this, modified the variables in the index.php/Registration form -->
 
-
 <!-- <style>
 input {
     margin: 5px;

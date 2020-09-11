@@ -32,7 +32,9 @@ if (Input::exists()) {
         }
     }
 ?>
-<style>
+<!-- Yash commented this, modified the variables in the index.php/Registration form -->
+
+<!-- <style>
 input {
     margin: 5px;
 }
@@ -96,4 +98,4 @@ input {
     <input type="submit" value="Register" name="submit" />
     <input type="hidden" nanme="token" value="<?php echo Token::generate(); ?>">
 </form>
-<a href="../index.php">Home</a>
+<a href="../index.php">Home</a> -->

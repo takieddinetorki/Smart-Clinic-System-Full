@@ -29,6 +29,13 @@ class User
         }
     }
 
+    //this function created by Yash for Updating the profile through the My Profile page
+    public function updateProfile($table, $fields = array(),$condtionKey,$condtionValue) {
+        if (!$this->_db->update($table,$condtionKey,$condtionValue, $fields)) {
+            throw new Exception("Sorry! There was a problem updating your account please try again later or contact us!");
+        }
+    }
+
     public function find($staffID = null, $user = null) {
         if ($user) {
             $data = $this->_db->get('_pdo', 'staff', array('username', '=', $user));

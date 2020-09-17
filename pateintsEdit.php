@@ -206,13 +206,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer" style="margin-top:0">
+                <div class="footer">
                     <div class="footer-div">
                         <div class="dots-div">
                             <span class="dot"></span>
-                            <a href="medical-history(PAGE).php" style="text-decoration: none;color:black"><span class="dot" style="background-color:black"></span></a>
+                            <a href="medical-history-edit.php" style="text-decoration: none;color:black"><span class="dot" style="background-color:black"></span></a>
                         </div>
-                        <!-- <div class="icons-div">
+                        <div class="icons-div">
                             <div class="icons">
                                 <img src="src/img/save-file-option.png" alt="save">
                             </div>
@@ -222,7 +222,7 @@
                             <div class="icons" onclick="show('modal2')">
                                 <img src="src/img/rubbish-bin.png" alt="delete">
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 

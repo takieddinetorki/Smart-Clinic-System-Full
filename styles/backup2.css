@@ -394,7 +394,8 @@
 .expenses-table-line {
   border-right: 1px solid #707070;
   height: 350px;
-  width: 200px;
+  width: 0px;
+  margin-left: 200px;
   position: absolute;
 }
 
@@ -460,6 +461,10 @@ tbody tr td {
 
 tbody tr:hover {
   background-color: rgba(148, 148, 255, 0.5);
+}
+
+tbody tr {
+  cursor: pointer;
 }
 
 tr :first-child {

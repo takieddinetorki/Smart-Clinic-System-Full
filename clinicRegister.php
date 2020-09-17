@@ -46,42 +46,30 @@
                         <h1>CLINIC REGISTRATION</h1>
                     </div>
                     <div>
-                        <label for="clinic1">Clinic Name</label>
-                        <input type="text" id="clinic1">
+                        <label for="name">Clinic Name</label>
+                        <input name="" type="text" id="name">
                     </div>
                     <div>
-                        <label for="clinic2">Abbreviation</label>
-                        <input type="text" id="clinic2">
+                        <label for="abbr">Abbreviation</label>
+                        <input name="" type="text" id="abbr">
                     </div>
                     <div>
-                        <div style="margin:0">
-                            <label for="Company" style="width: 68%;">Clinic No</label>
-                            <input type="text" id="Company">
-                        </div>
-                        <div style="margin:0">
-                            <label for="bank" style="width: 48%;padding-left: 30px;">Bank Account No</label>
-                            <input type="text" id="bank" style="width: 42%;">
-                        </div>
-                    </div>
-                    <div>
-                        <div style="margin:0">
-                            <label for="Company" style="width: 68%;">Sales Tax Register No</label>
-                            <input type="text" id="Company">
-                        </div>
-                        <div style="margin:0">
-                            <label for="bank" style="width: 47%;padding-left: 30px;">GST Register No</label>
-                            <input type="text" id="bank" style="width: 44%;">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="address1">Address</label>
-                        <input type="text" id="address1">
-                    </div>
-                    <div>
-                        <label for="address2"></label>
-                        <input type="text" id="address2">
-                    </div>
 
+                        <label for="bank">Bank Account No</label>
+                        <input name="" type="text" id="bank">
+                    </div>
+                    <div>
+                        <label for="tax">Sales Tax Register No</label>
+                        <input name="" type="text" id="tax">
+                    </div>
+                    <div>
+                        <label for="GST">GST Register No</label>
+                        <input name="" type="text" id="GST">
+                    </div>
+                    <div>
+                        <label for="address">Address</label>
+                        <input name="" type="text" id="address">
+                    </div>
                 </div>
                 <div style="text-align:center;margin:0">
                     <p style="width:100%">By registring your clinic to our system, you hereby agree to our <a href="#">Terms & Conditions</a></p>

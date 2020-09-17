@@ -112,7 +112,7 @@ if ($user->loggedIn()) {
                         case 'lf':
         ?>
                 <script>
-                    const heading = document.querySelector('.heading');
+                    const heading = document.querySelector('.header');
                     const login = document.querySelector('.login');
                     const error = document.getElementById('error');
                     heading.classList.add("header-animate");
@@ -155,53 +155,52 @@ if ($user->loggedIn()) {
                <h1>REGISTRATION</h1> 
 
         </div>
+    <!-- Modidied for registration integration, by Yash -->
 
-        <form id="registerForm" action="" method="post">
+        <form id="registerForm" method="post">
 
             <div class="form-inputs" >
 
                     <div>
                         <label for="clinic-name" >Clinic Name</label>
-                        <select id="clinic-name">
-                            <option>Please select a clinic</option>
-                            <?php
-                            $clinic->getAllClinics();
+                        <select name="clinic" id="clinic-name">
+                            <?php 
+                            $clinicDB = new ClinicDB;
+                            $data = $clinicDB->getAllAbbreviations();
                             ?>
                         </select>
-                        
                     </div>
 
                     <div>
-                        <label for="title-name">Title</label>
-                        <select name="title" id="title-name">
-                            <option value="mr">Mr</option>
-                            <option value="mrs">Mrs</option>
-                            <option value="mrs">Ms</option>
+                        <label for="title">Title</label>
+                        <select id="title-name" name="title">
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="first-name" class="col1-label">
+                        <label for="first-name"  class="col1-label">
                             First Name
                         </label>
-                        <input name="firstName" type="text" id="first-name">
+                        <input type="text" name="firstName" value="<?php echo Input::get('firstName') ?>"  id="first-name">
                     </div>
 
                     <div>
                         <label  for="last-name" class="col1-label">
                             Last Name
                         </label>
-                        <input name="lastName" type="text" id="last-name">
+                        <input type="text" name="lastName"  value="<?php echo Input::get('lastName') ?>"  id="last-name">
                     </div>
 
                     <div>
                         <label for="mobile" class="col1-label">Mobile Number</label>
-                        <input name="mobileNumber"  style="width: 150px;" type="tel" id="mobile">
+                        <input  style="width: 150px;" type="tel" id="mobile"name="mobileNumber" value="<?php echo Input::get('mobileNumber') ?>" >
                     </div>
 
                     <div>
                         <label for="email-address" class="col1-label">Email</label>
-                        <input name="email" type="email" id="email-address">
+                        <input type="email" id="email-address" name="email" value="<?php echo Input::get('email') ?>" >
                     </div>
                     
             </div>
@@ -212,39 +211,55 @@ if ($user->loggedIn()) {
                 <div>
                     <label for="gender" >Gender</label>
                     <select name="gender" id="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">female</option>
+                        <option value="Unspecified">Unspecified</option>
                     </select>
                 </div>
 
                 <div>
                     <label for="birth-date">Birth Date</label>
-                    <input name="birthdate"  style="width: 150px;"  type="text" id="birth-date" class="datepicker-here" data-language='en'>
+                    <input  style="width: 150px;"  type="text" id="birth-date" class="datepicker-here" data-language='en'  name="birthdate" value="<?php echo Input::get('birthdate') ?>" autocomplete="off">
                 </div>
 
                 <div>
                     <label for="user-name">User Name</label>
-                    <input name="username" type="text" id="user-name">
+                    <input type="text" id="user-name"  name="username" value="<?php echo Input::get('username') ?>" autocomplete="off">
                 </div>
 
                 <div>
                     <label for="pass-word" >Password</label>
-                    <input name="password" type="password" id="pass-word">
+                    <input type="password" id="pass-word" name="password" autocomplete="off">
                 </div>
                 
                 <div>
                     <label for="confirn-pass-word" >Confirm Password</label>
-                    <input type="password" id="confirm-pass-word">
+                    <input type="password" id="confirm-pass-word" name="passwordConf" autocomplete="off">
                 </div>
 
             </div>
 
             <div class="submit-btn">
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                 <input name="register" type="submit" value="SUBMIT" />
             </div>
             <div id="register-error" style="color: red;"></div>
         </form>
-
+        <?php
+            if (isset($_POST)) {
+        ?>
+        <script>
+            let form = document.getElementById("registerForm");
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.action = "<?php echo 'byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
+                form.submit();
+            });
+        </script>
+        <?php
+            }
+        ?>
+    <!-- Modidied for registration integration, by Yash -->
     </div>
     </div>
     <script>
@@ -310,12 +325,8 @@ if ($user->loggedIn()) {
         }
 
         function toggleView(hide,show,display='block'){
-
-
             document.querySelector(hide).style.display = 'none'
             document.querySelector(show).style.display = display
-
-
         }
 
     </script>

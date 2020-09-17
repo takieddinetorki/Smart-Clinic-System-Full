@@ -83,7 +83,7 @@ if (!$user->loggedIn()) {
             </div>
         </div>
 
-        <?php include 'sidebar.php';?>
+        <?php include 'sidebar.php'; ?>
 
         <div class="main">
             <div class="head">
@@ -96,17 +96,15 @@ if (!$user->loggedIn()) {
                         <a>
                             <i class="cl-icon fas fa-times-circle" aria-hidden="true" onclick="show('modal3')"></i>
                         </a>
-                        <form class="expenses-form" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/appointment_module/appointment_create.php" method="POST">
+                        <form id="myForm" class="expenses-form">
                             <div>
                                 <label for="account">Patient ID</label>
-                                <select style="width: 150px;" type="text" name="patientID" id="patientID" required>
-                                    <?php $staff->getAllPatientID(); ?>
-                                </select>
+                                <input style="width: 380px;" class="inp-wid" type="text" name="patientID" id="patientID" required disabled>
                             </div>
 
                             <div>
                                 <label for="accountName">Patient Name</label>
-                                <input style="width: 380px;" class="inp-wid" type="text" name="patientName" id="patientName" required>
+                                <input style="width: 380px;" class="inp-wid" type="text" name="patientName" id="patientName" required disabled>
                             </div>
 
                             <div class="date">
@@ -124,7 +122,7 @@ if (!$user->loggedIn()) {
 
                             <div>
                                 <label for="status">Status</label>
-                                <select style="width: 160px;" type="text" name="status" id="" required>
+                                <select style="width: 160px;" type="text" name="status" id="status" required>
                                     <option value="Awaiting">Awaiting</option>
                                     <option value="Awaiting">Cancelled</option>
                                     <option value="Completed">Completed</option>
@@ -133,14 +131,12 @@ if (!$user->loggedIn()) {
 
                             <div>
                                 <label for="account">Doctor ID</label>
-                                <select style="width: 160px;" type="text" name="doctorID" id="doctorID" required>
-                                    <?php $staff->getAllDoctorID(); ?>
-                                </select>
+                                <input style="width: 380px;" class="inp-wid" type="text" id="doctorID" name="doctorID" required disabled>
                             </div>
 
                             <div>
                                 <label for="accountName">Doctor Name</label>
-                                <input style="width: 380px;" class="inp-wid" type="text" id="doctorName" name="doctorName">
+                                <input style="width: 380px;" class="inp-wid" type="text" id="doctorName" name="doctorName" required disabled>
                             </div>
 
                             <input style="margin-top: 20px;" id="inreg-submit" name="register" type="submit" value="SUBMIT" />
@@ -163,58 +159,67 @@ if (!$user->loggedIn()) {
     <script>
         $(document).ready(function() {
 
-            let date = new Date();
-
-            $('#mydate').val(date.toLocaleDateString('en-CA'));
-            $('#mytime').val((date.getHours() < 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes());
-
-            // getting the doctor name from doctor ID
-            $('#doctorID').change(function() {
-                var value = $(this).val();
-                if (value) {
-                    $.post('byCMkGnmDa3mXlyfgPh/api/createAppointment.php', {
-                        value
-                    }, function(data) {
-                        if (data != null) {
-                            var results = jQuery.parseJSON(data);
-                            $('#doctorName').val(results);
-                        }
-                    });
+            function getUrlVars() {
+                var vars = [],
+                    hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+            console.log(getUrlVars()["id"]);
+            $.post('byCMkGnmDa3mXlyfgPh/appointment_module/getAppointment.php', {
+                id: getUrlVars()["id"]
+            }, function(data) {
+                if (data != null) {
+                    var results = jQuery.parseJSON(data);
+                    console.log(results);
+                    $('#patientID').val(results.patientID);
+                    $('#patientName').val(results.patientName);
+                    $('#mydate').val(results.date);
+                    $('#mytime').val(results.time);
+                    $('#status').val(results.status);
+                    $('#doctorID').val(results.doctorID);
+                    $('#doctorName').val(results.doctorName);
                 }
             });
 
-            // getting the patients name from patient ID
-            $('#patientID').change(function() {
-                var value = $(this).val();
-                if (value) {
-                    $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
-                        value
-                    }, function(data) {
-                        if (data != null) {
-                            var results = jQuery.parseJSON(data);
-                            $('#patientName').val(results.name);
-                        }
-                    });
-                }
+            $('#myForm').submit(function() {
+                event.preventDefault();
+                $.post('byCMkGnmDa3mXlyfgPh/appointment_module/editAppointment.php', {
+                    id: getUrlVars()["id"],
+                    status: $('#status').val(),
+                    date: $('#mydate').val(),
+                    time: $('#mytime').val()
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        console.log(results);
+                        if (results.status == 'passed') window.location.href = 'http://localhost/smartClinicSystem/appointment.php';
+                        else alert('A Problem Occur while editing the appointment');
+                    }
+                });
             });
-
         });
     </script>
     <!-- save modal here -->
     <div id="modal3" class="modal pdl">
-    <div class="modal-wrap">
-        <div class="modalContent3">
-            <form style="margin-top: 7px;">
-                <div style="text-align: center;margin-top: 25px;">
-                    <p class="label-modal3">Want to save the changes made?</label>
-                        <div class="form-div-modal3">
-                            <button class="modalBtn3" type="submit">Yes</button>
-                            <button class="modalBtn3" type="submit">No</button>
-                        </div>
-                </div>
-            </form>
+        <div class="modal-wrap">
+            <div class="modalContent3">
+                <form style="margin-top: 7px;">
+                    <div style="text-align: center;margin-top: 25px;">
+                        <p class="label-modal3">Want to save the changes made?</label>
+                            <div class="form-div-modal3">
+                                <button class="modalBtn3" type="submit">Yes</button>
+                                <button class="modalBtn3" type="submit">No</button>
+                            </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
     <!-- save modal till here -->
 

@@ -1,3 +1,12 @@
+<?php
+    require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+    $staff = new Staff;
+    $user = new User;
+    if (!$user->loggedIn()) {
+        Redirect::to('index.php');
+    }
+?>
+
 <html lang="en">
 
 <head>
@@ -20,7 +29,8 @@
     <script src="src/js/i18n/datepicker.en.js"></script>
 </head>
 
-<body>
+<body onload="sidebarActivelink('inventory(PAGE)')">
+
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -74,43 +84,7 @@
             </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <img src="src/img/resize.svg" alt="">
-                </a>
-            </div>
-            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
-                <div class="small_sidebar">Dashboard</div>
-            </a>
-            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
-                <div class="small_sidebar">Patients</div>
-            </a>
-            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
-                <div class="small_sidebar">Appointments</div>
-            </a>
-            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
-                <div class="small_sidebar"> Diagnostic Report</div>
-            </a>
-            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
-                <div class="small_sidebar">Billing</div>
-            </a>
-            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
-                <div class="small_sidebar">Expenses</div>
-            </a>
-            <a href="inventory (PAGE).php" class="nav-active"><img src="src/img/inventory.svg" alt="" />
-                <div class="small_sidebar">Inventory</div>
-            </a>
-            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
-                <div class="small_sidebar">Medical Certificate</div>
-            </a>
-            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
-                <div class="small_sidebar">Finance Reports</div>
-            </a>
-            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
-                <div class="small_sidebar">Backup & Table Setup</div>
-            </a>
-        </div>
+        <?php include 'sidebar.php';?>
         <div class="main">
             <div class="head">
                 <h1>PURCHASE ORDER</h1>
@@ -120,7 +94,7 @@
 
                 <div class="tabl">
                     <div class="cl-btn">
-                        <a href="inventory (PAGE).php" style="text-decoration: none;">
+                        <a href="inventory(PAGE).php" style="text-decoration: none;">
                             <i class="fas fa-times-circle" style="color: #444242;"></i>
                         </a>
                     </div>
@@ -129,13 +103,17 @@
                             <div class="tablenav-indiv">
                                 <label for="sid">Starting Vendor Code</label>
                                 <select name="sid" id="sid">
-                                    <option value="">Test</option>
+                                    <?php
+                                        $staff->getAllVendorCodes();
+                                    ?>
                                 </select>
                             </div>
                             <div>
                                 <label style="margin-left:20px;" class="ml-0" for="eid">Ending Vendor Code</label>
                                 <select name="eid" id="esid">
-                                    <option value="">Test</option>
+                                    <?php
+                                        $staff->getAllVendorCodes();
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -144,7 +122,7 @@
                             <div class="tablenav-indiv">
                                 <label style="margin-left:20px;" class="ml-0" for="from">From</label>
                                 <span>
-                                    <input type="text" id="tacky" class="datepicker-here" data-language='en'>
+                                    <input id="fromDate" class="datepicker-here" data-date-format="yyyy-mm-dd" data-language='en'>
                                     <i class="far fa-calendar-alt" style="font-size: 12;"></i>
                                 </span>
 
@@ -152,7 +130,7 @@
                             <div>
                                 <label for="to">To</label>
                                 <span id="to-span">
-                                    <input type="text" id="tacky" class="datepicker-here" data-language='en'>
+                                    <input id="toDate" class="datepicker-here" data-date-format="yyyy-mm-dd" data-language='en'>
                                     <i class="far fa-calendar-alt" style="font-size: 12;"></i>
                                 </span>
 
@@ -170,7 +148,7 @@
 
 
 
-                        <table class="table" style="max-width: 1050; min-width: 1050px;">
+                        <table class="table" id="listAllPurchaseOrder" style="max-width: 1050; min-width: 1050px;">
                             <thead>
                                 <tr>
                                     <th style="width:70px;border-left: none;">No</th>
@@ -409,6 +387,119 @@
 
 </body>
 
+<script>
+    function getDate(_date) {
+        let newDate = new Date(_date);
+        const date = newDate.getDate();
+        const month = newDate.getMonth() + 1;
+        const year = newDate.getFullYear();
+        return date + "-" + month + "-" + year;
+    }
+
+    function populateTable(rawData) {
+        let purchaseOrder = '';
+        let index = 1;
+        if(Array.isArray(rawData)) {
+            rawData.forEach((e) => {
+            purchaseOrder += `
+                <tr ondblclick="window.location='purchase_order (PAGE).php?id=${e.poNo}';">
+                    <td style="display:none">${e.poNo}</td>
+                    <td style="width:70px;border-left: none;">${index++}</td>
+                    <td style="width:110px">${getDate(e.deliveryDate)}</td>
+                    <td style="width:200px">${e.vendorCode}</td>
+                    <td style="width:370px">${e.name}</td>
+                    <td style="width:150px;">${e.poNo}</td>
+                    <td style=" width:121px;border-right:none">${e.totalAmmount}</td>
+                </tr>
+                `;
+            });
+        }else {
+            purchaseOrder = rawData;
+        }
+        $('#listAllPurchaseOrder tbody').html(purchaseOrder);
+    }
+
+    function queryPurchaseOrder() {
+        let vendorStart = ($('#sid').val()); 
+        let vendorEnd = ($('#esid').val()); 
+        let fromDate = ($('#fromDate').val()); 
+        let toDate = ($('#toDate').val()); 
+
+        if(!vendorStart && !vendorEnd && !fromDate && !toDate) return;
+        $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getCustomPurchaseOrder.php', {
+            start: vendorStart,
+            end: vendorEnd,
+            from: fromDate,
+            to: toDate
+        }, function(data) {
+            if(data != null) {
+                var results = jQuery.parseJSON(data);
+                populateTable(results);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        let data = <?php $staff->listAllPurchaseOrder(); ?>;
+        populateTable(data);
+
+        $('#sid').change(function() {
+            let vendorStart = ($('#sid').val()); 
+            let vendorEnd = ($('#esid').val()); 
+            let options = $('#esid option');
+            if(vendorStart !== '') {
+                for (var i = 0; i < options.length; i++)
+                {
+                    if (options[i].text >= vendorStart)
+                        $(options[i]).css("display", "block");
+                    else
+                        $(options[i]).css("display", "none");
+                }
+                if(vendorEnd < vendorStart) {
+                    $('#esid').val('');
+                }
+            }else {
+                for (var i = 0; i < options.length; i++)
+                {
+                    $(options[i]).css("display", "block");
+                }
+            }
+        });
+
+        $("#fromDate, #toDate").datepicker({
+            onSelect: function(dateText) {
+                queryPurchaseOrder();
+            }
+        });
+
+        $('#sid, #esid').change(function() {
+            queryPurchaseOrder();
+        });
+
+        //Table sorter
+        $('th').click(function(){
+            var table = $(this).parents('table').eq(0)
+            var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+            this.asc = !this.asc;
+            if (!this.asc) {
+                rows = rows.reverse()
+            }
+            for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+        });
+
+        function comparer(index) {
+            return function(a, b) {
+                var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+            }
+        }
+
+        function getCellValue(row, index){ 
+            return $(row).children('td').eq(index).text() 
+        }
+
+    });
+</script>
 </html>
 <script type="text/javascript" src="src/js/layout.js"></script>
 

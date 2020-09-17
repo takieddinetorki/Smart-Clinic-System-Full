@@ -95,6 +95,7 @@ window.addEventListener("click", function (event) {
       currentDropdown = null;
     }
   }
+
 });
 
 /* Toggle page using dot footer in diagnostic page */

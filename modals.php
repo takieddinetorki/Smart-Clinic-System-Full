@@ -59,25 +59,7 @@
             </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <div id="arrow-left"></div>
-                </a>
-            </div>
-
-            <a href="#home" class="nav-active"><img src="src/img/patient.svg" />Patients</a>
-            <a href=""><img src="src/img/appointment-icon.svg" alt="" />Appointments</a>
-            <a href=""><img src="src/img/diagnostic.svg" alt="" />Diagnostic Report</a>
-            <a href=""><img src="src/img/finance.svg" alt="" />Billing</a>
-            <a href=""><img src="src/img/prescription.svg" alt="" />Expenses</a>
-            <a href=""><img src="src/img/inventory.svg" alt="" />Inventory</a>
-            <a href="#service"><img src="src/img/mc.svg" alt="" />Medical Certificate</a>
-            <a href="#clients"><img src="src/img/cash.svg" alt="" />Finance Reports
-            </a>
-            <a href="#contact"><img src="src/img/settings-tools.svg" alt="" />Backup & Table Setup
-            </a>
-        </div>
+        <?php include 'sidebar.php';?>
 
         <div class="main">
             <div>

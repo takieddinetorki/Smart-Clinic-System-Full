@@ -41,10 +41,10 @@ class Staff
         $user = new User();
         $clinicID =  $user->data()->clinicID;
 
-        $sql = "SELECT A.appointmentID, A.date, A.time, A.status, P.patientID, P.name AS patientName, P.NRIC, D.doctorID, D.name AS doctorName
-               FROM {$clinicID}.appointment A 
-               JOIN {$clinicID}.patients P ON A.patientID = P.patientID
-               JOIN smart_clinic.doctor D ON A.doctorID = D.doctorID 
+        $sql = "SELECT A.appointmentID, A.date, A.time, A.status, P.patientID, P.name AS patientName, D.doctorID, D.name AS doctorName
+               FROM appointment A 
+               JOIN patients P ON A.patientID = P.patientID
+               JOIN doctors D ON A.doctorID = D.doctorID 
                WHERE A.appointmentID = ?";
 
         if ($values = $this->_db->query($db, $sql, array($val))->first()) return $values;
@@ -220,8 +220,8 @@ class Staff
     }
     public function deleteAppointment($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'appointment', array('appointmentID', '=', $condition_Value)))
-            echo "A problem occur while deleting the appointment";
+        if ($this->_db->delete($db, 'appointment', array('appointmentID', '=', $condition_Value))) return true;
+        else return false;
     }
 
     public function getDoctorName($id, $db = '_pdo2')
@@ -721,7 +721,7 @@ class Staff
     {
         $sql = "SELECT itemCode FROM medicine";
         if ($values = $this->_db->query('_pdo2', $sql)->results()) {
-            echo "<option value=''></option>";
+            echo "<option selected disabled hidden></option>";
             foreach ($values as $value) {
                 foreach ($value as $data) {
                     echo "<option value={$data}>{$data}</option>";
@@ -762,6 +762,7 @@ class Staff
     {
         if (!$this->_db->insert($db, 'inventory', $field))
             echo "A problem occur while creating the inventory.";
+        return true;
     }
 
     //Yeasin => This function will delete inventory in the DB
@@ -769,19 +770,21 @@ class Staff
     {
         if (!$this->_db->delete($db, 'inventory', array('inventoryID', '=', $condition_Value)))
             echo "A Problem occur during deleting the inventory.";
+        return true;
     }
 
     //Yeasin => This function will Edit inventory in the DB
-    public function editInventroy($condition_Value, $fields, $db = '_pdo2')
+    public function editInventory($condition_Value, $fields, $db = '_pdo2')
     {
         if (!$this->_db->update('inventory', 'inventoryID', $condition_Value, $fields, $db))
             echo "A Problem occur during editing the inventory.";
+        return true;
     }
 
     // Yeasin => This function will get the inventory information 
     public function getInventoryByID($val, $db = '_pdo2')
     {
-        $sql = "SELECT * FROM inventory WHERE inventoryID = ?";
+        $sql = "SELECT E.*, A.name FROM inventory E join medicine A on E.itemCode = A.itemCode WHERE inventoryID = ?";
         if ($value = $this->_db->query($db, $sql, array($val))->first()) return $value;
         else echo 'Inventory ID not found';
     }
@@ -803,9 +806,17 @@ class Staff
     // Yeasin => This function will search an inventory item
     public function searchInventory($value, $searchKey, $db = '_pdo2')
     {
-        $sql = "select E.itemCode, A.name, E.expiry, E.quantity from inventory E join medicine A on E.itemCode = A.itemCode where {$searchKey} LIKE '%{$value}%'";
-        if ($values = $this->_db->query($db, $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Inventory.";
+        $sql = "select E.inventoryID, E.itemCode, A.name, E.expiry, E.quantity from inventory E join medicine A on E.itemCode = A.itemCode where A.{$searchKey} LIKE '%{$value}%'";
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }else {
+            echo json_encode("No inventory found.");
+        }
     }
 
     // Yeasin => This function will search an inventory item by barcode
@@ -835,8 +846,6 @@ class Staff
             print_r("A problem occur while creating the ordereditem.");
     }
     // inventory module functions goes here 
-
-
 
 
     // Yeasin => This function will insert a diagnosis_report 
@@ -1145,6 +1154,106 @@ class Staff
         else echo 'Something went wrong while showing the monthly deliveries';
     }
 
+
+
+    //inventory functionality
+    //YY => this function list all inventory
+    public function listAllInventory($db = '_pdo2')
+    {
+        $sql = 'select E.*, A.name from inventory E join medicine A on E.itemCode = A.itemCode';
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
+        else echo "There is no inventory to show";
+    }
+
+    //YY => this function list all item codes to put in dropdown list
+    public function getAllItemCodes($db = '_pdo2')
+    {
+        $sql = 'select distinct itemCode from inventory';
+        if ($values = $this->_db->query($db, $sql)->results()) echo json_encode($values);
+        else echo "";
+    }
+
+    //YY => this function get inventory by start and end item codes
+    public function getCustomInventoryByItemCode($start, $end, $db = '_pdo2')
+    {
+        if($start == '') $start = null;
+        if($end == '') $end = null;
+
+        $sql = 'select E.*, A.name from inventory E
+                join medicine A on E.itemCode = A.itemCode where 
+                (? is null and E.itemCode <= ?) or
+                (E.itemCode >= ? and ? is null) or
+                (E.itemCode between ? and ?)
+                ';
+        if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end))->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }else {
+            echo "Something went wrong while showing the Inventory.";
+        } 
+    }
+
+
+    //YY => this function get purchase order list
+    public function listAllPurchaseOrder($db = '_pdo2')
+    {
+        $sql = 'select o.*, v.name from orders o join vendors v on o.vendorCode = v.vendorCode';
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
+        else echo "There is no purchase order to show";
+    }
+    
+    //YY => this function get purchase order by condition
+    public function getCustomPurchaseOrder($start, $end, $from, $to, $db = '_pdo2')
+    {
+        if($start == '') $start = null;
+        if($end == '') $end = null;
+        if($from == '') $from = null;
+        if($to == '') $to = null;
+
+        if(($start==null && $end==null) || ($from==null && $to==null)) $condition = ' or ';
+        else $condition = 'and';
+
+            $sql = 'select O.*, V.name from orders O join vendors V on O.vendorCode = V.vendorCode where
+            (
+                (? is null and  O.vendorCode <= ?) or
+                (O.vendorCode >= ? and ? is null) or
+                (O.vendorCode between ? and ?)
+            ) ' . $condition . '
+            (
+                (? is null and  O.deliveryDate <= ?) or
+                (O.deliveryDate >= ? and ? is null) or
+                (O.deliveryDate between ? and ?)
+            )
+            ';
+        
+        if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end, $from, $to, $from, $to, $from, $to))->results()) {
+            if (!empty($values)) {
+                foreach ($values as $val) {
+                    $val->name = deescape($val->name);
+                }
+                echo json_encode($values);
+            }
+        }
+        else echo json_encode("There is no purchase order to show.");
+    }
 
     // **** End of Dashbaord functionality
 }

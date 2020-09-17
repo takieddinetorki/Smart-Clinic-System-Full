@@ -173,14 +173,13 @@ if (!$user->loggedIn()) {
                     return vars;
                 }
                 
-                $.post('byCMkGnmDa3mXlyfgPh/api/changeStatus.php', {
-                    id: getUrlVars()["id"],
-                    status: getUrlVars()["status"]
+                $.post('byCMkGnmDa3mXlyfgPh/appointment_module/deleteAppointment.php', {
+                    id: getUrlVars()["id"]
                 }, function(data) {
                     if (data != null) {
                         var results = jQuery.parseJSON(data);
-                        if (results.status == 'passed') window.location.href = 'http://localhost/smartClinicSystem/appointment_list.php';
-                        else alert('A Problem Occur while changing the stsus');
+                        if (results.status == 'passed') window.location.href = 'http://localhost/smartClinicSystem/appointment.php';
+                        else alert('A Problem Occur while deleting the status');
                     }
                 });
             });

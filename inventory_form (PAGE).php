@@ -1,3 +1,12 @@
+<?php
+    require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+    $staff = new Staff;
+    $user = new User;
+    if (!$user->loggedIn()) {
+        Redirect::to('index.php');
+    }
+?>
+
 <html lang="en">
 
 <head>
@@ -19,7 +28,7 @@
     <script src="src/js/i18n/datepicker.en.js"></script>
 </head>
 
-<body>
+<body onload="sidebarActivelink('inventory(PAGE)')">
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -73,43 +82,7 @@
             </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <img src="src/img/resize.svg" alt="">
-                </a>
-            </div>
-            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
-                <div class="small_sidebar">Dashboard</div>
-            </a>
-            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
-                <div class="small_sidebar">Patients</div>
-            </a>
-            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
-                <div class="small_sidebar">Appointments</div>
-            </a>
-            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
-                <div class="small_sidebar"> Diagnostic Report</div>
-            </a>
-            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
-                <div class="small_sidebar">Billing</div>
-            </a>
-            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
-                <div class="small_sidebar">Expenses</div>
-            </a>
-            <a href="inventory (PAGE).php" class="nav-active"><img src="src/img/inventory.svg" alt="" />
-                <div class="small_sidebar">Inventory</div>
-            </a>
-            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
-                <div class="small_sidebar">Medical Certificate</div>
-            </a>
-            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
-                <div class="small_sidebar">Finance Reports</div>
-            </a>
-            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
-                <div class="small_sidebar">Backup & Table Setup</div>
-            </a>
-        </div>
+        <?php include 'sidebar.php';?>
 
         <div class="main">
             <div class="head">
@@ -120,30 +93,30 @@
 
             <div class="inventory-container-wrapper table-wrapper-scroll-y">
                 <div class="form-container">
-                    <a href="#">
-                        <i class="cl-icon fas fa-times-circle" aria-hidden="true" onclick="show('modal3')"></i>
-                    </a>
-                    <form class="invent-form">
+                    <i class="cl-icon fas fa-times-circle" aria-hidden="true" style="cursor: pointer;" onclick="show('modal3')"></i>
+                    <form id="myForm" class="invent-form">
 
                         <div>
-                            <label for="account">Item Code</label>
-                            <select style="width: 136px;" type="text" name="account">
-                                <option value="1"></option>
+                            <label for="code">Item Code</label>
+                            <select style="width: 136px;" type="text" name="code" id="itemCode" required>
+                                <?php
+                                    $staff->getAllMedicineCodes();
+                                ?>
                             </select>
                         </div>
                         <div>
-                            <label for="accountName">Name</label>
-                            <input style="width: 380px;" type="text" name="accountName">
+                            <label for="name">Name</label>
+                            <input style="width: 380px;" type="text" name="name" id="name" required disabled>
                         </div>
                         <div>
-                            <label for="accountName">Stock</label>
-                            <input style="width: 136px;" type="text" name="accountName">
+                            <label for="stock">Stock</label>
+                            <input style="width: 136px;" type="number" name="stock" id="stock" required>
                         </div>
 
                         <div class="date">
                             <label for="Date">Expiry Date</label>
                             <span>
-                                <input type="text" class="datepicker-here" data-language="en">
+                                <input class="datepicker-here" data-date-format="yyyy-mm-dd" data-language="en" id="expiryDate" required>
                                 <i style="position: relative; right: 32px;" class="far fa-calendar-alt"
                                     aria-hidden="true"></i>
                             </span>
@@ -168,8 +141,8 @@
                         <div style="text-align: center;margin-top: 25px;">
                             <p class="label-modal2">Are you sure to delete?</label>
                             <div class="form-div-modal2">
-                                <button class="modalBtn2" type="submit">Yes</button>
-                                <button class="modalBtn2" type="submit">No</button>
+                                <button class="modalBtn2" type="button" onclick="deleteInventory()">Yes</button>
+                                <button class="modalBtn2" type="button" onclick="closeModal('modal2')">No</button>
                             </div>
                         </div>
                     </form>
@@ -185,8 +158,8 @@
                         <div style="text-align: center;margin-top: 25px;">
                             <p class="label-modal3">Want to save the changes made?</label>
                             <div class="form-div-modal3">
-                                <button class="modalBtn3" type="submit">Yes</button>
-                                <button class="modalBtn3" type="submit">No</button>
+                                <button class="modalBtn3" type="submit" form="myForm" onclick="closeModal('modal3')">Yes</button>
+                                <button class="modalBtn3" type="button" onclick="backToInventoryPage()">No</button>
                             </div>
                         </div>
                     </form>
@@ -234,6 +207,9 @@
         function show(x) {
             document.getElementById(x).style.display = "flex";
         }
+        function closeModal(x) {
+            document.getElementById(x).style.display = "none";
+        }
         window.onclick = function (event) {
             var ele = document.getElementsByClassName("modal");
             for (var i = 0; i < ele.length; i++) {
@@ -242,6 +218,113 @@
                 }
             }
         }
+    </script>
+
+    <!-- YY => backend script -->
+    <script>
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        function backToInventoryPage() {
+            window.location = 'inventory(PAGE).php';
+        }
+
+        function deleteInventory() {
+            if(getUrlVars()["id"]) {
+                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
+                    id: getUrlVars()["id"],
+                    action: 'delete'
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        if (results.status == 'passed') backToInventoryPage();
+                        else alert('A Problem Occur while deleting the inventory');
+                    }
+                });
+            }else {
+                backToInventoryPage();
+            }
+        }
+
+        $(document).ready(function() {
+            //edit page
+            if(getUrlVars()["id"]) {
+                $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getInventoryById.php', {
+                    id: getUrlVars()["id"]
+                }, function(data) {
+                    if (data != null) {
+                        //populate form
+                        var results = jQuery.parseJSON(data);
+                        $('#itemCode').val(results.itemCode);
+                        $('#name').val(results.name);
+                        $('#expiryDate').val(results.expiry);
+                        $('#stock').val(results.quantity);
+                    }
+                });
+            }
+
+            //item code on change
+            $('#itemCode').change(function() {
+                let itemCode = ($('#itemCode').val());  
+                if(itemCode) {
+                    $.post('byCMkGnmDa3mXlyfgPh/api/medicineCRUD_backupScript.php', {
+                        value: itemCode
+                    }, function(data) {
+                        if (data != null) {
+                            let medicineDate = jQuery.parseJSON(data);
+                            $('#name').val(medicineDate.name);
+                        }
+                    });
+                }else {
+                    $('#name').val('');
+                }
+            });
+
+
+            //submit
+            $('#myForm').submit(function() {
+                event.preventDefault();
+                if(getUrlVars()["id"]) {
+                    //edit  
+                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
+                        id: getUrlVars()["id"],
+                        itemCode: $('#itemCode').val(),
+                        expiryDate: $('#expiryDate').val(),
+                        quantity: $('#stock').val(),
+                        action: 'edit'
+                    }, function(data) {
+                        if (data != null) {
+                            var results = jQuery.parseJSON(data);
+                            if (results.status == 'passed') backToInventoryPage();
+                            else alert('A Problem Occur while editing the inventory');
+                        }
+                    });
+                }else {
+                    //add new inventory
+                    $.post('byCMkGnmDa3mXlyfgPh/inventory_module/inventoryCUD.php', {
+                        itemCode: $('#itemCode').val(),
+                        expiryDate: $('#expiryDate').val(),
+                        quantity: $('#stock').val(),
+                        action: 'add'
+                    }, function(data) {
+                        if (data != null) {
+                            var results = jQuery.parseJSON(data);
+                            if (results.status == 'passed') backToInventoryPage();
+                            else alert('A Problem Occur while adding the inventory');
+                        }
+                    });
+                }
+            });
+        });
     </script>
 </body>
 

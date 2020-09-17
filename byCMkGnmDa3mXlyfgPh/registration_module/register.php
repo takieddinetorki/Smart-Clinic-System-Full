@@ -31,7 +31,9 @@ if (Input::exists()) {
         }
     }
 ?>
-<style>
+<!-- Yash commented this, modified the variables in the index.php/Registration form -->
+
+<!-- <style>
 input {
     margin: 5px;
 }
@@ -44,29 +46,26 @@ input {
         </select>
     </div>
     <div class="field">
-        <label for="firstName">First name</label>
-        <input type="text" name="firstName" value="<?php echo Input::get('firstName') ?>" id="firstName" autocomplete="off">
+        <label for="firstName">First name</label> 
+      <input type="text" name="firstName" value="" id="firstName" autocomplete="off"> 
     </div>
     <div class="field">
-        <label for="lastName">Last name</label>
-        <input type="text" name="lastName" value="<?php echo Input::get('lastName') ?>" id="lastName" autocomplete="off">
-    </div>
+        <label for="lastName">Last name</label> 
+       <input type="text" name="lastName" value="" id="lastName" autocomplete="off"> 
+   </div>
     <div class="field">
         <label for="clinic">Clinic</label>
         <select name="clinic" id="clinic">        
-            <?php 
-            $clinicDB = new ClinicDB;
-            $data = $clinicDB->getAllAbbreviations();
-            ?>
+            
         </select>
     </div>
     <div class="field">
         <label for="mobileNumber">Phone number</label>
-        <input type="text" name="mobileNumber" value="<?php echo Input::get('mobileNumber') ?>" id="mobileNumber" autocomplete="off">
+        <input type="text" name="mobileNumber" value="" id="mobileNumber" autocomplete="off">
     </div>
     <div class="field">
         <label for="email">Email</label>
-        <input type="text" name="email" value="<?php echo Input::get('email') ?>" id="email" autocomplete="off">
+        <input type="text" name="email" value="" id="email" autocomplete="off">
     </div>
     <div class="field">
         <label for="gender">Gender</label>
@@ -78,12 +77,12 @@ input {
     </div>
     <div class="field">
         <label for="birthdate">Birth date</label>
-        <input type="date" name="birthdate" value="<?php echo Input::get('birthdate') ?>" id="birthdate" autocomplete="off">
-    </div>
+         <input type="date" name="birthdate" value="" id="birthdate" autocomplete="off">
+     </div>
     <div class="field">
         <label for="username">Username</label>
-        <input type="text" name="username" value="<?php echo Input::get('username') ?>" id="username" autocomplete="off">
-    </div>
+         <input type="text" name="username" value="" id="username" autocomplete="off">
+     </div>
     <div class="field">
         <label for="password">Password</label>
         <input type="password" name="password" value="" id="password" autocomplete="off">
@@ -93,6 +92,21 @@ input {
         <input type="password" name="passwordConf" value="" id="passwordConf" autocomplete="off">
     </div>
     <input type="submit" value="Register" name="submit" />
-    <input type="hidden" nanme="token" value="<?php echo Token::generate(); ?>">
-</form>
-<a href="../index.php">Home</a>
+    <input type="hidden" nanme="token" value="">
+ </form>
+<a href="../index.php">Home</a>  -->
+
+
+<!-- these are the php inlines which i have to take out to comment---Yash -->
+
+<?php /* echo Input::get('firstName') 
+echo Input::get('lastName') ;
+
+    $clinicDB = new ClinicDB;
+    $data = $clinicDB->getAllAbbreviations();
+    
+echo Input::get('mobileNumber') ;
+echo Input::get('email') ;
+echo Input::get('birthdate') ;
+echo Input::get('username') ;
+ echo Token::generate(); */?>

@@ -20,7 +20,8 @@
     <script src="src/js/i18n/datepicker.en.js"></script>
 </head>
 
-<body>
+<body onload="sidebarActivelink('patients(PAGE)')">
+
     <div class="container" id="container">
         <div class="header">
             <img class="logo" src="src/img/heading.png" alt="ClinicCareLogo" />
@@ -33,8 +34,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -69,43 +69,7 @@
         </div>
 
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <img src="src/img/resize.svg" alt="">
-                </a>
-            </div>
-            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
-                <div class="small_sidebar">Dashboard</div>
-            </a>
-            <a href="patients(PAGE).php"  class="nav-active"><img src="src/img/patient.svg" />
-                <div class="small_sidebar">Patients</div>
-            </a>
-            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
-                <div class="small_sidebar">Appointments</div>
-            </a>
-            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
-                <div class="small_sidebar"> Diagnostic Report</div>
-            </a>
-            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
-                <div class="small_sidebar">Billing</div>
-            </a>
-            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
-                <div class="small_sidebar">Expenses</div>
-            </a>
-            <a href="inventory (PAGE).php"><img src="src/img/inventory.svg" alt="" />
-                <div class="small_sidebar">Inventory</div>
-            </a>
-            <a href="medical-cert(PAGE).php"  ><img src="src/img/mc.svg" alt="" />
-                <div class="small_sidebar">Medical Certificate</div>
-            </a>
-            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
-                <div class="small_sidebar">Finance Reports</div>
-            </a>
-            <a href="backup.php"><img src="src/img/settings-tools.svg" alt="" />
-                <div class="small_sidebar">Backup & Table Setup</div>
-            </a>
-        </div>
+        <?php include 'sidebar.php'; ?>
 
         <div class="main">
             <div class="head">
@@ -138,7 +102,7 @@
 
 
 
-                        <table class="table" style="max-width: 1050; min-width: 1050px;">
+                        <table class="table" style="max-width: 1050; min-width: 1050px;" >
                             <thead>
                                 <tr>
                                     <th style="width:70px;border-left: none;">No</th>
@@ -147,8 +111,7 @@
                                     <th style="width:200px;border-right:none;">Gender</th>
                                 </tr>
                             </thead>
-                            <tbody style="max-height: calc(100vh - 330px);min-height: 200px;"
-                                class="table-wrapper-scroll-y">
+                            <tbody id="p_table" style="max-height: calc(100vh - 330px);min-height: 200px;"  class="table-wrapper-scroll-y">
                                 <tr>
                                     <td style="width:70px;border-left: none;">1</td>
                                     <td style="width:250px">JA000906000</td>
@@ -243,10 +206,12 @@
                 <div class="footer">
                     <div class="footer-div">
                         <div class="icons-div">
-                            <a href="personal-info(PAGE).php"><div class="icons">
-                                <i class="fas fa-plus" style="color:#444242"></i>
-                            </div></a>
-                            
+                            <a href="personal-info(PAGE).php">
+                                <div class="icons">
+                                    <i class="fas fa-plus" style="color:#444242"></i>
+                                </div>
+                            </a>
+
                             <div class="icons" onclick="show('modal4')">
                                 <img src="src/img/printer.png" alt="printer">
                             </div>
@@ -262,44 +227,44 @@
     </div>
     <!-- delete modal here -->
     <div id="modal2" class="modal pdl">
-    <div class="modal-wrap">
-        <div class="modalContent2">
-            <form style="margin-top: 7px;">
-                <div style="text-align: center;margin-top: 25px;">
-                    <p class="label-modal2">Are you sure to delete?</label>
-                    <div class="form-div-modal2">
-                        <button class="modalBtn2" type="submit">Yes</button>
-                        <button class="modalBtn2" type="submit">No</button>
+        <div class="modal-wrap">
+            <div class="modalContent2">
+                <form style="margin-top: 7px;">
+                    <div style="text-align: center;margin-top: 25px;">
+                        <p class="label-modal2">Are you sure to delete?</label>
+                            <div class="form-div-modal2">
+                                <button class="modalBtn2" type="submit">Yes</button>
+                                <button class="modalBtn2" type="submit">No</button>
+                            </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
     <!-- delete modal till here -->
     <!-- print modal 2 here  0/1 -->
     <div id="modal4" class="modal pdl">
-    <div class="modal-wrap">
-        <div class="modalContent4">
-            <form style="margin-top: 7px;">
-                <div class="form-div-modal4">
-                    <label for="sid" class="label-modal4">Starting Patient ID</label>
-                    <select name="sid" id="sid" class="inp-modal4">
-                        <option value="">JA000906000</option>
-                    </select>
+        <div class="modal-wrap">
+            <div class="modalContent4">
+                <form style="margin-top: 7px;">
+                    <div class="form-div-modal4">
+                        <label for="sid" class="label-modal4">Starting Patient ID</label>
+                        <select name="sid" id="sid" class="inp-modal4">
+                            <option value="">JA000906000</option>
+                        </select>
+                    </div>
+                    <div class="form-div-modal4">
+                        <label for="eid" class="label-modal4">Ending Patient ID</label>
+                        <select name="eid" id="eid" class="inp-modal4">
+                            <option value="">JA000906000</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <button class="modalBtn4" type="submit">PRINT</button>
                 </div>
-                <div class="form-div-modal4">
-                    <label for="eid" class="label-modal4">Ending Patient ID</label>
-                    <select name="eid" id="eid" class="inp-modal4">
-                        <option value="">JA000906000</option>
-                    </select>
-                </div>
-            </form>
-            <div class="text-center">
-                <button class="modalBtn4" type="submit">PRINT</button>
             </div>
         </div>
-    </div>
     </div>
     <!-- print modal 2 till here 1/1 -->
 </body>
@@ -324,11 +289,21 @@
         }
     }
 </script>
+<script src="src/js/layout.js"></script>
+<script>
+    function editPateints() {
+        //we can fetch the data here and send to the edit page, i just simulated it--------yash
+        window.location.href = "http://localhost/smartClinicSystem/pateintsEdit.php";
+    }
+    document.querySelectorAll('#p_table tr')
+        .forEach(e => e.addEventListener("dblclick", editPateints));
+    
+</script>
 <script>
     function show(x) {
         document.getElementById(x).style.display = "flex";
     }
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         var ele = document.getElementsByClassName("modal");
         for (var i = 0; i < ele.length; i++) {
             if (event.target == ele[i]) {
@@ -338,4 +313,3 @@
     }
 </script>
 
-<script src="src/js/layout.js"></script>

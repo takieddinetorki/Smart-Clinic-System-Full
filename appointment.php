@@ -236,7 +236,7 @@ if (!$user->loggedIn()) {
 
                     rawData.forEach((e) => {
                         appointments += `
-                        <div class="appointment-card">
+                        <div class="appointment-card" style="margin-top: 50px;">
                                 <div class="appointment-time">
                                     <span>${tConv24(e.time)}</span>
                                 </div>
@@ -262,6 +262,15 @@ if (!$user->loggedIn()) {
                                         <span>${e.status}</span>
                                     </div>
                                 </div>
+                                <div style="display: flex;">
+                                    <span style="margin-right: 50px;">Action</span>
+                                    <div style="width: 150px; display:inline;">
+                                <a style="color: rgb(85,26,139);" href="./editAppointment.php?id=${e.appointmentID}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a style="color: rgb(85,26,139);" href="./deleteAppointment.php?id=${e.appointmentID}&status=Cancelled"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </div>
+                                </div>
+                                
                             </div>
                     `;
                     });
@@ -297,9 +306,9 @@ if (!$user->loggedIn()) {
                         let day = ($('#status').val());
 
                         rawData = getRawData(status, day);
-                        console.log(rawData);
+                        // console.log(rawData);
 
-                        if (rawData) {
+                        if (rawData.status != 'error') {
                             // console.log(rawData);
                             populateAppointemnts(rawData);
                         } else {
@@ -333,7 +342,6 @@ if (!$user->loggedIn()) {
 
             <!-- print modal 3 here  0/1 -->
             <div id="modal5" class="modal">
-            <div class="modal-wrap">
                 <div class="modalContent5">
                     <form style="margin-top: 7px;">
                         <div class="form-div-modal5">
@@ -373,7 +381,6 @@ if (!$user->loggedIn()) {
                         <button class="modalBtn5" type="submit">PRINT</button>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- print modal 3 till here 1/1 -->
 

@@ -73,43 +73,7 @@
             </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="toggle-btn" id="toggler" onclick="toggleSidebar()">
-                <a href="" onclick=" return false">
-                    <img src="src/img/resize.svg" alt="">
-                </a>
-            </div>
-            <a href="dashboard(PAGE).php"><img src="src/img/home.png" />
-                <div class="small_sidebar">Dashboard</div>
-            </a>
-            <a href="patients(PAGE).php"><img src="src/img/patient.svg" />
-                <div class="small_sidebar">Patients</div>
-            </a>
-            <a href="appointment.php"><img src="src/img/appointment-icon.svg" alt="" />
-                <div class="small_sidebar">Appointments</div>
-            </a>
-            <a href="diagnostic(PAGE).php"><img src="src/img/diagnostic.svg" alt="" />
-                <div class="small_sidebar"> Diagnostic Report</div>
-            </a>
-            <a href="billing(PAGE).php"><img src="src/img/finance.svg" alt="" />
-                <div class="small_sidebar">Billing</div>
-            </a>
-            <a href="expenses(PAGE).php"><img src="src/img/prescription.svg" alt="" />
-                <div class="small_sidebar">Expenses</div>
-            </a>
-            <a href="inventory (PAGE).php"><img src="src/img/inventory.svg" alt="" />
-                <div class="small_sidebar">Inventory</div>
-            </a>
-            <a href="medical-cert(PAGE).php"><img src="src/img/mc.svg" alt="" />
-                <div class="small_sidebar">Medical Certificate</div>
-            </a>
-            <a href="financial-report(PAGE).php"><img src="src/img/cash.svg" alt="" />
-                <div class="small_sidebar">Finance Reports</div>
-            </a>
-            <a href="backup2.php"><img src="src/img/settings-tools.svg" alt="" />
-                <div class="small_sidebar">Backup & Table Setup</div>
-            </a>
-        </div>
+        <?php include 'sidebar.php';?>
 
         <div class="main">
 

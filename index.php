@@ -77,7 +77,7 @@ if ($user->loggedIn()) {
                     <div id="error" style="color: red;"></div>
                     <p>
                         Forgot password?
-                        <a href="# " id="forgotPassword" onclick="toggleView('.login','.fpcontainer')">Click here!</a>
+                        <a href="#" id="forgotPassword" onclick="toggleView('.login','.fpcontainer')">Click here!</a>
                     </p>
                     <p>
                         Don't have an account?
@@ -96,7 +96,7 @@ if ($user->loggedIn()) {
                 if (isset($_POST)) {
                 ?>
                     e.preventDefault();
-                    form.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
+                    form.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
                     if (username.value != "" && password.value != "") {
                         form.submit();
                     } else {
@@ -162,14 +162,21 @@ if ($user->loggedIn()) {
 
                     <div>
                         <label for="clinic-name" >Clinic Name</label>
-                        <input type="text" id="clinic-name">
+                        <select id="clinic-name">
+                            <option>Please select a clinic</option>
+                            <?php
+                            $clinic->getAllClinics();
+                            ?>
+                        </select>
+                        
                     </div>
 
                     <div>
-                        <label for="title">Title</label>
-                        <select id="title-name">
+                        <label for="title-name">Title</label>
+                        <select name="title" id="title-name">
                             <option value="mr">Mr</option>
                             <option value="mrs">Mrs</option>
+                            <option value="mrs">Ms</option>
                         </select>
                     </div>
 
@@ -177,24 +184,24 @@ if ($user->loggedIn()) {
                         <label for="first-name" class="col1-label">
                             First Name
                         </label>
-                        <input type="text" id="first-name">
+                        <input name="firstName" type="text" id="first-name">
                     </div>
 
                     <div>
-                        <label for="last-name" class="col1-label">
+                        <label  for="last-name" class="col1-label">
                             Last Name
                         </label>
-                        <input type="text" id="last-name">
+                        <input name="lastName" type="text" id="last-name">
                     </div>
 
                     <div>
                         <label for="mobile" class="col1-label">Mobile Number</label>
-                        <input  style="width: 150px;" type="tel" id="mobile">
+                        <input name="mobileNumber"  style="width: 150px;" type="tel" id="mobile">
                     </div>
 
                     <div>
                         <label for="email-address" class="col1-label">Email</label>
-                        <input type="email" id="email-address">
+                        <input name="email" type="email" id="email-address">
                     </div>
                     
             </div>
@@ -204,7 +211,7 @@ if ($user->loggedIn()) {
                     
                 <div>
                     <label for="gender" >Gender</label>
-                    <select id="gender">
+                    <select name="gender" id="gender">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
@@ -212,17 +219,17 @@ if ($user->loggedIn()) {
 
                 <div>
                     <label for="birth-date">Birth Date</label>
-                    <input  style="width: 150px;"  type="text" id="birth-date" class="datepicker-here" data-language='en'>
+                    <input name="birthdate"  style="width: 150px;"  type="text" id="birth-date" class="datepicker-here" data-language='en'>
                 </div>
 
                 <div>
                     <label for="user-name">User Name</label>
-                    <input type="text" id="user-name">
+                    <input name="username" type="text" id="user-name">
                 </div>
 
                 <div>
                     <label for="pass-word" >Password</label>
-                    <input type="password" id="pass-word">
+                    <input name="password" type="password" id="pass-word">
                 </div>
                 
                 <div>
@@ -235,17 +242,67 @@ if ($user->loggedIn()) {
             <div class="submit-btn">
                 <input name="register" type="submit" value="SUBMIT" />
             </div>
-
+            <div id="register-error" style="color: red;"></div>
         </form>
 
     </div>
-
-
-
-    
     </div>
-
-
+    <script>
+            const formRegister = document.getElementById("registerForm");
+            const clinicName = document.getElementById("clinic-name");
+            const title = document.getElementById("title-name");
+            const firstName = document.getElementById("first-name");
+            const lastName = document.getElementById("last-name");
+            const mobile = document.getElementById("mobile");
+            const emailAddress = document.getElementById("email-address");
+            const gender = document.getElementById("gender");
+            const birth = document.getElementById("birth-date");
+            const userName = document.getElementById("user-name");
+            const passWord = document.getElementById("pass-word");
+            const registerationError = document.getElementById("register-error");
+            formRegister.addEventListener('submit', (e) => {
+                <?php
+                if (isset($_POST)) {
+                ?>
+                    e.preventDefault();
+                    formRegister.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
+                    if (clinicName.value != "" 
+                    && title.value != "" 
+                    && firstName.value != "" 
+                    && lastName.value != ""
+                    && mobile.value != "" 
+                    && emailAddress.value != ""
+                    && gender.value != ""
+                    && birth.value != ""
+                    && userName.value != ""
+                    && passWord.value != ""
+                    ) {
+                        formRegister.submit();
+                    } else {
+                        registerationError.innerHTML = 'Please fill in all blanks';
+                    }
+            })
+        </script>
+        <?php
+                }
+                if ($_GET) {
+                    $error = $_GET['e'];
+                    switch ($error) {
+                        case 'lf':
+        ?>
+                <script>
+                    const heading = document.querySelector('.heading');
+                    const login = document.querySelector('.login');
+                    const error = document.getElementById('error');
+                    heading.classList.add("header-animate");
+                    login.classList.add('show');
+                    error.innerHTML = 'Wrong username or password';
+                </script>
+    <?php
+                            break;
+                    }
+                }
+    ?>
     
     <script>
         function focusfunction() {

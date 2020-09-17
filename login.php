@@ -33,7 +33,7 @@
         <!-- Member Login part -->
         <section class="login" style="height: 350px;">
             <form id="login-form" action="" method="POST">
-                <h1>Member login</h1>
+                <h1>Admin login</h1>
                 <div class="login-control">
                     <img class="icons" src="src/img/USERNAME.svg" alt="" /><input class="username" type="text" name="username" placeholder="username" maxlength="20" />
                 </div>

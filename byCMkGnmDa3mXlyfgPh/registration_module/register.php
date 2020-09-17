@@ -1,6 +1,5 @@
 <?php
 require_once '../core/init.php';
-
 if (Input::exists()) {
     if (Token::check(Session::get('token'))) {
             $user = new User;
@@ -13,7 +12,7 @@ if (Input::exists()) {
                     //changes
                     'staffID' => $clinicID->generateID('staff'),
                     'title' => (Input::get('title')),
-                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',(Input::get('clinic'))),
+                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',(Input::get('clinic-name'))),
                     'firstName' => (Input::get('firstName')),
                     'lastName' => (Input::get('lastName')),
                     'mobileNumber' => (Input::get('mobileNumber')),
@@ -25,7 +24,7 @@ if (Input::exists()) {
                     'encryptionKey' => $encryption_key
                 ));
                 Session::flash('home', 'You have been registered successfully');
-                Redirect::to('../index.php');
+                Redirect::to('../index.php?rg=success');
             } catch (Exception $th) {
                 die($th->getMessage());
             }

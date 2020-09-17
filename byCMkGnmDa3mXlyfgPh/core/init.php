@@ -1,14 +1,13 @@
 <?php
-if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem') {
+if (getcwd() == '/opt/lampp/htdocs/Smart-Clinic-System-Full') {
     require_once 'byCMkGnmDa3mXlyfgPh/global.php';
     //* will delete this extra if else in production
-} else if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem\byCMkGnmDa3mXlyfgPh') {
+} else if (getcwd() == '/opt/lampp/htdocs/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh') {
     require_once 'global.php';
 } else {
     require_once '../global.php';
 }
 session_start();
-
 $GLOBALS['config'] = array(
     'mysql' => array(
         'host' => '127.0.0.1',

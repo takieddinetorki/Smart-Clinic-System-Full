@@ -59,6 +59,20 @@ class ClinicDB
             return false;
         } 
     }
+
+    public function getAllClinics(){
+        $sql = 'SELECT clinicName FROM `clinics`';
+        if($values = $this->_db->query('_pdo',$sql)->results()) {
+            foreach($values as $value) {
+                foreach ($value as $data) {
+                    $actualData = deescape($data);
+                    echo "<option value={$actualData}>{$actualData}</option>";
+                }
+            }
+        }else{
+            return false;
+        } 
+    }
 }
 
 ?>

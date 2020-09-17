@@ -46,16 +46,16 @@
                         <h1>CLINIC REGISTRATION</h1>
                     </div>
                     <div>
-                        <label for="clinic1">Company Name</label>
+                        <label for="clinic1">Clinic Name</label>
                         <input type="text" id="clinic1">
                     </div>
                     <div>
-                        <label for="clinic2"></label>
+                        <label for="clinic2">Abbreviation</label>
                         <input type="text" id="clinic2">
                     </div>
                     <div>
                         <div style="margin:0">
-                            <label for="Company" style="width: 68%;">Company No</label>
+                            <label for="Company" style="width: 68%;">Clinic No</label>
                             <input type="text" id="Company">
                         </div>
                         <div style="margin:0">
@@ -84,7 +84,7 @@
 
                 </div>
                 <div style="text-align:center;margin:0">
-                    <p style="width:100%">By creating a Clinic Account, you agree to our <a href="#">Terms</a> and <a href="#">Services</a></p>
+                    <p style="width:100%">By registring your clinic to our system, you hereby agree to our <a href="#">Terms & Conditions</a></p>
                 </div>
                 <div class="submit-btn">
                     <input name="register" type="submit" value="SUBMIT" />
@@ -95,7 +95,75 @@
         </div>
     </div>
     <script>
+            const formRegister = document.getElementById("registerForm");
+            const clinicName = document.getElementById("clinic-name");
+            const title = document.getElementById("title-name");
+            const firstName = document.getElementById("first-name");
+            const lastName = document.getElementById("last-name");
+            const mobile = document.getElementById("mobile");
+            const emailAddress = document.getElementById("email-address");
+            const gender = document.getElementById("gender");
+            const birth = document.getElementById("birth-date");
+            const userName = document.getElementById("user-name");
+            const passWord = document.getElementById("pass-word");
+            const registerationError = document.getElementById("register-error");
+            formRegister.addEventListener('submit', (e) => {
+                <?php
+                if (isset($_POST)) {
+                ?>
+                    e.preventDefault();
+                    formRegister.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
+                    if (clinicName.value != "" 
+                    && title.value != "" 
+                    && firstName.value != "" 
+                    && lastName.value != ""
+                    && mobile.value != "" 
+                    && emailAddress.value != ""
+                    && gender.value != ""
+                    && birth.value != ""
+                    && userName.value != ""
+                    && passWord.value != ""
+                    ) {
+                        formRegister.submit();
+                    } else {
+                        registerationError.innerHTML = 'Please fill in all blanks';
+                    }
+            })
+        </script>
+        <?php
+                }
+                if ($_GET) {
+                    $error = $_GET['e'];
+                    switch ($error) {
+                        case 'lf':
+        ?>
+                <script>
+                    const heading = document.querySelector('.heading');
+                    const login = document.querySelector('.login');
+                    const error = document.getElementById('error');
+                    heading.classList.add("header-animate");
+                    login.classList.add('show');
+                    error.innerHTML = 'Wrong username or password';
+                </script>
+    <?php
+                            break;
+                    }
+                }
+    ?>
+    
+    <script>
+        function focusfunction() {
+            document.getElementById("birth-date").focus();
+        }
 
+        function toggleView(hide,show,display='block'){
+
+
+            document.querySelector(hide).style.display = 'none'
+            document.querySelector(show).style.display = display
+
+
+        }
 
     </script>
 </body>

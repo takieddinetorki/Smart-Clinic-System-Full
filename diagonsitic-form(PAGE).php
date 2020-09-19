@@ -21,6 +21,7 @@ if (!$user->loggedIn()) {
     <link rel="stylesheet" href="styles/diagonistic-template.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/modals.css">
+    <link rel="stylesheet" href="styles/diagnostic-report.css">
     <link rel="stylesheet" href="styles/diagonstic-form.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- for fonts -->
@@ -99,7 +100,7 @@ if (!$user->loggedIn()) {
                         <div class="inDiv">
                             <div>
                                 <div class="flex">
-                                    <label for="patients" class="label_col">Patient ID</label>
+                                    <label for="patients" class="label_col" style="min-width: 66px;">Patient ID</label>
                                     <select class="input_diag" type="text" name="patientID" id="patientID" required>
                                         <?php $staff->getAllPatientID(); ?>
                                     </select>

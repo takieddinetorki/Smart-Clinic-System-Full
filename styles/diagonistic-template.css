@@ -75,7 +75,8 @@
   
   .p_col {
     margin-top: 5px;
-    margin-left: 17px;
+    margin-left: 10px;
+    max-width: 70px;
   }
   
   #sliderdiv {

@@ -72,6 +72,7 @@ class ID
             case 'purchase' : return "PR{$this->random}{$this->time}"; break;
             case 'order' : return "OI{$this->random}{$this->time}"; break;
             case 'clinic' :  return "{$this->clinic}{$this->time}{$this->random}"; break;
+            case 'diagnosis' :  return "R{$this->time}{$this->random}"; break;
         }
         
     }

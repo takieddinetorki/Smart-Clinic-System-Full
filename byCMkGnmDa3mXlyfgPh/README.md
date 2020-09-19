@@ -8,6 +8,8 @@ The clinic name field was a text field this latter has been changed to a drop do
 
 getAllClinics() has been created in ClinicDB.
 
+
+> Taki Eddine 19th Sep | Report
 ## Successfully integrated sections:
 
 Registration section

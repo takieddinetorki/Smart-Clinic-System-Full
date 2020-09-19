@@ -1,8 +1,8 @@
 <?php
-if (getcwd() == '/opt/lampp/htdocs/Smart-Clinic-System-Full') {
+if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem') {
     require_once 'byCMkGnmDa3mXlyfgPh/global.php';
     //* will delete this extra if else in production
-} else if (getcwd() == '/opt/lampp/htdocs/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh') {
+} else if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem\byCMkGnmDa3mXlyfgPh') {
     require_once 'global.php';
 } else {
     require_once '../global.php';

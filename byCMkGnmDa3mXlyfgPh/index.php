@@ -5,6 +5,7 @@ require_once 'core/init.php';
 $user = new User;
 $clinic = new ClinicDB;
 $doc = new Staff;
+$d = new Doctor;
 if ($user->LoggedIn()) {
     echo 'Logged in<br>';
 
@@ -18,7 +19,7 @@ if ($user->LoggedIn()) {
         <li>Encrypted password: <?php print_r($user->data());?></li>
         <li>Your clinic name is: <?php echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)) ?></li>
         <li>Your clinic name is: <?php echo json_encode($doc->getAppointmentById('A040840222'))?></li>
-        <li>Your clinic name is: <?php echo $doc->getAppointmentInfo('A040840222')->status?></li>
+        <li>Your clinic name is: <?php echo $d->getAllMedicines()?></li>
         <li><a href="login_module/logout.php">logout</a></li>
     </ul>
 <?php

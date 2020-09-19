@@ -96,7 +96,7 @@ if ($user->loggedIn()) {
                 if (isset($_POST)) {
                 ?>
                     e.preventDefault();
-                    form.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
+                    form.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/login_module/login.php' ?>";
                     if (username.value != "" && password.value != "") {
                         form.submit();
                     } else {

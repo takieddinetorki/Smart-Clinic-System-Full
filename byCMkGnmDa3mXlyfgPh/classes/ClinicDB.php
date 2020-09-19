@@ -56,7 +56,7 @@ class ClinicDB
                 }
             }
         }else{
-            return false;
+            echo "<option>Hmmm... Seems like it's empty <br> or something went wrong</option>";
         } 
     }
 

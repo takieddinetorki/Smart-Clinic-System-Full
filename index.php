@@ -162,7 +162,7 @@ if ($user->loggedIn()) {
             <div class="form-inputs" >
 
                     <div>
-                        <label for="clinic-name" >Clinic Name</label>
+                        <label for="clinic-name" >Clinic ID</label>
                         <select name="clinic" id="clinic-name">
                             <?php 
                             $clinicDB = new ClinicDB;

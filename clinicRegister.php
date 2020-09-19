@@ -46,29 +46,29 @@
                         <h1>CLINIC REGISTRATION</h1>
                     </div>
                     <div>
-                        <label for="name">Clinic Name</label>
-                        <input name="" type="text" id="name">
+                        <label for="clinic-name">Clinic Name</label>
+                        <input name="clinicName" type="text" id="clinic-name">
                     </div>
                     <div>
                         <label for="abbr">Abbreviation</label>
-                        <input name="" type="text" id="abbr">
+                        <input name="abbr" type="text" id="abbr">
                     </div>
                     <div>
 
                         <label for="bank">Bank Account No</label>
-                        <input name="" type="text" id="bank">
+                        <input name="BankAccount" type="text" id="bank">
                     </div>
                     <div>
                         <label for="tax">Sales Tax Register No</label>
-                        <input name="" type="text" id="tax">
+                        <input name="salesTaxR" type="text" id="tax">
                     </div>
                     <div>
                         <label for="GST">GST Register No</label>
-                        <input name="" type="text" id="GST">
+                        <input name="GSTRegister" type="text" id="GST">
                     </div>
                     <div>
                         <label for="address">Address</label>
-                        <input name="" type="text" id="address">
+                        <input name="Address" type="text" id="address">
                     </div>
                 </div>
                 <div style="text-align:center;margin:0">
@@ -77,7 +77,7 @@
                 <div class="submit-btn">
                     <input name="register" type="submit" value="SUBMIT" />
                 </div>
-
+                <div id="error" style="color:red;"></div>
             </form>
 
         </div>
@@ -85,32 +85,23 @@
     <script>
             const formRegister = document.getElementById("registerForm");
             const clinicName = document.getElementById("clinic-name");
-            const title = document.getElementById("title-name");
-            const firstName = document.getElementById("first-name");
-            const lastName = document.getElementById("last-name");
-            const mobile = document.getElementById("mobile");
-            const emailAddress = document.getElementById("email-address");
-            const gender = document.getElementById("gender");
-            const birth = document.getElementById("birth-date");
-            const userName = document.getElementById("user-name");
-            const passWord = document.getElementById("pass-word");
-            const registerationError = document.getElementById("register-error");
+            const abbr = document.getElementById("abbr");
+            const bank = document.getElementById("bank");
+            const tax = document.getElementById("tax");
+            const GST = document.getElementById("GST");
+            const address = document.getElementById("address");
+            const registerationError = document.getElementById("error");
             formRegister.addEventListener('submit', (e) => {
                 <?php
                 if (isset($_POST)) {
                 ?>
                     e.preventDefault();
-                    formRegister.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
+                    formRegister.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/clinic_module/clinicRegister.php' ?>";
                     if (clinicName.value != "" 
-                    && title.value != "" 
-                    && firstName.value != "" 
-                    && lastName.value != ""
-                    && mobile.value != "" 
-                    && emailAddress.value != ""
-                    && gender.value != ""
-                    && birth.value != ""
-                    && userName.value != ""
-                    && passWord.value != ""
+                    && bank.value != "" 
+                    && tax.value != "" 
+                    && GST.value != ""
+                    && address.value != "" 
                     ) {
                         formRegister.submit();
                     } else {

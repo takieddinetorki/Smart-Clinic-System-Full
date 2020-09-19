@@ -109,7 +109,6 @@ class DB
     {
         $sql = "CREATE DATABASE {$dbname}";
         if(!$this->query($db, $sql)->error()) {
-            echo 'CREATED';
             $this->setConnection($dbname);
         }else {
             echo 'There has been a problem';
@@ -196,7 +195,6 @@ class DB
      
         //Construct our SQL statement
         $sql = "INSERT INTO `$tableName` (" . implode(", ", $columnNames) . ") VALUES " . implode(", ", $rowsSQL);
-        print_r($sql);
         //Preparing PDO statement.
         if ($this->_query = $this->$db->prepare($sql)){
             

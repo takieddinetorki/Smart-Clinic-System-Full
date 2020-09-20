@@ -105,6 +105,9 @@ class ID
             case 'diagnosis':
                 return "R{$this->time}{$this->random}";
                 break;
+            case 'billing':
+                return "B{$this->currentYear}{$this->time}{$this->random}";
+                break;
         }
     }
 }

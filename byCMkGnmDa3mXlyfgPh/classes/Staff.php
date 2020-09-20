@@ -907,13 +907,20 @@ class Staff
     // this function will get all the reciept no from the Diagonastic report table
     public function getAllRecipetNo()
     {
-        $sql = "SELECT receiptNo FROM diagnosis_report";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
-            echo "<option value=''></option>";
-            foreach ($values as $value) {
-                foreach ($value as $data) {
-                    echo "<option value={$data}>{$data}</option>";
-                }
+        $sqlA = "SELECT receiptNo FROM diagnosis_report";
+        if ($valuesA = $this->_db->query('_pdo2', $sqlA)->results()) {
+
+            // $valuesA = json_decode(json_encode($valuesA), true);
+            foreach ($valuesA as $a) $arrayA[] = $a->receiptNo;
+
+            $sqlB = "SELECT receiptNo FROM billing";
+            if ($valuesB = $this->_db->query('_pdo2', $sqlB)->results()) {
+
+                foreach ($valuesB as $a) $arrayB[] = $a->receiptNo;
+                $receiptNo = array_diff($arrayA, $arrayB);
+
+                echo "<option value=''></option>";
+                foreach ($receiptNo as $rec) echo "<option value={$rec}>{$rec}</option>";
             }
         } else echo "<option value='null'>please add receiptNo</option>";
     }
@@ -921,15 +928,15 @@ class Staff
     // Yeasin => This function will insert a billing 
     public function addBilling($field, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'billing', $field))
-            print_r("A problem occur while creating the billing.");
+        if ($this->_db->insert($db, 'billing', $field)) return true;
+        else return false;
     }
 
     //Yeasin => This function will delete billing in the DB
     public function deleteBilling($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'billing', array('billingID', '=', $condition_Value)))
-            echo "A Problem occur during deleting the billing.";
+        if ($this->_db->delete($db, 'billing', array('receiptNo', '=', $condition_Value))) return true;
+        return false;
     }
 
     // this function will get all the billing ids from the db
@@ -947,9 +954,9 @@ class Staff
     }
 
     // this function will get the bills 
-    public function getBillingByID($val, $db = '_pdo2')
+    public function getBillingByRecieptNo($val, $db = '_pdo2')
     {
-        $sql = "SELECT * FROM billing WHERE billingID = ?";
+        $sql = "SELECT * FROM billing WHERE receiptNo = ?";
         if ($value = $this->_db->query($db, $sql, array($val))->first()) return $value;
         else echo 'Billing ID Code not found';
     }
@@ -957,8 +964,8 @@ class Staff
     //Yeasin => This function will Edit billing in the DB
     public function editBilling($condition_Value, $fields, $db = '_pdo2')
     {
-        if (!$this->_db->update('billing', 'billingID', $condition_Value, $fields, $db))
-            echo "A Problem occur during editing the billing.";
+        if ($this->_db->update('billing', 'receiptNo', $condition_Value, $fields, $db)) return true;
+        return false;
     }
 
     // this function will get all the billings by cond
@@ -984,8 +991,74 @@ class Staff
                 JOIN diagnosis_report R ON R.receiptNo = B.receiptNo
                 JOIN patients P ON P.patientID = R.patientID {$condition}";
 
-        if ($values = $this->_db->query($db, $sql, $conditional_array)->results()) return $values;
-        else echo "There is no medical certificate record found.";
+        if ($values = $this->_db->query($db, $sql, $conditional_array)->results()) {
+            foreach ($values as $val) {
+                $val->name = deescape($val->name);
+                $val->status = deescape($val->status);
+            }
+            echo json_encode($values);
+        } else {
+            $data = array("status" => "failed");
+            echo json_encode($data);
+        }
+    }
+
+    public function listTodaysBillings($status)
+    {
+        // $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date) = MONTH(NOW()) AND DAY(date) = DAY(NOW()) AND status = ?";
+        $condition = " WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date) = MONTH(NOW()) AND DAY(date) = DAY(NOW()) AND status = ?";
+
+        $sql = "SELECT B.date, P.patientID, P.name, B.receiptNo, B.totalAmount, B.status
+        FROM billing B 
+        JOIN diagnosis_report R ON R.receiptNo = B.receiptNo
+        JOIN patients P ON P.patientID = R.patientID {$condition}";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->name = deescape($val->name);
+                $val->status = deescape($val->status);
+            }
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "error"));
+    }
+
+    public function listThisWeekBillings($status)
+    {
+        // $sql = "SELECT * FROM appointment WHERE WEEKOFYEAR(date) = WEEKOFYEAR(NOW()) AND YEAR(date) = YEAR(now()) AND status = ?";
+        $condition = " WHERE WEEKOFYEAR(date) = WEEKOFYEAR(NOW()) AND YEAR(date) = YEAR(now()) AND status = ?";
+
+        $sql = "SELECT B.date, P.patientID, P.name, B.receiptNo, B.totalAmount, B.status
+        FROM billing B 
+        JOIN diagnosis_report R ON R.receiptNo = B.receiptNo
+        JOIN patients P ON P.patientID = R.patientID {$condition}";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->name = deescape($val->name);
+                $val->status = deescape($val->status);
+            }
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "error"));
+    }
+
+    public function listThisMonthBillings($status)
+    {
+        $sql = "SELECT * FROM appointment WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date)=MONTH(NOW()) AND status = ?";
+
+        $condition = " WHERE YEAR(date) = YEAR(NOW()) AND MONTH(date)=MONTH(NOW()) AND status = ?";
+
+        $sql = "SELECT B.date, P.patientID, P.name, B.receiptNo, B.totalAmount, B.status
+        FROM billing B 
+        JOIN diagnosis_report R ON R.receiptNo = B.receiptNo
+        JOIN patients P ON P.patientID = R.patientID {$condition}";
+
+        if ($values = $this->_db->query('_pdo2', $sql, array(escape($status)))->results()) {
+            foreach ($values as $val) {
+                $val->name = deescape($val->name);
+                $val->status = deescape($val->status);
+            }
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "error"));
     }
 
 

@@ -259,7 +259,7 @@
                                             <label>Quantity</label>
                                             <input type="number" min="1" id="quantity" style="width: 150px;" required>
                                         </div>
-                                        <button type="submit" form="itemForm" class="plus-icon" style="">
+                                        <button type="submit" form="itemForm" class="plus-icon">
                                             <i class="fas fa-plus" style="margin-top: 0"></i>
                                         </button>
                                     </div>

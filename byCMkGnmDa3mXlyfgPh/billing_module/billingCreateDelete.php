@@ -27,7 +27,7 @@ if (Input::exists()) {
                 'medication' => Input::get('medication'),
                 'discount' => Input::get('discount'),
                 'totalAmount' => Input::get('totalAmount'),
-                'receiptNo' => eInput::get('receiptNo'),
+                'receiptNo' => Input::get('receiptNo'),
             ));
 
             // deleting a billing ##Validated

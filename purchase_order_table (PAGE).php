@@ -1,10 +1,10 @@
 <?php
-    require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
-    $staff = new Staff;
-    $user = new User;
-    if (!$user->loggedIn()) {
-        Redirect::to('index.php');
-    }
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+$staff = new Staff;
+$user = new User;
+if (!$user->loggedIn()) {
+    Redirect::to('index.php');
+}
 ?>
 
 <html lang="en">
@@ -43,8 +43,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -84,7 +83,7 @@
             </div>
         </div>
 
-        <?php include 'sidebar.php';?>
+        <?php include 'sidebar.php'; ?>
         <div class="main">
             <div class="head">
                 <h1>PURCHASE ORDER</h1>
@@ -104,7 +103,7 @@
                                 <label for="sid">Starting Vendor Code</label>
                                 <select name="sid" id="sid">
                                     <?php
-                                        $staff->getAllVendorCodes();
+                                    $staff->getAllVendorCodes();
                                     ?>
                                 </select>
                             </div>
@@ -112,7 +111,7 @@
                                 <label style="margin-left:20px;" class="ml-0" for="eid">Ending Vendor Code</label>
                                 <select name="eid" id="esid">
                                     <?php
-                                        $staff->getAllVendorCodes();
+                                    $staff->getAllVendorCodes();
                                     ?>
                                 </select>
                             </div>
@@ -139,15 +138,7 @@
 
                     </div>
 
-
-
-
-
                     <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
-
-
-
-
                         <table class="table" id="listAllPurchaseOrder" style="max-width: 1050; min-width: 1050px;">
                             <thead>
                                 <tr>
@@ -160,230 +151,134 @@
 
                                 </tr>
                             </thead>
-                            <tbody style="max-height: calc(100vh - 305px);min-height: 200px;"
-                                class="table-wrapper-scroll-y">
-                                <tr>
-                                    <td style="width:70px;border-left: none;">1</td>
-                                    <td style="width:110px">1/3/2020</td>
-                                    <td style="width:200px">Cell</td>
-                                    <td style="width:370px">John Doe</td>
-                                    <td style="width:150px;">Cell</td>
-                                    <td style=" width:121px;border-right:none">Cell</td>
-
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>20/12/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-left: none;">1</td>
-                                    <td>1/3/2020</td>
-                                    <td>Cell</td>
-                                    <td>John Doe</td>
-                                    <td>Cell</td>
-                                    <td style="border-right:none">Cell</td>
-                                </tr>
-
+                            <tbody style="max-height: calc(100vh - 305px);min-height: 200px;" class="table-wrapper-scroll-y">
 
                             </tbody>
                         </table>
 
                     </div>
 
-                    <!-- delete modal here -->
-                    <div id="modal2" class="modal pdl">
-                    <div class="modal-wrap">
-                        <div class="modalContent2">
-                            <form style="margin-top: 7px;">
-                                <div style="text-align: center;margin-top: 25px;">
-                                    <p class="label-modal2">Are you sure to delete?</label>
-                                    <div class="form-div-modal2">
-                                        <button class="modalBtn2" type="submit">Yes</button>
-                                        <button class="modalBtn2" type="submit">No</button>
-                                    </div>
+                    <div class="footer">
+                        <div class="footer-div">
+                            <div class="icons-div">
+                                <div class="icons">
+                                    <a href="purchase_order (PAGE).php" style="text-decoration: none;"> <i style="color: #444242;" class="fas fa-plus"></i></a>
+
                                 </div>
-                            </form>
+                                <div class="icons" onclick="show('modal1')">
+                                    <img src="src/img/printer.png" alt="printer">
+                                </div>
+                                <div class="icons" onclick="show('modal2')">
+                                    <img src="src/img/rubbish-bin.png" alt="delete">
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- delete modal here -->
+                    <div id="modal2" class="modal pdl">
+                        <div class="modal-wrap">
+                            <div class="modalContent2">
+                                <form style="margin-top: 7px;">
+                                    <div style="text-align: center;margin-top: 25px;">
+                                        <p class="label-modal2">Are you sure to delete?</label>
+                                            <div class="form-div-modal2">
+                                                <button class="modalBtn2" type="submit">Yes</button>
+                                                <button class="modalBtn2" type="submit">No</button>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <!-- delete modal till here -->
                     <!-- save modal here -->
                     <div id="modal3" class="modal pdl">
-                    <div class="modal-wrap">
-                        <div class="modalContent3">
-                            <form style="margin-top: 7px;">
-                                <div style="text-align: center;margin-top: 25px;">
-                                    <p class="label-modal3">Want to save the changes made?</label>
-                                    <div class="form-div-modal3">
-                                        <button class="modalBtn3" type="submit">Yes</button>
-                                        <button class="modalBtn3" type="submit">No</button>
+                        <div class="modal-wrap">
+                            <div class="modalContent3">
+                                <form style="margin-top: 7px;">
+                                    <div style="text-align: center;margin-top: 25px;">
+                                        <p class="label-modal3">Want to save the changes made?</label>
+                                            <div class="form-div-modal3">
+                                                <button class="modalBtn3" type="submit">Yes</button>
+                                                <button class="modalBtn3" type="submit">No</button>
+                                            </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <!-- save modal till here -->
                     <!-- print modal 4 here  0/1 -->
                     <div id="modal6" class="modal pdl">
-                    <div class="modal-wrap">
-                        <div class="modalContent6">
-                            <form style="margin-top: 15px;">
-                                <div class="form-div-modal6 category_1">
-                                    <label for="from" class="label-modal6">Starting Date</label>
-                                    <span>
-                                        <input type="text" id="from" class="inp-modal6 datepicker-here" data-language="en"><i
-                                            class="far fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                                <div class="form-div-modal6 category_2">
-                                    <label for="from" class="label-modal6">Starting Vendor Code</label>
-                                    <span>
-                                        <select type="text" id="from" class="inp-modal6 " style="background-position-y: 5px;">
-                                        </select>
-                                    </span>
-                                </div>
-                                <div class="form-div-modal6 category_1">
-                                    <label for="to" class="label-modal6">Ending Date</label>
-                                    <span>
-                                        <input type="text" id="to" class="inp-modal6 datepicker-here"  data-language="en"><i
-                                            class="far fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                                <div class="form-div-modal6 category_2">
-                                    <label for="from" class="label-modal6">Ending Vendor Code</label>
-                                    <span>
-                                        <select type="text" id="from" class="inp-modal6" style="background-position-y: 5px;">
-                                        </select>
-                                    </span>
-                                </div>
-                                <div class="form-div-modal6" style="margin-left: -26px;">
-                                    <div class="form-div-div-modal6"
-                                        style="justify-content: flex-end;margin-right: 10px;">
-                                        <input type="radio" name="date" id="date" class="inp-radio"
-                                            oninput=" toggleDivfr('category_1','category_2')">
-                                        <label for="date">Date</label>
-                                    </div>
-                                    <div class="form-div-div-modal6">
-                                        <input type="radio" name="date" id="date" class="inp-radio"
-                                            oninput=" toggleDivfr('category_2','category_1')">
-                                        <label for="date">Vendor</label>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="text-center">
-                                <button class="modalBtn6" type="submit">PRINT</button>
-                            </div>
-                        </div>
                         <div class="modal-wrap">
-                    </div>
-                    <!-- print modal 4 till here 1/1 -->
+                            <div class="modalContent6">
+                                <form style="margin-top: 15px;">
+                                    <div class="form-div-modal6 category_1">
+                                        <label for="from" class="label-modal6">Starting Date</label>
+                                        <span>
+                                            <input type="text" id="from" class="inp-modal6 datepicker-here" data-language="en"><i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div class="form-div-modal6 category_2">
+                                        <label for="from" class="label-modal6">Starting Vendor Code</label>
+                                        <span>
+                                            <select type="text" id="from" class="inp-modal6 " style="background-position-y: 5px;">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="form-div-modal6 category_1">
+                                        <label for="to" class="label-modal6">Ending Date</label>
+                                        <span>
+                                            <input type="text" id="to" class="inp-modal6 datepicker-here" data-language="en"><i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div class="form-div-modal6 category_2">
+                                        <label for="from" class="label-modal6">Ending Vendor Code</label>
+                                        <span>
+                                            <select type="text" id="from" class="inp-modal6" style="background-position-y: 5px;">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="form-div-modal6" style="margin-left: -26px;">
+                                        <div class="form-div-div-modal6" style="justify-content: flex-end;margin-right: 10px;">
+                                            <input type="radio" name="date" id="date" class="inp-radio" oninput=" toggleDivfr('category_1','category_2')">
+                                            <label for="date">Date</label>
+                                        </div>
+                                        <div class="form-div-div-modal6">
+                                            <input type="radio" name="date" id="date" class="inp-radio" oninput=" toggleDivfr('category_2','category_1')">
+                                            <label for="date">Vendor</label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="text-center">
+                                    <button class="modalBtn6" type="submit">PRINT</button>
+                                </div>
+                            </div>
+                            <div class="modal-wrap">
+                            </div>
+                            <!-- print modal 4 till here 1/1 -->
 
-                </div>
-                <div class="footer">
-                    <div class="footer-div">
-                        <div class="icons-div">
-                            <div class="icons">
-                                <a href="purchase_order (PAGE).php" style="text-decoration: none;"> <i
-                                        class="fas fa-plus" style="color: #444242;"></i></a>
-                            </div>
-                            <div class="icons" onclick="show('modal6')">
-                                <img src="src/img/printer.png" alt="printer">
-                            </div>
-                            <div class="icons" onclick="show('modal2')">
-                                <img src="src/img/rubbish-bin.png" alt="delete">
+                        </div>
+                        <div class="footer">
+                            <div class="footer-div">
+                                <div class="icons-div">
+                                    <div class="icons">
+                                        <a href="purchase_order (PAGE).php" style="text-decoration: none;"> <i class="fas fa-plus" style="color: #444242;"></i></a>
+                                    </div>
+                                    <div class="icons" onclick="show('modal6')">
+                                        <img src="src/img/printer.png" alt="printer">
+                                    </div>
+                                    <div class="icons" onclick="show('modal2')">
+                                        <img src="src/img/rubbish-bin.png" alt="delete">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-
-        </div>
-    </div>
 
 </body>
 
@@ -399,9 +294,9 @@
     function populateTable(rawData) {
         let purchaseOrder = '';
         let index = 1;
-        if(Array.isArray(rawData)) {
+        if (Array.isArray(rawData)) {
             rawData.forEach((e) => {
-            purchaseOrder += `
+                purchaseOrder += `
                 <tr ondblclick="window.location='purchase_order (PAGE).php?id=${e.poNo}';">
                     <td style="display:none">${e.poNo}</td>
                     <td style="width:70px;border-left: none;">${index++}</td>
@@ -413,26 +308,26 @@
                 </tr>
                 `;
             });
-        }else {
+        } else {
             purchaseOrder = rawData;
         }
         $('#listAllPurchaseOrder tbody').html(purchaseOrder);
     }
 
     function queryPurchaseOrder() {
-        let vendorStart = ($('#sid').val()); 
-        let vendorEnd = ($('#esid').val()); 
-        let fromDate = ($('#fromDate').val()); 
-        let toDate = ($('#toDate').val()); 
+        let vendorStart = ($('#sid').val());
+        let vendorEnd = ($('#esid').val());
+        let fromDate = ($('#fromDate').val());
+        let toDate = ($('#toDate').val());
 
-        if(!vendorStart && !vendorEnd && !fromDate && !toDate) return;
+        if (!vendorStart && !vendorEnd && !fromDate && !toDate) return;
         $.post('byCMkGnmDa3mXlyfgPh/inventory_module/getCustomPurchaseOrder.php', {
             start: vendorStart,
             end: vendorEnd,
             from: fromDate,
             to: toDate
         }, function(data) {
-            if(data != null) {
+            if (data != null) {
                 var results = jQuery.parseJSON(data);
                 populateTable(results);
             }
@@ -444,23 +339,21 @@
         populateTable(data);
 
         $('#sid').change(function() {
-            let vendorStart = ($('#sid').val()); 
-            let vendorEnd = ($('#esid').val()); 
+            let vendorStart = ($('#sid').val());
+            let vendorEnd = ($('#esid').val());
             let options = $('#esid option');
-            if(vendorStart !== '') {
-                for (var i = 0; i < options.length; i++)
-                {
+            if (vendorStart !== '') {
+                for (var i = 0; i < options.length; i++) {
                     if (options[i].text >= vendorStart)
                         $(options[i]).css("display", "block");
                     else
                         $(options[i]).css("display", "none");
                 }
-                if(vendorEnd < vendorStart) {
+                if (vendorEnd < vendorStart) {
                     $('#esid').val('');
                 }
-            }else {
-                for (var i = 0; i < options.length; i++)
-                {
+            } else {
+                for (var i = 0; i < options.length; i++) {
                     $(options[i]).css("display", "block");
                 }
             }
@@ -477,29 +370,33 @@
         });
 
         //Table sorter
-        $('th').click(function(){
+        $('th').click(function() {
             var table = $(this).parents('table').eq(0)
             var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
             this.asc = !this.asc;
             if (!this.asc) {
                 rows = rows.reverse()
             }
-            for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+            for (var i = 0; i < rows.length; i++) {
+                table.append(rows[i])
+            }
         });
 
         function comparer(index) {
             return function(a, b) {
-                var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                var valA = getCellValue(a, index),
+                    valB = getCellValue(b, index)
                 return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
             }
         }
 
-        function getCellValue(row, index){ 
-            return $(row).children('td').eq(index).text() 
+        function getCellValue(row, index) {
+            return $(row).children('td').eq(index).text()
         }
 
     });
 </script>
+
 </html>
 <script type="text/javascript" src="src/js/layout.js"></script>
 
@@ -520,6 +417,7 @@
             ele[i].classList.toggle("pdl-hide");
         }
     }
+
     function toggleDivfr(x, y) {
         var ele = document.getElementsByClassName(x);
         for (i = 0; i < ele.length; i++) {
@@ -535,7 +433,7 @@
     function show(x) {
         document.getElementById(x).style.display = "flex";
     }
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         var ele = document.getElementsByClassName("modal");
         for (var i = 0; i < ele.length; i++) {
             if (event.target == ele[i]) {

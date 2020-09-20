@@ -139,27 +139,27 @@ if (!$user->loggedIn()) {
                         <form class="form1">
                             <div class="top-rows">
                                 <label for="receipt-no">Receipt No</label>
-                                <select type="text" name="receiptNo" id="receiptNo">
-                                    <?php $staff->getAllRecipetNo() ?>
+                                <select type="text" name="receiptNo" id="receiptNo" disabled>
+                                    <?php $staff->getAllReceiptNo() ?>
                                 </select>
                             </div>
                             <div class="top-rows">
                                 <label for="patientID">Patient ID</label>
-                                <input type="text" name="patientID" id="patientID">
+                                <input type="text" name="patientID" id="patientID" disabled>
                             </div>
                             <div class="top-rows">
                                 <label for="name">Name</label>
-                                <input style="background:rgba(255, 255, 255, 0.233);border:solid 1px rgba(255, 255, 255, 0);" type="text" name="name" id="name" placeholder="xxxxx">
+                                <input disabled style="background:rgba(255, 255, 255, 0.233);border:solid 1px rgba(255, 255, 255, 0);" type="text" name="name" id="name" placeholder="xxxxx">
                             </div>
 
                             <div class="top-rows">
                                 <label for="mydate">Issue Date</label>
-                                <input type="text" name="mydate" id="mydate" class="datepicker-here" data-language='en'>
+                                <input disabled type="text" name="mydate" id="mydate" class="datepicker-here" data-language='en'>
                                 <i style="color:#707070;position:relative;right:24px;top:13px;font-size:18px" class="far fa-calendar-alt" aria-hidden="true"></i>
                             </div>
                             <div class="top-rows">
                                 <label for="mytime">Issue Time</label>
-                                <input type="text" name="mytime" id="mytime" class="timepicker" id="timepicker">
+                                <input disabled type="text" name="mytime" id="mytime" class="timepicker" id="timepicker">
                                 <i style="color:#707070;position:relative;right:24px;top:13px;font-size:18px;" class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="form1-rowlast">
@@ -232,33 +232,42 @@ if (!$user->loggedIn()) {
     <!-- 20/09/2020 -->
 
     <script>
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
         $(document).ready(function() {
-            // setting the payment status unpaid
-            $('#Pstatus').val('Un-Paid');
 
-            let date = new Date();
-
-            // setting the date
-            $('#mydate').val(date.toLocaleDateString('en-CA'));
-            // setting the time 
-            $('#mytime').val((date.getHours() < 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes());
-
-            // upon changing the reciept no the pateints info will change too 
-            $('#receiptNo').change(function() {
-                var value = $(this).val();
-                if (value) {
-                    $.post('byCMkGnmDa3mXlyfgPh/api/createBillingScript.php', {
-                        value
-                    }, function(data) {
-                        if (data != null) {
-                            var results = jQuery.parseJSON(data);
-                            $('#patientID').val(results[0].patientID);
-                            $('#medication').val(results[0].medicalCost);
-                            $('#name').val(results[1]);
-                        }
-                    });
-                }
-            });
+            // setting all the values 
+            var value = getUrlVars()["id"];
+            if (value) {
+                $.post('byCMkGnmDa3mXlyfgPh/api/editBillingScript.php', {
+                    value
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        console.log(results);
+                        $('#receiptNo').val(results[0].receiptNo);
+                        $('#mydate').val(results[0].date);
+                        $('#mytime').val(results[0].time);
+                        $('#Pstatus').val(results[0].status);
+                        $('#consultation').val(results[0].consultation);
+                        $('#treatment').val(results[0].treatment);
+                        $('#medication').val(results[0].medication);
+                        $('#discount').val(results[0].discount);
+                        $('#totalAmount').val(results[0].totalAmount);
+                        $('#patientID').val(results[1]);
+                        $('#name').val(results[2]);
+                    }
+                });
+            }
 
 
             let totalAmmount = 0;
@@ -280,28 +289,25 @@ if (!$user->loggedIn()) {
                 let recNo = $('#receiptNo').val();
                 let total = $('#totalAmount').val();
                 if (recNo && total) {
-                    $.post('byCMkGnmDa3mXlyfgPh/billing_module/addBilling.php', {
-                        date: $('#mydate').val(),
-                        time: $('#mytime').val(),
+                    $.post('byCMkGnmDa3mXlyfgPh/billing_module/editBilling.php', {
+                        id : value,
                         status: $('#Pstatus').val(),
                         consultation: $('#consultation').val(),
                         treatment: $('#treatment').val(),
                         medication: $('#medication').val(),
                         discount: $('#discount').val(),
-                        totalAmount: $('#totalAmount').val(),
-                        receiptNo: $('#receiptNo').val()
-
+                        totalAmount: $('#totalAmount').val()
                     }, function(data) {
                         if (data != null) {
                             var results = jQuery.parseJSON(data);
                             if (results.status == 'success') {
-                                window.location.replace ("./billing(PAGE).php");
+                                window.location.replace("./billing(PAGE).php");
                             } else if (results.status == 'failed') {
                                 alert("Failed to add the billing. Please try again later or if the problem is persistent contact the company");
-                                window.location.replace ("/billing(PAGE).php");
+                                window.location.replace("./billing(PAGE).php");
                             } else {
                                 alert("No Data Found");
-                                window.location.replace ("/billing(PAGE).php");
+                                window.location.replace("./billing(PAGE).php");
                             }
                         }
                     });

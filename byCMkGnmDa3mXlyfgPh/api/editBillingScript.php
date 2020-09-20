@@ -12,16 +12,17 @@ require_once '../core/init.php';
 $staff = new Staff();
 
 // if true then it is an edit operation
-if ($_POST['value'] != null){
-    $billingData = $staff->getBillingByID($_POST['value']);
-    $billingData->status = deescape($billingData->status);
-    // getting the patient ID
-    $patientID = $staff->getDiagnosisReportByID($billingData->receiptNo)->patientID;
-    // getting patient Name
-    $patientName = deescape($staff->getPatientById($patientID)->name);
-    $data = array($billingData, $patientID, $patientName);
-    $json_data = json_encode($data);
-    //here the front-end code for the GUI as a table format but now just print_r()
-    print_r($json_data);
-    }
+if (Input::exists()) {
+    if (Input::get('condition') == 'delete') {
+        if($staff->deleteBilling(Input::get('id'))) echo json_encode(array('status' => 'Delete Successfull'));
+        else echo json_encode(array('status' => 'Delete Unsuccessfull'));
+    } else {
+        $billingData = $staff->getBillingByRecieptNo(Input::get('value'));
+        $billingData->status = deescape($billingData->status);
+        $patientID = $staff->getDiagnosisReportByID($billingData->receiptNo)->patientID;
+        $patientName = deescape($staff->getPatientById($patientID)->name);
+        $data = array($billingData, $patientID, $patientName);
 
+        echo json_encode($data);
+    }
+}else echo json_encode(array('status' => 'NoData'));

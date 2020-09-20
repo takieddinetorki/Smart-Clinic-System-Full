@@ -8,18 +8,20 @@
  **/
 require_once '../core/init.php';
 $staff = new Staff();
-$id = new ID('');
 
-if (!empty($_POST['action']) && $_POST['action'] == "edit") {
-    $result = $staff->getExpenseInfo($_POST['value']);
-    $result->particulation = deescape($result->particulation);
-    $result->names = deescape($staff->getAccountName($result->accountCode));
-} else {
-    $result = $staff->getAccountName($_POST['value']);
-    $result = deescape($result);
-}
+if (Input::exists()) {
+    If(Input::get('status') == 'edit'){
+        $result = $staff->getExpenseInfo(Input::get('value'));
+        $result->particulation = deescape($result->particulation);
+        $result->names = deescape($staff->getAccountName($result->accountCode));
+    }else if(Input::get('status') == 'delete'){
+        $staff->deleteExpenses(Input::get('value'));
+        $result = array('status' => 'passed');
+    }
+    else {
+        $result = $staff->getAccountName(Input::get('value'));
+        $result = deescape($result);
+    }
+} else $result = array('status' => 'failed');
 
-
-
-$json_data = json_encode($result);
-print_r($json_data);
+echo json_encode($result);

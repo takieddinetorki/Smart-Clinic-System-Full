@@ -434,20 +434,20 @@ class Staff
 
     public function createExpense($field, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'expenses', $field))
-            echo "A problem occur while creating the Expense.";
+        if ($this->_db->insert($db, 'expenses', $field)) return true;
+        else return false;
     }
 
     public function editExpenses($condition_Value, $fields, $db = '_pdo2')
     {
-        if (!$this->_db->update('expenses', 'voucherNo', $condition_Value, $fields, $db))
-            echo "A Problem occur during editing the expense.";
+        if ($this->_db->update('expenses', 'voucherNo', $condition_Value, $fields, $db)) return true;
+        else return false;
     }
 
     public function deleteExpenses($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'expenses', array('voucherNo', '=', $condition_Value)))
-            echo "A Problem occur during deleting the expense.";
+        if ($this->_db->delete($db, 'expenses', array('voucherNo', '=', $condition_Value))) return true;
+        else return false;
     }
 
     public function getExpenseInfo($id, $db = '_pdo2')
@@ -459,30 +459,46 @@ class Staff
     public function showAllExpenses($db = '_pdo2')
     {
         $sql = 'select E.date, E.accountCode, A.name, E.voucherNo, E.ammount from expenses E join account A on E.accountCode = A.accountCode';
-        if ($values = $this->_db->query($db, $sql)->results()) return $values;
-        else echo "Something went wrong while showing the expenses.";
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else {
+            $data = array("status" => "failed");
+            echo json_encode($data);
+        }
     }
 
     public function searchExpense($ID, $searchKey, $db = '_pdo2')
     {
-        $sql = "select E.date, E.accountCode, A.name, E.voucherNo, E.ammount from expenses E join account A on E.accountCode = A.accountCode where {$searchKey} LIKE '%{$ID}%'";
-        if ($values = $this->_db->query($db, $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "select E.date, E.accountCode, A.name, E.voucherNo, E.ammount from expenses E join account A on E.accountCode = A.accountCode where E.{$searchKey} LIKE '%{$ID}%'";
+        if ($values = $this->_db->query($db, $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else {
+            $data = array("status" => "failed");
+            echo json_encode($data);
+        }
     }
 
-    public function getExpenseByCondition($startID, $endID, $startDate, $endDate, $db = '_pdo2')
+
+    public function getExpenseByCondition($startDate, $endDate, $db = '_pdo2')
     {
         $condition = " WHERE 1=1 ";
-        if (!empty($startID) && !empty($endID))
-            $condition .= ' and E.accountCode between "' . $startID . '" and "' . $endID . '"';
+        // if (!empty($startID) && !empty($endID))
+        //     $condition .= ' and E.accountCode between "' . $startID . '" and "' . $endID . '"';
 
         if (!empty($startDate) && !empty($endDate))
             $condition .= ' and E.date between "' . $startDate . '" and "' . $endDate . '"';
 
         $sql = "select E.date, E.accountCode, A.name, E.voucherNo, E.ammount from expenses E join account A on E.accountCode = A.accountCode {$condition}";
 
-        if ($values = $this->_db->query($db, $sql)->results()) return print_r($values);
-        else echo "There is no Expense record found.";
+        if ($values = $this->_db->query($db, $sql)->results()) if ($values = $this->_db->query($db, $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else {
+            $data = array("status" => "failed");
+            echo json_encode($data);
+        }
     }
 
     //yeasin 
@@ -814,7 +830,7 @@ class Staff
                 }
                 echo json_encode($values);
             }
-        }else {
+        } else {
             echo json_encode("No inventory found.");
         }
     }
@@ -1168,8 +1184,7 @@ class Staff
                 }
                 echo json_encode($values);
             }
-        }
-        else echo "There is no inventory to show";
+        } else echo "There is no inventory to show";
     }
 
     //YY => this function list all item codes to put in dropdown list
@@ -1183,8 +1198,8 @@ class Staff
     //YY => this function get inventory by start and end item codes
     public function getCustomInventoryByItemCode($start, $end, $db = '_pdo2')
     {
-        if($start == '') $start = null;
-        if($end == '') $end = null;
+        if ($start == '') $start = null;
+        if ($end == '') $end = null;
 
         $sql = 'select E.*, A.name from inventory E
                 join medicine A on E.itemCode = A.itemCode where 
@@ -1199,9 +1214,9 @@ class Staff
                 }
                 echo json_encode($values);
             }
-        }else {
+        } else {
             echo "Something went wrong while showing the Inventory.";
-        } 
+        }
     }
 
 
@@ -1216,22 +1231,21 @@ class Staff
                 }
                 echo json_encode($values);
             }
-        }
-        else echo "There is no purchase order to show";
+        } else echo "There is no purchase order to show";
     }
-    
+
     //YY => this function get purchase order by condition
     public function getCustomPurchaseOrder($start, $end, $from, $to, $db = '_pdo2')
     {
-        if($start == '') $start = null;
-        if($end == '') $end = null;
-        if($from == '') $from = null;
-        if($to == '') $to = null;
+        if ($start == '') $start = null;
+        if ($end == '') $end = null;
+        if ($from == '') $from = null;
+        if ($to == '') $to = null;
 
-        if(($start==null && $end==null) || ($from==null && $to==null)) $condition = ' or ';
+        if (($start == null && $end == null) || ($from == null && $to == null)) $condition = ' or ';
         else $condition = 'and';
 
-            $sql = 'select O.*, V.name from orders O join vendors V on O.vendorCode = V.vendorCode where
+        $sql = 'select O.*, V.name from orders O join vendors V on O.vendorCode = V.vendorCode where
             (
                 (? is null and  O.vendorCode <= ?) or
                 (O.vendorCode >= ? and ? is null) or
@@ -1243,7 +1257,7 @@ class Staff
                 (O.deliveryDate between ? and ?)
             )
             ';
-        
+
         if ($values = $this->_db->query($db, $sql, array($start, $end, $start, $end, $start, $end, $from, $to, $from, $to, $from, $to))->results()) {
             if (!empty($values)) {
                 foreach ($values as $val) {
@@ -1251,8 +1265,7 @@ class Staff
                 }
                 echo json_encode($values);
             }
-        }
-        else echo json_encode("There is no purchase order to show.");
+        } else echo json_encode("There is no purchase order to show.");
     }
 
     // **** End of Dashbaord functionality

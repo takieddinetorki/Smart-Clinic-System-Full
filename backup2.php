@@ -1,9 +1,21 @@
+<?php
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+$staff = new Staff;
+$id = new ID;
+$user = new User;
+$clinic = new ClinicDB;
+if (!$user->loggedIn()) {
+    Redirect::to('index.php');
+}
+?>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinic Name</title>
+    <title>Smart Clinic <?php if ($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName', 'clinicID', $user->data()->clinicID));
+                        else echo " Log in to show clinic" ?></title>
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/backup2.css">
     <link rel="stylesheet" href="styles/modals.css">
@@ -33,8 +45,7 @@
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -76,7 +87,7 @@
             </div>
         </div>
 
-        <?php include 'sidebar.php';?>
+        <?php include 'sidebar.php'; ?>
 
 
 
@@ -115,8 +126,7 @@
                     <div class="modalContentBT">
                         <div class="text-center">
                             <p class="modalContentHeadBT">Data Recovery</p>
-                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;"
-                                aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;" aria-hidden="true"></i>
                             <p style="margin-top: 5px;color: black;">Please backup before you continue</p>
                         </div>
                         <form style="margin-top: 7px;">
@@ -169,18 +179,15 @@
                             </div>
                             <div class="form-div-modalBT" style="margin-top: 10px;">
                                 <div class="form-div-div-modalBT" style="justify-content: flex-end;">
-                                    <input type="radio" name="date" id="date" class="inp-radioBT"
-                                        oninput="toggleDivfr('category_1','category_2')">
+                                    <input type="radio" name="date" id="date" class="inp-radioBT" oninput="toggleDivfr('category_1','category_2')">
                                     <label for="date">Monthly</label>
                                 </div>
                                 <div class="form-div-div-modalBT">
-                                    <input type="radio" name="date" id="date" class="inp-radioBT"
-                                        oninput="toggleDivfr('category_2','category_1')">
+                                    <input type="radio" name="date" id="date" class="inp-radioBT" oninput="toggleDivfr('category_2','category_1')">
                                     <label for="date">Quaterly</label>
                                 </div>
                                 <div class="form-div-div-modalBT">
-                                    <input type="radio" name="date" id="date" class="inp-radioBT"
-                                        oninput="toggleDivfr('category_1','category_2','category_3')">
+                                    <input type="radio" name="date" id="date" class="inp-radioBT" oninput="toggleDivfr('category_1','category_2','category_3')">
                                     <label for="date">Yearly</label>
                                 </div>
                             </div>
@@ -196,8 +203,7 @@
                     <div class="modalContentBT">
                         <div class="text-center">
                             <p class="modalContentHeadBT">Backup Data</p>
-                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;"
-                                aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;" aria-hidden="true"></i>
                             <p style="margin-top: 5px;color: black;">All users must exit from station before proceeding!
                             </p>
                         </div>
@@ -224,8 +230,7 @@
                     <div class="modalContentBT">
                         <div class="text-center">
                             <p class="modalContentHeadBT">Restore Data</p>
-                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;"
-                                aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-triangle" style="font-size: 44px;color: red; margin-top: 10px;" aria-hidden="true"></i>
                             <p style="margin-top: 5px;color: black;">All users must exit from station before proceeding!
                             </p>
                         </div>
@@ -254,8 +259,7 @@
                                     <th style="width:451px">Name <i class="fas fa-sort"></i></th>
                                 </tr>
                             </thead>
-                            <tbody style="max-height: calc(100vh - 300px);min-height: 200px;"
-                                class="table-wrapper-scroll-y">
+                            <tbody style="max-height: calc(100vh - 300px);min-height: 200px;" class="table-wrapper-scroll-y">
                                 <tr>
                                     <td style="width:150px">JA0009060001</td>
                                     <td style="width:450px">JOHN DOE</td>
@@ -311,11 +315,11 @@
                 <div class="footer">
                     <div class="footer-div">
                         <div class="icons-div">
-                            <div class="icons" onclick="show('add-doctor')">
+                            <div class="icons" onclick="show('add-doctor')" id="addDoctor">
                                 <i class="fas fa-plus"></i></a>
                             </div>
                             <div class="icons" onclick="show('print-doctor')">
-                                    <img src="src/img/printer.png" alt="printer">
+                                <img src="src/img/printer.png" alt="printer">
                             </div>
                             <div class="icons" onclick="show('modal2')">
                                 <img src="src/img/rubbish-bin.png" alt="delete">
@@ -375,8 +379,7 @@
                 </div>
 
                 <div class="dots-div">
-                    <span class="dot" onclick="toggleFooterDot(this,'report-page1','report-page2')"
-                        style="background-color: black;"></span>
+                    <span class="dot" onclick="toggleFooterDot(this,'report-page1','report-page2')" style="background-color: black;"></span>
                     <span class="dot" onclick="toggleFooterDot(this,'report-page2','report-page1')"></span>
                 </div>
             </div>
@@ -404,23 +407,19 @@
 
             <div id="inventory-tab">
                 <div id="vendorBT" class="tab-content">
-                    <div id="vendor-list" style="width: 100%;max-width: calc(100vw - 350px);"
-                        class="table-wrapper-scroll-y">
+                    <div id="vendor-list" style="width: 100%;max-width: calc(100vw - 350px);" class="table-wrapper-scroll-y">
                         <div>
                             <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
                                 <table class="table" style="max-width: 630px; min-width: 630px;">
                                     <thead>
                                         <tr>
-                                            <th style="width:200px;border-left: none;">VENDOR CODE<i
-                                                    class="fas fa-sort"></i></th>
-                                            <th style="width: 390px; border-right: none;">VENDOR NAME<i
-                                                    class="fas fa-sort"></i>
+                                            <th style="width:200px;border-left: none;">VENDOR CODE<i class="fas fa-sort"></i></th>
+                                            <th style="width: 390px; border-right: none;">VENDOR NAME<i class="fas fa-sort"></i>
                                             </th>
 
                                         </tr>
                                     </thead>
-                                    <tbody style="max-height: calc(100vh - 380px);min-height: 200px;"
-                                        class="table-wrapper-scroll-y">
+                                    <tbody style="max-height: calc(100vh - 380px);min-height: 200px;" class="table-wrapper-scroll-y">
                                         <tr>
                                             <td style="width:200px;border-left: none;">1</td>
                                             <td style=" width:413px;border-right:none">Cell</td>
@@ -486,8 +485,7 @@
                         </div>
                     </div>
                     <!-- the add vendor page -->
-                    <div id="addVendor" style="width: 100%;max-width: calc(100vw - 275px);"
-                        class="table-wrapper-scroll-y">
+                    <div id="addVendor" style="width: 100%;max-width: calc(100vw - 275px);" class="table-wrapper-scroll-y">
                         <div style="display: flex;">
                             <div class="box-wrapper">
 
@@ -541,8 +539,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="font-size: 20px;margin-top: 6px;margin-left: 6px;"
-                                onclick="toggleShow('vendor-list','addVendor')">
+                            <div style="font-size: 20px;margin-top: 6px;margin-left: 6px;" onclick="toggleShow('vendor-list','addVendor')">
                                 <i class="cl-icon fas fa-times-circle" aria-hidden="true" style="color:#444242"></i>
                             </div>
                         </div>
@@ -566,23 +563,19 @@
 
 
                 <div id="barcodeBT" class="tab-content">
-                    <div id="barcode-list" style="width: 100%;max-width: calc(100vw - 350px);"
-                        class="table-wrapper-scroll-y">
+                    <div id="barcode-list" style="width: 100%;max-width: calc(100vw - 350px);" class="table-wrapper-scroll-y">
                         <div>
                             <div class="table-wrapper-scroll-y" style="overflow-y: hidden;">
                                 <table class="table" style="max-width: 630px; min-width: 630px;">
                                     <thead>
                                         <tr>
-                                            <th style="width:200px;border-left: none;">ITEM CODE<i
-                                                    class="fas fa-sort"></i></th>
-                                            <th style="width: 390px; border-right: none;">NAME<i
-                                                    class="fas fa-sort"></i>
+                                            <th style="width:200px;border-left: none;">ITEM CODE<i class="fas fa-sort"></i></th>
+                                            <th style="width: 390px; border-right: none;">NAME<i class="fas fa-sort"></i>
                                             </th>
 
                                         </tr>
                                     </thead>
-                                    <tbody style="max-height: calc(100vh - 380px);min-height: 200px;"
-                                        class="table-wrapper-scroll-y">
+                                    <tbody style="max-height: calc(100vh - 380px);min-height: 200px;" class="table-wrapper-scroll-y">
                                         <tr>
                                             <td style="width:200px;border-left: none;">1</td>
                                             <td style=" width:413px;border-right:none">Cell</td>
@@ -648,8 +641,7 @@
                         </div>
                     </div>
                     <!-- the add vendor page -->
-                    <div id="addBarcode" style="width: 100%;max-width: calc(100vw - 275px);"
-                        class="table-wrapper-scroll-y">
+                    <div id="addBarcode" style="width: 100%;max-width: calc(100vw - 275px);" class="table-wrapper-scroll-y">
                         <div style="display: flex;">
                             <div class="box-wrapper">
 
@@ -677,8 +669,7 @@
                                                 <div>
                                                     <label>Expiry Date</label>
                                                     <span>
-                                                        <input type="text" style="width: 200px;" class="datepicker-here"
-                                                            data-language='en'>
+                                                        <input type="text" style="width: 200px;" class="datepicker-here" data-language='en'>
                                                         <i class="far fa-calendar-alt" style="font-size: 13px;"></i>
                                                     </span>
                                                 </div>
@@ -693,8 +684,7 @@
                                                             Upload File
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </label>
-                                                        <input id="file-upload" type="file"
-                                                            onchange="displayFilename()" />
+                                                        <input id="file-upload" type="file" onchange="displayFilename()" />
 
                                                     </span>
                                                 </div>
@@ -710,8 +700,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="font-size: 20px;margin-top: 6px;margin-left: 6px;"
-                                onclick="toggleShow('barcode-list','addBarcode')">
+                            <div style="font-size: 20px;margin-top: 6px;margin-left: 6px;" onclick="toggleShow('barcode-list','addBarcode')">
                                 <i class="cl-icon fas fa-times-circle" aria-hidden="true" style="color:#444242"></i>
                             </div>
                         </div>
@@ -771,10 +760,11 @@
         var filename = thefile.substr(thefile.lastIndexOf('\\') + 1);
         document.getElementById('barcode-label').childNodes[0].nodeValue = filename + ' '
     }
+
     function show(x) {
         document.getElementById(x).style.display = "flex";
     }
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         var ele = document.getElementsByClassName("modal");
         for (var i = 0; i < ele.length; i++) {
             if (event.target == ele[i]) {
@@ -792,13 +782,13 @@
         // Doctor  tab
         let selected_doctor_id;
         let selected_doctor_name;
-        
+
         // when table row is clicked, get doctor id and name, saved in variable for backend use
         $('table.doctor-table tbody tr').click(function() {
             $("table.doctor-table tbody tr").each(function() {
-                $(this).css('background-color','')
+                $(this).css('background-color', '')
             });
-            $(this).css('background-color','rgba(148, 148, 255, 0.5)')
+            $(this).css('background-color', 'rgba(148, 148, 255, 0.5)')
 
             let table_row = $(this).children().toArray()
             selected_doctor_id = table_row[0].innerHTML
@@ -809,7 +799,7 @@
         $('table.doctor-table tbody tr').dblclick(function() {
             $('#edit-doctor input[name=doctor-id]').val(selected_doctor_id)
             $('#edit-doctor input[name=doctor-name]').val(selected_doctor_name)
-            $('#edit-doctor').css('display','flex')             
+            $('#edit-doctor').css('display', 'flex')
         });
 
         // Diagnosis report tab
@@ -829,12 +819,12 @@
 
         // for each row
         // when delete button clicked
-        $('#report-tab').on('click', '.report-content .delete', function(){
+        $('#report-tab').on('click', '.report-content .delete', function() {
             $(this).parentsUntil(".report-box-content").detach()
         });
 
         // when save button clicked
-        $('#report-tab').on('click', '.report-content .save', function(){
+        $('#report-tab').on('click', '.report-content .save', function() {
             var input_value = $(this).closest('.report-content').find('input').val()
             $(this).closest('.report-content').find('input').detach()
             $(this).parent().hide()
@@ -846,7 +836,7 @@
         });
 
         // when edit button clicked
-        $('#report-tab').on('click', '.report-content .edit', function(){
+        $('#report-tab').on('click', '.report-content .edit', function() {
             var current_value = $(this).closest('.report-content').find('p').text()
             $(this).closest('.report-content').find('p').detach()
             $(this).parent().hide()
@@ -877,12 +867,12 @@
 
         // for each row
         // when delete button clicked
-        $('#expenses-tab').on('click', '.expenses-content .delete', function(){
+        $('#expenses-tab').on('click', '.expenses-content .delete', function() {
             $(this).parentsUntil(".expenses-box-content").detach()
         });
 
         // when save button clicked
-        $('#expenses-tab').on('click', '.expenses-content .save', function(){
+        $('#expenses-tab').on('click', '.expenses-content .save', function() {
             var account_code = $(this).closest('.expenses-content').find('input[name="acc-code"]').val()
             var account_name = $(this).closest('.expenses-content').find('input[name="acc-name"]').val()
 
@@ -902,7 +892,7 @@
         });
 
         // when edit button clicked
-        $('#expenses-tab').on('click', '.expenses-content .edit', function(){
+        $('#expenses-tab').on('click', '.expenses-content .edit', function() {
             var account_code_val = $(this).closest('.expenses-content').find('.acc-code-container').text().trim()
             var account_name_val = $(this).closest('.account-name').text().trim()
 
@@ -921,15 +911,14 @@
             `)
         });
     });
-
 </script>
 
 <style>
-    .diagnosis-report-input{
-        background:rgba(255,255,255,0.2);
-        padding:5px;
-        border:none;
-        border-bottom:1px solid black
+    .diagnosis-report-input {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid black
     }
 </style>
 
@@ -940,14 +929,39 @@
         <div class="text-center">
             <div style="font-weight: bold;">DOCTORS</div>
         </div>
-        <form style="margin-top: 7px;">  
+        <form style="margin-top: 7px;" method="POST" >
             <div class="form-div-modal9">
                 <label for="sid" class="label-modal9" style="width: 51%;">Doctor ID</label>
-                <input name="doctor-id" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+                <input name="doctor-id" id="doctor-id" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;" disabled>
             </div>
-            <div class="form-div-modal9" >
+            <div class="form-div-modal9">
                 <label for="eid" class="label-modal9" style="width: 51%;">Doctor Name</label>
-                <input name="doctor-name" type="text" class="inp-modal9"  style="width: 180px;font-size: 18px;">
+                <input name="doctor-name" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9">
+                <label for="sid" class="label-modal9" style="width: 51%;">Doctor NRIC</label>
+                <input name="doctor-nric" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9">
+                <label for="eid" class="label-modal9" style="width: 51%;">Doctor Gender</label>
+                <select name="doctor-gender" id="doctor-gender" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+                    <option value="-">-</option>
+                    <option value="-">Male</option>
+                    <option value="-">Female</option>
+                    <option value="-">Unspecified</option>
+                </select>
+            </div>
+            <div class="form-div-modal9">
+                <label for="sid" class="label-modal9" style="width: 51%;">Doctor MMCRegNo</label>
+                <input name="doctor-mmc" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9">
+                <label for="eid" class="label-modal9" style="width: 51%;">Doctor Phone</label>
+                <input name="doctor-phone" type="number" class="inp-modal9" style="width: 180px;font-size: 18px;">
+            </div>
+            <div class="form-div-modal9">
+                <label for="eid" class="label-modal9" style="width: 51%;">Doctor Photo</label>
+                <input name="doctor-photo" type="file" class="inp-modal9" style="width: 180px;font-size: 18px;">
             </div>
         </form>
         <div class="text-center">
@@ -956,6 +970,17 @@
     </div>
 </div>
 
+<!-- backend code for adding doctor  -->
+<!-- Mohammad Yeasin Al Fahad -->
+<script>
+    $(document).ready(function(){
+        $('#addDoctor').click(function(){
+            let id = <?php echo json_encode($id->generateID('doctor')); ?>;
+            console.log(id);
+            $('#doctor-id').val(id);
+        });
+    });
+</script>
 
 <!-- print Doctor popup -->
 <div id="print-doctor" class="modal pdl">
@@ -986,14 +1011,14 @@
         <div class="text-center">
             <div style="font-weight: bold;">DOCTORS</div>
         </div>
-        <form style="margin-top: 7px;">  
+        <form style="margin-top: 7px;">
             <div class="form-div-modal9">
                 <label for="sid" class="label-modal9" style="width: 51%;">Doctor ID</label>
                 <input name="doctor-id" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
             </div>
-            <div class="form-div-modal9" >
+            <div class="form-div-modal9">
                 <label for="eid" class="label-modal9" style="width: 51%;">Doctor Name</label>
-                <input name="doctor-name" type="text" class="inp-modal9"  style="width: 180px;font-size: 18px;">
+                <input name="doctor-name" type="text" class="inp-modal9" style="width: 180px;font-size: 18px;">
             </div>
         </form>
         <div class="text-center">

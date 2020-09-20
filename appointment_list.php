@@ -82,7 +82,7 @@ if (!$user->loggedIn()) {
             </div>
         </div>
 
-        <?php include 'sidebar.php';?>
+        <?php include 'sidebar.php'; ?>
 
         <div class="main">
             <div class="head">
@@ -257,19 +257,19 @@ if (!$user->loggedIn()) {
 
         <!-- save modal here -->
         <div id="modal3" class="modal pdl">
-        <div class="modal-wrap">
-            <div class="modalContent3">
-                <form style="margin-top: 7px;">
-                    <div style="text-align: center;margin-top: 25px;">
-                        <p class="label-modal3">Want to save the changes made?</label>
-                            <div class="form-div-modal3">
-                                <button class="modalBtn3" type="submit">Yes</button>
-                                <button class="modalBtn3" type="submit">No</button>
-                            </div>
-                    </div>
-                </form>
+            <div class="modal-wrap">
+                <div class="modalContent3">
+                    <form style="margin-top: 7px;">
+                        <div style="text-align: center;margin-top: 25px;">
+                            <p class="label-modal3">Want to save the changes made?</label>
+                                <div class="form-div-modal3">
+                                    <button class="modalBtn3" type="submit">Yes</button>
+                                    <button class="modalBtn3" type="submit">No</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
         <!-- save modal till here -->
 

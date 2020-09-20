@@ -97,7 +97,7 @@ if (!$user->loggedIn()) {
                             <a>
                                 <i class="cl-icon fas fa-times-circle" aria-hidden="true" onclick="show('modal3')"></i>
                             </a>
-                            <form class="expenses-form" method="POST" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/expense_module/addExpense.php">
+                            <form class="expenses-form" method="POST" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/expense_module/editExpense.php">
                                 <div>
                                     <label for="voucher">Voucher No</label>
                                     <input style="width: 150px;" type="text" name="voucherNo" id="voucherNo">
@@ -116,7 +116,7 @@ if (!$user->loggedIn()) {
                                 <div class="date">
                                     <label for="Date">Date</label>
                                     <span>
-                                        <input style="width: 160px;" type="text" id="mydate" name="date" class="datepicker-here" data-language="en" required>
+                                        <input style="width: 160px;" type="date" id="mydate" name="date" data-language="en" required>
                                         <i style="position: relative; right: 32px;" class="far fa-calendar-alt" aria-hidden="true"></i>
                                     </span>
                                 </div>
@@ -129,13 +129,9 @@ if (!$user->loggedIn()) {
                                     <label for="particulationA">Particulars</label>
                                     <input style="width: 380px;" class="inp-wid" type="text" name="particulationA" id="particulationA">
                                 </div>
-                                <div>
-                                    <label style="visibility: hidden;" for="particulationB">Particulars</label>
-                                    <input style="width: 380px;" class="inp-wid" type="text" name="particulationB" id="particulationB">
-                                </div>
 
 
-                                <input id="inreg-submit" name="register" type="submit" value="SUBMIT" />
+                                <input id="inreg-submit" name="register" type="submit" value="EDIT" />
                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                             </form>
                         </div>
@@ -165,33 +161,38 @@ if (!$user->loggedIn()) {
     <!-- Mohammad Yeasin Al Fahad -->
     <!-- 20/09/2020 -->
     <script>
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
         $(document).ready(function() {
-            // generating the ID 
-            let id = <?php echo json_encode($id->generateID('voucherNo')); ?>;
-            $('#voucherNo').val(id);
 
-            let date = new Date();
-            $('#mydate').val(date.toLocaleDateString('en-CA'));
-            
-            // getting the account name based on the account code 
-            $('#accountCode').change(function() {
-                var value = $(this).val();
-                if (value) {
-                    $.post('byCMkGnmDa3mXlyfgPh/api/expenseScript.php', {
-                        value: value,
-                        status: "add"
-                    }, function(data) {
-                        if (data != null) {
-                            var results = jQuery.parseJSON(data);
-                            $('#accountName').val(results);
-                        }
-                    });
-                }
-            });
-
-            $('#date').change(function() {
-                console.log($(this).val());
-            });
+            // getting the expense values
+            let value = getUrlVars()["id"];
+            if (value) {
+                $('#voucherNo').val(value);
+                $.post('byCMkGnmDa3mXlyfgPh/api/expenseScript.php', {
+                    value: value,
+                    status: "edit"
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        $('#accountCode').val(results.accountCode);
+                        $('#accountName').val(results.names);
+                        $('#mydate').val(results.date);
+                        $('#ammount').val(results.ammount);
+                        $('#particulationA').val(results.particulation);
+                    }
+                });
+            }
 
         });
     </script>

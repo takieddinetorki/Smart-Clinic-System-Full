@@ -268,12 +268,62 @@ class Staff
         else echo 'Doctor ID not found';
     }
 
+    // created by Yeasin
+
+    public function listTodaysMedicalCerts()
+    {
+        $sql = 'SELECT M.startingDate, P.patientID, P.name, M.receiptNo 
+        FROM medical_certificate M 
+        JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+        JOIN patients P ON P.patientID = R.patientID 
+        WHERE YEAR(startingDate) = YEAR(NOW()) AND MONTH(startingDate) = MONTH(NOW()) AND DAY(startingDate) = DAY(NOW())';
+
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "failed"));
+    }
+
+    public function listThisWeeksMedicalCerts()
+    {
+        $sql = 'SELECT M.startingDate, P.patientID, P.name, M.receiptNo 
+        FROM medical_certificate M 
+        JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+        JOIN patients P ON P.patientID = R.patientID 
+        WHERE WEEKOFYEAR(startingDate) = WEEKOFYEAR(NOW()) AND YEAR(startingDate) = YEAR(now())';
+
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "failed"));
+    }
+
+    public function listThisMonthsMedicalCerts()
+    {
+        $sql = 'SELECT M.startingDate, P.patientID, P.name, M.receiptNo 
+        FROM medical_certificate M 
+        JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+        JOIN patients P ON P.patientID = R.patientID 
+        WHERE YEAR(startingDate) = YEAR(NOW()) AND MONTH(startingDate)=MONTH(NOW())';
+
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array('status' => "failed"));
+    }
+
     // created by Leong
     public function listAllMedCert()
     {
-        $sql = 'SELECT M.startingDate, P.patientID, P.name, M.receiptNo FROM medical_certificate M JOIN patients P ON M.patientID = P.patientID';
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return $values;
-        else echo "There is no medical certificate to show";
+        $sql = 'SELECT M.startingDate, P.patientID, P.name, M.receiptNo 
+        FROM medical_certificate M 
+        JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+        JOIN patients P ON P.patientID = R.patientID';
+
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array("status" => "failed"));
     }
 
     // created by Leong
@@ -289,8 +339,10 @@ class Staff
                 JOIN patients P ON P.patientID = R.patientID 
                 WHERE {$searchKey} LIKE ?";
 
-        if ($values = $this->_db->query('_pdo2', $sql, array("%{$val}%"))->results()) return $values;
-        else echo "Medical Certificate Records not found, please register.";
+        if ($values = $this->_db->query('_pdo2', $sql, array("%{$val}%"))->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array("status" => "failed"));
     }
 
     // created by Leong
@@ -324,17 +376,16 @@ class Staff
     // created by Leong
     public function getMedCertByReceiptNo($val)
     {
-        $user = new User();
-        $clinicID =  $user->data()->clinicID;
+        $sql = "SELECT M.startingDate, M.endingDate, M.reason, P.patientID, P.name, M.receiptNo, R.doctorID
+                FROM medical_certificate M 
+                JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+                JOIN patients P ON P.patientID = R.patientID WHERE M.receiptNo = ? ";
 
-        $sql = "SELECT R.receiptNo, P.patientID, P.name AS PatientName, D.doctorID, D.name AS DoctorName
-                FROM {$clinicID}.diagnosis_report R 
-                JOIN {$clinicID}.patients P ON R.patientID = P.patientID 
-                JOIN smart_clinic.doctor D ON D.doctorID = R.doctorID 
-                WHERE R.receiptNo = ? ";
-
-        if ($values = $this->_db->query('_pdo2', $sql, array($val))->first()) return $values;
-        else echo "There is no medical certificate to show";
+        if ($values = $this->_db->query('_pdo2', $sql, array($val))->first()) {
+            $values->name = deescape($values->name);
+            $values->reason = deescape($values->reason);
+            echo json_encode($values);
+        } else echo json_encode(array("status" => "failed"));
     }
 
     // created by Leong 
@@ -370,23 +421,22 @@ class Staff
             array_push($conditional_array, $startDate, $endDate);
         }
 
-        $sql = "SELECT P.patientID, P.name AS patientName, P.NRIC, P.mobileNo, M.startingDate, M.receiptNo, D.doctorID, D.name AS doctorName 
+        $sql = "SELECT M.startingDate, P.patientID, P.name, M.receiptNo 
                 FROM medical_certificate M 
-                JOIN diagnosis_report R ON R.receiptNo = M.receiptNo
-                JOIN patients P ON P.patientID = R.patientID 
-                JOIN smart_clinic.doctor D ON D.doctorID = R.doctorID {$condition}";
+                JOIN diagnosis_report R ON R.receiptNo = M.receiptNo 
+                JOIN patients P ON P.patientID = R.patientID {$condition}";
 
-        if ($values = $this->_db->query($db, $sql, $conditional_array)->results()) return $values;
-        else echo "There is no medical certificate record found.";
+        if ($values = $this->_db->query($db, $sql, $conditional_array)->results()) {
+            foreach ($values as $val) $val->name = deescape($val->name);
+            echo json_encode($values);
+        } else echo json_encode(array("status" => "failed"));
     }
 
     // created by Leong
     public function createMedCert($field)
     {
-        if (!$this->_db->insert('_pdo2', 'medical_certificate', $field))
-            echo "A problem occur while creating the medical certificate.";
-        else
-            echo "Medical Certificate created successfully.";
+        if ($this->_db->insert('_pdo2', 'medical_certificate', $field)) return true;
+        else return false;
     }
 
     // created by Leong
@@ -398,8 +448,8 @@ class Staff
     // created by Leong
     public function deleteMedCert($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'medical_certificate', array('receiptNo', '=', $condition_Value)))
-            echo "A problem occur during deleting the medical certificate.";
+        if ($this->_db->delete($db, 'medical_certificate', array('receiptNo', '=', $condition_Value))) return true;
+        else return false;
     }
 
     //Functionalies for expense module added by yeasin 

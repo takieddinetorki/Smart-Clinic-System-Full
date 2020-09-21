@@ -96,12 +96,10 @@ if (!$user->loggedIn()) {
                         <i class="fas fa-times-circle"></i>
                     </div>
                     <div>
-                        <form action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/medical_certificate_module/createMedicalCert.php" method="POST" class="form">
+                        <form action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/medical_certificate_module/editMedicalCert.php" method="POST" class="form">
                             <div class="form-div">
                                 <label class="form-label" for="receiptNo">Reciept No.</label>
-                                <select class="form-inp" name="receiptNo" id="receiptNo">
-                                    <?php $staff->getAvailableReceiptNo(); ?>
-                                </select>
+                                <input class="form-inp" type="text" name="receiptNo" id="receiptNo" readonly>
                             </div>
                             <div class="form-div">
                                 <label class="form-label" for="patientID">Patient ID</label>
@@ -116,7 +114,7 @@ if (!$user->loggedIn()) {
                                 <div class="form-div">
                                     <label class="form-label" for="from">Starting Date</label>
                                     <span>
-                                        <input type="text" name="from" id="from" data-date-format="yyyy-mm-dd" class="datepicker-here form-inp" data-language='en'><i class="far fa-calendar-alt"></i>
+                                        <input disabled type="text" name="from" id="from" data-date-format="yyyy-mm-dd" class="datepicker-here form-inp" data-language='en'><i class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
                                 <div class="form-div" style="padding-right: 20px;padding-left: 10px;">
@@ -137,7 +135,7 @@ if (!$user->loggedIn()) {
                                 <input class="form-inp" type="text" name="doctorID" id="doctorID" disabled>
                             </div>
                             <div style="text-align: center;">
-                                <button class="sub-btn" type="submit">Submit</button>
+                                <button class="sub-btn" type="submit">Save</button>
                             </div>
                             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                         </form>
@@ -149,29 +147,45 @@ if (!$user->loggedIn()) {
                 <!-- 21/09/2020 -->
 
                 <script>
+                    // getting url variabes 
+                    function getUrlVars() {
+                        var vars = [],
+                            hash;
+                        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                        for (var i = 0; i < hashes.length; i++) {
+                            hash = hashes[i].split('=');
+                            vars.push(hash[0]);
+                            vars[hash[0]] = hash[1];
+                        }
+                        return vars;
+                    }
+
                     $(document).ready(function() {
 
-                        //* setting the values based on the receiptNo
-                        $('#receiptNo').change(function() {
-                            var value = $(this).val();
-                            console.log(value);
-                            if (value) {
-                                $.post('byCMkGnmDa3mXlyfgPh/api/createBillingScript.php', {
-                                    value
-                                }, function(data) {
-                                    if (data != null) {
-                                        var results = jQuery.parseJSON(data);
-                                        $('#patientID').val(results[0].patientID);
-                                        $('#patientName').val(results[1]);
-                                        $('#doctorID').val(results[0].doctorID);
-                                    }
-                                });
-                            }
-                        });
+                        // getting the reciptNo value
+                        let value = getUrlVars()["id"];
 
-                        //* Filling the currdate auto
-                        let date = new Date();
-                        $('#from').val(date.toLocaleDateString('en-CA'));
+                        if (value) {
+                            $.post('byCMkGnmDa3mXlyfgPh/api/medicalCertScript.php', {
+                                value: value,
+                                condition: 'edit'
+                            }, function(data) {
+                                if (data != null) {
+                                    var results = jQuery.parseJSON(data);
+                                    if (results.status != 'failed') {
+                                        $('#receiptNo').val(results.receiptNo);
+                                        $('#patientID').val(results.patientID);
+                                        $('#patientName').val(results.name);
+                                        $('#from').val(results.startingDate);
+                                        $('#to').val(results.endingDate);
+                                        $('#reason').val(results.reason);
+                                        $('#doctorID').val(results.doctorID);
+                                    }
+                                }
+                            });
+                        }
+
+
                     });
                 </script>
 

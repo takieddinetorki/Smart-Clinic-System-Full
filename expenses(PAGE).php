@@ -221,12 +221,6 @@ if (!$user->loggedIn()) {
             }
         }
 
-        // this function will return the expenses base on the choices
-
-        function getExpenses(choice, value) {
-
-        }
-
         $(document).ready(function() {
             // getting the expenses from the DB 
             let rawData = <?php $staff->showAllExpenses(); ?>;

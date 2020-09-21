@@ -2,23 +2,19 @@
 require_once '../core/init.php';
 
 /**
- * Code Written by: Leong
- * File Name: medicalCertScript.php
+ * Code Written by: Yeasin Al Fahad
+ * File Name: getCustomExpense.php
  * Class Name: -
- * Purpose of the file: Frontend will make AJAX call to this file and return the appropriate results
- * Functions included: -
+ * Purpose of the file: will return all the expenses between selected two dates
+ * Functions included: noFunctiuon
  **/
 
 $staff = new Staff();
 
-// if true then it is an edit operation
-if (!empty($_POST['action']) && $_POST['action'] == "edit")
-    $result = $staff->editMedCertByReceiptNo($_POST['value']);
-else
-    $result = $staff->getMedCertByReceiptNo($_POST['value']);
-
-$result->PatientName = hex2bin($result->PatientName);
-$json_data = json_encode($result);
-
-//here the front-end code for the GUI as a table format but now just print_r()
-print_r($json_data);
+if (Input::exists()) {
+    if (Input::get('condition') == 'edit') $staff->getMedCertByReceiptNo(Input::get('value'));
+    else if (Input::get('condition') == 'delete') {
+        if ($staff->deleteMedCert(Input::get('value'))) echo json_encode(array('status' => 'success'));
+        else echo json_encode(array('status' => 'failed'));
+    } else echo json_encode(array('status' => 'No Condition Matched'));
+} else echo json_encode(array('status' => 'No Input Found'));

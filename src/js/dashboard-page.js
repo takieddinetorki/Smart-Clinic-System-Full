@@ -25,7 +25,7 @@ function label_y_axis(data, div, label_gap) {
   return maxvalue;
 }
 function createDiv() {}
-function plot_graph(graph, data, MAX_COUNT, classname) {
+function plot_graph(graph, data, MAX_COUNT, classname,text) {
   var div_width = container_width / total_days;
   var total_height = graph.clientHeight;
   var PPPH = total_height / MAX_COUNT;
@@ -41,8 +41,21 @@ function plot_graph(graph, data, MAX_COUNT, classname) {
     newDiv.style.height = PPPH * data[i];
     newDiv.style.width = div_width;
     newDiv.classList.add(classname);
+    newDiv.id=classname+i;
+
+    var hoverDiv = document.createElement("div");
+    hoverDiv.innerHTML=data[i]+ " "+text;
+    hoverDiv.classList.add("toolTip"); 
+    hoverDiv.id =classname+ i+"tooltip";
+    newDiv.addEventListener("mouseover",function (event){
+      document.getElementById(event.target.id+"tooltip").style.display="block";
+    })
+    newDiv.addEventListener("mouseout",function (event){
+      document.getElementById(event.target.id+"tooltip").style.display="none";
+    })
 
     enclosureDiv.appendChild(newtransparentDiv);
+    enclosureDiv.appendChild(hoverDiv);
     enclosureDiv.appendChild(newDiv);
     graph.appendChild(enclosureDiv);
   }
@@ -57,7 +70,7 @@ function plot_graph1() {
   var div = document.getElementById("y-axis");
   MAX_COUNT = label_y_axis(data, div, 15);
   var graph = document.getElementById("graph-1");
-  plot_graph(graph, data, MAX_COUNT, "divG1");
+  plot_graph(graph, data, MAX_COUNT, "divG1","patients");
 }
 function plot_graph2() {
   var data = [];
@@ -69,7 +82,7 @@ function plot_graph2() {
   var div = document.getElementById("y-axis2");
   MAX_COUNT = label_y_axis(data, div, 10000);
   var graph = document.getElementById("graph-2");
-  plot_graph(graph, data, MAX_COUNT, "divG2");
+  plot_graph(graph, data, MAX_COUNT, "divG2","expenses");
 }
 
 

@@ -3,6 +3,7 @@ require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
 
 $user = new User;
 $clinic = new ClinicDB;
+$staff = new Staff();
 ?>
 <html lang="en">
 
@@ -235,6 +236,30 @@ $clinic = new ClinicDB;
                 hiddiv[i].classList.toggle("hidden_sidebar");
             }
         }
+    </script>
+    <script>
+    
+        var values =<?php $staff->getDataforAppointment();?>;
+        var data=[];
+        var i=1;
+        if (values.status != 'error') {
+            console.log("Values fetched")
+            rawData.forEach((e) => {
+                    var diff = e.Date-i;
+                    while(diff-->0){
+                        data.push(0);
+                    }
+                    i++;
+                    data.push(e.count);
+                    
+                    });
+        }
+        for(var i=0;i<10;i++){
+            console.log("Data from db->"+data[i]);
+        }
+        //currently the status of the values array is error, if instead data was fetched
+        //then we will pass data arrayto plot graph function for graph 1
+        //  plot_graph1(data);
     </script>
 </body>
 

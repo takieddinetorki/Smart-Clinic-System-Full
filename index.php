@@ -5,7 +5,7 @@ $user = new User;
 $clinic = new ClinicDB;
 $doc = new Staff;
 if ($user->loggedIn()) {
-    Redirect::to('dashboard.php');
+    Redirect::to('dashboard(PAGE).php');
 }
 ?>
 <!DOCTYPE html>

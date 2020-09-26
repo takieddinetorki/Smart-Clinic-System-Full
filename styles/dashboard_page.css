@@ -73,3 +73,17 @@
   border-radius: 10px;
   margin: 1px;
 }
+.toolTip{
+    background-color: rgba(236, 236, 236, 0.87);
+    color: black;
+    font-size: 12px;
+    font-family: inherit;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    z-index: 1;
+    margin-left: -125px;
+    width: auto;
+    display: none;
+    margin-bottom: -38px;
+}

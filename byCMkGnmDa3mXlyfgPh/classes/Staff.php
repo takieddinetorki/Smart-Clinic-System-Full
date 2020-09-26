@@ -13,6 +13,14 @@ class Staff
             $this->_db->setConnection($user->data()->clinicID);
         }
     }
+    //created by Yash for dashboard graphs
+    public function getDataforAppointment(){
+        $firstdayofmonth=strval(date('Y-m-01'));
+        $sql=  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as Date FROM appointment WHERE date > CAST(? AS DATE)  GROUP BY Date";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) return json_encode($values);
+        else return json_encode(array('status' => "error"));
+    }
+
 
     // created by Leong
     public function getPatientById($val)

@@ -87,6 +87,7 @@ class Clinic
             array('patientID','varchar(12)','PRIMARY KEY'), 
             array('NRIC','varchar(200)','NOT NULL'), 
             array('dob','date','DEFAULT NULL'), 
+            array('date','date','DEFAULT NULL'), 
             array('age','int(10)','DEFAULT NULL'), 
             array('name','varchar(100)','DEFAULT NULL'), 
             array('address','varchar(200)','DEFAULT NULL'), 

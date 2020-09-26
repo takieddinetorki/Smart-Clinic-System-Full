@@ -11,7 +11,7 @@ $user = new User;
 $login = $user->login(Input::get('username',true), Input::get('password',true));
 if ($login) {
     System::logActivity('g', 1, 'Login Successful');
-    Redirect::to('../../dashboard.php');
+    Redirect::to('../../dashboard(PAGE).php');
 }else {
     System::logActivity('u', 2, 'Login Attempt Failed');
     Redirect::to('../../index.php?e=lf');

@@ -1119,25 +1119,31 @@ class Staff
     // this function will get all the appoinment in the current week 
     public function getAllAppointmentNumberCurrentWeek()
     {
-        $sql = "SELECT count(*)FROM appointment WHERE YEARWEEK(date) = YEARWEEK(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "SELECT count(*) as total FROM appointment WHERE YEARWEEK(date) = YEARWEEK(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the appoinment in the current week 
     public function getAllAppointmentNumberCurrentMonth()
     {
-        $sql = "select count(*) from appointment where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "select count(*) as total from appointment where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the appoinment in the current week 
     public function getAllAppointmentNumberCurrentYear()
     {
-        $sql = "select count(*) from appointment where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "select count(*) as total from appointment where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // patient functionality for dashbaord
@@ -1145,25 +1151,31 @@ class Staff
     // this function will get all the appoinment in the current week 
     public function getAllPatientNumberCurrentWeek()
     {
-        $sql = "SELECT count(*)FROM patients WHERE YEARWEEK(date) = YEARWEEK(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "SELECT count(*) as total FROM patients WHERE YEARWEEK(date) = YEARWEEK(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the appoinment in the current week 
     public function getAllPatientNumberCurrentMonth()
     {
-        $sql = "select count(*) from patients where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "select count(*) as total from patients where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the appoinment in the current week 
     public function getAllPatientNumberCurrentYear()
     {
-        $sql = "select count(*) from patients where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the Appointments.";
+        $sql = "select count(*) as total from patients where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // Expense functinality 
@@ -1171,25 +1183,31 @@ class Staff
     // this function will get all the sales in the current week 
     public function getAllExpensesCurrentWeek()
     {
-        $sql = "SELECT SUM(ammount) FROM expenses WHERE YEARWEEK(date) = YEARWEEK(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "SELECT SUM(ammount) as total FROM expenses WHERE YEARWEEK(date) = YEARWEEK(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the sales in the current week 
     public function getAllExpensesCurrentMonth()
     {
-        $sql = "select SUM(ammount) from expenses where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "select SUM(ammount) as total from expenses where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the sales in the current week 
     public function getAllExpensesCurrentYear()
     {
-        $sql = "select SUM(ammount) from expenses where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "select SUM(ammount) as total from expenses where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
 
@@ -1198,25 +1216,31 @@ class Staff
     // this function will get all the sales in the current week 
     public function getAllSalesCurrentWeek()
     {
-        $sql = "SELECT SUM(totalAmount) FROM billing WHERE YEARWEEK(date) = YEARWEEK(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "SELECT SUM(totalAmount) as total FROM billing WHERE YEARWEEK(date) = YEARWEEK(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the sales in the current week 
     public function getAllSalesCurrentMonth()
     {
-        $sql = "select SUM(totalAmount) from billing where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "select SUM(totalAmount) as total from billing where date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // this function will get all the sales in the current week 
     public function getAllSalesCurrentYear()
     {
-        $sql = "select SUM(totalAmount) from billing where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) return print_r($values);
-        else echo "Something went wrong while showing the expenses.";
+        $sql = "select SUM(totalAmount) as total from billing where date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
 

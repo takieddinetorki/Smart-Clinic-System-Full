@@ -9,7 +9,8 @@ $clinic = new ClinicDB;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Clinic <?php if($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)); else echo " Log in to show clinic"?></title>
+    <title>Smart Clinic <?php if ($user->loggedIn()) echo deescape($clinic->getClinicInfo('clinicName', 'clinicID', $user->data()->clinicID));
+                        else echo " Log in to show clinic" ?></title>
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/dashboard_page.css">
@@ -30,8 +31,7 @@ $clinic = new ClinicDB;
             <div class="search-bar">
                 <div class="dropdown-box">
                     <input type="text" name="search" autocomplete="off" />
-                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg"
-                            alt="" /></a>
+                    <a href="#" class="searching-button"><img class="nav-icon" src="src/img/magnify-glass.svg" alt="" /></a>
 
                     <div class="searchbar-dropdown">
                         <input type="radio" id="search-by-id" name="src" />
@@ -71,13 +71,15 @@ $clinic = new ClinicDB;
             </div>
         </div>
 
-        <?php include 'sidebar.php';?>
+        <?php include 'sidebar.php'; ?>
 
         <div class="main">
             <div style="width:100%; max-width: fit-content ">
                 <div style="width: fit-content;">
-                    <select name="Month" id="" class="date-select">
-                        <option value="month">This Month</option>
+                    <select name="timeStatus" id="timeStatus" class="date-select">
+                        <option value="This Week">This Week</option>
+                        <option value="This Month">This Month</option>
+                        <option value="This Year">This Year</option>
                     </select>
 
                     <div class="dashboard-cards">
@@ -93,7 +95,7 @@ $clinic = new ClinicDB;
                             </div>
                             <div class="box-gray">
                                 <div>
-                                    <p>83</p>
+                                    <p id="totalAppointments">83</p>
                                     <p>Total Appointments</p>
                                 </div>
                                 <div>
@@ -220,6 +222,22 @@ $clinic = new ClinicDB;
             </div>
         </div>
     </div>
+
+    <!-- Backend Integration -->
+    <!-- Mohammad Yeasin Al Fahad -->
+    <!-- 24/09/2020 -->
+    <script>
+    $(document).ready(function(){
+
+        // retriving normal information
+        $('#totalAppointments').html('ssa');
+        // change the data on status change 
+        $('#timeStatus').change(function(){
+            let value = $(this).val();
+            console.log(value);
+        });
+    });
+    </script>
     <script src="src/js/dashboard.js"></script>
     <script src="src/js/dashboard-page.js"></script>
     <script type="text/javascript" src="src/js/layout.js"></script>

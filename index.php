@@ -106,10 +106,11 @@ if ($user->loggedIn()) {
         </script>
         <?php
                 }
-                if ($_GET) {
+                if (isset($_GET['e'])) {
                     $error = $_GET['e'];
                     switch ($error) {
-                        case 'lf':
+                        case 'e':
+                            echo $_GET['e'];
         ?>
                 <script>
                     const heading = document.querySelector('.header');
@@ -163,7 +164,7 @@ if ($user->loggedIn()) {
 
                     <div>
                         <label for="clinic-name" >Clinic ID</label>
-                        <select name="clinic" id="clinic-name">
+                        <select name="clinic" name="clinic-name" id="clinic-name">
                             <?php 
                             $clinicDB = new ClinicDB;
                             $data = $clinicDB->getAllAbbreviations();
@@ -274,13 +275,14 @@ if ($user->loggedIn()) {
             const birth = document.getElementById("birth-date");
             const userName = document.getElementById("user-name");
             const passWord = document.getElementById("pass-word");
+            const passwordConf = document.getElementById("confirm-pass-word")
             const registerationError = document.getElementById("register-error");
             formRegister.addEventListener('submit', (e) => {
                 <?php
                 if (isset($_POST)) {
                 ?>
                     e.preventDefault();
-                    formRegister.action = "<?php echo '/Smart-Clinic-System-Full/byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
+                    formRegister.action = "<?php echo '/smartClinicSystem/byCMkGnmDa3mXlyfgPh/registration_module/register.php' ?>";
                     if (clinicName.value != "" 
                     && title.value != "" 
                     && firstName.value != "" 
@@ -291,6 +293,7 @@ if ($user->loggedIn()) {
                     && birth.value != ""
                     && userName.value != ""
                     && passWord.value != ""
+                    && passwordConf.value == passWord.value
                     ) {
                         formRegister.submit();
                     } else {
@@ -300,22 +303,23 @@ if ($user->loggedIn()) {
         </script>
         <?php
                 }
-                if ($_GET) {
-                    $error = $_GET['e'];
+                if (isset($_GET['rg'])) {
+                    $error = $_GET['rg'];
                     switch ($error) {
-                        case 'lf':
+                        case 'success':
         ?>
-                <script>
-                    const heading = document.querySelector('.heading');
-                    const login = document.querySelector('.login');
-                    const error = document.getElementById('error');
-                    heading.classList.add("header-animate");
-                    login.classList.add('show');
-                    error.innerHTML = 'Wrong username or password';
-                </script>
+                    <!-- Do the registration successful message -->
     <?php
                             break;
-                    }
+                            case 'fail':
+                                ?>
+                <script>
+                    const error = document.getElementById('error');
+                    error.innerHTML = 'Something went wrong with the registration. Please contact us';
+                </script>
+                                <?php
+                                break;
+                        }
                 }
     ?>
     

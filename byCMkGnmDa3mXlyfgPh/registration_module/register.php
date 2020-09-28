@@ -11,8 +11,8 @@ if (Input::exists()) {
                 $user->create('staff', array(
                     //changes
                     'staffID' => $clinicID->generateID('staff'),
-                    'title' => (Input::get('title')),
-                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',(Input::get('clinic-name'))),
+                    'title' => escape(Input::get('title')),
+                    'clinicID' => $clinicDB->getClinicInfo('clinicID','abbr',(Input::get('clinic', true))),
                     'firstName' => (Input::get('firstName')),
                     'lastName' => (Input::get('lastName')),
                     'mobileNumber' => (Input::get('mobileNumber')),
@@ -23,10 +23,10 @@ if (Input::exists()) {
                     'password' => Hash::generate(Input::get('password'), $encryption_key,128),
                     'encryptionKey' => $encryption_key
                 ));
-                Session::flash('home', 'You have been registered successfully');
-                Redirect::to('../index.php?rg=success');
+                Redirect::to('../../index.php?rg=success');
             } catch (Exception $th) {
                 die($th->getMessage());
+                Redirect::to('../../index.php?rg=fail');
             }
         }
     }

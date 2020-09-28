@@ -33,7 +33,6 @@ class DB
     public function setConnection($db) {
         $this->_pdo2 = new PDO('mysql:host='. Config::get('mysql/host') . ';dbname='. $db, Config::get('mysql/username'), Config::get('mysql/password')); 
     }
-
     public function query($db, $sql, $params = array()) {
         $this->_error = false;
         if ($this->_query = $this->$db->prepare($sql)) {

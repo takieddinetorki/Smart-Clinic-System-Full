@@ -6,6 +6,7 @@ $user = new User;
 $clinic = new ClinicDB;
 $doc = new Staff;
 $d = new Doctor;
+$patient = new Patient;
 if ($user->LoggedIn()) {
     echo 'Logged in<br>';
 
@@ -18,9 +19,7 @@ if ($user->LoggedIn()) {
         <li>Encrypted password: <?php echo $user->data()->password ?></li>
         <li>Encrypted password: <?php print_r($user->data());?></li>
         <li>Your clinic name is: <?php echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)) ?></li>
-        <li>Your clinic name is: <?php $doc->getAllSalesCurrentMonth()?></li>
-        <li>Your clinic name is: <?php $doc->getAllSalesCurrentWeek()?></li>
-        <li>Your clinic name is: <?php $doc->getAllSalesCurrentYear()?></li>
+        <li>Your clinic name is: <?php $patient->getEditPatientsVal('PID2066718')?></li>
         <li><a href="login_module/logout.php">logout</a></li>
     </ul>
 <?php

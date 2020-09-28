@@ -195,26 +195,6 @@
                     </div>
 
                 </div>
-                <div class="footer" >
-                    <div class="footer-div" >
-                        <div class="dots-div">
-                            <a href="personal-info(PAGE).php" style="text-decoration: none;"><span class="dot" style="background-color:black"></span></a>
-                            <span class="dot"></span>
-                        </div>
-                        <div class="icons-div">
-                            <div class="icons">
-                                <img src="src/img/save-file-option.png" alt="save">
-                            </div>
-                            <!-- <div class="icons">
-                                <img src="src/img/printer.png" alt="printer">
-                            </div>
-                            <div class="icons" onclick="show('modal2')">
-                                <img src="src/img/rubbish-bin.png" alt="delete">
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>

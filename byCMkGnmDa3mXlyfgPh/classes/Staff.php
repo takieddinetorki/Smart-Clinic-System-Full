@@ -14,11 +14,12 @@ class Staff
         }
     }
     //created by Yash for dashboard graphs
-    public function getDataforAppointment(){
-        $firstdayofmonth=strval(date('Y-m-01'));
-        $sql=  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as Date FROM appointment WHERE date > CAST(? AS DATE)  GROUP BY Date";
-        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) return json_encode($values);
-        else return json_encode(array('status' => "error"));
+    public function getDataforAppointment()
+    {
+        $firstdayofmonth = strval(date('Y-m-01'));
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as Date FROM appointment WHERE date > CAST(? AS DATE)  GROUP BY Date";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
     }
 
 
@@ -93,8 +94,8 @@ class Staff
 
     public function createPatient($field, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'patients', $field))
-            echo "A problem occur while creating the patinent.";
+        if ($this->_db->insert($db, 'patients', $field)) return true;
+        else return false;
     }
 
     public function editPatient($condition_Value, $fields, $db = '_pdo2')
@@ -105,14 +106,14 @@ class Staff
 
     public function deletePatient($condition_Value, $db = '_pdo2')
     {
-        if (!$this->_db->delete($db, 'patients', array('patientID', '=', $condition_Value)))
-            echo "A Problem occur during deleting the patient.";
+        if ($this->_db->delete($db, 'patients', array('patientID', '=', $condition_Value))) return true;
+        else return false;
     }
 
     public function creatMedicalHistory($fields, $db = '_pdo2')
     {
-        if (!$this->_db->insert($db, 'medical_history', $fields))
-            echo "A problem occur while creating the medical_history.";
+        if ($this->_db->insert($db, 'medical_history', $fields)) return true;
+        else return false;
     }
 
     public function editMedicalHistory($condition_Value, $fields, $db = '_pdo2')
@@ -1257,8 +1258,10 @@ class Staff
     public function getNumberOfExpensesWeekly($accountCode)
     {
         $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and YEARWEEK(date) = YEARWEEK(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
-        else echo 'Something went wrong while showing the expenses';
+        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
     // Monthly
     public function getNumberOfExpensesMonthly($accountCode)

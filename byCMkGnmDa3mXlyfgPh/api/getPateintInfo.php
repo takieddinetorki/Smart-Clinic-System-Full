@@ -10,17 +10,25 @@ require_once '../core/init.php';
  **/
 
 $staff = new Staff();
+$patient = new Patient;
 
-// if true then it is an edit operation
-if ($_POST['value']){
-    $patient = $staff->getPatientById($_POST['value']);
-    // need to deesape other value too if needed but for now I only need the name
-    $patient->name = deescape($patient->name);
-    $json_data = json_encode($patient);
-    print_r($json_data);
-}
-
-
-
-//here the front-end code for the GUI as a table format but now just print_r()
-
+if (Input::exists()) {
+    // this will get the patients based on multiple ids
+    if (Input::get('condition') == 'multiID') $patient->getPatientByIds(Input::get('startID'), Input::get('endID'));
+    // this two will search the patient
+    else if (Input::get('condition') == 'id') $patient->searchPatient(Input::get('value'), 'id');
+    else if (Input::get('condition') == 'name') $patient->searchPatient(Input::get('value'), 'name');
+    // this will delete a patinet
+    else if (Input::get('condition') == 'delete') {
+        if ($patient->deletePatient(Input::get('patientID'))) echo json_encode(array('status' => 'success'));
+        else echo json_encode(array('status' => 'failed'));
+    }
+    // this will edit a patinet
+    else if (Input::get('condition') == 'edit') $patient->getEditPatientsVal(Input::get('editValue'));
+    // this will return the patient name based on patient iD
+    else {
+        $patient = $staff->getPatientById(Input::get('value'));
+        $patient->name = deescape($patient->name);
+        echo json_encode($patient);
+    }
+} else  echo json_encode(array('status' => 'No InputFound'));

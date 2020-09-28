@@ -17,10 +17,10 @@ function calcAge(d, a) {
     var dob_entry = temp.value;
     if (dob_entry != "") {
         console.log(dob_entry);
-        var split_dob = dob_entry.split("/");
-        var day = split_dob[0];
+        var split_dob = dob_entry.split("-");
+        var day = split_dob[2];
         var month = split_dob[1];
-        var year = split_dob[2];
+        var year = split_dob[0];
         var ageValue = 0;
         var condition1 = parseInt(month + day);
 
@@ -52,7 +52,7 @@ function changedinput1() {
             alert("No Digital Numbers");
             t.value = "";
         } else if ((t.value - Math.floor(t.value)) == 0) {
-            t.value = "+60" + parseInt(t.value)
+            t.value = "+60" + parseInt(t.value);
         }
 
     }

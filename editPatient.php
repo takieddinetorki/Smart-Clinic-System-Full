@@ -75,8 +75,8 @@ if (!$user->loggedIn()) {
                             <div style="text-align: center;margin-top: 25px;">
                                 <p class="label-modal3">Want to save the changes made?</label>
                                     <div class="form-div-modal3">
-                                        <button class="modalBtn3" type="submit">Yes</button>
-                                        <button class="modalBtn3" type="submit">No</button>
+                                        <button class="modalBtn2" type="button">Yes</button>
+                                        <button class="modalBtn2" type="button">No</button>
                                     </div>
                             </div>
                         </form>
@@ -92,8 +92,8 @@ if (!$user->loggedIn()) {
                             <div style="text-align: center;margin-top: 25px;">
                                 <p class="label-modal2">Are you sure to delete?</label>
                                     <div class="form-div-modal2">
-                                        <button class="modalBtn2" type="submit">Yes</button>
-                                        <button class="modalBtn2" type="submit">No</button>
+                                        <button class="modalBtn2" id="deletePatient" type="button">Yes</button>
+                                        <button class="modalBtn2" type="button">No</button>
                                     </div>
                             </div>
                         </form>
@@ -102,7 +102,7 @@ if (!$user->loggedIn()) {
             </div>
             <!-- delete modal till here -->
 
-            <form action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/patient_module/createPatient.php" enctype="multipart/form-data" method="POST">
+            <form action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/patient_module/editPatient.php" enctype="multipart/form-data" method="POST">
                 <div class="main-body">
                     <div class="head pageOne">
                         <h1>PERSONAL INFORMATION</h1>
@@ -153,19 +153,19 @@ if (!$user->loggedIn()) {
                                 <div class="form-row" style="margin-bottom:12px;">
                                     <label class="gender-label">Gender</label>
 
-                                    <input type="radio" id="gender" name="gender" value="male" style="margin-top:8px;color:black;" />
+                                    <input type="radio" id="gender" name="gender" value="Male" style="margin-top:8px;color:black;" />
                                     <label for="male" style="width:60px;">Male</label>
 
-                                    <input type="radio" name="gender" value="female" style="margin-top:8px;color:black;" />
+                                    <input type="radio" name="gender" value="Female" style="margin-top:8px;color:black;" />
                                     <label for="female" style="width:60px;">Female</label>
 
                                     <label for="race" style="width:60px;text-align:right;padding-right:5px;" c>Race</label>
                                     <select name="race" class="race" style="text-align:center;" id="race">
-                                        <option value="c">C</option>
-                                        <option value="m">M</option>
-                                        <option value="t">T</option>
-                                        <option value="i">I</option>
-                                        <option value="o">O</option>
+                                        <option value="C">C</option>
+                                        <option value="M">M</option>
+                                        <option value="T">T</option>
+                                        <option value="I">I</option>
+                                        <option value="O">O</option>
                                     </select>
 
                                     <label for="nationality" style="width:100px;text-align:right;padding-right:5px;">National</label>
@@ -318,6 +318,12 @@ if (!$user->loggedIn()) {
                                     <input type="image" src="src/img/save-file-option.png" alt="save">
                                     <!-- <img src="src/img/save-file-option.png" alt="save"> -->
                                 </div>
+                                <div class="icons">
+                                    <img src="src/img/printer.png" alt="printer">
+                                </div>
+                                <div class="icons" onclick="show('modal2')">
+                                    <img src="src/img/rubbish-bin.png" alt="delete">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -331,7 +337,142 @@ if (!$user->loggedIn()) {
     <!-- Mohammad Yeasin Al Fahad -->
     <!-- 26/09/2020 -->
     <script>
+        function settleIllness(val) {
+            switch (val) {
+                case 'Diabetes':
+                    $('#diabetes').prop('checked', true);
+                    break;
+                case 'Heart Patient':
+                    $('#heartPatient').prop('checked', true);
+                    break;
+                case 'Migraine':
+                    $('#migrane').prop('checked', true);
+                    break;
+                case 'Blood Pressure':
+                    $('#bloodPressure').prop('checked', true);
+                    break;
+                case 'Lungs':
+                    $('#lung').prop('checked', true);
+                    break;
+                case 'Tubercolosis':
+                    $('#tuber').prop('checked', true);
+                    break;
+                default:
+                    $('#illnessOthers').prop('checked', true);
+                    $('#illnessText').prop('disabled', false);
+                    $('#illnessText').val(val);
+                    break;
+            }
+        }
+
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
         $(document).ready(function() {
+
+            // getting the value
+            let valueID = getUrlVars()["id"];
+
+            if (valueID) {
+                $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
+                    editValue: valueID,
+                    condition: 'edit'
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        console.log(results);
+                        if (results.status != 'error') {
+                            $('#patientID').val(valueID);
+                            $('#NRIC').val(results.NRIC);
+                            $('#dob-input').val(results.dob);
+                            $('#age-input').val(results.age);
+                            $('#name').val(results.name);
+                            $('#addressA').val(results.addressA);
+                            $('#addressB').val(results.addressB);
+
+                            // solving image 
+                            let imageURL = results.picture;
+                            imageURL = imageURL.split('/');
+                            $('#blah').attr('src', `./byCMkGnmDa3mXlyfgPh/files/profile_pictures/patients/${results.picture}`);
+
+                            let genderValue = results.gender;
+                            if (genderValue[0] == 'm' || genderValue[0] == 'M') genderValue = "Male";
+                            else genderValue = "Female";
+                            $('input[name=gender]').val([genderValue]);
+                            $('#race').val(results.race.toUpperCase());
+                            $('#nationality').val(results.nationality);
+                            $('input[name=maritalStatus]').val([results.maritalStatus]);
+                            $('#mobileNo').val(results.mobileNo);
+                            $('#spouse-input').val(results.spouseName);
+                            $('#emergencyContactName').val(results.emergencyContactName);
+                            $('#emergencyContact').val(results.emergencyContact);
+                            $('#relationship').val(results.relationship);
+                            $('#doctorID').val(results.doctorID);
+
+                            // solving doctor name
+                            let value = results.doctorID;
+                            $.post('byCMkGnmDa3mXlyfgPh/api/createAppointment.php', {
+                                value
+                            }, function(data) {
+                                if (data != null) {
+                                    var results = jQuery.parseJSON(data);
+                                    $('#doctorName').val(results);
+                                }
+                            });
+
+                            // solving the illness
+                            let temp = results.illness;
+                            let illness = temp.split('+');
+                            illness = illness.filter((e) => {
+                                if (e) return e;
+                            });
+                            illness.forEach((e) => settleIllness(e));
+
+                            $('input[name=smoking]').val([results.smoking]);
+                            $('input[name=drink]').val([results.drinking]);
+                            $('input[name=tobacco]').val([results.tobacco]);
+
+                            // solving other Habits
+                            if (results.othersHabit) {
+                                $('#othersHabit').prop('checked', true);
+                                $('#othersHabitText').prop('disabled', false);
+                                $('#othersHabitText').val(results.othersHabit);
+                            }
+
+
+                            // solving Food alergies
+                            if (results.foodAllergies) {
+                                $('#foodAllergies').prop('checked', true);
+                                $('#foodAllergiesText').prop('disabled', false);
+                                $('#foodAllergiesText').val(results.foodAllergies);
+                            }
+
+                            // solving Deug alergies
+                            if (results.drugAllergies) {
+                                $('#drugAllergies').prop('checked', true);
+                                $('#drugAllergiesText').prop('disabled', false);
+                                $('#drugAllergiesText').val(results.drugAllergies);
+                            }
+
+                            // solving other alergies
+                            if (results.otherAllergies) {
+                                $('#otherAllergies').prop('checked', true);
+                                $('#otherAllergiesText').prop('disabled', false);
+                                $('#otherAllergiesText').val(results.otherAllergies);
+                            }
+                        }
+                    }
+                });
+            }
+
             // toggling view 
             $('.pageTwo').hide();
             $('#secpage').click(function() {
@@ -346,11 +487,6 @@ if (!$user->loggedIn()) {
                 $(this).css("background-color", "black");
                 $('#secpage').css("background-color", "");
             });
-
-
-            // generartintg patient ID
-            let id = <?php echo json_encode($id->generateID('patient')); ?>;
-            $('#patientID').val(id);
 
             // getting the doctor name from doctor ID
             $('#doctorID').change(function() {
@@ -390,6 +526,22 @@ if (!$user->loggedIn()) {
             $('#otherAllergies').change(function() {
                 if ($('#otherAllergies').is(':checked')) $('#otherAllergiesText').prop('disabled', false);
                 else $('#otherAllergiesText').prop('disabled', true);
+            });
+
+            $('#deletePatient').click(function() {
+                $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
+                    patientID: valueID,
+                    condition: "delete"
+                }, function(data) {
+                    if (data != null) {
+                        var results = jQuery.parseJSON(data);
+                        if (results.status != "failed") window.location.replace("/smartClinicSystem/patients(PAGE).php");
+                        else {
+                            alert('Delete Unseccessfull, Please try again later. If the problem is persistent contact support team');
+                            window.location.replace("/smartClinicSystem/patients(PAGE).php");
+                        }
+                    }
+                });
             });
         });
     </script>

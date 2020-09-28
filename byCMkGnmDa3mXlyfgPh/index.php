@@ -20,6 +20,13 @@ if ($user->LoggedIn()) {
         <li>Encrypted password: <?php print_r($user->data());?></li>
         <li>Your clinic name is: <?php echo deescape($clinic->getClinicInfo('clinicName','clinicID',$user->data()->clinicID)) ?></li>
         <li>Your clinic name is: <?php $patient->getEditPatientsVal('PID2066718')?></li>
+
+        <br><br><li>My query is <?php $doc->gettotalStock()?></li>
+        <br><br><li>My second query is <?php $doc->getexpiredStockCurrentweek()?></li>
+        <br><br><li>My Third query is <?php $doc->getexpiredStockCurrentMonth()?></li>
+        <br><br><li>My Third query is <?php $doc->getexpiredStockCurrentYear()?></li>
+
+
         <li><a href="login_module/logout.php">logout</a></li>
     </ul>
 <?php

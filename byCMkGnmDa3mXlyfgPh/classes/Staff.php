@@ -1257,7 +1257,7 @@ class Staff
     // which later on will be needed in the Dashboard functionality to calcualte Expense percentages
     public function getNumberOfExpensesWeekly($accountCode)
     {
-        $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and YEARWEEK(date) = YEARWEEK(NOW())";
+        $sql = "SELECT count(*) as total FROM expenses WHERE accountCode = ? and YEARWEEK(date) = YEARWEEK(NOW())";
         if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) {
             if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
             else echo json_encode(array('total' => $values[0]->total));
@@ -1266,16 +1266,20 @@ class Staff
     // Monthly
     public function getNumberOfExpensesMonthly($accountCode)
     {
-        $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
-        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
-        else echo 'Something went wrong while showing the expenses';
+        $sql = "SELECT count(*) as total FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-%m-01') and LAST_DAY(NOW())";
+        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
     // Yearly
     public function getNumberOfExpensesYearly($accountCode)
     {
-        $sql = "SELECT count(*) FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
-        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) return print_r($values);
-        else echo 'Something went wrong while showing the expenses';
+        $sql = "SELECT count(*) as total FROM expenses WHERE accountCode = ? and date between DATE_FORMAT(NOW(),'%Y-01-01') and DATE_FORMAT(NOW(),'%Y-12-31')";
+        if ($values = $this->_db->query('_pdo2', $sql, array($accountCode))->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
 
     // Stock functionality Dashboard 
@@ -1285,12 +1289,11 @@ class Staff
     // this function will get the totoal number of inventory  
     public function getAllStocksCurrentWeek()
     {
-        $sql = "SELECT count(*) FROM inventory";
-        if ($values = $this->_db->query('_pdo2', $sql)->results())
-            if ($values == 0)
-                return $values;
-            else echo "Empty medecines <br />";
-        else echo "Something went wrong while showing the inventory.";
+        $sql = "SELECT count(*) as total FROM inventory";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+            if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
+            else echo json_encode(array('total' => $values[0]->total));
+        } else echo json_encode(array('status' => "error"));
     }
     // this function will get the totoal number of expiry inventory  
     public function getAllExpiredStocksCurrentWeek()

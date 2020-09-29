@@ -88,7 +88,7 @@ if (!$user->loggedIn()) {
         <div class="main">
             <div class="foot-wrap">
                 <div class="head">
-                    <h1>EDIT EXPENSES</h1>
+                    <h1>REGISTER EXPENSES</h1>
                 </div>
                 <div>
                     <div class="form-container-wrapper" id="main-wrap">

@@ -315,7 +315,7 @@ if (!$user->loggedIn()) {
                             <div class="icons-div pageTwo">
                                 <div class="icons">
                                     <!-- Please fix the front-end issue here -->
-                                    <input type="image" src="src/img/save-file-option.png" alt="save">
+                                    <input type="image" src="src/img/save-file-option.png" alt="save" style="margin-top: 12px;">
                                     <!-- <img src="src/img/save-file-option.png" alt="save"> -->
                                 </div>
                             </div>

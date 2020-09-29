@@ -31,7 +31,7 @@
             <a href="financial-report(PAGE).php" class="side-link" id = "financial-report(PAGE)"  ><img src="src/img/cash.svg" alt="" />
                 <div class="small_sidebar">Finance Reports</div>
             </a>
-            <a href="backup.php" class="side-link" id = "backup"  ><img src="src/img/settings-tools.svg" alt="" />
+            <a href="backup2.php" class="side-link" id = "backup"  ><img src="src/img/settings-tools.svg" alt="" />
                 <div class="small_sidebar">Backup & Table Setup</div>
             </a>
         </div>

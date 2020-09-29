@@ -183,3 +183,33 @@ input::-webkit-inner-spin-button {
     width: 340px !important;
   }
 }
+
+
+
+/* specific to addBarcode.php */
+.Barcode input[type="file"] {
+  display: none;
+}
+
+#barcode-label {
+  border: 1px solid #444242;
+  padding: 6px 10px;
+  font-size: 14px;
+  width: auto;
+  max-width: 280px;
+  max-height: 100px;
+  font-family: inherit;
+  border: 1px solid gray;
+  color: #444242;
+  display: inline-block;
+}
+
+#barcode-label i {
+  float: right;
+  margin: 30px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  padding: 8px;
+  background-color: #aaaaae;
+  border-radius: 50px;
+}

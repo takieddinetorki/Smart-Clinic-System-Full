@@ -87,8 +87,8 @@ if (!$user->loggedIn()) {
 
         <div class="main">
             <div class="foot-wrap">
-                <div class="head">
-                    <h1>EDIT EXPENSES</h1>
+                <div class="head" style="text-transform: uppercase;">
+                    <h1>ADD VENDOR</h1>
                 </div>
                 <div>
                     <div class="form-container-wrapper" id="main-wrap">
@@ -97,41 +97,37 @@ if (!$user->loggedIn()) {
                             <a>
                                 <i class="cl-icon fas fa-times-circle" aria-hidden="true" onclick="show('modal3')"></i>
                             </a>
-                            <form class="expenses-form" method="POST" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/expense_module/editExpense.php">
+                            <form class="expenses-form" method="POST" action="">
                                 <div>
-                                    <label for="voucher">Voucher No</label>
-                                    <input style="width: 150px;" type="text" name="voucherNo" id="voucherNo">
+                                    <label for="code">Code</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="code" id="code">
                                 </div>
                                 <div>
-                                    <label for="account">Account Code</label>
-                                    <select style="width: 150px;" type="text" name="accountCode" id="accountCode">
-                                        <?php $staff->getAllAccountCode(); ?>
-                                    </select>
+                                    <label for="name">Name</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="name" id="name">
                                 </div>
                                 <div>
-                                    <label for="accountName">Account Name</label>
-                                    <input style="width: 380px;" class="inp-wid" type="text" name="accountName" id="accountName">
+                                    <label for="address">Address</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="address" id="address">
+                                </div>
+                                <div>
+                                    <label for="address2" style="visibility: hidden;">Address</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="address2" id="address2">
+                                </div>
+                                <div>
+                                    <label for="address3">Address</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="address3" id="address3">
+                                </div>
+                                <div>
+                                    <label for="cPerson">Contact Person</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="text" name="cPerson" id="cPerson">
+                                </div>
+                                <div>
+                                    <label for="cNum">Contact Number</label>
+                                    <input   style="margin-left:10px;width: 50%;" type="number" name="cNum" id="cNum">
                                 </div>
 
-                                <div class="date">
-                                    <label for="Date">Date</label>
-                                    <span>
-                                        <input style="width: 160px;" type="date" id="mydate" name="date" data-language="en" required>
-                                        <i style="position: relative; right: 32px;" class="far fa-calendar-alt" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-
-                                <div>
-                                    <label for="amount">Amount (RM)</label>
-                                    <input style="width: 150px;" step="0.01" type="text" name="ammount" id="ammount" onchange="amountPricing('ammount')" placeholder="0.00">
-                                </div>
-                                <div>
-                                    <label for="particulationA">Particulars</label>
-                                    <input style="width: 380px;" class="inp-wid" type="text" name="particulationA" id="particulationA">
-                                </div>
-
-
-                                <input id="inreg-submit" name="register" type="submit" value="EDIT" />
+                                <input id="inreg-submit" name="addVendor" type="submit" value="Add" />
                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                             </form>
                         </div>
@@ -143,7 +139,10 @@ if (!$user->loggedIn()) {
                 <div class="footer">
                     <div class="footer-div">
                         <div class="icons-div">
-                            <div class="icons">
+                           <div class="icons">
+                                <img src="src/img/save-file-option.png" alt="printer">
+                            </div>
+                            <div class="icons" onclick="show('modal9')">
                                 <img src="src/img/printer.png" alt="printer">
                             </div>
                             <div class="icons" onclick="show('modal2')">
@@ -156,47 +155,6 @@ if (!$user->loggedIn()) {
         </div>
 
     </div>
-
-    <!-- Backend Intergation -->
-    <!-- Mohammad Yeasin Al Fahad -->
-    <!-- 20/09/2020 -->
-    <script>
-        function getUrlVars() {
-            var vars = [],
-                hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
-            }
-            return vars;
-        }
-
-        $(document).ready(function() {
-
-            // getting the expense values
-            let value = getUrlVars()["id"];
-            if (value) {
-                $('#voucherNo').val(value);
-                $.post('byCMkGnmDa3mXlyfgPh/api/expenseScript.php', {
-                    value: value,
-                    status: "edit"
-                }, function(data) {
-                    if (data != null) {
-                        var results = jQuery.parseJSON(data);
-                        $('#accountCode').val(results.accountCode);
-                        $('#accountName').val(results.names);
-                        $('#mydate').val(results.date);
-                        $('#ammount').val(results.ammount);
-                        $('#particulationA').val(results.particulation);
-                    }
-                });
-            }
-
-        });
-    </script>
-
 
     <!-- save modal here -->
     <div id="modal3" class="modal pdl">
@@ -259,17 +217,6 @@ if (!$user->loggedIn()) {
         }
     }
 
-    function amountPricing(id) {
-        var num = document.getElementById(id);
-        if (isNaN(num.value)) {
-            num.value = "";
-            alert("Only numbers")
-        } else {
-            var n = Number(num.value).toFixed(2);
-            document.getElementById(id).value = n;
-        }
-
-    }
 </script>
 <script>
     function show(x) {

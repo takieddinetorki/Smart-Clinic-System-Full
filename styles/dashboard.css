@@ -1,3 +1,14 @@
+.h100{
+  height: 100%;
+}
+.h75{
+  height: 75%;
+
+}
+.h15{
+  height: 15%;
+}
+
 .d-flex {
   display: -webkit-box;
   display: -ms-flexbox;

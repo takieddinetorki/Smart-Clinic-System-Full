@@ -14,11 +14,71 @@ class Staff
         }
     }
     //created by Yash for dashboard graphs
-    public function getDataforAppointment()
+    public function getDataforPateintCurrentWeek()
+    {
+        $firstdayofweek = strval(date('Y-m-d', strtotime("this week"))); 
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as temp FROM patients WHERE date >= CAST(? AS DATE)  GROUP BY temp";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofweek))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getDataforPateintCurrentMonth()
     {
         $firstdayofmonth = strval(date('Y-m-01'));
-        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as Date FROM appointment WHERE date > CAST(? AS DATE)  GROUP BY Date";
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as temp FROM patients WHERE date >= CAST(? AS DATE)  GROUP BY temp";
         if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getDataforPateintCurrentYear()
+    {
+        $firstdayofyear = strval(date('Y-01-01'));
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%m') as temp FROM patients WHERE date >= CAST(? AS DATE) GROUP BY temp";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofyear))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getDataforSalesCurrentWeek()
+    {
+        $firstdayofweek = strval(date('Y-m-d', strtotime("this week"))); 
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as temp FROM expenses WHERE date >= CAST(? AS DATE)  GROUP BY temp";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofweek))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getDataforSalesCurrentMonth()
+    {
+        $firstdayofmonth = strval(date('Y-m-01'));
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%d') as temp FROM expenses WHERE date >= CAST(? AS DATE)  GROUP BY temp";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getDataforSalesCurrentYear()
+    {
+        $firstdayofyear = strval(date('Y-01-01'));
+        $sql =  "SELECT count(*) AS count, DATE_FORMAT(date,'%m') as temp FROM expenses WHERE date >= CAST(? AS DATE) GROUP BY temp";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofyear))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+
+    
+    public function getexpiredStockCurrentweek(){
+        $firstdayofweek = strval(date('Y-m-d', strtotime("this week"))); 
+        $sql =  "SELECT count(*) AS count FROM inventory WHERE expiry BETWEEN CAST(? AS DATE) and CURRENT_DATE()";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofweek))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getexpiredStockCurrentMonth(){
+        $firstdayofmonth = strval(date('Y-m-01'));
+        $sql =  "SELECT count(*) AS count FROM inventory WHERE expiry BETWEEN CAST(? AS DATE) and CURRENT_DATE()";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofmonth))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function getexpiredStockCurrentYear(){
+        $firstdayofyear = strval(date('Y-01-01'));
+        $sql =  "SELECT count(*) AS count FROM inventory WHERE expiry BETWEEN CAST(? AS DATE) and CURRENT_DATE()";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofyear))->results()) echo json_encode($values);
+        else echo json_encode(array('status' => "error"));
+    }
+    public function gettotalStock(){
+        $sql =  "SELECT count(*) AS count FROM inventory WHERE quantity>0";
+        if ($values = $this->_db->query('_pdo2', $sql)->results()) echo json_encode($values);
         else echo json_encode(array('status' => "error"));
     }
 
@@ -1289,8 +1349,9 @@ class Staff
     // this function will get the totoal number of inventory  
     public function getAllStocksCurrentWeek()
     {
-        $sql = "SELECT count(*) as total FROM inventory";
-        if ($values = $this->_db->query('_pdo2', $sql)->results()) {
+        $firstdayofweek = strval(date('Y-m-d', strtotime("this week")));
+        $sql =  "SELECT count(*) AS total FROM inventory WHERE expiry >= CAST(? AS DATE)";
+        if ($values = $this->_db->query('_pdo2', $sql, array($firstdayofweek))->results()) {
             if ($values[0]->total == 0) echo json_encode(array('status' => "not found"));
             else echo json_encode(array('total' => $values[0]->total));
         } else echo json_encode(array('status' => "error"));

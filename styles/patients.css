@@ -189,6 +189,9 @@
     #esid {
       margin-left: 8px;
     }
+    
+  }
+  @media (max-width:900px){
     .ml-0 {
       margin-left: 0 !important;
     }

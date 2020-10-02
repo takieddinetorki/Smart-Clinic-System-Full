@@ -1,5 +1,9 @@
 <?php
-require_once '../core/init.php';
+if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem') 
+require_once 'byCMkGnmDa3mXlyfgPh/core/init.php';
+else if (getcwd() == 'C:\xampp\htdocs\smartClinicSystem\byCMkGnmDa3mXlyfgPh') 
+require_once 'core/init.php';
+else require_once '../core/init.php';
 
 /**
  * Code Written by: Leong
@@ -127,9 +131,17 @@ class ReportGeneration
         $patientInfo = $staff->getPatientById($val);
         $medicalInfo = $staff->getMedicalHistory($val);
         $doctorInfo = $staff->getDoctorByID($medicalInfo->doctorID);
+        $varRoot = __ROOT__;
+        $image = $varRoot.'\files\profile_pictures\patients\\'.hex2bin($patientInfo->picture);
+        // Read image path, convert to base64 encoding
+        $imageData = base64_encode(file_get_contents($image));
+
+        // Format the image SRC:  data:{mime};base64,{data};
+        $src = 'data:'.mime_content_type($image).';base64,'.$imageData;
+       // echo "DETAILS  ->  "+strval($image)+"   "+"   ";
 
         $html =
-            '<html>' . $this->head . '
+            '<!DOCTYPE html><html lang="en">' . $this->head . '
                 <body>' . $this->setOrientationAndTitle("portrait", "Patient Details") .
             '<span style="float:left;">Patient ID: ' . $val . '</span>
                 <span style="float:right;">Date: ' . $this->today . '</span>
@@ -153,7 +165,7 @@ class ReportGeneration
                         <div>Date of Birth: ' . $patientInfo->dob . '</div>
                     </div>
                     <div style="display:inline-block;">
-                        <img style="width: 100px; height: 128px;"src="../files/profile_pictures/patients/'.hex2bin($patientInfo->picture).'">
+                        <img style="width: 100px; height: 128px;" src="'.$src.'">
                         </div>
                 </div>
 
@@ -247,8 +259,7 @@ class ReportGeneration
        
                 </body>
             </html>';
-
-        $filename = "Patient Report - " . hex2bin($patientInfo->name);
+        $filename = "Patient Report - " . hex2bin($patientInfo->name);      
         ReportPrinting::printPDF($html, $filename, "portrait");
     }
 

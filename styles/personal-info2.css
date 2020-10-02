@@ -86,7 +86,9 @@
   button:focus {
     outline: none;
   }
-  
+  form{
+    margin-top: 10px;
+  }
   .form-row {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -123,6 +125,7 @@
     border-right: solid 8px rgba(128, 128, 128, 0);
     text-overflow: ellipsis;
     padding-right: 16px;
+    padding-left: 12px;
   }
   
   .patient-id,
@@ -279,4 +282,13 @@
   .table-wrapper-scroll-y::-webkit-scrollbar-track {
     background: rgba(0, 128, 0, 0);
     border: 1px solid rgba(0, 0, 0, 0);
+  }
+
+  @media (max-width:1300px){
+    form{
+      max-width: calc(100% - 10px);
+    }
+    .main-body{
+      overflow-x: auto;
+    }
   }

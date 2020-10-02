@@ -103,14 +103,14 @@ if (!$user->loggedIn()) {
             <!-- delete modal till here -->
 
             <form action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/patient_module/editPatient.php" enctype="multipart/form-data" method="POST">
-                <div class="main-body">
-                    <div class="head pageOne">
+                <div class="main-body pageOne">
+                    <div class="head">
                         <h1>PERSONAL INFORMATION</h1>
                     </div>
-                    <div class="cl-btn pageOne" onclick="show('modal3')">
+                    <div class="cl-btn" onclick="show('modal3')">
                         <i class="fas fa-times-circle"></i>
                     </div>
-                    <div class="scroll-class table-wrapper-scroll-y pageOne">
+                    <div class="scroll-class table-wrapper-scroll-y">
                         <div class="personal-form">
                             <div class="box1">
                                 <div class="form-part1">
@@ -122,7 +122,7 @@ if (!$user->loggedIn()) {
                                         <input type="text" class="passport-no" name="NRIC" id="NRIC">
 
                                         <label style="width:80px;text-align:center" class="dob-label">D.O.B</label>
-                                        <input type="text" name="dob" data-date-format="yyyy-mm-dd" onfocusout="calcAge('dob-input','age-input')" class="dob datepicker-here" data-language='en' id="dob-input">
+                                        <input type="text" name="dob" placeholder="YYYY-MM-DD" style="text-align: center;padding: 0;" data-date-format="yyyy-mm-dd" onfocusout="calcAge('dob-input','age-input')" class="dob datepicker-here" data-language='en' id="dob-input">
 
                                         <label class="age-label" style="width:70px;text-align:center">Age</label>
                                         <input type="number" name="age" class="age" id="age-input">
@@ -175,7 +175,7 @@ if (!$user->loggedIn()) {
 
                                     <label for="maritalStatus" style="width:110px;text-align:right;padding-right:5px;">Marital
                                         Status</label>
-                                    <input type="radio" name="maritalStatus" value="single" id="ms_single" oninput="hideSingle()" style="margin-top:8px;color:black;" />
+                                    <input type="radio" name="maritalStatus" value="single" id="ms_single" oninput="hideSingle()"  style="margin-top:8px;color:black;" />
 
                                     <label for="single" style="width:50px;">Single</label>
                                     <input type="radio" name="maritalStatus" value="married" oninput="hideSingle()" style="margin-top:8px;color:black;" />
@@ -209,114 +209,117 @@ if (!$user->loggedIn()) {
                                         <option hidden>Select Doctor</option>
                                         <?php $staff->getAllDoctorID(); ?>
                                     </select>
-                                    <label for="doctor" style="width:80px;padding-left:25px;padding-top:0px;margin-right:15px;">Doctor Name</label>
+                                    <label for="doctor" style="width:80px;padding-left:25px;padding-top:0px;margin-right:10px;margin-left:45px">Doctor Name</label>
                                     <input type="text" class="doctor" name="doctorName" id="doctorName" readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Inserting page two here  -->
-
-                    <div class="main-body pageTwo">
-                        <div class="head">
-                            <h1>MEDICAL HISTORY</h1>
-                        </div>
-                        <div class="cl-btn" onclick="show('modal3')">
-                            <i class="fas fa-times-circle"></i>
-                        </div>
-                        <div class="scroll-class">
-                            <div class="hist-form">
-                                <div class="form-row">
-                                    <label class="issues-col">Illness</label>
-                                    <input type="checkbox" id="diabetes" name="Diabetes" value="Diabetes" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Diabetes</label>
-                                    <input type="checkbox" id="heartPatient" name="heartPatient" value="Heart Patient" class="disease-option" />
-                                    <label for="Heart Patient" class="diseases" style="width:110px;">Heart Patient</label>
-                                    <input type="checkbox" id="migrane" name="Migraine" value="Migraine" class="disease-option" />
-                                    <label for="Migraine" class="diseases">Migraine</label>
-                                    <input type="checkbox" id="bloodPressure" name="bloodPressure" value="Blood Pressure" class="disease-option" />
-                                    <label for="Blood Pressure" class="diseases" style="width:120px;">Blood Pressure</label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col"></label>
-                                    <input type="checkbox" id="lung" name="Lungs" value="Lungs" class="disease-option" />
-                                    <label for="Lungs" class="diseases">Lungs</label>
-                                    <input type="checkbox" id="tuber" name="Tubercolosis" value="Tubercolosis" class="disease-option" />
-                                    <label for="Tubercolosis" class="diseases" style="width:110px;">Tubercolosis</label>
-                                    <input type="checkbox" name="illnessOthers" id="illnessOthers" class="disease-option" />
-                                    <label for="Others" class="diseases" style="width:60px;">Others</label>
-                                    <input type="text" class="detail1" name="illnessText" id="illnessText" style="margin-left:5px;" disabled>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col">Smoking</label>
-                                    <input type="radio" name="smoking" value="Never" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Never</label>
-                                    <input type="radio" name="smoking" value="Occational" class="disease-option" />
-                                    <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
-                                    <input type="radio" name="smoking" value="Habitual" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Habitual</label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col">Drinking</label>
-                                    <input type="radio" name="drink" value="Never" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Never</label>
-                                    <input type="radio" name="drink" value="Occational" class="disease-option" />
-                                    <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
-                                    <input type="radio" name="drink" value="Habitual" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Habitual</label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col">Tobacco</label>
-                                    <input type="radio" name="tobacco" value="Never" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Never</label>
-                                    <input type="radio" name="tobacco" value="Occational" class="disease-option" />
-                                    <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
-                                    <input type="radio" name="tobacco" value="Habitual" class="disease-option" />
-                                    <label for="diabetes" class="diseases">Habitual</label>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col"></label>
-                                    <input type="checkbox" name="othersHabit" id="othersHabit" class="allergy-option" />
-                                    <label for="diabetes" class="allergies">Others</label>
-                                    <input type="text" name="othersHabitText" id="othersHabitText" class="detail1" disabled>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col">Allergies</label>
-                                    <input type="checkbox" name="foodAllergies" id="foodAllergies" class="allergy-option" />
-                                    <label for="diabetes" class="allergies">Food</label>
-                                    <input type="text" name="foodAllergiesText" id="foodAllergiesText" class="detail2" disabled>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col"></label>
-                                    <input type="checkbox" id="drugAllergies" name="drugAllergies" class="allergy-option" />
-                                    <label for="diabetes" class="allergies">Drug</label>
-                                    <input type="text" name="drugAllergiesText" id="drugAllergiesText" class="detail2" disabled>
-                                </div>
-                                <div class="form-row">
-                                    <label class="issues-col"></label>
-                                    <input type="checkbox" id="otherAllergies" name="otherAllergies" class="allergy-option" />
-                                    <label for="diabetes" class="allergies">Others</label>
-                                    <input type="text" name="otherAllergiesText" id="otherAllergiesText" class="detail2" disabled>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Page two ends here  -->
-
                     <div class="footer" style="margin-top:0">
                         <div class="footer-div">
                             <div class="dots-div">
-                                <span id="firpage" class="dot" style="background-color: black;"></span>
-                                <span id="secpage" class="dot"></span>
+                                <span class="dot firpage" style="background-color: black;" onclick="changeCSS('styles/personal-info2.css',3)"></span>
+                                <span class="dot secpage"  onclick="changeCSS('styles/medical-history.css',3)"></span>
                             </div>
-                            <div class="icons-div pageTwo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inserting page two here  -->
+
+                <div class="main-body pageTwo">
+                    <div class="head">
+                        <h1>MEDICAL HISTORY</h1>
+                    </div>
+                    <div class="cl-btn" onclick="show('modal3')">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="scroll-class table-wrapper-scroll-y">
+                        <div class="hist-form">
+                            <div class="form-row">
+                                <label class="issues-col">Illness</label>
+                                <input type="checkbox" id="diabetes" name="Diabetes" value="Diabetes" class="disease-option" />
+                                <label for="diabetes" class="diseases">Diabetes</label>
+                                <input type="checkbox" id="heartPatient" name="heartPatient" value="Heart Patient" class="disease-option" />
+                                <label for="Heart Patient" class="diseases" style="width:110px;">Heart Patient</label>
+                                <input type="checkbox" id="migrane" name="Migraine" value="Migraine" class="disease-option" />
+                                <label for="Migraine" class="diseases">Migraine</label>
+                                <input type="checkbox" id="bloodPressure" name="bloodPressure" value="Blood Pressure" class="disease-option" />
+                                <label for="Blood Pressure" class="diseases" style="width:120px;">Blood Pressure</label>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col"></label>
+                                <input type="checkbox" id="lung" name="Lungs" value="Lungs" class="disease-option" />
+                                <label for="Lungs" class="diseases">Lungs</label>
+                                <input type="checkbox" id="tuber" name="Tubercolosis" value="Tubercolosis" class="disease-option" />
+                                <label for="Tubercolosis" class="diseases" style="width:110px;">Tubercolosis</label>
+                                <input type="checkbox" name="illnessOthers" id="illnessOthers" class="disease-option" />
+                                <label for="Others" class="diseases" style="width:60px;">Others</label>
+                                <input type="text" class="detail1" name="illnessText" id="illnessText" style="margin-left:5px;" disabled>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col">Smoking</label>
+                                <input type="radio" name="smoking" value="Never" class="disease-option" />
+                                <label for="diabetes" class="diseases">Never</label>
+                                <input type="radio" name="smoking" value="Occational" class="disease-option" />
+                                <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
+                                <input type="radio" name="smoking" value="Habitual" class="disease-option" />
+                                <label for="diabetes" class="diseases">Habitual</label>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col">Drinking</label>
+                                <input type="radio" name="drink" value="Never" class="disease-option" />
+                                <label for="diabetes" class="diseases">Never</label>
+                                <input type="radio" name="drink" value="Occational" class="disease-option" />
+                                <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
+                                <input type="radio" name="drink" value="Habitual" class="disease-option" />
+                                <label for="diabetes" class="diseases">Habitual</label>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col">Tobacco</label>
+                                <input type="radio" name="tobacco" value="Never" class="disease-option" />
+                                <label for="diabetes" class="diseases">Never</label>
+                                <input type="radio" name="tobacco" value="Occational" class="disease-option" />
+                                <label for="diabetes" class="diseases" style="width:110px;">Occational</label>
+                                <input type="radio" name="tobacco" value="Habitual" class="disease-option" />
+                                <label for="diabetes" class="diseases">Habitual</label>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col"></label>
+                                <input type="checkbox" name="othersHabit" id="othersHabit" class="allergy-option" />
+                                <label for="diabetes" class="allergies">Others</label>
+                                <input type="text" name="othersHabitText" id="othersHabitText" class="detail1" disabled>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col">Allergies</label>
+                                <input type="checkbox" name="foodAllergies" id="foodAllergies" class="allergy-option" />
+                                <label for="diabetes" class="allergies">Food</label>
+                                <input type="text" name="foodAllergiesText" id="foodAllergiesText" class="detail2" disabled>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col"></label>
+                                <input type="checkbox" id="drugAllergies" name="drugAllergies" class="allergy-option" />
+                                <label for="diabetes" class="allergies">Drug</label>
+                                <input type="text" name="drugAllergiesText" id="drugAllergiesText" class="detail2" disabled>
+                            </div>
+                            <div class="form-row">
+                                <label class="issues-col"></label>
+                                <input type="checkbox" id="otherAllergies" name="otherAllergies" class="allergy-option" />
+                                <label for="diabetes" class="allergies">Others</label>
+                                <input type="text" name="otherAllergiesText" id="otherAllergiesText" class="detail2" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="footer" style="margin-top:0">
+                        <div class="footer-div">
+                            <div class="dots-div">
+                                <span class="dot firpage"  onclick="changeCSS('styles/personal-info2.css',3)"></span>
+                                <span class="dot secpage" style="background-color: black;"  onclick="changeCSS('styles/medical-history.css',3)"></span>
+                            </div>
+                            <div class="icons-div">
                                 <div class="icons">
-                                    <!-- Please fix the front-end issue here -->
-                                    <input type="image" src="src/img/save-file-option.png" alt="save">
-                                    <!-- <img src="src/img/save-file-option.png" alt="save"> -->
+                                    <input type="image" src="src/img/save-file-option.png" alt="save" style="margin-top: 12px;">
                                 </div>
                                 <div class="icons">
                                     <img src="src/img/printer.png" alt="printer">
@@ -328,6 +331,10 @@ if (!$user->loggedIn()) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Page two ends here  -->
+
+
                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
             </form>
         </div>
@@ -410,6 +417,7 @@ if (!$user->loggedIn()) {
                             $('#race').val(results.race.toUpperCase());
                             $('#nationality').val(results.nationality);
                             $('input[name=maritalStatus]').val([results.maritalStatus]);
+                            hideSingle();
                             $('#mobileNo').val(results.mobileNo);
                             $('#spouse-input').val(results.spouseName);
                             $('#emergencyContactName').val(results.emergencyContactName);
@@ -475,17 +483,13 @@ if (!$user->loggedIn()) {
 
             // toggling view 
             $('.pageTwo').hide();
-            $('#secpage').click(function() {
+            $('.secpage').click(function() {
                 $('.pageOne').hide();
                 $('.pageTwo').show();
-                $(this).css("background-color", "black");
-                $('#firpage').css("background-color", "");
             });
-            $('#firpage').click(function() {
+            $('.firpage').click(function() {
                 $('.pageOne').show();
                 $('.pageTwo').hide();
-                $(this).css("background-color", "black");
-                $('#secpage').css("background-color", "");
             });
 
             // getting the doctor name from doctor ID
@@ -603,6 +607,17 @@ if (!$user->loggedIn()) {
                     }
                 }
             }
+        }
+
+        function changeCSS(cssFile, cssLinkIndex) {
+            console.log("CSS NEW : " + cssFile);
+            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+            var newlink = document.createElement("link");
+            newlink.setAttribute("rel", "stylesheet");
+            newlink.setAttribute("type", "text/css");
+            newlink.setAttribute("href", cssFile);
+            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
         }
     </script>
 

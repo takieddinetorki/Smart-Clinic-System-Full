@@ -174,27 +174,65 @@ if (!$user->loggedIn()) {
                     index++;
                 });
                 $('#p_table').html(html);
+                // when table row is clicked, get doctor id and name, saved in variable for backend use
+                $('.table tbody tr').click(function() {
+                    $(".table tbody tr").each(function() {
+                        $(this).css('background-color', '')
+                    });
+                    $(this).css('background-color', 'rgba(148, 148, 255, 0.5)')
+
+                    let id = $(this).children().toArray()[1].innerHTML;
+                    $('#deletePatient').click(function() {
+                        console.log("delete called");
+                        // getting the account name based on the account code 
+                        if (id) {
+                            $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
+                                patientID: id,
+                                condition: "delete"
+                            }, function(data) {
+                                if (data != null) {
+                                    var results = jQuery.parseJSON(data);
+                                    if (results.status != "failed") window.localtion.replace("/smartClinicSystem/patients(PAGE).php");
+                                    else {
+                                        alert('Delete Unseccessfull, Please try again later. If the problem is persistent contact support team');
+                                        window.localtion.replace("/smartClinicSystem/patients(PAGE).php");
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    // console.log(table_row[4].innerHTML);
+                });
+
+                // when table row is double clicked, open edit gui
+                $('.table tbody tr').dblclick(function() {
+                    let patientID = $(this).children().toArray()[1].innerHTML;
+                    window.location.href = `/smartClinicSystem/editPatient.php?id=${patientID}`;
+                });
             }
         }
-        $(document).ready(function() {
 
+        function gettingReady(state) {
             // getting all the data from backedn 
             let rawData = <?php $patient->getAllPateints(); ?>;
             console.log(rawData);
-            if (rawData.status != 'error') {
-                populatePatinetsInTable(rawData);
-            } else {
-                $('#certTableList').html(`
-                    <div class="main">
-                        <div style="margin-top: 150px;">
-                            <img src="src/img/group4.png" alt="" style="margin:auto">
-                            <p style="text-transform:uppercase;text-align:center">No Patinets Found</p>
-                            <p style="text-align: center;">Try Adding Some First</p>
-                            <p style="text-align: center;">If the Problem is Persistent, Contact to Support Team</p>
+            if (state == 1) {
+                if (rawData.status != 'error') {
+                    populatePatinetsInTable(rawData);
+                } else {
+                    $('#certTableList').html(`
+                        <div class="main">
+                            <div style="margin-top: 150px;">
+                                <img src="src/img/group4.png" alt="" style="margin:auto">
+                                <p style="text-transform:uppercase;text-align:center">No Patinets Found</p>
+                                <p style="text-align: center;">Try Adding Some First</p>
+                                <p style="text-align: center;">If the Problem is Persistent, Contact to Support Team</p>
+                            </div>
                         </div>
-                    </div>
-                `);
+                    `);
+                }
             }
+
 
             // searching pateints based on ID 
             // ID base 
@@ -213,6 +251,7 @@ if (!$user->loggedIn()) {
                             rawData = jQuery.parseJSON(data);
                             if (rawData.status != 'error') {
                                 populatePatinetsInTable(rawData);
+
                             } else {
                                 $('#p_table').html(`
                                     <div class="main">
@@ -265,43 +304,9 @@ if (!$user->loggedIn()) {
                     alert("Please insert some value in the search bar");
                 }
             });
+        }
 
-            // when table row is clicked, get doctor id and name, saved in variable for backend use
-            $('.table tbody tr').click(function() {
-                $(".table tbody tr").each(function() {
-                    $(this).css('background-color', '')
-                });
-                $(this).css('background-color', 'rgba(148, 148, 255, 0.5)')
-
-                let id = $(this).children().toArray()[1].innerHTML;
-                $('#deletePatient').click(function() {
-                    // getting the account name based on the account code 
-                    if (id) {
-                        $.post('byCMkGnmDa3mXlyfgPh/api/getPateintInfo.php', {
-                            patientID: id,
-                            condition: "delete"
-                        }, function(data) {
-                            if (data != null) {
-                                var results = jQuery.parseJSON(data);
-                                if (results.status != "failed") window.localtion.replace("/smartClinicSystem/patients(PAGE).php");
-                                else {
-                                    alert('Delete Unseccessfull, Please try again later. If the problem is persistent contact support team');
-                                    window.localtion.replace("/smartClinicSystem/patients(PAGE).php");
-                                }
-                            }
-                        });
-                    }
-                });
-                // console.log(table_row[4].innerHTML);
-            });
-
-            // when table row is double clicked, open edit gui
-            $('.table tbody tr').dblclick(function() {
-                let patientID = $(this).children().toArray()[1].innerHTML;
-                window.location.href = `/smartClinicSystem/editPatient.php?id=${patientID}`;
-            });
-
-        });
+        $(document).ready(gettingReady(1));
     </script>
 
 
@@ -326,23 +331,26 @@ if (!$user->loggedIn()) {
     <div id="modal4" class="modal pdl">
         <div class="modal-wrap">
             <div class="modalContent4">
-                <form style="margin-top: 7px;">
+                <form style="margin-top: 7px;" action="/smartClinicSystem/byCMkGnmDa3mXlyfgPh/patient_module/ReportPatient.php" enctype="multipart/form-data" method="POST">
                     <div class="form-div-modal4">
                         <label for="sid" class="label-modal4">Starting Patient ID</label>
-                        <select name="sid" id="sid" class="inp-modal4">
-                            <option value="">JA000906000</option>
+                        <select name="sid-r" id="sid-r" class="inp-modal4">
+                            <option disabled selected>Select ID</option>
+                            <?php $patient->getAllPatientID(); ?>
                         </select>
                     </div>
                     <div class="form-div-modal4">
                         <label for="eid" class="label-modal4">Ending Patient ID</label>
-                        <select name="eid" id="eid" class="inp-modal4">
-                            <option value="">JA000906000</option>
+                        <select name="eid-r" id="eid-r" class="inp-modal4">
+                            <option disabled selected>Select ID</option>
+                            <?php $patient->getAllPatientID(); ?>
                         </select>
                     </div>
+                    <div class="text-center">
+                        <button class="modalBtn4" type="submit">PRINT</button>
+                    </div>
                 </form>
-                <div class="text-center">
-                    <button class="modalBtn4" type="submit">PRINT</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -370,14 +378,6 @@ if (!$user->loggedIn()) {
     }
 </script>
 <script src="src/js/layout.js"></script>
-<script>
-    function editPateints() {
-        //we can fetch the data here and send to the edit page, i just simulated it--------yash
-        window.location.href = "http://localhost/smartClinicSystem/pateintsEdit.php";
-    }
-    document.querySelectorAll('#p_table tr')
-        .forEach(e => e.addEventListener("dblclick", editPateints));
-</script>
 <script>
     function show(x) {
         document.getElementById(x).style.display = "flex";

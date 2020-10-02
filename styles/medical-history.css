@@ -102,6 +102,11 @@
       margin-top: 20px;
     }
   }
+  @media (max-width:1540px){
+    .main-body{
+      min-width: calc(100vw - 400px);
+    }
+  }
   
   @media (max-height: 670px) {
     .form-row {
@@ -119,6 +124,7 @@
     .scroll-class {
       overflow: scroll;
       overflow-y: hidden;
+      max-width: calc(100vw - 300px);
     }
   }
   
